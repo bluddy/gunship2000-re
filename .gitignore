@@ -1,0 +1,38 @@
+# Virtual environment
+venv/
+
+# IDE/editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Large data files
+game/*.GS2
+game/*.GS3
+game/*.GS4
+game/*.PAN
+game/*.BMP
+game/*.SMP
+game/*.MAP
+
+# Build artifacts
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.pyd
+__pycache__/
+*.pyc
+
+# Cache
+.cache/
+.inertia_decomp_cache/
+
+# Logs (keep minimal)
+logs/*.log
