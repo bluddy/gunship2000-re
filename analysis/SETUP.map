@@ -1,0 +1,310 @@
+#
+# Size of the executable's load module covered by the map
+#
+Size 4eb7
+#
+# Discovered segments, one per line, syntax is "SegmentName Type(CODE/DATA/STACK) Address [default]"
+# The default data segment is assumed to be used by all routines which don't have data segment overrides.
+# If no default segment is specified, the first one will be used as default.
+#
+Code2 CODE 0000
+Code3 CODE 0113
+Code1 CODE 011d
+Code7 CODE 02fb
+Code5 CODE 030f
+Code4 CODE 0386
+Code6 CODE 03c9
+Data1 DATA 0422 default
+#
+# Discovered routines, one per line, syntax is "RoutineName: Segment Type(NEAR/FAR) Extents[DS] [R/U]Block1[DS] [R/U]Block2[DS]... [annotation1] [annotation2]..."
+# The routine extents is the largest continuous block of instructions attributed to this routine and originating
+# at the location determined to be the routine's entrypoint.
+# Blocks are offset ranges relative to the segment that the routine belongs to, specifying address as belonging to the routine.
+# Blocks starting with R contain code that was determined reachable, U were unreachable but still likely belong to the routine.
+# The routine blocks may cover a greater area than the extents if the routine has disconected chunks it jumps into.
+# The extents block and/or the individual routine blocks can have an optional data segment override which is the name
+# of the data segment assumed to be selected within that block.# Possible annotation types:
+# ignore - ignore this routine in processing (comparison, signature extraction etc.)
+# complete - this routine was completely reconstructed into C, only influences stat display when printing map
+# external - is part of an external library (e.g. libc), ignore in comparison, don't count as uncompleted in stats
+# detached - routine has no callers, looks useless, don't count as uncompleted in stats
+# assembly - routine was written in assembly, don't include in comparisons by default
+# duplicate - routine is a duplicate of another
+#
+routine_8: Code2 FAR 0000-0026 R0000-0026
+routine_16: Code2 NEAR 0028-00ae R0028-00ae
+routine_26: Code2 NEAR 00b0-0108 R00b0-0108
+routine_23: Code2 NEAR 010a-011d R010a-011d
+routine_17: Code2 NEAR 011e-02f2 R011e-02f2
+routine_19: Code2 NEAR 02f4-048d R02f4-048d
+routine_18: Code2 NEAR 048e-04a8 R048e-04a8
+routine_28: Code2 NEAR 04aa-059f R04aa-059f
+routine_29: Code2 NEAR 077e-07fd R077e-07fd
+routine_30: Code2 NEAR 0d08-0d38 R0d08-0d38
+routine_27: Code2 NEAR 0d3e-0fa5 R0d3e-0fa5
+routine_48: Code2 NEAR 0fa6-1133 R0fa6-0fc2 U0fc3-0fc3 R0fc4-112f R1130-1133
+routine_39: Code3 FAR 000a-0014 R000a-0014
+routine_24: Code3 FAR 0068-0072 R0068-0072
+routine_4: Code1 NEAR 0000-0000
+start: Code1 NEAR 001e-00df R001e-00df
+routine_11: Code1 NEAR 00e0-00e0 R00e0-00e0
+routine_7: Code1 FAR 0116-01da R00f1-0115 R0116-01da R02c0-02c5
+routine_9: Code1 FAR 01db-01e1 R01db-01e1 R01fc-025d
+routine_13: Code1 NEAR 01e2-01e9 R01e2-01e9
+routine_21: Code1 NEAR 025e-028a R025e-028a
+routine_14: Code1 NEAR 028b-029d R028b-029d
+routine_2: Code1 NEAR 029e-02bf R029e-02bf
+routine_15: Code1 FAR 02c6-02e9 R02c6-02e9
+routine_20: Code1 FAR 02ea-030d R02ea-030d
+routine_6: Code1 FAR 030e-049f R030e-049f
+routine_5: Code1 FAR 04a0-051c R04a0-051c
+routine_10: Code1 NEAR 051e-0548 R051e-0548
+routine_3: Code1 NEAR 0549-057e R0549-057e
+routine_12: Code1 NEAR 0580-05a4 R0580-05a4
+routine_97: Code1 NEAR 05ce-05fa R05ce-05fa
+routine_44: Code1 FAR 05fc-06b5 R05fc-06b5
+routine_69: Code1 FAR 06b6-06e0 R06b6-06e0
+routine_42: Code1 FAR 06e2-06f6 R06e2-06f6
+routine_47: Code1 FAR 06f8-07da R06f8-07da
+routine_80: Code1 NEAR 07dc-0870 R07dc-0870
+routine_56: Code1 FAR 0872-0954 R0872-0954
+routine_72: Code1 NEAR 0956-0981 R0956-0981
+routine_83: Code1 NEAR 0982-09c4 R0982-09c4
+routine_96: Code1 FAR 09c6-0aad R09c6-0aad
+routine_71: Code1 FAR 0aae-0b21 R0aae-0b21
+routine_98: Code1 NEAR 0b2a-0b74 R0b2a-0b74
+routine_55: Code1 FAR 0b86-105c R0b86-0bdc U0bdd-1056 R1057-105c
+routine_95: Code1 FAR 105e-1091 R105e-1091
+routine_73: Code1 FAR 1092-10b1 R05a6-05ad R1092-10b1
+routine_70: Code1 FAR 10b2-112b R05bb-05c7 R10b2-112b
+routine_102: Code1 FAR 112c-12d6 R112c-1145 U1146-114d R114e-12d6
+routine_103: Code1 NEAR 12d7-12e7 R12d7-12e7
+routine_79: Code1 NEAR 12e8-13d0 R12e8-13d0
+routine_84: Code1 FAR 13d2-1485 R13d2-1485 R14d0-1511
+routine_100: Code1 NEAR 1486-14cf R1486-14cf
+routine_99: Code1 FAR 1512-1525 R1512-1525
+routine_22: Code1 FAR 1526-152a R1526-152a
+routine_65: Code1 FAR 152c-1530 R152c-1530
+routine_87: Code1 NEAR 1532-1552 R1532-1552
+routine_86: Code1 NEAR 1553-157a R1553-157a
+routine_40: Code1 NEAR 157c-15f7 R157c-15f7
+routine_41: Code1 NEAR 15f8-1683 R15f8-1683
+routine_68: Code1 NEAR 1684-16d4 R1684-16d2 U16d3-16d3 R16d4-16d4
+routine_67: Code1 NEAR 16d5-16f4 R16d5-16f4
+routine_75: Code1 FAR 16f6-1734 R16f6-1734
+routine_74: Code1 FAR 1736-1767 R1736-1767
+routine_90: Code1 FAR 1768-1782 R1768-1782
+routine_82: Code1 FAR 1784-17ab R1784-17ab
+routine_76: Code1 FAR 17ac-17c6 R17ac-17c6 R1cc8-1d1a
+routine_46: Code1 FAR 1848-18c6 R1848-18c6
+routine_78: Code1 FAR 18c8-1a3d R18c8-1a3d
+routine_33: Code1 FAR 1a3e-1a97 R1a3e-1a97
+routine_43: Code1 FAR 1a98-1b1d R1a98-1b1d
+routine_58: Code1 FAR 1b86-1b8a R1b1e-1b84 U1b85-1b85 R1b86-1b8a
+routine_85: Code1 NEAR 1b8c-1c53 R1b8c-1c53
+routine_81: Code1 NEAR 1c62-1c8d R1c62-1c8d
+routine_25: Code1 FAR 1c8e-1cba R1c8e-1cba
+routine_77: Code1 FAR 1d1c-1d28 R1d1c-1d28
+routine_101: Code1 FAR 1d2a-1d4d R1d2a-1d4d
+routine_49: Code1 FAR 1d4e-1d58 R1d4e-1d58
+routine_45: Code1 FAR 1d59-1d77 R1d59-1d77
+routine_91: Code7 FAR 000a-0046 R000a-0046
+routine_53: Code5 FAR 000e-0017 R000e-0017
+routine_54: Code5 FAR 0020-0092 R0020-0087 U0088-008a R008b-0092 R00ce-00cf
+routine_89: Code5 FAR 00d2-013c R00d2-0131 U0132-0134 R0135-013c R0160-0161
+routine_60: Code5 FAR 0164-016e R0164-016e
+routine_52: Code5 NEAR 031c-0322 R031c-0322
+routine_32: Code5 FAR 037e-0387 R037e-0387
+routine_93: Code5 FAR 03b6-03c0 R03b6-03c0
+routine_36: Code5 FAR 048a-04bb R048a-04bb
+routine_34: Code5 FAR 04c0-050b R04c0-050b
+routine_57: Code5 FAR 0510-0533 R0510-0533
+routine_88: Code5 FAR 059e-05a8 R059e-05a8
+routine_94: Code5 NEAR 0630-0636 R0630-0636
+routine_51: Code5 FAR 0686-068c R0686-068c
+routine_50: Code5 FAR 071a-0723 R071a-0723
+routine_66: Code5 FAR 0748-0756 R0748-0756
+routine_31: Code4 FAR 000e-005a R000e-005a
+routine_38: Code4 FAR 005c-007b R005c-007b
+routine_64: Code4 FAR 007c-00b0 R007c-00b0
+routine_35: Code4 FAR 00b2-0188 R00b2-0188
+routine_61: Code4 NEAR 018a-03b3 R018a-03b3
+routine_59: Code4 NEAR 03b4-0439 R03b4-042f R0430-0439
+routine_37: Code6 NEAR 0040-014f R0040-00bd U00be-00bf R00c0-014f
+routine_62: Code6 NEAR 0156-02ec R0156-02ec
+routine_63: Code6 NEAR 02ee-04d4 R02ee-0340 U0341-0341 R0342-040d U040e-040f R0410-04d4
+routine_92: Code6 NEAR 04dc-056b R04dc-056b
+#
+# Discovered variables, one per line, syntax is "VariableName: Segment VAR OffsetWithinSegment"
+#
+var_1: Code1 VAR 0b76
+var_2: Data1 VAR 0001
+var_3: Data1 VAR 0002
+var_4: Data1 VAR 0003
+var_5: Data1 VAR 0004
+var_6: Data1 VAR 0005
+var_7: Data1 VAR 0006
+var_8: Data1 VAR 0007
+var_9: Data1 VAR 0008
+var_10: Data1 VAR 0009
+var_11: Data1 VAR 000a
+var_12: Data1 VAR 000b
+var_13: Data1 VAR 000c
+var_14: Data1 VAR 000d
+var_15: Data1 VAR 000e
+var_16: Data1 VAR 000f
+var_17: Data1 VAR 0010
+var_18: Data1 VAR 0011
+var_19: Data1 VAR 0015
+var_20: Data1 VAR 0016
+var_21: Data1 VAR 0017
+var_22: Data1 VAR 0018
+var_23: Data1 VAR 0019
+var_24: Data1 VAR 001a
+var_25: Data1 VAR 001c
+var_26: Data1 VAR 0026
+var_27: Data1 VAR 0037
+var_28: Data1 VAR 0038
+var_29: Data1 VAR 0048
+var_30: Data1 VAR 02dc
+var_31: Data1 VAR 0594
+var_32: Data1 VAR 0595
+var_33: Data1 VAR 0599
+var_34: Data1 VAR 059b
+var_35: Data1 VAR 05a0
+var_36: Data1 VAR 05a1
+var_37: Data1 VAR 05c5
+var_38: Data1 VAR 0658
+var_39: Data1 VAR 0659
+var_40: Data1 VAR 092e
+var_41: Data1 VAR 0936
+var_42: Data1 VAR 0938
+var_43: Data1 VAR 093a
+var_44: Data1 VAR 0954
+var_45: Data1 VAR 0962
+var_46: Data1 VAR 0964
+var_47: Data1 VAR 0970
+var_48: Data1 VAR 0972
+var_49: Data1 VAR 0976
+var_50: Data1 VAR 0978
+var_51: Data1 VAR 097b
+var_52: Data1 VAR 097d
+var_53: Data1 VAR 097f
+var_54: Data1 VAR 0993
+var_55: Data1 VAR 0995
+var_56: Data1 VAR 0997
+var_57: Data1 VAR 0999
+var_58: Data1 VAR 099b
+var_59: Data1 VAR 09a0
+var_60: Data1 VAR 09a1
+var_61: Data1 VAR 09a2
+var_62: Data1 VAR 09a6
+var_63: Data1 VAR 09a8
+var_64: Data1 VAR 09aa
+var_65: Data1 VAR 09ae
+var_66: Data1 VAR 09b0
+var_67: Data1 VAR 09b2
+var_68: Data1 VAR 09cc
+var_69: Data1 VAR 0a6e
+var_70: Data1 VAR 0a72
+var_71: Data1 VAR 0b0e
+var_72: Data1 VAR 0b73
+var_73: Data1 VAR 0b74
+var_74: Data1 VAR 0b94
+var_75: Data1 VAR 0b96
+var_76: Data1 VAR 0b98
+var_77: Data1 VAR 0b9a
+var_78: Data1 VAR 0b9c
+var_79: Data1 VAR 0ba6
+var_80: Data1 VAR 0ba8
+var_81: Data1 VAR 0baa
+var_82: Data1 VAR 0bae
+var_83: Data1 VAR 0c8f
+var_84: Data1 VAR 0c98
+var_85: Data1 VAR 0c99
+var_86: Data1 VAR 0c9a
+var_87: Data1 VAR 0c9b
+var_88: Data1 VAR 0c9c
+var_89: Data1 VAR 0c9d
+var_90: Data1 VAR 0c9e
+var_91: Data1 VAR 0c9f
+var_92: Data1 VAR 0ca0
+var_93: Data1 VAR 0ca1
+var_94: Data1 VAR 0d4c
+var_95: Data1 VAR 0d4e
+var_96: Data1 VAR 0d5c
+var_97: Data1 VAR 0d5d
+var_98: Data1 VAR 0d5e
+var_99: Data1 VAR 0d5f
+var_100: Data1 VAR 0d60
+var_101: Data1 VAR 0d61
+var_102: Data1 VAR 0d62
+var_103: Data1 VAR 0d63
+var_104: Data1 VAR 0d6a
+var_105: Data1 VAR 0d6e
+var_106: Data1 VAR 0d70
+var_107: Data1 VAR 0d74
+var_108: Data1 VAR 0d76
+var_109: Data1 VAR 0d78
+var_110: Data1 VAR 0d7a
+var_111: Data1 VAR 0d84
+var_112: Data1 VAR 1d26
+var_113: Data1 VAR 1d28
+var_114: Data1 VAR 1d2a
+var_115: Data1 VAR 1d2c
+var_116: Data1 VAR 1d32
+var_117: Data1 VAR 1d33
+var_118: Data1 VAR 1d34
+var_119: Data1 VAR 1d35
+var_120: Data1 VAR 1d44
+var_121: Data1 VAR 1d48
+var_122: Data1 VAR 1d4e
+var_123: Data1 VAR 1d50
+var_124: Data1 VAR 1d52
+var_125: Data1 VAR 1d54
+var_126: Data1 VAR 1d56
+var_127: Data1 VAR 1d5a
+var_128: Data1 VAR 1d5e
+var_129: Data1 VAR 1d60
+var_130: Data1 VAR 1d62
+var_131: Data1 VAR 1d64
+var_132: Data1 VAR 1d66
+var_133: Data1 VAR 1d68
+var_134: Data1 VAR 1f6e
+var_135: Data1 VAR 1f70
+var_136: Data1 VAR 1f72
+var_137: Data1 VAR 1f74
+var_138: Data1 VAR 1f76
+var_139: Data1 VAR 1f7c
+var_140: Data1 VAR 1f7e
+var_141: Data1 VAR 1f80
+var_142: Data1 VAR 1f82
+var_143: Data1 VAR 1f84
+var_144: Data1 VAR 3500
+var_145: Data1 VAR ffa6
+var_146: Data1 VAR ffa8
+var_147: Data1 VAR ffaa
+var_148: Data1 VAR ffb6
+var_149: Data1 VAR ffb8
+var_150: Data1 VAR ffba
+var_151: Data1 VAR ffce
+var_152: Data1 VAR ffd0
+var_153: Data1 VAR ffd2
+var_154: Data1 VAR ffe8
+var_155: Data1 VAR ffea
+var_156: Data1 VAR ffec
+var_157: Data1 VAR ffee
+var_158: Data1 VAR ffef
+var_159: Data1 VAR fff0
+var_160: Data1 VAR fff2
+var_161: Data1 VAR fff4
+var_162: Data1 VAR fff5
+var_163: Data1 VAR fff6
+var_164: Data1 VAR fff7
+var_165: Data1 VAR fff8
+var_166: Data1 VAR fffa
+var_167: Data1 VAR fffb
+var_168: Data1 VAR fffc
+var_169: Data1 VAR fffd
+var_170: Data1 VAR fffe
+var_171: Data1 VAR ffff

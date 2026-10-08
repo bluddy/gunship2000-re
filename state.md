@@ -1,95 +1,79 @@
 # Gunship 2000 Reverse Engineering - State Summary
 
-**Phase**: Planning & Initial Reconnaissance
+**Phase**: Phase 0 COMPLETE (real executables found) / Phase 1 COMPLETE (tools built)
 **Date**: 2026-10-08
-**Platform**: Windows (current), Linux (user picks up)
+**Platform**: Windows
 **Goal**: Fully reverse engineer and rebuild Gunship 2000 from original binaries
 
 ---
 
-## Key Discovery: GS2000.COM is a Stub
+## Key Discovery: Real Executables Found
 
-`game/GS2000.COM` (2,738 bytes) is **NOT the real game executable**. It's a DOS loader that:
-- Sets up stack: `mov sp, 0x0804`
-- Makes INT 21h DOS calls (system checks)
-- Verifies: 286+ CPU, DOS 5+, MSCDEX 2.1+, CD-ROM present
-- Handles copy protection
-- Loads real game code from GS2000.DAT, GS2000.CAT, or CD-ROM
+**The real 16-bit MZ executables are the `.GS2` files themselves** — no extraction needed:
 
-**The real executable must be found/extracted before any decompilation begins.**
+| File | Size | Image | Role |
+|------|------|-------|------|
+| `game/GS.GS2` | 280,350 | 116,736 (resident) + ~163KB overlays | Mission Builder + campaign/debrief shell |
+| `game/GS2.GS2` | 413,971 | 40,448 (resident) + overlays | Flight game (aircraft DB, cockpit UI, sounds) |
+| `game/SETUP.GS2` | 21,687 | 21,687 (exact) | Setup program ("GUNSHIP 2OOO + ISLANDS & ICE SETUP Version 469.085") |
 
-Strings found in stub:
-- "ERROR: 286/386/486 required"
-- "Gunship: 2000 cannot be run on your system"
-- "Dos version 5 or later is required"
-- "MSCDEX not loaded", "MSCDEX version 2.1 or later is required"
-- "Unable to locate CD-ROM with Gunship 2000 on it"
-- "Failed copy protection"
-- "Internal error", "Not enough near space", "Not enough system memory", "Incompatible version"
-- File references: `G:\gs\pack2.cd`, `setup.gs2`, `labs.gs2`, `player.gs2`, `ads.gs2`, `gs.gs2`, `gs2.gs2`
+**Compiler/runtime**: Microsoft C (1990 MS Run-Time Library) + RTLink/Plus overlay manager
+("Overlay Manager Internal Reload Stack Overflow", "Internal error in .RTLink(R)/Plus run-time code").
+
+## GS2000.COM = Launcher (fully disassembled)
+
+2,738-byte COM loader, org 100h (real addresses = file offsets + 0x100):
+- Checks: DOS ≥ 5 (INT 21h AH=30), 286+ CPU, video mode (INT 10h AH=0F)
+- MSCDEX detection via INT 2Fh AX=1500/150C/150D/150F; scans CD drives (max 26) for the game disc
+- Hooks INT 21h (vector 21h → CS:01E6): intercepts **open (3Dh)**, create (3Ch/5Bh), rename (56h), findfirst (4Eh), getdrive (19h); open handler prefixes relative paths with the CD drive letter (`X:pathname`) then chains to original handler
+- `chdir` to `G:\gs` root string, then **DOS EXEC (AX=4B00)** of subprograms from a 6-byte entry table at CS:040E (= file 0x30E): `[name_ptr][dir_ptr][cmdtail_ptr]`
+- Subprogram table: `setup.gs2 -t`, `labs.gs2 " nsound.log logo -es"`, `player.gs2 " nsound.gs3 gst"`, `gs.gs2` with 4 arg variants (` -g -m`, ` -g -c -m`, ` -g -l -m`, ` -g -e`), `gs2.gs2 /r`, `ads.gs2`
+- Decision tree at CS:000A chains programs by child exit codes (AL from INT 21h AH=4D)
+- Error strings: "Unable to load subprogram", "Can't find directory", "Failed copy protection", "File missing.", "Not enough near space.", "Not enough system memory.", "Incompatible version.", "Internal error."
+
+**Not** loaded from DAT/CAT: `GS2000.DAT` (423KB) has no MZ headers; `GS2000.CAT` MZ hits are all garbage (invalid header fields).
 
 ---
 
-## Reverse Engineering Plan
+## Reverse Engineering Plan Progress
 
-### Phase 0: Find the Real Executable
-- Disassemble GS2000.COM stub (2738 bytes - tiny enough for full analysis)
-- Trace what file/offset the stub loads code from
-- Search GS2000.DAT/GS2000.CAT for embedded MZ headers (`MZ` magic bytes)
-- Extract real 16-bit MZ .EXE
+### Phase 0: Find the Real Executable — **DONE**
+- GS2000.COM fully disassembled (launcher, EXEC-based)
+- GS.GS2 / GS2.GS2 / SETUP.GS2 validated as MZ executables (mzhdr parses coherent headers, reloc counts fit header sizes)
+- SETUP.GS2 image size == file size exactly (classic exe); GS.GS2/GS2.GS2 have overlay data past the resident image
 
-### Phase 1: Tool Setup
+### Phase 1: Tool Setup — **DONE**
 | Tool | Purpose | Status |
 |------|---------|--------|
-| Ghidra | Primary decompiler (Ghidra → C for 16-bit stack calling) | Need to download (Java 11 OK) |
-| mzretools | Binary comparison (~100% match target) | Need to download |
-| DOSBox-X | Runtime testing | Need to install |
+| mzretools v1.0.20 | Binary comparison, routine mapping | **BUILT** at `C:\tools\mzretools\build\Release\` (MSVC 2022, 42/42 tests pass) |
+| Ghidra | Primary decompiler (Ghidra → C) | Installed per user (Java 11 OK) |
+| DOSBox staging 0.83 | Runtime testing | Already at `C:\tools\dosbox-staging-v0.83.0` |
+| CMake 4.4.4 | Build system | Installed (winget, `C:\Program Files\CMake`) |
 | angr 9.3.3 | Static analysis, CFG recovery | Working (static only - unicorn DLL missing on Windows) |
 | pyvex 9.3.3 | VEX IR lifter | Working |
-| z3-solver 4.13 | SSA comparison, semantic equivalence proofs | Working |
-| capstone 5.0.9 | Disassembly | Working |
+| z3-solver 4.13 | Semantic equivalence proofs | Working |
+| capstone 5.0.7 | Disassembly | Working (tools/disasm16.py added) |
 | ghidra-bridge | Python-Ghidra RPC | Installed |
-| inertia_decompiler | Secondary decompiler | Fixed 3 Windows bugs |
 
-### Phase 2: Static Analysis
-- **Ghidra**: Load real .EXE as 16-bit DOS MZ, auto-analysis, review functions/strings/xrefs
-- **angr**: CFG recovery, function boundary identification, library vs custom code separation
-- Cross-reference findings between both tools
+**mzretools Windows port (patches applied in C:\tools\mzretools):**
+1. `CMakeLists.txt` — MSVC flags branch (`/Zi /Od /W3 /permissive- /D_CRT_SECURE_NO_WARNINGS`), `/STACK:67108864` (1MB stack default overflows on `Memory mem` 1MB member), version.cpp generated at configure time (replaces version_gen.sh), test runner uses `$<TARGET_FILE:runtest>`
+2. `src/output.cpp`, `src/util.cpp`, `include/dos/types.h` — `unistd.h` → Windows shims (`_isatty`, `_unlink`, `ssize_t`)
+3. `include/dos/memory.h` — `data_.cbegin()+addr` → `data_.data()+addr` (MSVC C++20 checked iterators)
+4. **BUG FIX (upstream-worthy)**: `src/analysis.cpp:1237` — far-jump immediate was decoded as linear address (`Address{immval.u32}`) instead of packed seg:off; now uses `Address(DWORD_SEGMENT(v), DWORD_OFFSET(v))` like the far-call path. This crashed mzmap on every Gunship binary with "Linear address too big".
 
-### Phase 3: Decompilation to C
-Per user's tip for 16-bit with stack calling: **Ghidra → C (primary path)**
-1. Ghidra decompiler output → initial C
-2. Clean up: rename functions, fix types, document calling conventions
-3. Inertia decompiler as secondary (MSC-DOS target style)
-4. Ada script + masm2c for assembly-heavy sections (if needed)
+**mzretools usage notes**: exe spec parser can't handle `C:\` (colon conflict) — use relative paths / workdir. `mzmap <exe> <map>` generates routine maps; `--linkmap` can seed from Microsoft C linker maps (we don't have .map files from the game).
 
-### Phase 4: Unit Testing with AI
-For each decompiled function:
-1. Identify inputs/outputs and calling convention
-2. Generate comprehensive test vectors with AI (normal, edge, branch coverage)
-3. Run tests against original binary (via dosunit/DOSBox)
-4. Run tests against rebuilt C code
-5. All outputs must match
+### Analysis results (mzmap):
+- `analysis/SETUP.exe` → **103 routines over 8 segments** (SETUP.map)
+- `analysis/GS.exe` → 54 routines over 3 segments (resident part only; overlay jumps stop the scan early)
+- `analysis/GS2.exe` → 25 routines over 2 segments (same limitation)
 
-### Phase 5: Build & Compare
-1. Build rebuilt C with original toolchain (MS C 5.1 era)
-2. mzretools binary comparison: `mzdiff ORIGINAL.EXE REBUILT.EXE`
-3. Z3 SSA comparison for proving semantic equivalence
-4. Iterate: build → compare → fix → rebuild → compare
+### Phase 2: Static Analysis — NEXT
+- **Ghidra**: Load GS.GS2/GS2.GS2 as 16-bit DOS MZ, auto-analysis
+- Seed mzretools scans better: extract far-pointer tables past resident images (overlay directories) as entry points; consider `--linkmap` if MS linker maps can be reconstructed
+- angr: CFG recovery cross-check
 
-### Phase 6: Full Game Testing
-- DOSBox scenario comparison (all mission campaigns: ANTC, EURO, GULF, PHIL)
-- Validate graphics, sound, gameplay, save/load, CD-ROM access
-
----
-
-## Immediate Next Steps
-
-1. **Install Ghidra** - Download from ghidra-re.org (requires Java 11, available)
-2. **Install mzretools** - For binary comparison after rebuild
-3. **Fully disassemble GS2000.COM stub** - Understand loading mechanism, find real executable
-4. **Search GS2000.DAT/GS2000.CAT for MZ headers** - Extract real .EXE
-5. **Set up test harness** - Python framework for comparing original vs rebuilt function outputs
+### Phase 3-6: unchanged (Ghidra → C, AI unit tests, mzdiff comparison, DOSBox testing)
 
 ---
 

@@ -7,20 +7,39 @@
 - **Format**: DOS COM (16-bit real mode, loads at CS:0100h)
 - **Entry Point**: Offset 0x0000 (`mov sp, 0x0804` - stack setup)
 - **First Bytes**: `BC 04 08 E8 75 07 CD 21 33 C0 E8 3D 03 ...`
-- **Analysis**: **This is a STUB/LOADER, not the real game executable.** Only 2738 bytes - far too small for a full game. It:
-  - Sets up stack and DOS environment
-  - Checks hardware requirements (286+ CPU, DOS 5+, MSCDEX 2.1+)
-  - Performs copy protection checks
-  - Loads real game code from GS2000.DAT, GS2000.CAT, or CD-ROM
-- **Status**: ANALYZING - need to fully disassemble to find where real code is loaded
-- **Priority**: CRITICAL - must understand stub to find real executable
-- **Strings Found**: System error messages, CD-ROM paths (`G:\gs\pack2.cd`), file references (`setup.gs2`, `labs.gs2`, `player.gs2`, `ads.gs2`, `gs.gs2`, `gs2.gs2`)
+- **Analysis**: **COMPLETE** — this is the LAUNCHER. It:
+  - Checks DOS ≥ 5, 286+ CPU, video mode; detects MSCDEX (INT 2Fh) and scans CD drives for the disc
+  - Hooks INT 21h (handler at CS:01E6): redirects relative file opens to the CD drive letter
+  - chdirs to `G:\gs`, then DOS EXEC (4B00) of subprograms from table at CS:040E
+  - Subprograms + args: `setup.gs2 -t`, `labs.gs2 " nsound.log logo -es"`, `player.gs2 " nsound.gs3 gst"`, `gs.gs2 { -g -m | -g -c -m | -g -l -m | -g -e }`, `gs2.gs2 /r`, `ads.gs2`
+  - Chains subprograms by exit code (decision tree at CS:000A)
+- **Status**: ANALYZED (tools/disasm16.py used; real addresses = file offset + 0x100)
+- **Note**: `PACK2.CD` (2,738 bytes) is a near-identical sibling (CD variant, NOT byte-identical); `SETUP.EXE`/`SETUP.CD` (2,558 bytes) are unrelated small COM-style programs
 
-### Real Executable (NOT YET FOUND)
-- **Expected format**: 16-bit DOS MZ EXE
-- **Expected characteristics**: 16-bit with stack calling + some assembly (per user's assessment)
-- **Search locations**: GS2000.DAT, GS2000.CAT, CD-ROM image
-- **Action**: Search for `MZ` magic bytes in GS2000.DAT and GS2000.CAT
+### Real Executables (FOUND — the .GS2 files themselves)
+
+#### GS.GS2 — Mission Builder / campaign shell
+- **Size**: 280,350 bytes | **MZ image**: ~116,736 (resident) + trailing overlay data
+- **Header**: 2017 relocs, header=8192 bytes, cs:ip=17d1:82f, ss:sp=3962:800, load module 0x1A788
+- **Compiler**: Microsoft C + RTLink/Plus overlays ("MS Run-Time Library - Copyright (c) 1990")
+- **Strings**: "GUNSHIP 2000: Mission Builder", mission debrief text, overlay manager errors
+- **Status**: MAPPED — mzmap found 54 routines/3 segments (resident only; overlay jumps stop scan)
+
+#### GS2.GS2 — flight game
+- **Size**: 413,971 bytes | **MZ image**: ~40,448 (resident) + trailing overlay data
+- **Header**: 300 relocs, header=1536 bytes, cs:ip=851:6f8, ss:sp=45fe:800
+- **Strings**: aircraft DB ("AH-64A Apache Gunship"), cockpit UI ("[N] Next [F] Fly to.."), "Quit to DOS (Y/N)", sound controls
+- **Status**: MAPPED — mzmap found 25 routines/2 segments (resident only)
+
+#### SETUP.GS2 — setup program
+- **Size**: 21,687 bytes | **MZ image**: 21,687 (exact — no overlays)
+- **Header**: 261 relocs, header=1536 bytes, cs:ip=11d:1e, ss:sp=61b:800, overlay_number=1
+- **Strings**: "GUNSHIP 2OOO + ISLANDS & ICE SETUP Version 469.085", "Copyright (c) 1992 by MicroProse Software, Inc."
+- **Status**: MAPPED — mzmap found 103 routines/8 segments (full scan)
+
+#### Data containers ruled out
+- `GS2000.DAT` (423,292): 0 MZ headers — not an executable container
+- `GS2000.CAT` (1,253,543): 28 `MZ` byte pairs, ALL invalid as headers (garbage fields)
 
 ## Mission/Terrain Files
 
@@ -57,15 +76,14 @@
 ## Asset Files
 
 ### Graphics
-- **GS.GS2** (280,350 bytes) - Main graphics?
-- **GS2.GS2** (413,971 bytes) - Main graphics v2?
-- **GST.PAN** (682,208 bytes) - Large palette/animation file?
-- **MBUILDER.CAT** (153,770 bytes) - Mission builder catalog?
-- **MGRAPHIC.GS2** (7,158 bytes) - Menu graphics?
+- **GST.PAN** (682,208 bytes) - Panorama/graphics file
+- **MBUILDER.CAT** (153,770 bytes) - Mission builder catalog (starts `10 00 45 55 52 4F...` = indexed catalog with EURO6MIS.PIC entries)
+- **MGRAPHIC.GS2** (7,158 bytes) - Menu graphics
 - **MISC.GS2** (980 bytes)
 - **FONTS.GS2** (6,110 bytes)
-- **LABSLOGO.SS** (12,348 bytes) - Logo?
+- **LABSLOGO.SS** (12,348 bytes) - Logo
 - **REPLAY.PIC** (2,873 bytes)
+- Note: GS.GS2 / GS2.GS2 are NOT graphics — they are executables (see Executable Files)
 
 ### Cockpit Graphics
 - APA_CPIT.PIC (15,517), APA_CPIT.DAT (156), APA_STAT.DAT (80)
@@ -120,13 +138,19 @@
 ## Decompilation Status
 | File | Status | Notes |
 |------|--------|-------|
-| GS2000.COM | STUB | 2738-byte DOS loader; real exe not found |
-| GS2000.DAT | SEARCH FOR MZ | Search for embedded executable |
-| GS2000.CAT | SEARCH FOR MZ | Search for embedded executable |
+| GS2000.COM | ANALYZED | Launcher: CD checks, INT21 hook, EXEC of .GS2 subprograms |
+| GS.GS2 | MAPPED | Real exe (mission builder); mzmap: 54 routines resident |
+| GS2.GS2 | MAPPED | Real exe (flight game); mzmap: 25 routines resident |
+| SETUP.GS2 | MAPPED | Real exe (setup); mzmap: 103 routines, full scan |
+| GS2000.DAT | RULED OUT | No MZ headers |
+| GS2000.CAT | RULED OUT | MZ byte pairs are garbage |
+
+## Tools
+- mzretools built at `C:\tools\mzretools\build\Release\` (mzhdr, mzmap, mzdiff, mzsig, mzdup, mzptr, addrtool, psptool, runtest — 42/42 tests pass)
+- Maps generated in `analysis/`: GS.map, GS2.map, SETUP.map
+- Copies for tools (mzretools exe-spec parser rejects `C:` colons → relative paths used): analysis/GS.exe, GS2.exe, SETUP.exe
 
 ## Next Actions
-1. Fully disassemble GS2000.COM stub to find loading mechanism
-2. Search GS2000.DAT and GS2000.CAT for MZ headers
-3. Extract real executable
-4. Install Ghidra and mzretools
-5. Begin Ghidra decompilation of real executable
+1. Load GS.GS2 / GS2.GS2 in Ghidra as 16-bit MZ (Phase 2 static analysis)
+2. Improve mzretools coverage: extract overlay far-pointer tables as seed entry points
+3. Begin Ghidra → C decompilation (Phase 3), starting with SETUP.GS2 (fully scanned, small)

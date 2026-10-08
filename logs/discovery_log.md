@@ -80,5 +80,35 @@ Stub behavior:
 4. Search GS2000.DAT and GS2000.CAT for MZ headers to find real executable
 5. Set up test harness for AI-generated unit tests
 
+## 2026-10-08 (later): Phase 0 + Phase 1 COMPLETE
+
+### Real Executables Found — the .GS2 files ARE the executables
+- `GS2000.DAT`: 0 MZ headers → ruled out. `GS2000.CAT`: 28 `MZ` byte pairs, all invalid header fields → ruled out.
+- **`GS.GS2`** (280,350) — valid MZ: 2017 relocs, header 8192B, cs:ip=17d1:82f, load module 0x1A788. Microsoft C + RTLink overlay exe. Strings: "GUNSHIP 2000: Mission Builder", debrief texts. Resident image ~116KB, ~163KB trailing = overlay sections (far-pointer tables `XX XX 79 1A` seen at image boundary).
+- **`GS2.GS2`** (413,971) — valid MZ: 300 relocs, header 1536B, cs:ip=851:6f8. The flight game: aircraft DB, cockpit UI, sound controls. Resident ~40KB + overlays.
+- **`SETUP.GS2`** (21,687) — valid MZ, image size == file size exactly. "GUNSHIP 2OOO + ISLANDS & ICE SETUP Version 469.085".
+- All three: "MS Run-Time Library - Copyright (c) 1990, Microsoft Corp", RTLink/Plus overlay manager strings.
+
+### GS2000.COM fully disassembled (launcher, org 100h)
+- DOS ≥5 + 286 + video checks; MSCDEX via INT 2Fh (1500/150C/150D/150F), CD drive scan (max 26)
+- INT 21h hook installed at CS:01E6 (getvector/setvector 2521/3521): intercepts open(3D)/create(3C,5B)/rename(56)/findfirst(4E)/getdrive(19); open handler builds `X:pathname` (X = current/CD drive from CS:05F0) in buffer CS:02BE then `ljmp [0x602]` to original handler
+- Subprogram table at CS:040E (file 0x30E), 6-byte entries: name_ptr, dir_ptr, cmdtail_ptr (length-prefixed, 0Dh-terminated):
+  setup.gs2 `-t`; labs.gs2 ` nsound.log logo -es`; player.gs2 ` nsound.gs3 gst`; gs.gs2 ×4 args (` -g -m`, ` -g -c -m`, ` -g -l -m`, ` -g -e`); gs2.gs2 ` /r`; ads.gs2
+- Dispatcher CS:034A: chdir + DOS EXEC 4B00, restores SS:SP, gets child exit code (AH=4D)
+- Decision tree CS:000A..00A4 chains subprograms by exit codes 1/2
+- Note: real address = file offset + 0x100 (COM org); capstone disasm script `tools/disasm16.py`
+
+### mzretools BUILT (C:\tools\mzretools\build\Release) — 42/42 tests pass
+- CMake 4.4.4 (winget) + VS 2022 Community MSVC; submodules (googletest, kvikdos) cloned
+- Pacman path abandoned (dependency conflicts would have broken MSYS2)
+- Windows port patches: CMakeLists (MSVC flags, /STACK:64MB — 1MB default overflows on 1MB `Memory` member, version.cpp at configure time, `$<TARGET_FILE:runtest>`), unistd shims (output.cpp/util.cpp/types.h), memory.h iterator fix
+- **Upstream bug fixed**: `src/analysis.cpp:1237` far-jump decoded as linear address → seg:off (matches far-call path at :1286). Was crashing mzmap on every Gunship binary ("Linear address too big: 0x10bf0018")
+- Gotcha: exe spec parser rejects `C:\...` (colon = entrypoint separator) → run from workdir with relative paths
+
+### mzmap results (analysis/*.map)
+- SETUP.exe: 103 routines / 8 segments, full scan
+- GS.exe: 54 routines / 3 segments (resident only — overlay far jumps stop the scan)
+- GS2.exe: 25 routines / 2 segments (same)
+
 ## Registry Entries
 See `registry/` directory for detailed file analysis entries.
