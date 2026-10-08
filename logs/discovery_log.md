@@ -47,5 +47,38 @@ The game directory contains:
 3. If decompiler cannot run, consider alternative approaches (Ghidra, manual disassembly, etc.)
 4. Document findings in registry
 
+## 2026-10-08: Plan Revision
+
+### Key Finding: GS2000.COM is a Stub
+GS2000.COM is only 2,738 bytes - it's a DOS loader, NOT the real game executable. The real 16-bit MZ .EXE must be extracted from GS2000.DAT, GS2000.CAT, or CD-ROM before any decompilation begins.
+
+Stub behavior:
+- Sets up stack (`mov sp, 0x0804`)
+- System checks via INT 21h (CPU 286+, DOS 5+, MSCDEX 2.1+, CD-ROM present)
+- Copy protection checks
+- Loads real game code from external source
+
+### Plan Revised Per User's Workflow Tips
+- **16-bit with stack calling → Ghidra to C** (primary decompilation path)
+- **Unit tests with AI** for all code (original vs rebuilt validation)
+- **mzretools** for binary comparison (target: ~100% binary match)
+- **Ada script + masm2c** for assembly/register ABI sections (secondary path)
+
+### Tooling Status
+| Tool | Status | Notes |
+|------|--------|-------|
+| Ghidra | NEEDS INSTALL | Download from ghidra-re.org; Java 11 available |
+| mzretools | NEEDS INSTALL | For binary comparison after rebuild |
+| angr 9.3.3 | WORKING | Static analysis OK; unicorn DLL missing on Windows |
+| inertia_decompiler | FIXED | 4 Windows bugs fixed; decompiler CLI works; runtime crashes on unicorn |
+| ghidra-bridge | INSTALLED | Python-Ghidra RPC bridge |
+
+### Immediate Actions
+1. Install Ghidra from ghidra-re.org
+2. Install mzretools
+3. Fully disassemble GS2000.COM stub (2738 bytes - tiny enough for full analysis)
+4. Search GS2000.DAT and GS2000.CAT for MZ headers to find real executable
+5. Set up test harness for AI-generated unit tests
+
 ## Registry Entries
 See `registry/` directory for detailed file analysis entries.

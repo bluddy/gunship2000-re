@@ -1,140 +1,105 @@
-# Gunship 2000 Decompilation - State Summary
+# Gunship 2000 Reverse Engineering - State Summary
 
-## Project Status
-
-**Phase**: Environment Setup & Toolchain Investigation
-**Date**: 2026-10-07
-**Platform**: Windows (current) / Linux (recommended)
-
----
-
-## What We Have
-
-### Game Executable
-- **File**: `game/GS2000.COM` (2,738 bytes)
-- **Format**: DOS COM (16-bit real mode, loads at CS:0100h)
-- **Entry Point**: Offset 0x0000 (`mov sp, 0x0804` - stack setup)
-- **Additional files**: `GS2000.DAT` (423KB data), `GS2000.CAT` (1.2MB catalog)
-- **Game**: Gunship 2000 by MicroProse (1993), DOS helicopter combat sim
-
-### Decompiler Toolchain
-- **Tool**: Inertia Decompiler (`../../source/inertia_decompiler`)
-- **Purpose**: DOS/x86-16 decompiler that produces C from executables
-- **Key entry points**: `decompile.py`, `python -m inertia.cli.cli`
-- **Supports**: .COM, .EXE (MZ), .COD listings, .BIN blobs
-- **Output**: C code with `msc-dos` or `portable-flat` target styles
+**Phase**: Planning & Initial Reconnaissance
+**Date**: 2026-10-08
+**Platform**: Windows (current), Linux (user picks up)
+**Goal**: Fully reverse engineer and rebuild Gunship 2000 from original binaries
 
 ---
 
-## Issues Found & Fixed
+## Key Discovery: GS2000.COM is a Stub
 
-### 1. Architecture Guard Path Separator Bug (FIXED)
-**Problem**: On Windows, `Path.relative_to()` returns backslash-separated paths (e.g., `structuring\condition_materialization.py`), but the allowlist in `check_decompiler_architecture.py` uses forward slashes. This caused ALL semantic layer import checks to fail, preventing decompiler startup.
+`game/GS2000.COM` (2,738 bytes) is **NOT the real game executable**. It's a DOS loader that:
+- Sets up stack: `mov sp, 0x0804`
+- Makes INT 21h DOS calls (system checks)
+- Verifies: 286+ CPU, DOS 5+, MSCDEX 2.1+, CD-ROM present
+- Handles copy protection
+- Loads real game code from GS2000.DAT, GS2000.CAT, or CD-ROM
 
-**Fix**: Added `.replace("\\", "/")` normalization in `_check_semantic_layer_file_does_not_import_postprocess` at `tools/dev/check_decompiler_architecture.py:4883`.
+**The real executable must be found/extracted before any decompilation begins.**
 
-**File**: `C:\Users\yotam\source\inertia_decompiler\tools\dev\check_decompiler_architecture.py`
-
-### 2. Unix-only `resource` Module (FIXED)
-**Problem**: `inertia/cli/runtime_support.py` and `inertia/cli/corpus_scan.py` import `resource` (Unix-only, provides `setrlimit` for memory limits).
-
-**Fix**: Made imports conditional with `try/except ModuleNotFoundError`, set to `None` on Windows. Added guards at usage sites to skip when `None`.
-
-**Files**:
-- `inertia/cli/runtime_support.py` (import + `apply_memory_limit` usage)
-- `inertia/cli/corpus_scan.py` (import + `set_memory_limit` usage)
-
-### 3. Unix-only `fcntl` Module (FIXED)
-**Problem**: `inertia/cli/recompile_check.py` imports `fcntl` for file locking.
-
-**Fix**: Made import conditional with `try/except ModuleNotFoundError`. The `_msc51_compiler_lock_8616` context manager now yields immediately (skips locking) when `fcntl` is unavailable.
-
-**File**: `inertia/cli/recompile_check.py`
-
-### 4. Unicorn Engine DLL Missing (UNRESOLVED on Windows)
-**Problem**: `unicornlib.dll` cannot load on this Windows environment. angr's unicorn engine is disabled, which is required for VEX lifting during decompilation. This causes an ACCESS_VIOLATION (0xC0000005) crash during decompilation.
-
-**Status**: `pip install unicorn` was initiated but may not resolve the DLL loading issue on this specific Windows configuration.
+Strings found in stub:
+- "ERROR: 286/386/486 required"
+- "Gunship: 2000 cannot be run on your system"
+- "Dos version 5 or later is required"
+- "MSCDEX not loaded", "MSCDEX version 2.1 or later is required"
+- "Unable to locate CD-ROM with Gunship 2000 on it"
+- "Failed copy protection"
+- "Internal error", "Not enough near space", "Not enough system memory", "Incompatible version"
+- File references: `G:\gs\pack2.cd`, `setup.gs2`, `labs.gs2`, `player.gs2`, `ads.gs2`, `gs.gs2`, `gs2.gs2`
 
 ---
 
-## Decompilation Approach
+## Reverse Engineering Plan
 
-### How Inertia Decompiler Works (from README.md)
-The core pipeline is:
-```
-IR -> Alias -> Widening -> Types -> Structuring -> Rewrite
-```
+### Phase 0: Find the Real Executable
+- Disassemble GS2000.COM stub (2738 bytes - tiny enough for full analysis)
+- Trace what file/offset the stub loads code from
+- Search GS2000.DAT/GS2000.CAT for embedded MZ headers (`MZ` magic bytes)
+- Extract real 16-bit MZ .EXE
 
-For DOS games, the workflow is:
-1. **Runtime evidence collection** via instrumented DOSBox
-2. **Static analysis** with ada_script, Inertia, Ghidra, Reko
-3. **C reconstruction** via Inertia decompiler
-4. **Build candidate** (DOS reconstruction or native translation with masm2c)
-5. **Comparison** via mzdiff, SSA/Z3, dosunit
+### Phase 1: Tool Setup
+| Tool | Purpose | Status |
+|------|---------|--------|
+| Ghidra | Primary decompiler (Ghidra → C for 16-bit stack calling) | Need to download (Java 11 OK) |
+| mzretools | Binary comparison (~100% match target) | Need to download |
+| DOSBox-X | Runtime testing | Need to install |
+| angr 9.3.3 | Static analysis, CFG recovery | Working (static only - unicorn DLL missing on Windows) |
+| pyvex 9.3.3 | VEX IR lifter | Working |
+| z3-solver 4.13 | SSA comparison, semantic equivalence proofs | Working |
+| capstone 5.0.9 | Disassembly | Working |
+| ghidra-bridge | Python-Ghidra RPC | Installed |
+| inertia_decompiler | Secondary decompiler | Fixed 3 Windows bugs |
 
-### Key Decompile Commands
-```bash
-# Basic decompilation
-decompile.py GS2000.COM
+### Phase 2: Static Analysis
+- **Ghidra**: Load real .EXE as 16-bit DOS MZ, auto-analysis, review functions/strings/xrefs
+- **angr**: CFG recovery, function boundary identification, library vs custom code separation
+- Cross-reference findings between both tools
 
-# With timeout and C output
-decompile.py GS2000.COM --timeout 60 --c-target msc-dos --output-c-dir ./output/
+### Phase 3: Decompilation to C
+Per user's tip for 16-bit with stack calling: **Ghidra → C (primary path)**
+1. Ghidra decompiler output → initial C
+2. Clean up: rename functions, fix types, document calling conventions
+3. Inertia decompiler as secondary (MSC-DOS target style)
+4. Ada script + masm2c for assembly-heavy sections (if needed)
 
-# Single function
-decompile.py GS2000.COM --addr 0x1000
+### Phase 4: Unit Testing with AI
+For each decompiled function:
+1. Identify inputs/outputs and calling convention
+2. Generate comprehensive test vectors with AI (normal, edge, branch coverage)
+3. Run tests against original binary (via dosunit/DOSBox)
+4. Run tests against rebuilt C code
+5. All outputs must match
 
-# With tail validation
-INERTIA_ENABLE_TAIL_VALIDATION=1 decompile.py GS2000.COM
-```
+### Phase 5: Build & Compare
+1. Build rebuilt C with original toolchain (MS C 5.1 era)
+2. mzretools binary comparison: `mzdiff ORIGINAL.EXE REBUILT.EXE`
+3. Z3 SSA comparison for proving semantic equivalence
+4. Iterate: build → compare → fix → rebuild → compare
 
-### Inertia Decompiler Options for Our Use
-- `--c-target msc-dos`: MS C DOS helper style (matches era of game)
-- `--c-target portable-flat`: Portable C without DOS specifics
-- `--dump-layers --dump-layer-dir DIR`: Per-stage C artifacts
-- `--function-discovery-backend auto|angr|rizin|hybrid`: Function discovery method
-- `--signature-catalog PATH`: Library signature matching
-
----
-
-## Environment
-
-### Virtual Environment
-- **Location**: `./venv`
-- **Python**: 3.14.2 (CPython)
-- **Key packages**: angr==9.3.3, pyvex==9.3.3, z3-solver==4.13.0.0, capstone==5.0.9
-
-### What Was Installed
-- angr 9.3.3 (with x86-16 support via vextest-x86-16)
-- pyvex 9.3.3 (VEX IR lifter)
-- z3-solver 4.13.0.0 (SSA comparison)
-- capstone 5.0.9 (disassembly)
-- textual 8.2.8 (TUI debugger)
-- Cython 3.3.0 (VEX lifter build)
+### Phase 6: Full Game Testing
+- DOSBox scenario comparison (all mission campaigns: ANTC, EURO, GULF, PHIL)
+- Validate graphics, sound, gameplay, save/load, CD-ROM access
 
 ---
 
-## Next Steps
+## Immediate Next Steps
 
-1. **If on Linux**: The decompiler should work without the Windows-specific issues. Run:
-   ```bash
-   cd gunship_2000
-   source venv/bin/activate
-   python -m inertia.cli.cli game/GS2000.COM --timeout 60
-   ```
+1. **Install Ghidra** - Download from ghidra-re.org (requires Java 11, available)
+2. **Install mzretools** - For binary comparison after rebuild
+3. **Fully disassemble GS2000.COM stub** - Understand loading mechanism, find real executable
+4. **Search GS2000.DAT/GS2000.CAT for MZ headers** - Extract real .EXE
+5. **Set up test harness** - Python framework for comparing original vs rebuilt function outputs
 
-2. **If staying on Windows**: Need to resolve unicorn DLL loading issue, or find alternative lifting backend.
+---
 
-3. **Alternative approaches if decompiler fails**:
-   - Use Ghidra (free, cross-platform) for disassembly and decompilation
-   - Use Reko (Windows-friendly decompiler) for initial analysis
-   - Manual disassembly with IDA Pro
-   - Use the inertia_decompiler's `dump_debug_info.py` to inspect embedded symbols
+## Issues Found & Fixed (inertia_decompiler)
 
-4. **Game-specific analysis**:
-   - Determine if GS2000.COM is a stub/loader or full executable
-   - Analyze GS2000.DAT and GS2000.CAT for game data structures
-   - Map mission files to gameplay content
+1. **`tools/dev/check_decompiler_architecture.py:4883`** - Windows path separator bug (allowlist used forward slashes, `Path.relative_to` returns backslashes on Windows)
+2. **`inertia/cli/runtime_support.py`** - Unix-only `resource` module made conditional
+3. **`inertia/cli/corpus_scan.py`** - Unix-only `resource` module made conditional
+4. **`inertia/cli/recompile_check.py`** - Unix-only `fcntl` module made conditional
+5. **Unresolved**: `unicornlib.dll` cannot load on Windows (required for dynamic VEX lifting); static analysis unaffected
 
 ---
 
@@ -142,17 +107,20 @@ INERTIA_ENABLE_TAIL_VALIDATION=1 decompile.py GS2000.COM
 
 ```
 gunship_2000/
-├── venv/              # Python virtual environment
-├── game/              # Game files (from original distribution)
-│   ├── GS2000.COM     # Main executable (2,738 bytes)
-│   ├── GS2000.DAT     # Game data (423KB)
-│   ├── GS2000.CAT     # Catalog (1.2MB)
-│   └── ...            # Mission/asset files
-├── logs/              # Discovery log
-│   └── discovery_log.md
-├── registry/          # Decompilation registry
-│   └── file_registry.md
-└── state.md           # This file
+├── venv/                  # Python environment (angr 9.3.3, pyvex, z3, capstone)
+├── game/                  # Original game files
+│   ├── GS2000.COM         # Loader stub (2,738 bytes) - NOT the real exe
+│   ├── GS2000.DAT         # Game data (423KB) - may contain real exe
+│   ├── GS2000.CAT         # Catalog (1.2MB) - may contain real exe
+│   └── ...                # Mission/asset files
+├── docs/
+│   └── plan.md            # Full reverse engineering plan
+├── logs/
+│   └── discovery_log.md   # Ongoing discovery log
+├── registry/
+│   └── file_registry.md   # File catalog and decompilation status
+├── state.md               # This file
+└── .gitignore
 ```
 
 ---
@@ -161,20 +129,17 @@ gunship_2000/
 
 | Category | File | Status | Notes |
 |----------|------|--------|-------|
-| Executable | GS2000.COM | BLOCKED | Unicorn DLL crash on Windows; should work on Linux |
-| Data | GS2000.DAT | PENDING | 423KB, unknown format |
-| Data | GS2000.CAT | PENDING | 1.2MB, likely archive |
-| Tool | inertia_decompiler | FIXED | 3 Windows bugs fixed, unicorn issue remains |
-| Tool | decompile.py | WORKS | CLI help responds; execution crashes due to unicorn |
+| Stub | GS2000.COM | ANALYZING | 2738-byte DOS loader; real exe not found yet |
+| Data | GS2000.DAT | PENDING | 423KB; may contain real .EXE; search for MZ headers |
+| Data | GS2000.CAT | PENDING | 1.2MB; likely archive; search for MZ headers |
+| Tool | Ghidra | NEEDS INSTALL | Download from ghidra-re.org; Java 11 available |
+| Tool | mzretools | NEEDS INSTALL | For binary comparison after rebuild |
+| Tool | angr 9.3.3 | WORKING | Static analysis OK; unicorn DLL missing on Windows |
+| Tool | inertia_decompiler | FIXED | 4 Windows bugs fixed; unicorn issue remains |
+| Tool | ghidra-bridge | INSTALLED | Python-Ghidra RPC bridge |
 
 ---
 
-## Modified Files in inertia_decompiler
+## Git History
 
-These changes were made to enable the decompiler on Windows:
-1. `tools/dev/check_decompiler_architecture.py` - Path separator normalization
-2. `inertia/cli/runtime_support.py` - Conditional `resource` import
-3. `inertia/cli/corpus_scan.py` - Conditional `resource` import
-4. `inertia/cli/recompile_check.py` - Conditional `fcntl` import
-
-**Note**: These fixes may need to be reverted or maintained separately if the inertia_decompiler is updated upstream.
+Initial commit `c6aaf8d` - all game files, logs, registry, plan, state.md committed.

@@ -4,25 +4,23 @@
 
 ### GS2000.COM
 - **Size**: 2,738 bytes
-- **Format**: DOS COM (16-bit real mode)
-- **Load Address**: CS:0100h
-- **Entry Point**: Offset 0x0000
-- **First Bytes**: `BC 04 08 E8 75 07 CD 21 33 C0 E8 3D 03 3C 61 72 28 3C 7A 77 24 A2 B9 03 24 5F A2 97 03 B8 01 00 E8 27 03 B8 02 00 E8 21 03 B8 03 00 E8 1B 03 3C 01 74 63 3C 02 75 22 EB 6B EB 6F B8 08 00 E8 09`
-- **Analysis**: Small stub/loader, likely loads main game from data files
-- **Status**: Not yet decompiled (decompiler architecture guard issue)
-- **Priority**: HIGH - Main executable
+- **Format**: DOS COM (16-bit real mode, loads at CS:0100h)
+- **Entry Point**: Offset 0x0000 (`mov sp, 0x0804` - stack setup)
+- **First Bytes**: `BC 04 08 E8 75 07 CD 21 33 C0 E8 3D 03 ...`
+- **Analysis**: **This is a STUB/LOADER, not the real game executable.** Only 2738 bytes - far too small for a full game. It:
+  - Sets up stack and DOS environment
+  - Checks hardware requirements (286+ CPU, DOS 5+, MSCDEX 2.1+)
+  - Performs copy protection checks
+  - Loads real game code from GS2000.DAT, GS2000.CAT, or CD-ROM
+- **Status**: ANALYZING - need to fully disassemble to find where real code is loaded
+- **Priority**: CRITICAL - must understand stub to find real executable
+- **Strings Found**: System error messages, CD-ROM paths (`G:\gs\pack2.cd`), file references (`setup.gs2`, `labs.gs2`, `player.gs2`, `ads.gs2`, `gs.gs2`, `gs2.gs2`)
 
-### GS2000.DAT
-- **Size**: 423,292 bytes
-- **Format**: Unknown (likely game data archive)
-- **Status**: Not analyzed
-- **Priority**: HIGH - Main game data
-
-### GS2000.CAT
-- **Size**: 1,253,543 bytes
-- **Format**: Catalog/archive file
-- **Status**: Not analyzed
-- **Priority**: HIGH - Likely contains game assets
+### Real Executable (NOT YET FOUND)
+- **Expected format**: 16-bit DOS MZ EXE
+- **Expected characteristics**: 16-bit with stack calling + some assembly (per user's assessment)
+- **Search locations**: GS2000.DAT, GS2000.CAT, CD-ROM image
+- **Action**: Search for `MZ` magic bytes in GS2000.DAT and GS2000.CAT
 
 ## Mission/Terrain Files
 
@@ -122,12 +120,13 @@
 ## Decompilation Status
 | File | Status | Notes |
 |------|--------|-------|
-| GS2000.COM | PENDING | Architecture guard prevents decompilation |
-| GS2000.DAT | PENDING | Need to analyze format |
-| GS2000.CAT | PENDING | Need to analyze format |
+| GS2000.COM | STUB | 2738-byte DOS loader; real exe not found |
+| GS2000.DAT | SEARCH FOR MZ | Search for embedded executable |
+| GS2000.CAT | SEARCH FOR MZ | Search for embedded executable |
 
 ## Next Actions
-1. Fix/bypass inertia_decompiler architecture guard
-2. Decompile GS2000.COM
-3. Analyze GS2000.DAT and GS2000.CAT formats
-4. Document file formats in registry
+1. Fully disassemble GS2000.COM stub to find loading mechanism
+2. Search GS2000.DAT and GS2000.CAT for MZ headers
+3. Extract real executable
+4. Install Ghidra and mzretools
+5. Begin Ghidra decompilation of real executable
