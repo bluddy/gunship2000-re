@@ -1,0 +1,112 @@
+/* GS.GS2 23ed:052c undefined FUN_23ed_052c(void) */
+void __cdecl16far FUN_23ed_052c(int param_1,int param_2)
+
+{
+  undefined2 *puVar1;
+  undefined2 *puVar2;
+  undefined2 *puVar3;
+  int iVar4;
+  undefined2 *puVar5;
+  undefined2 unaff_SS;
+  undefined2 unaff_DS;
+  undefined2 local_26;
+  int iStack_24;
+  int iStack_22;
+  int iStack_20;
+  int iStack_1e;
+  undefined2 uStack_16;
+  undefined2 uStack_14;
+  undefined2 uStack_12;
+  int iStack_10;
+  int iStack_e;
+  int iStack_c;
+  int iStack_a;
+  
+  FUN_10bf_02c0();
+  iStack_a = 0x10bf;
+  iStack_c = 0x4414;
+  puVar3 = (undefined2 *)FUN_106f_0430();
+  puVar5 = &local_26;
+  for (iVar4 = 0x12; iVar4 != 0; iVar4 = iVar4 + -1) {
+    puVar2 = puVar5;
+    puVar5 = puVar5 + 1;
+    puVar1 = puVar3;
+    puVar3 = puVar3 + 1;
+    *puVar2 = *puVar1;
+  }
+  iStack_a = iStack_1e + -2;
+  iStack_c = iStack_20 + -2;
+  iStack_e = iStack_22 + 2;
+  iStack_10 = iStack_24 + 2;
+  uStack_12 = 0x880;
+  uStack_14 = 0x106f;
+  uStack_16 = 0x4445;
+  FUN_1c87_0050();
+  iStack_a = 0x1c87;
+  iStack_c = 0x444f;
+  FUN_1c87_0110();
+  iStack_a = 0x1c87;
+  iStack_c = 0x4459;
+  thunk_EXT_FUN_0000_0000();
+  iStack_a = param_1;
+  iStack_c = 0x2658;
+  iStack_e = 0x4469;
+  FUN_23ed_0d18();
+  iStack_a = iStack_22 + 0x10;
+  iStack_c = iStack_24 + 4;
+  param_1 = param_1 * 0x122;
+  iStack_e = (int)*(char *)(param_1 + -0x51cf);
+  iStack_10 = 0x2658;
+  uStack_12 = 0x448d;
+  FUN_23ed_084a();
+  iStack_a = 0x2658;
+  iStack_c = 0x4497;
+  FUN_1c87_00b8();
+  iStack_a = *(undefined2 *)(*(char *)(param_1 + -0x51ce) * 2 + *(int *)0x1a90);
+  iStack_c = 0x1c27;
+  iStack_e = 0x1c87;
+  iStack_10 = 0x44be;
+  FUN_1c87_01f6();
+  iStack_a = 0x1c2f;
+  iStack_c = 0x1c87;
+  iStack_e = 0x44d2;
+  FUN_1c87_01f6();
+  iStack_a = 0x44da;
+  FUN_1c87_04b2();
+  iStack_a = 0x1c87;
+  iStack_c = 0x44e1;
+  FUN_1c87_00b8();
+  iStack_a = 0x1c87;
+  iStack_c = 0x44ee;
+  FUN_1c87_0158();
+  iStack_a = 0x2a;
+  iStack_c = 0x14;
+  iStack_e = 0x1c87;
+  iStack_10 = 0x44fc;
+  FUN_1c87_0136();
+  iStack_a = 0x1c35;
+  iStack_c = 0x1c87;
+  iStack_e = 0x4516;
+  FUN_1c87_01f6();
+  iStack_a = *(undefined2 *)(param_1 + -0x51b0);
+  iStack_c = 0x1c44;
+  iStack_e = 0x1c87;
+  iStack_10 = 0x4529;
+  FUN_1c87_01f6();
+  iStack_a = 100;
+  iStack_c = *(undefined2 *)(param_1 + -0x51b2);
+  iStack_e = *(undefined2 *)(param_1 + -0x51b4);
+  iStack_10 = 0x1c87;
+  uStack_12 = 0x453d;
+  iStack_a = FUN_10bf_2fc8();
+  iStack_c = 0x1c52;
+  iStack_e = 0x10bf;
+  iStack_10 = 0x4547;
+  FUN_1c87_01f6();
+  if (param_2 != 0) {
+    iStack_a = 0x1c87;
+    iStack_c = 0x4557;
+    FUN_23ed_068e();
+  }
+  return;
+}

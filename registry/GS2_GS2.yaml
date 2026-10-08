@@ -1,0 +1,1751 @@
+﻿file:
+  certainty: confirmed
+  name: GS2.GS2
+  ghidra_name: GS2.exe
+  format: Old-style DOS Executable (MZ)
+  language: x86:LE:16:Real Mode
+  image_base: 0000:0000
+  entry: 1851:06f8
+  function_count: 165
+blocks:
+- name: CODE_0
+  range: 1000:0000-1000:2a25
+  perm: RWX
+  type: Default
+- name: CODE_1
+  range: 12a2:0006-12a2:0dd9
+  perm: RWX
+  type: Default
+- name: CODE_2
+  range: 137f:000a-137f:39df
+  perm: RWX
+  type: Default
+- name: CODE_3
+  range: 171d:0000-171d:0c37
+  perm: RWX
+  type: Default
+- name: CODE_4
+  range: 17e0:0008-17e0:0645
+  perm: RWX
+  type: Default
+- name: CODE_5
+  range: 1844:0006-1844:00cf
+  perm: RWX
+  type: Default
+- name: CODE_6
+  range: 1851:0000-1851:0d5a
+  perm: RWX
+  type: Default
+- name: CODE_7
+  range: 1926:000b-1926:04ee
+  perm: RWX
+  type: Default
+- name: CODE_7u
+  range: 1926:04ef-1926:04ef
+  perm: RW-
+  type: Default
+- name: CODE_8u
+  range: 1975:0000-1975:ffff
+  perm: RW-
+  type: Default
+- name: CODE_9u
+  range: 2975:0000-2975:3d1f
+  perm: RW-
+  type: Default
+- name: CODE_10u
+  range: 2d47:0000-2d47:9e5f
+  perm: RW-
+  type: Default
+- name: CODE_11u
+  range: 372d:0000-372d:2fbf
+  perm: RW-
+  type: Default
+- name: CODE_12u
+  range: 3a29:0000-3a29:049f
+  perm: RW-
+  type: Default
+- name: CODE_13u
+  range: 3a73:0000-3a73:324f
+  perm: RW-
+  type: Default
+- name: CODE_14u
+  range: 3d98:0000-3d98:101f
+  perm: RW-
+  type: Default
+- name: CODE_15u
+  range: 3e9a:0000-3e9a:ffff
+  perm: RW-
+  type: Default
+- name: CODE_16u
+  range: 4e9a:0000-4e9a:1cff
+  perm: RW-
+  type: Default
+- name: CODE_17u
+  range: 506a:0000-506a:613f
+  perm: RW-
+  type: Default
+- name: DATA
+  range: 506a:6140-9000:3a7f
+  perm: RW-
+  type: Default
+- name: HEADER
+  range: HEADER::00000000-HEADER::000005ff
+  perm: '---'
+  type: Default
+entries:
+- addr: 1851:06f8
+  name: entry
+functions:
+- addr: 1000:00e8
+  name: FUN_1000_00e8
+  auto_name: FUN_1000_00e8
+  sig: undefined FUN_1000_00e8(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1000_00e8.c
+- addr: 1000:0208
+  name: FUN_1000_0208
+  auto_name: FUN_1000_0208
+  sig: undefined FUN_1000_0208(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1000_0208.c
+- addr: 1000:0416
+  name: FUN_1000_0416
+  auto_name: FUN_1000_0416
+  sig: undefined FUN_1000_0416(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1000_0416.c
+- addr: 1000:0430
+  name: FUN_1000_0430
+  auto_name: FUN_1000_0430
+  sig: undefined FUN_1000_0430(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1000_0430.c
+- addr: 1000:0612
+  name: FUN_1000_0612
+  auto_name: FUN_1000_0612
+  sig: undefined FUN_1000_0612(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1000_0612.c
+- addr: 1000:0828
+  name: FUN_1000_0828
+  auto_name: FUN_1000_0828
+  sig: undefined FUN_1000_0828(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1000_0828.c
+- addr: 1000:09fc
+  name: FUN_1000_09fc
+  auto_name: FUN_1000_09fc
+  sig: undefined FUN_1000_09fc(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1000_09fc.c
+- addr: 1000:0ade
+  name: FUN_1000_0ade
+  auto_name: FUN_1000_0ade
+  sig: undefined FUN_1000_0ade(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1000_0ade.c
+- addr: 1000:0bc2
+  name: FUN_1000_0bc2
+  auto_name: FUN_1000_0bc2
+  sig: undefined FUN_1000_0bc2(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1000_0bc2.c
+- addr: 1000:1226
+  name: FUN_1000_1226
+  auto_name: FUN_1000_1226
+  sig: undefined FUN_1000_1226(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1000_1226.c
+- addr: 1000:13c6
+  name: FUN_1000_13c6
+  auto_name: FUN_1000_13c6
+  sig: undefined FUN_1000_13c6(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1000_13c6.c
+- addr: 1000:23c8
+  name: FUN_1000_23c8
+  auto_name: FUN_1000_23c8
+  sig: undefined FUN_1000_23c8(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1000_23c8.c
+- addr: 1000:2438
+  name: FUN_1000_2438
+  auto_name: FUN_1000_2438
+  sig: undefined FUN_1000_2438(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1000_2438.c
+- addr: 12a2:0016
+  name: FUN_12a2_0016
+  auto_name: FUN_12a2_0016
+  sig: undefined FUN_12a2_0016(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0016.c
+- addr: 12a2:00e9
+  name: FUN_12a2_00e9
+  auto_name: FUN_12a2_00e9
+  sig: undefined FUN_12a2_00e9(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_00e9.c
+- addr: 12a2:010e
+  name: FUN_12a2_010e
+  auto_name: FUN_12a2_010e
+  sig: undefined FUN_12a2_010e(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_010e.c
+- addr: 12a2:01d3
+  name: FUN_12a2_01d3
+  auto_name: FUN_12a2_01d3
+  sig: undefined FUN_12a2_01d3(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_01d3.c
+- addr: 12a2:0256
+  name: FUN_12a2_0256
+  auto_name: FUN_12a2_0256
+  sig: undefined FUN_12a2_0256(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0256.c
+- addr: 12a2:0283
+  name: FUN_12a2_0283
+  auto_name: FUN_12a2_0283
+  sig: undefined FUN_12a2_0283(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0283.c
+- addr: 12a2:0296
+  name: FUN_12a2_0296
+  auto_name: FUN_12a2_0296
+  sig: undefined FUN_12a2_0296(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0296.c
+- addr: 12a2:02b8
+  name: FUN_12a2_02b8
+  auto_name: FUN_12a2_02b8
+  sig: undefined FUN_12a2_02b8(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_02b8.c
+- addr: 12a2:02be
+  name: FUN_12a2_02be
+  auto_name: FUN_12a2_02be
+  sig: undefined FUN_12a2_02be(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_02be.c
+- addr: 12a2:02e2
+  name: FUN_12a2_02e2
+  auto_name: FUN_12a2_02e2
+  sig: undefined FUN_12a2_02e2(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_02e2.c
+- addr: 12a2:0474
+  name: FUN_12a2_0474
+  auto_name: FUN_12a2_0474
+  sig: undefined FUN_12a2_0474(void)
+  return_type: undefined
+  calling_convention: __stdcall16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0474.c
+- addr: 12a2:049f
+  name: FUN_12a2_049f
+  auto_name: FUN_12a2_049f
+  sig: undefined FUN_12a2_049f(void)
+  return_type: undefined
+  calling_convention: __stdcall16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_049f.c
+- addr: 12a2:0504
+  name: FUN_12a2_0504
+  auto_name: FUN_12a2_0504
+  sig: undefined FUN_12a2_0504(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0504.c
+- addr: 12a2:0524
+  name: FUN_12a2_0524
+  auto_name: FUN_12a2_0524
+  sig: undefined FUN_12a2_0524(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0524.c
+- addr: 12a2:0552
+  name: FUN_12a2_0552
+  auto_name: FUN_12a2_0552
+  sig: undefined FUN_12a2_0552(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0552.c
+- addr: 12a2:05f3
+  name: FUN_12a2_05f3
+  auto_name: FUN_12a2_05f3
+  sig: undefined FUN_12a2_05f3(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_05f3.c
+- addr: 12a2:062f
+  name: FUN_12a2_062f
+  auto_name: FUN_12a2_062f
+  sig: undefined FUN_12a2_062f(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_062f.c
+- addr: 12a2:06ac
+  name: FUN_12a2_06ac
+  auto_name: FUN_12a2_06ac
+  sig: undefined FUN_12a2_06ac(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_06ac.c
+- addr: 12a2:06e0
+  name: FUN_12a2_06e0
+  auto_name: FUN_12a2_06e0
+  sig: undefined FUN_12a2_06e0(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_06e0.c
+- addr: 12a2:0716
+  name: FUN_12a2_0716
+  auto_name: FUN_12a2_0716
+  sig: undefined FUN_12a2_0716(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0716.c
+- addr: 12a2:0792
+  name: FUN_12a2_0792
+  auto_name: FUN_12a2_0792
+  sig: undefined FUN_12a2_0792(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0792.c
+- addr: 12a2:081e
+  name: FUN_12a2_081e
+  auto_name: FUN_12a2_081e
+  sig: undefined FUN_12a2_081e(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_081e.c
+- addr: 12a2:086f
+  name: FUN_12a2_086f
+  auto_name: FUN_12a2_086f
+  sig: undefined FUN_12a2_086f(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_086f.c
+- addr: 12a2:0890
+  name: FUN_12a2_0890
+  auto_name: FUN_12a2_0890
+  sig: undefined FUN_12a2_0890(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0890.c
+- addr: 12a2:092c
+  name: FUN_12a2_092c
+  auto_name: FUN_12a2_092c
+  sig: undefined FUN_12a2_092c(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_092c.c
+- addr: 12a2:09b2
+  name: FUN_12a2_09b2
+  auto_name: FUN_12a2_09b2
+  sig: undefined FUN_12a2_09b2(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_09b2.c
+- addr: 12a2:09fa
+  name: FUN_12a2_09fa
+  auto_name: FUN_12a2_09fa
+  sig: undefined FUN_12a2_09fa(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_09fa.c
+- addr: 12a2:0b99
+  name: FUN_12a2_0b99
+  auto_name: FUN_12a2_0b99
+  sig: undefined FUN_12a2_0b99(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0b99.c
+- addr: 12a2:0bd8
+  name: FUN_12a2_0bd8
+  auto_name: FUN_12a2_0bd8
+  sig: undefined FUN_12a2_0bd8(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0bd8.c
+- addr: 12a2:0c10
+  name: FUN_12a2_0c10
+  auto_name: FUN_12a2_0c10
+  sig: undefined FUN_12a2_0c10(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0c10.c
+- addr: 12a2:0c28
+  name: FUN_12a2_0c28
+  auto_name: FUN_12a2_0c28
+  sig: undefined FUN_12a2_0c28(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0c28.c
+- addr: 12a2:0c66
+  name: FUN_12a2_0c66
+  auto_name: FUN_12a2_0c66
+  sig: undefined FUN_12a2_0c66(void)
+  return_type: undefined
+  calling_convention: __stdcall16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0c66.c
+- addr: 12a2:0d00
+  name: FUN_12a2_0d00
+  auto_name: FUN_12a2_0d00
+  sig: undefined FUN_12a2_0d00(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0d00.c
+- addr: 12a2:0d5e
+  name: FUN_12a2_0d5e
+  auto_name: FUN_12a2_0d5e
+  sig: undefined FUN_12a2_0d5e(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0d5e.c
+- addr: 12a2:0d94
+  name: FUN_12a2_0d94
+  auto_name: FUN_12a2_0d94
+  sig: undefined FUN_12a2_0d94(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/12a2_0d94.c
+- addr: 137f:000a
+  name: FUN_137f_000a
+  auto_name: FUN_137f_000a
+  sig: undefined FUN_137f_000a(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_000a.c
+- addr: 137f:003c
+  name: FUN_137f_003c
+  auto_name: FUN_137f_003c
+  sig: undefined FUN_137f_003c(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_003c.c
+- addr: 137f:01bd
+  name: FUN_137f_01bd
+  auto_name: FUN_137f_01bd
+  sig: undefined FUN_137f_01bd(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_01bd.c
+- addr: 137f:021b
+  name: FUN_137f_021b
+  auto_name: FUN_137f_021b
+  sig: undefined FUN_137f_021b(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_021b.c
+- addr: 137f:062a
+  name: FUN_137f_062a
+  auto_name: FUN_137f_062a
+  sig: undefined FUN_137f_062a(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_062a.c
+- addr: 137f:0672
+  name: FUN_137f_0672
+  auto_name: FUN_137f_0672
+  sig: undefined FUN_137f_0672(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_0672.c
+- addr: 137f:074a
+  name: FUN_137f_074a
+  auto_name: FUN_137f_074a
+  sig: undefined FUN_137f_074a(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_074a.c
+- addr: 137f:07cf
+  name: FUN_137f_07cf
+  auto_name: FUN_137f_07cf
+  sig: undefined FUN_137f_07cf(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_07cf.c
+- addr: 137f:0816
+  name: FUN_137f_0816
+  auto_name: FUN_137f_0816
+  sig: undefined FUN_137f_0816(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_0816.c
+- addr: 137f:0850
+  name: FUN_137f_0850
+  auto_name: FUN_137f_0850
+  sig: undefined FUN_137f_0850(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_0850.c
+- addr: 137f:08cf
+  name: FUN_137f_08cf
+  auto_name: FUN_137f_08cf
+  sig: undefined FUN_137f_08cf(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_08cf.c
+- addr: 137f:0aab
+  name: FUN_137f_0aab
+  auto_name: FUN_137f_0aab
+  sig: undefined FUN_137f_0aab(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_0aab.c
+- addr: 137f:0c6c
+  name: FUN_137f_0c6c
+  auto_name: FUN_137f_0c6c
+  sig: undefined FUN_137f_0c6c(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_0c6c.c
+- addr: 137f:0cd0
+  name: FUN_137f_0cd0
+  auto_name: FUN_137f_0cd0
+  sig: undefined FUN_137f_0cd0(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_0cd0.c
+- addr: 137f:13bf
+  name: FUN_137f_13bf
+  auto_name: FUN_137f_13bf
+  sig: undefined FUN_137f_13bf(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_13bf.c
+- addr: 137f:1411
+  name: FUN_137f_1411
+  auto_name: FUN_137f_1411
+  sig: undefined FUN_137f_1411(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1411.c
+- addr: 137f:1423
+  name: FUN_137f_1423
+  auto_name: FUN_137f_1423
+  sig: undefined FUN_137f_1423(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1423.c
+- addr: 137f:146d
+  name: FUN_137f_146d
+  auto_name: FUN_137f_146d
+  sig: undefined FUN_137f_146d(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_146d.c
+- addr: 137f:1497
+  name: FUN_137f_1497
+  auto_name: FUN_137f_1497
+  sig: undefined FUN_137f_1497(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1497.c
+- addr: 137f:14bf
+  name: FUN_137f_14bf
+  auto_name: FUN_137f_14bf
+  sig: undefined FUN_137f_14bf(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_14bf.c
+- addr: 137f:191a
+  name: thunk_EXT_FUN_0000_0000
+  auto_name: thunk_EXT_FUN_0000_0000
+  sig: undefined thunk_EXT_FUN_0000_0000(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: true
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_191a.c
+- addr: 137f:1933
+  name: thunk_EXT_FUN_0000_0000
+  auto_name: thunk_EXT_FUN_0000_0000
+  sig: undefined thunk_EXT_FUN_0000_0000(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: true
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1933.c
+- addr: 137f:1947
+  name: thunk_EXT_FUN_0000_0000
+  auto_name: thunk_EXT_FUN_0000_0000
+  sig: undefined thunk_EXT_FUN_0000_0000(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: true
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1947.c
+- addr: 137f:1960
+  name: thunk_EXT_FUN_0000_0000
+  auto_name: thunk_EXT_FUN_0000_0000
+  sig: undefined thunk_EXT_FUN_0000_0000(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: true
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1960.c
+- addr: 137f:1965
+  name: thunk_EXT_FUN_0000_0000
+  auto_name: thunk_EXT_FUN_0000_0000
+  sig: undefined thunk_EXT_FUN_0000_0000(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: true
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1965.c
+- addr: 137f:1979
+  name: thunk_EXT_FUN_0000_0000
+  auto_name: thunk_EXT_FUN_0000_0000
+  sig: undefined thunk_EXT_FUN_0000_0000(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: true
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1979.c
+- addr: 137f:197e
+  name: thunk_EXT_FUN_0000_0000
+  auto_name: thunk_EXT_FUN_0000_0000
+  sig: undefined thunk_EXT_FUN_0000_0000(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: true
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_197e.c
+- addr: 137f:1983
+  name: thunk_EXT_FUN_0000_0000
+  auto_name: thunk_EXT_FUN_0000_0000
+  sig: undefined thunk_EXT_FUN_0000_0000(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: true
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1983.c
+- addr: 137f:1997
+  name: thunk_EXT_FUN_0000_0000
+  auto_name: thunk_EXT_FUN_0000_0000
+  sig: undefined thunk_EXT_FUN_0000_0000(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: true
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1997.c
+- addr: 137f:19a1
+  name: thunk_EXT_FUN_0000_0000
+  auto_name: thunk_EXT_FUN_0000_0000
+  sig: undefined thunk_EXT_FUN_0000_0000(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: true
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_19a1.c
+- addr: 137f:1a62
+  name: FUN_137f_1a62
+  auto_name: FUN_137f_1a62
+  sig: undefined FUN_137f_1a62(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1a62.c
+- addr: 137f:1c1a
+  name: FUN_137f_1c1a
+  auto_name: FUN_137f_1c1a
+  sig: undefined FUN_137f_1c1a(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1c1a.c
+- addr: 137f:1ea8
+  name: FUN_137f_1ea8
+  auto_name: FUN_137f_1ea8
+  sig: undefined FUN_137f_1ea8(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1ea8.c
+- addr: 137f:1ee6
+  name: FUN_137f_1ee6
+  auto_name: FUN_137f_1ee6
+  sig: undefined FUN_137f_1ee6(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1ee6.c
+- addr: 137f:1f06
+  name: FUN_137f_1f06
+  auto_name: FUN_137f_1f06
+  sig: undefined FUN_137f_1f06(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1f06.c
+- addr: 137f:1f20
+  name: FUN_137f_1f20
+  auto_name: FUN_137f_1f20
+  sig: undefined FUN_137f_1f20(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1f20.c
+- addr: 137f:1f3a
+  name: FUN_137f_1f3a
+  auto_name: FUN_137f_1f3a
+  sig: undefined FUN_137f_1f3a(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_1f3a.c
+- addr: 137f:204e
+  name: FUN_137f_204e
+  auto_name: FUN_137f_204e
+  sig: undefined FUN_137f_204e(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_204e.c
+- addr: 137f:2065
+  name: FUN_137f_2065
+  auto_name: FUN_137f_2065
+  sig: undefined FUN_137f_2065(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_2065.c
+- addr: 137f:2109
+  name: FUN_137f_2109
+  auto_name: FUN_137f_2109
+  sig: undefined FUN_137f_2109(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_2109.c
+- addr: 137f:2165
+  name: FUN_137f_2165
+  auto_name: FUN_137f_2165
+  sig: undefined FUN_137f_2165(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_2165.c
+- addr: 137f:2275
+  name: FUN_137f_2275
+  auto_name: FUN_137f_2275
+  sig: undefined FUN_137f_2275(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_2275.c
+- addr: 137f:2414
+  name: FUN_137f_2414
+  auto_name: FUN_137f_2414
+  sig: undefined FUN_137f_2414(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_2414.c
+- addr: 137f:26a5
+  name: FUN_137f_26a5
+  auto_name: FUN_137f_26a5
+  sig: undefined FUN_137f_26a5(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_26a5.c
+- addr: 137f:275a
+  name: FUN_137f_275a
+  auto_name: FUN_137f_275a
+  sig: undefined FUN_137f_275a(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_275a.c
+- addr: 137f:2776
+  name: FUN_137f_2776
+  auto_name: FUN_137f_2776
+  sig: undefined FUN_137f_2776(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_2776.c
+- addr: 137f:278e
+  name: FUN_137f_278e
+  auto_name: FUN_137f_278e
+  sig: undefined FUN_137f_278e(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_278e.c
+- addr: 137f:27a6
+  name: FUN_137f_27a6
+  auto_name: FUN_137f_27a6
+  sig: undefined FUN_137f_27a6(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_27a6.c
+- addr: 137f:27a9
+  name: FUN_137f_27a9
+  auto_name: FUN_137f_27a9
+  sig: undefined FUN_137f_27a9(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_27a9.c
+- addr: 137f:2814
+  name: FUN_137f_2814
+  auto_name: FUN_137f_2814
+  sig: undefined FUN_137f_2814(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_2814.c
+- addr: 137f:2b6c
+  name: FUN_137f_2b6c
+  auto_name: FUN_137f_2b6c
+  sig: undefined FUN_137f_2b6c(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_2b6c.c
+- addr: 137f:2bae
+  name: FUN_137f_2bae
+  auto_name: FUN_137f_2bae
+  sig: undefined FUN_137f_2bae(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_2bae.c
+- addr: 137f:2d7f
+  name: FUN_137f_2d7f
+  auto_name: FUN_137f_2d7f
+  sig: undefined FUN_137f_2d7f(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_2d7f.c
+- addr: 137f:2e5d
+  name: FUN_137f_2e5d
+  auto_name: FUN_137f_2e5d
+  sig: undefined FUN_137f_2e5d(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_2e5d.c
+- addr: 137f:2e8a
+  name: FUN_137f_2e8a
+  auto_name: FUN_137f_2e8a
+  sig: undefined FUN_137f_2e8a(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_2e8a.c
+- addr: 137f:2f3a
+  name: FUN_137f_2f3a
+  auto_name: FUN_137f_2f3a
+  sig: undefined FUN_137f_2f3a(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_2f3a.c
+- addr: 137f:3038
+  name: FUN_137f_3038
+  auto_name: FUN_137f_3038
+  sig: undefined FUN_137f_3038(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_3038.c
+- addr: 137f:314c
+  name: FUN_137f_314c
+  auto_name: FUN_137f_314c
+  sig: undefined FUN_137f_314c(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_314c.c
+- addr: 137f:31e3
+  name: FUN_137f_31e3
+  auto_name: FUN_137f_31e3
+  sig: undefined FUN_137f_31e3(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_31e3.c
+- addr: 137f:3231
+  name: FUN_137f_3231
+  auto_name: FUN_137f_3231
+  sig: undefined FUN_137f_3231(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_3231.c
+- addr: 137f:3289
+  name: FUN_137f_3289
+  auto_name: FUN_137f_3289
+  sig: undefined FUN_137f_3289(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_3289.c
+- addr: 137f:3362
+  name: FUN_137f_3362
+  auto_name: FUN_137f_3362
+  sig: undefined FUN_137f_3362(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_3362.c
+- addr: 137f:3376
+  name: FUN_137f_3376
+  auto_name: FUN_137f_3376
+  sig: undefined FUN_137f_3376(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_3376.c
+- addr: 137f:3689
+  name: FUN_137f_3689
+  auto_name: FUN_137f_3689
+  sig: undefined FUN_137f_3689(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_3689.c
+- addr: 137f:36a6
+  name: FUN_137f_36a6
+  auto_name: FUN_137f_36a6
+  sig: undefined FUN_137f_36a6(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_36a6.c
+- addr: 137f:370d
+  name: FUN_137f_370d
+  auto_name: FUN_137f_370d
+  sig: undefined FUN_137f_370d(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_370d.c
+- addr: 137f:378f
+  name: FUN_137f_378f
+  auto_name: FUN_137f_378f
+  sig: undefined FUN_137f_378f(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_378f.c
+- addr: 137f:37b0
+  name: FUN_137f_37b0
+  auto_name: FUN_137f_37b0
+  sig: undefined FUN_137f_37b0(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_37b0.c
+- addr: 137f:38b7
+  name: FUN_137f_38b7
+  auto_name: FUN_137f_38b7
+  sig: undefined FUN_137f_38b7(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/137f_38b7.c
+- addr: 171d:0273
+  name: FUN_171d_0273
+  auto_name: FUN_171d_0273
+  sig: undefined FUN_171d_0273(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/171d_0273.c
+- addr: 171d:0293
+  name: FUN_171d_0293
+  auto_name: FUN_171d_0293
+  sig: undefined FUN_171d_0293(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/171d_0293.c
+- addr: 171d:0307
+  name: thunk_EXT_FUN_0000_0000
+  auto_name: thunk_EXT_FUN_0000_0000
+  sig: undefined thunk_EXT_FUN_0000_0000(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: true
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/171d_0307.c
+- addr: 171d:07ec
+  name: FUN_171d_07ec
+  auto_name: FUN_171d_07ec
+  sig: undefined FUN_171d_07ec(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/171d_07ec.c
+- addr: 171d:08be
+  name: FUN_171d_08be
+  auto_name: FUN_171d_08be
+  sig: undefined FUN_171d_08be(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/171d_08be.c
+- addr: 171d:08dc
+  name: FUN_171d_08dc
+  auto_name: FUN_171d_08dc
+  sig: undefined FUN_171d_08dc(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/171d_08dc.c
+- addr: 171d:096a
+  name: FUN_171d_096a
+  auto_name: FUN_171d_096a
+  sig: undefined FUN_171d_096a(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/171d_096a.c
+- addr: 171d:09dc
+  name: FUN_171d_09dc
+  auto_name: FUN_171d_09dc
+  sig: undefined FUN_171d_09dc(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/171d_09dc.c
+- addr: 17e0:002f
+  name: FUN_17e0_002f
+  auto_name: FUN_17e0_002f
+  sig: undefined FUN_17e0_002f(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/17e0_002f.c
+- addr: 17e0:0050
+  name: FUN_17e0_0050
+  auto_name: FUN_17e0_0050
+  sig: undefined FUN_17e0_0050(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/17e0_0050.c
+- addr: 17e0:0061
+  name: FUN_17e0_0061
+  auto_name: FUN_17e0_0061
+  sig: undefined FUN_17e0_0061(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/17e0_0061.c
+- addr: 17e0:00de
+  name: FUN_17e0_00de
+  auto_name: FUN_17e0_00de
+  sig: undefined FUN_17e0_00de(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/17e0_00de.c
+- addr: 17e0:0128
+  name: FUN_17e0_0128
+  auto_name: FUN_17e0_0128
+  sig: undefined FUN_17e0_0128(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/17e0_0128.c
+- addr: 17e0:01fb
+  name: FUN_17e0_01fb
+  auto_name: FUN_17e0_01fb
+  sig: undefined FUN_17e0_01fb(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/17e0_01fb.c
+- addr: 17e0:021a
+  name: FUN_17e0_021a
+  auto_name: FUN_17e0_021a
+  sig: undefined FUN_17e0_021a(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/17e0_021a.c
+- addr: 1844:000b
+  name: thunk_EXT_FUN_0000_0000
+  auto_name: thunk_EXT_FUN_0000_0000
+  sig: undefined thunk_EXT_FUN_0000_0000(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: true
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1844_000b.c
+- addr: 1851:01b0
+  name: FUN_1851_01b0
+  auto_name: FUN_1851_01b0
+  sig: undefined FUN_1851_01b0(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_01b0.c
+- addr: 1851:01b2
+  name: FUN_1851_01b2
+  auto_name: FUN_1851_01b2
+  sig: undefined FUN_1851_01b2(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_01b2.c
+- addr: 1851:021c
+  name: FUN_1851_021c
+  auto_name: FUN_1851_021c
+  sig: undefined FUN_1851_021c(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_021c.c
+- addr: 1851:0429
+  name: FUN_1851_0429
+  auto_name: FUN_1851_0429
+  sig: undefined FUN_1851_0429(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_0429.c
+- addr: 1851:0529
+  name: FUN_1851_0529
+  auto_name: FUN_1851_0529
+  sig: undefined FUN_1851_0529(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_0529.c
+- addr: 1851:05a3
+  name: FUN_1851_05a3
+  auto_name: FUN_1851_05a3
+  sig: undefined FUN_1851_05a3(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_05a3.c
+- addr: 1851:05b3
+  name: FUN_1851_05b3
+  auto_name: FUN_1851_05b3
+  sig: undefined FUN_1851_05b3(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_05b3.c
+- addr: 1851:05eb
+  name: FUN_1851_05eb
+  auto_name: FUN_1851_05eb
+  sig: undefined FUN_1851_05eb(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_05eb.c
+- addr: 1851:0622
+  name: FUN_1851_0622
+  auto_name: FUN_1851_0622
+  sig: undefined FUN_1851_0622(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_0622.c
+- addr: 1851:0668
+  name: FUN_1851_0668
+  auto_name: FUN_1851_0668
+  sig: undefined FUN_1851_0668(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_0668.c
+- addr: 1851:06f8
+  name: entry
+  auto_name: entry
+  sig: undefined entry(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_06f8.c
+- addr: 1851:073c
+  name: FUN_1851_073c
+  auto_name: FUN_1851_073c
+  sig: undefined FUN_1851_073c(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_073c.c
+- addr: 1851:079d
+  name: FUN_1851_079d
+  auto_name: FUN_1851_079d
+  sig: undefined FUN_1851_079d(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_079d.c
+- addr: 1851:0984
+  name: FUN_1851_0984
+  auto_name: FUN_1851_0984
+  sig: undefined FUN_1851_0984(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_0984.c
+- addr: 1851:09a4
+  name: FUN_1851_09a4
+  auto_name: FUN_1851_09a4
+  sig: undefined FUN_1851_09a4(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_09a4.c
+- addr: 1851:09aa
+  name: FUN_1851_09aa
+  auto_name: FUN_1851_09aa
+  sig: undefined FUN_1851_09aa(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_09aa.c
+- addr: 1851:0cf5
+  name: FUN_1851_0cf5
+  auto_name: FUN_1851_0cf5
+  sig: undefined FUN_1851_0cf5(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_0cf5.c
+- addr: 1851:0d13
+  name: FUN_1851_0d13
+  auto_name: FUN_1851_0d13
+  sig: undefined FUN_1851_0d13(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_0d13.c
+- addr: 1851:0d1d
+  name: FUN_1851_0d1d
+  auto_name: FUN_1851_0d1d
+  sig: undefined FUN_1851_0d1d(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_0d1d.c
+- addr: 1851:0d59
+  name: FUN_1851_0d59
+  auto_name: FUN_1851_0d59
+  sig: undefined FUN_1851_0d59(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1851_0d59.c
+- addr: 1926:000b
+  name: FUN_1926_000b
+  auto_name: FUN_1926_000b
+  sig: undefined FUN_1926_000b(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1926_000b.c
+- addr: 1926:001d
+  name: FUN_1926_001d
+  auto_name: FUN_1926_001d
+  sig: undefined FUN_1926_001d(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1926_001d.c
+- addr: 1926:0024
+  name: FUN_1926_0024
+  auto_name: FUN_1926_0024
+  sig: undefined FUN_1926_0024(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1926_0024.c
+- addr: 1926:0031
+  name: FUN_1926_0031
+  auto_name: FUN_1926_0031
+  sig: undefined FUN_1926_0031(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1926_0031.c
+- addr: 1926:0143
+  name: FUN_1926_0143
+  auto_name: FUN_1926_0143
+  sig: undefined FUN_1926_0143(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1926_0143.c
+- addr: 1926:01b3
+  name: FUN_1926_01b3
+  auto_name: FUN_1926_01b3
+  sig: undefined FUN_1926_01b3(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1926_01b3.c
+- addr: 1926:020f
+  name: FUN_1926_020f
+  auto_name: FUN_1926_020f
+  sig: undefined FUN_1926_020f(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1926_020f.c
+- addr: 1926:0312
+  name: FUN_1926_0312
+  auto_name: FUN_1926_0312
+  sig: undefined FUN_1926_0312(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1926_0312.c
+- addr: 1926:0350
+  name: FUN_1926_0350
+  auto_name: FUN_1926_0350
+  sig: undefined FUN_1926_0350(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1926_0350.c
+- addr: 1926:03b9
+  name: FUN_1926_03b9
+  auto_name: FUN_1926_03b9
+  sig: undefined FUN_1926_03b9(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1926_03b9.c
+- addr: 1926:03cd
+  name: FUN_1926_03cd
+  auto_name: FUN_1926_03cd
+  sig: undefined FUN_1926_03cd(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1926_03cd.c
+- addr: 1926:03e5
+  name: FUN_1926_03e5
+  auto_name: FUN_1926_03e5
+  sig: undefined FUN_1926_03e5(void)
+  return_type: undefined
+  calling_convention: __cdecl16near
+  is_thunk: false
+  decompiled: true
+  status: unidentified
+  c: decompiled/GS2_GS2/1926_03e5.c
+structs: []
+variables: []
+strings: []

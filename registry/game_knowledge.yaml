@@ -1,0 +1,276 @@
+# Gunship 2000 - growing game knowledge base
+# Every claim carries certainty + sources so confidence can improve over time.
+#
+# certainty: confirmed | high | medium | low | hypothesis
+#   confirmed - proven by binary/behavioral evidence (file parsing, code, strings)
+#   high      - strongly supported, not directly verified
+#   medium    - likely; partial evidence or confident recollection
+#   low       - weak indication / guess
+#   hypothesis- untested assumption
+# sources: user | binary | ghidra | mzretools | hints | launcher | docs
+# This file is hand-maintained (not generated). Cross-link evidence with
+# registry/<ID>.yaml (per-executable function DBs) and decompiled/<ID>/.
+
+schema:
+  certainty: [confirmed, high, medium, low, hypothesis]
+  sources: [user, binary, ghidra, mzretools, hints, launcher, docs]
+
+# ---------------------------------------------------------------------------
+# Game structure & execution
+# ---------------------------------------------------------------------------
+architecture:
+  - id: exec.launcher
+    claim: "GS2000.COM is the DOS launcher: environment checks, INT 21h open-redirect to CD drive, then EXEC dispatches setup.gs2 / labs.gs2 / player.gs2 / gs.gs2 / gs2.gs2 / ads.gs2 with command lines"
+    certainty: confirmed
+    sources: [binary, launcher]
+    evidence: "full disassembly of GS2000.COM (tools/disasm16.py); subprogram table at CS:040E, dispatcher at CS:034A"
+  - id: exec.main_programs
+    claim: "GS.GS2 = mission builder / campaign shell; GS2.GS2 = flight game; SETUP.GS2 = setup tool"
+    certainty: confirmed
+    sources: [binary, mzretools]
+    evidence: >
+      MZ headers, entry cs:ip, string content; launcher command lines
+      (-g/-m/-c flags). Confirmed by overlay content: GS.GS2 rec1 = mission
+      editor strings ("EDITOR.PIC", "Excellent! you may now save this
+      mission"), rec0/2/3 = campaign/briefing/debrief; GS2.GS2 id10 string
+      pool = flight UI ("GUNSHIP 2000: DEMO MODE", wingman callouts,
+      joystick wizard, settings menu).
+  - id: exec.compiler
+    claim: "Microsoft C 1990 runtime + RTLink/Plus overlay linker; 16-bit far code, stack-based (__cdecl16far) calling"
+    certainty: confirmed
+    sources: [binary, ghidra]
+    evidence: "CRT strings in image; Ghidra compiler spec; all functions __cdecl16far"
+  - id: exec.startup_chains
+    claim: >
+      Both executables share the RTLink startup pattern: MZ entry saves PSP,
+      bootstrap (memory/EMS init + arena allocation from directory words),
+      stack switch to manager stack, directory walk (arena min/max export +
+      load flags&1 records), restore PSP, then ljmp to MS C CRT startup
+      which does DOS checks, DGROUP/SS setup, SETBLOCK, BSS zero, builds
+      envp/argv, and calls main(argc, argv, envp). GS.GS2: entry
+      17D1:082F -> 0878 bootstrap -> 08E9 dir-walk -> ljmp 00BF:0018 CRT ->
+      main @0DEA:0006 (flags parsed by 1dea_0d28 from -g/-m/-c/-l/-e).
+      GS2.GS2: entry 0851:06F8 -> file 37,452 bootstrap -> file 37,549
+      dir-walk -> ljmp 02A2:0016 CRT.
+    certainty: confirmed
+    sources: [binary, ghidra]
+    evidence: >
+      raw disasm of both entry chains + decompiled 27d1_082f/0878/08e9,
+      1dea_0006/0046/0d28, 10bf_0018; GS2.GS2 entry + bootstrap +
+      dir-walk disassembled at files 37,384/37,452/37,549 (structure
+      matches GS.GS2 instruction-for-instruction: flags tests 0x100/2,
+      min/max loop stride 0x12, flags&1 loader call, arena far-ptr export).
+
+# ---------------------------------------------------------------------------
+# Overlay / executable file formats (reverse-engineered this session)
+# ---------------------------------------------------------------------------
+formats:
+  - id: fmt.overlay_mechanism
+    claim: >
+      GS.GS2/GS2.GS2 use RTLink/Plus overlays: resident MZ image (DOS-loaded
+      at L = PSP+0x10) plus trailing overlay data; runtime seg = link + L
+      everywhere (MZ relocs cover code segwords + data immediates — no
+      absolute segments). Each overlay record (9 words / 18 bytes):
+      [0] w0 = arena load base (link paras) | [1] w1 = host filename ptr |
+      [2] w2 = file para of fixup table (file offset = w2*16 = w0*16 +
+      hdr_bytes) | [3] high byte = flags (0x04 transient, 0x01 load-at-
+      startup, 0x05 both; loader runs when flags&1) | [4] w4 = allocated
+      span (paras) | [5] w5 = fixup count (dwords) | [6] 0xFFFF (w6=1 for
+      two GS2.GS2 records — meaning unknown) | [7] w7 = module id (2..n
+      per file) | [8] w8 = actual data size (paras). File layout per record
+      = [fixups w5*4, para-padded][data w8*16], chained record-to-record
+      from image end to EOF. Fixups = (off, seg) pairs, applied as
+      word_at(seg:off) += L. Arenas: transient records share one base
+      (swap-in on demand); startup record holds DGROUP/init + BSS + stack.
+    certainty: confirmed
+    sources: [binary, ghidra]
+    evidence: >
+      GS.GS2: dir @file 109,117 count=5, group chain arithmetic exact for
+      all 5 groups (fixup table + pad + w4*16 = next group start; rec4 ends
+      exactly at EOF 280,350); loader FUN_27d1_025c reads seek
+      w2+ceil(w5/4) paras, w8 paras to L+w0, then w5 fixups. GS2.GS2: dir
+      @file 38,523 count=9, same arithmetic exact across all 9 records
+      (ends 413,984 predicted vs 413,971 actual = EOF pad). Loader analog
+      = call 08d2c from dir-walk file 37,549.
+  - id: fmt.rtlink_directory
+    claim: >
+      RTLink overlay directory (in-image): u16 count, 2 more words
+      ([count][0][x] where x = 36 for GS.GS2 / 96 for GS2.GS2 — meaning
+      unknown), then count * 18-byte records at +6. GS.GS2 @file 109,117
+      (count 5, ids 2-6, name ptr -> "GS.EXE"); GS2.GS2 @file 38,523
+      (count 9, ids 2-10, name ptr -> "GS2.GS2"). Directory walker:
+      GS.GS2 FUN_27d1_08e9 reads count @DS:0xD2D, records @DS:0xD33,
+      stride 0x12, computes arena min/max into DS:0xD05/0xD07, loads
+      flags&1 records; GS2.GS2 analog at file 37,549 (count cs:[0xb6b],
+      records @bx=0xb71, arena -> DS:0xb4b/0xb4d, loader call 08d2c).
+    certainty: confirmed
+    sources: [binary, ghidra]
+    evidence: >
+      decompiled 27d1_08e9.c (count/stride/flags&1 verified); raw disasm
+      of GS2.GS2 file 37,549 matches instruction-for-structure; record
+      chains byte-verified in both files; per-file record dumps in
+      registry/file_registry.md § Overlay System.
+  - id: fmt.rtlink_thunks
+    claim: >
+      Call-through thunks = 10-byte records: E8 rel16 -> shared reload
+      stub + EA off16 seg16 (ljmp to arena base:offset) + dw trailer.
+      Trailer = overlay record INDEX (0-based over ids 2..n; 0xFFFF =
+      resident/no-swap in GS.GS2). Reload stub saves regs, sets DS to
+      entry seg, reads trailer via [bp+2]+5, rebuilds the far frame /
+      ensures module resident, then the ljmp transfers. GS.GS2: 51 thunks
+      @file 109,384-109,884 -> stub 17D1:05F8 (file 107,272); per-rec
+      8/16/11/15 + 1 resident. GS2.GS2: 10 thunks @file 38,917-39,016 ->
+      stub 0851:0529 (file 36,921); trailer idx 0..7 = ids 2..9, per-idx
+      2/2/1/1/1/1/1/1; id10 (startup data) has none. All ljmp segwords are
+      MZ-relocated (+L).
+    certainty: confirmed
+    sources: [binary, ghidra]
+    evidence: >
+      byte scans (E8+EA adjacency, shared rel target); GS.GS2 trailer
+      correlated to records via fixup-seg sets; GS2.GS2 trailer verified:
+      trailer idx's record w0 == ljmp seg for all 10 thunks. Full GS.GS2
+      table: analysis/overlay_thunks.tsv (51 rows w/ target file offsets).
+  - id: fmt.gs_dgroup_init
+    claim: >
+      GS.GS2 DGROUP (link 0x2B38) init data ships as overlay rec4 (startup,
+      base 0x2896): rec4 data = 10,784-B gap [0x2896,0x2B38) (RTLink far
+      ptrs) + DGROUP [0x0000,0x742E) at file 250,608 -> ends exactly at EOF
+      (280,350); rec4 end link 0x327B = DGROUP:0x742E = CRT BSS-zero start
+      [0x742E,0xE2A0). String pack inside (byte-verified): DGROUP 0x07FB =
+      "GS2000.CAT", 0x0806 = "GS2000.DAT", 0x0811 = "MISC.GS2",
+      0x6848 = "_C_FILE_INFO=", 0x0008 = MS CRT banner. GS2.GS2 analog =
+      id10 (flag 0x01, base 0x272D): string pool at data start (file
+      296,944 = DS-relative 0), BSS tail, MZ stack SS=0x45FE inside it.
+    certainty: confirmed
+    sources: [binary]
+    evidence: >
+      file-position arithmetic exact in both files; string bytes read
+      directly; push/mov-imm refs from overlay code resolve against
+      DGROUP0 file positions (250,608 / 296,944) byte-exactly.
+  - id: fmt.overlay_manager
+    claim: >
+      Overlay manager code lives in segment 1f61 (blocks CODE_14) with CRT
+      file ops in 10bf: open own exe by name ('Cannot find overlay file'),
+      handle cached at DS:0x8668/0x864A; directory kept as far ptr at
+      DS:0x86C0/86C2 (count at DS:0x8656, records of 24 bytes, file-offset
+      LONG at record+0x14); loader FUN_1f61_060e = fread(u16 count),
+      malloc(count*24), loop fread(24).
+    certainty: high
+    sources: [ghidra]
+    evidence: "decompiled 1f61_029a/0428/04ca/060e/008e/00fc; INT21 open/read/lseek cluster at image 0x27AE-0x2A2A"
+    open_questions: "magic at DS:0x9BF; DS:0x86C4/0x86C0 catalog state writer (directory file location + seg*16+hdr file mapping now confirmed elsewhere)"
+  - id: fmt.catalog
+    claim: >
+      GS2000.CAT / GS2000.DAT / MBUILDER.CAT are resource catalogs with
+      identical format: [u16 count] + count * 24-byte records
+      {name[12], ?[4], length u32, file_offset u32}; directory occupies
+      first 2+24*count bytes, file data follows and offsets chain from there.
+    certainty: confirmed
+    sources: [binary]
+    evidence: >
+      GS2000.CAT: count=105 (ADS.PIC...), first offset=2522=2+105*24,
+      next offset 22463=2522+19941 (length field) - chain verified.
+      GS2000.DAT: count=85 (BASE.SCN, BRIEFING.SCN...), dir end=2042=2+85*24.
+      Matches overlay loader FUN_1f61_060e read pattern exactly.
+  - id: fmt.mz_header
+    claim: "GS.GS2 header: 512-para header, e_cp covers resident image only (116616 bytes), 2017 relocs, entry 17D1:082F; overlay/arena data follows file image"
+    certainty: confirmed
+    sources: [binary, mzretools]
+    evidence: "mzhdr; reloc scan (all 2017 targets in-image, word2 max 0x18D4); Ghidra blocks"
+
+# ---------------------------------------------------------------------------
+# Gameplay - user recollections cross-checked with evidence
+# ---------------------------------------------------------------------------
+gameplay:
+  - id: play.locale_menu
+    claim: "Opens with a menu to start a mission in a given locale (theater)"
+    certainty: confirmed
+    sources: [user, hints, binary]
+    evidence: "hints mention Antarctica/Europe/Persian Gulf theaters; game dir has 4 locale families (ANTC/EURO/GULF/PHIL) with missions ANTC1-3, EURO6-9, GULF2-5, PHIL1-3"
+  - id: play.mission_files
+    claim: "Each locale has numbered missions (files ANTC1..3, EURO6..9, GULF2..5, PHIL1..3) with per-mission *BMP.GS2 (tiles), *MAP.GS2, *SMP.GS2 and locale *PALETTE/*FORM.DAT/*WEAP.DAT"
+    certainty: confirmed
+    sources: [binary]
+    evidence: "game directory listing"
+  - id: play.career_mode
+    claim: "Career/tour mode exists: performance tracked via rank and decorations"
+    certainty: high
+    sources: [user, hints, binary]
+    evidence: >
+      hints: 'Upon reaching the rank of 2nd Lieutenant...', 'Rank and
+      decorations are the best measure of their...'; GS.GS2 strings:
+      'Your performance is worthy of recognition, I am promoting you to %s',
+      'PROMOTION', 'PROMOTE %s to %c%s%c'
+  - id: play.briefing_arm
+    claim: "Mission flow: briefing screen, then arm helicopters, then fly; return-to-briefing possible"
+    certainty: confirmed
+    sources: [user, binary]
+    evidence: "GS.GS2 strings: 'MISSION BRIEFING', 'RETURN TO BRIEFING', 'BRIEFING', 'FROM:%tTF Commander'"
+  - id: play.multi_ship_command
+    claim: "Later in career you command up to 4 helicopters from a command screen: plot waypoints / give orders to other ships"
+    certainty: high
+    sources: [user, hints]
+    evidence: "hints: 'Position their final waypoint or assign a new...', 'the order of the four units listed', 'Sighted!'; user recollection of 4 ships"
+    open_questions: "exact number cap (4?) and command-screen key (F2 mentioned in hints)"
+  - id: play.battlefield
+    claim: "Battlefield = flat plane with mountains defined in certain areas"
+    certainty: high
+    sources: [user, hints]
+    evidence: "hints: 'Try to avoid overflying mountains', 'the terrain rises slightly', 'stop behind a mountain'"
+  - id: play.enemies_sight
+    claim: "Enemies attack when they see you; automatic copilot calls out enemies as they become visible"
+    certainty: medium
+    sources: [user, hints]
+    evidence: "hints quote 'Sighted!' callout; copilot automation not yet located in code"
+  - id: play.flight_model
+    claim: "Flight model is fairly rudimentary"
+    certainty: low
+    sources: [user]
+    evidence: "user impression; not yet verified against code (GS2.GS2 flight loop pending)"
+  - id: play.ground_render
+    claim: "Ground = large colored dithered polygons, per-polygon color, giving texture feel in motion"
+    certainty: high
+    sources: [user, binary]
+    evidence: "user observation; *BMP.GS2 tile files (27648 = per-mission tile graphics) and palette files (768=256*3) present; renderer code not yet identified"
+  - id: play.commander_promotion
+    claim: "After multiple successful missions you are promoted to commander and control the different helicopters"
+    certainty: medium
+    sources: [user, hints, binary]
+    evidence: "hints: 'Commander has also noticed this fact'; GS.GS2: 'Congratulations on your promotion to Brigadier General!', 'Task Force Commander' recurring - exact trigger/threshold unknown"
+
+# ---------------------------------------------------------------------------
+# Asset inventory inferences (upgrade certainty by inspecting files)
+# ---------------------------------------------------------------------------
+assets:
+  - id: asset.helicopters
+    claim: "6 helicopter types: APA, BLK, COB, COM, DEF, KIA (likely Apache, Black Hawk, Cobra, Comanche, ?, Kiowa)"
+    certainty: medium
+    sources: [binary]
+    evidence: "per-type cockpit files *_CPIT.DAT/PIC + *_STAT.DAT; name expansion is inference"
+    open_questions: "DEF expansion; verify via GS2KHINT.TXT / OBJECT.DAT"
+  - id: asset.sim_scenarios
+    claim: "7 canned .SIM scenarios: APOCOLYP, BACKALLE, BATTLEOF, FROZENGR, LINEINTH, RAINOFTE, SCUDINYO"
+    certainty: confirmed
+    sources: [binary]
+    evidence: "game directory listing (sizes 3134-4758)"
+  - id: asset.sound_formats
+    claim: "Sound banks in .GS2/.GS3/.GS4 per driver (NSOUND/ASOUND/DSOUND/ISOUND/RSOUND/RSOUND), logs present"
+    certainty: confirmed
+    sources: [binary]
+    evidence: "game directory listing"
+  - id: asset.hints_file
+    claim: "GS2KHINT.TXT = in-game hint texts (22,784 bytes), useful ground truth for gameplay knowledge"
+    certainty: confirmed
+    sources: [binary]
+    evidence: "read directly; contains gameplay tips with page structure"
+
+# ---------------------------------------------------------------------------
+# User-supplied model of the game (kept even before verification)
+# ---------------------------------------------------------------------------
+notes: >
+  Seed entries from user description 2026-10-08: menu->locale->mission,
+  career mode, briefing->arming, start with own heli then command 4 with
+  waypoint plotting, flat+mountain battlefield, sight-based enemies with
+  copilot callouts, rudimentary flight model, dithered colored polygon
+  ground, promotion to commander. Verify each against GS2.GS2 code over
+  time and raise/lower certainty with evidence.

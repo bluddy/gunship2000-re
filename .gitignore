@@ -34,5 +34,9 @@ __pycache__/
 .cache/
 .inertia_decomp_cache/
 
+# Ghidra (project + raw dumps are regenerable; per-function C in decompiled/ is tracked)
+ghidra_proj/
+analysis/ghidra/*.txt
+
 # Logs (keep minimal)
 logs/*.log
