@@ -135,10 +135,11 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 6. **Generate .lst from Ghidra dump for mzretools** ✅ **DONE** — `scripts/ghidra_dump_to_lst_final.py` converts DumpProgram.java output to mzretools .lst format
 7. mzmap verification on generated .lst ✅ **DONE** — 54 routines over 3 segments (matches original)
 8. **MSC 6.0 compiler working under kvikdos** ✅ **DONE** — `/I C:\INCLUDE` flag works; known kvikdos bug: looks for `BC1.EXE` instead of `C1.EXE` for compiler passes (upstream issue)
-9. **NEXT**: Run lst2asm.py with gs_gs2.json config to produce UASM-compatible .asm from Ghidra .lst
-10. **NEXT**: Assemble with UASM, link with MSC 6.0 LINK.EXE under kvikdos
-11. **NEXT**: Verify byte-exact match with mzdiff
-12. DOSBox runtime verification of decoded structures ⏳ **PENDING**
+9. **NEXT (Track 1 - Skeleton)**: Run lst2asm.py with gs_gs2.json config to produce UASM-compatible .asm from Ghidra .lst
+10. **NEXT (Track 1 - Skeleton)**: Assemble with UASM, link with MSC 6.0 LINK.EXE under kvikdos
+11. **NEXT (Track 1 - Skeleton)**: Verify byte-exact match with mzdiff
+12. **NEXT (Track 2 - C Ports)**: Use DOSBox for per-routine MSC 6.0 compilation (avoids kvikdos compiler pass bug); run `portcheck.py` + `mzdiff` verification
+13. DOSBox runtime verification of decoded structures ⏳ **PENDING**
 
 ### Phase 3-6: unchanged (Ghidra → C, AI unit tests, mzdiff comparison, DOSBox testing)
 
@@ -155,7 +156,9 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 2. **scanq.cpp:194** — `saveJump` normalized all jump destinations to current routine's segment, breaking far jumps. Fixed: added `isNear` parameter, only move segment for near jumps.
 
 ### kvikdos (upstream: neuviemeporte/mzretools/tools/emulators/kvikdos)
-1. **Compiler pass detection bug** — Misidentifies Microsoft C 6.0 compiler passes as Borland C (`BC1.EXE`, `BC2.EXE`, `BC3.EXE`) instead of Microsoft C (`C1.EXE`, `C2.EXE`, `C3.EXE`). Causes "Out of memory" / "cannot open DOS executable" errors during compilation. Workaround: Use DOSBox for full compilation, or patch kvikdos.
+1. **Compiler pass detection bug** — Misidentifies Microsoft C 6.0 compiler passes as Borland C (`BC1.EXE`, `BC2.EXE`, `BC3.EXE`) instead of Microsoft C (`C1.EXE`, `C2.EXE`, `C3.EXE`). Causes "Out of memory" / "cannot open DOS executable" errors during compilation. 
+   - **Track 1 (Skeleton)**: Works fine — only needs linker (LINK.EXE), which works correctly
+   - **Track 2 (C Ports)**: **Use DOSBox instead** — DOSBox doesn't have this compiler pass detection bug. `portcheck.py` supports both kvikdos and DOSBox backends.
 
 ### inertia_decompiler
 1. **`tools/dev/check_decompiler_architecture.py:4883`** - Windows path separator bug (allowlist used forward slashes, `Path.relative_to` returns backslashes on Windows)
