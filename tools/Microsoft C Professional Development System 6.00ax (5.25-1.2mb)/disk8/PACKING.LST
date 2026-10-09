@@ -1,0 +1,26 @@
+      Packing List for Microsoft C Optimizing Compiler, Version 6.00A
+                             Supplemental Tools
+                                3.5" Disk Set
+
+                Copyright (c) Microsoft Corporation, 1984, 1991
+
+
+
+
+DISK 1 : Supplemental Tools
+
+ Files                       Description
+ -----                       -----------
+
+c1l.exe                      Extender-ready C Compiler- large-model pass 1
+c2l.err                      Extender-ready C Compiler- large-model pass 2
+c3l.exe                      Extender-ready C Compiler- large-model pass 3
+cl.exe                       DOS-extended C compiler driver, version 6.00AX
+readme.doc                   Documentation Information for Microsoft C 6.00AX
+                              Supplemental Tools
+packing.lst                  This listing of files for Microsoft C 6.00AX
+                              Supplemental Tools
+cvw.exe                      CodeView for Windows version 3.05
+cv.hlp                       Help file for CodeView for Windows version 3.05
+vcv.386                      Driver required when running CVW.EXE on non-VGA
+                              systems

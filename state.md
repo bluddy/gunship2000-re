@@ -132,11 +132,12 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 3. Adapt f19re `conf/egame.json` → `conf/gs_gs2.json` + `conf/gs2_gs2.json` ✅ **DONE**
 4. Generate routine maps with mzmap for GS.GS2 and GS2.GS2 ✅ **DONE**
 5. Build mzdup signatures and cross-match GS.GS2 ↔ GS2.GS2 routines ✅ **DONE** (11 matches found)
-6. **NEXT**: Generate full .lst disassembly from Ghidra for GS.exe resident + overlays
-7. **NEXT**: Run lst2asm.py with gs_gs2.json config to produce UASM-compatible .asm
-8. **NEXT**: Assemble with UASM, link with MSC 6.0 LINK.EXE under kvikdos
-9. **NEXT**: Verify byte-exact match with mzdiff
-10. DOSBox runtime verification of decoded structures ⏳ **PENDING**
+6. **Generate .lst from Ghidra dump for mzretools** ✅ **DONE** — `scripts/ghidra_dump_to_lst_final.py` converts DumpProgram.java output to mzretools .lst format
+7. mzmap verification on generated .lst ✅ **DONE** — 54 routines over 3 segments (matches original)
+8. **NEXT**: Run lst2asm.py with gs_gs2.json config to produce UASM-compatible .asm from Ghidra .lst
+9. **NEXT**: Assemble with UASM, link with MSC 6.0 LINK.EXE under kvikdos
+10. **NEXT**: Verify byte-exact match with mzdiff
+11. DOSBox runtime verification of decoded structures ⏳ **PENDING**
 
 ### Phase 3-6: unchanged (Ghidra → C, AI unit tests, mzdiff comparison, DOSBox testing)
 
