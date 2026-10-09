@@ -135,6 +135,7 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 6. **Generate .lst from Ghidra dump for mzretools** ✅ **DONE** — `scripts/ghidra_dump_to_lst_final.py` converts DumpProgram.java output to mzretools .lst format
 7. mzmap verification on generated .lst ✅ **DONE** — 54 routines over 3 segments (matches original)
 8. **MSC 6.0 compiler working under kvikdos** ✅ **DONE** — `/I C:\INCLUDE` flag works; known kvikdos bug: looks for `BC1.EXE` instead of `C1.EXE` for compiler passes (upstream issue)
+9. **MSC 6.0 compiler working under DOSBox** ✅ **DONE** — DOSBox staging 0.83 compiles successfully; output is `TEST.OBJ` (uppercase); no compiler pass detection bug
 9. **NEXT (Track 1 - Skeleton)**: Run lst2asm.py with gs_gs2.json config to produce UASM-compatible .asm from Ghidra .lst
 10. **NEXT (Track 1 - Skeleton)**: Assemble with UASM, link with MSC 6.0 LINK.EXE under kvikdos
 11. **NEXT (Track 1 - Skeleton)**: Verify byte-exact match with mzdiff
