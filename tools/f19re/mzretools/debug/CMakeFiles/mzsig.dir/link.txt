@@ -1,0 +1,1 @@
+/usr/bin/c++  -ggdb -O0 -Wfatal-errors CMakeFiles/mzsig.dir/src/mzsig.cpp.o -o mzsig  liblibdos.a 

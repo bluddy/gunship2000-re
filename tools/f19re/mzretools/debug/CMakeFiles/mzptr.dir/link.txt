@@ -1,0 +1,1 @@
+/usr/bin/c++  -ggdb -O0 -Wfatal-errors CMakeFiles/mzptr.dir/src/mzptr.cpp.o -o mzptr  liblibdos.a 

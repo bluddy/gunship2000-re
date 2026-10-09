@@ -1,0 +1,11 @@
+/home/yotam/projects/gunship2000-re/tools/f19re/mzretools/debug/CMakeFiles/libdos.dir
+/home/yotam/projects/gunship2000-re/tools/f19re/mzretools/debug/CMakeFiles/mzhdr.dir
+/home/yotam/projects/gunship2000-re/tools/f19re/mzretools/debug/CMakeFiles/mzmap.dir
+/home/yotam/projects/gunship2000-re/tools/f19re/mzretools/debug/CMakeFiles/mzdiff.dir
+/home/yotam/projects/gunship2000-re/tools/f19re/mzretools/debug/CMakeFiles/mzdup.dir
+/home/yotam/projects/gunship2000-re/tools/f19re/mzretools/debug/CMakeFiles/mzptr.dir
+/home/yotam/projects/gunship2000-re/tools/f19re/mzretools/debug/CMakeFiles/mzsig.dir
+/home/yotam/projects/gunship2000-re/tools/f19re/mzretools/debug/CMakeFiles/addrtool.dir
+/home/yotam/projects/gunship2000-re/tools/f19re/mzretools/debug/CMakeFiles/psptool.dir
+/home/yotam/projects/gunship2000-re/tools/f19re/mzretools/debug/CMakeFiles/edit_cache.dir
+/home/yotam/projects/gunship2000-re/tools/f19re/mzretools/debug/CMakeFiles/rebuild_cache.dir

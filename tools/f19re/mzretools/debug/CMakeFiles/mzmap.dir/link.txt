@@ -1,0 +1,1 @@
+/usr/bin/c++  -ggdb -O0 -Wfatal-errors CMakeFiles/mzmap.dir/src/mzmap.cpp.o -o mzmap  liblibdos.a 

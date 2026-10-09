@@ -1,0 +1,1 @@
+/usr/bin/c++  -ggdb -O0 -Wfatal-errors CMakeFiles/mzhdr.dir/src/mzhdr.cpp.o -o mzhdr  liblibdos.a 

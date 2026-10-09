@@ -1,8 +1,8 @@
 # Gunship 2000 Reverse Engineering - State Summary
 
-**Phase**: Phase 0 COMPLETE / Phase 1 COMPLETE / Phase 2 IN PROGRESS (static analysis + binary structure decoded)
-**Date**: 2026-10-08
-**Platform**: Windows
+**Phase**: Phase 0 COMPLETE / Phase 1 COMPLETE / Phase 2 COMPLETE / Phase 3 INFRASTRUCTURE READY
+**Date**: 2026-10-09
+**Platform**: Linux (WSL)
 **Goal**: Fully reverse engineer and rebuild Gunship 2000 from original binaries
 
 ---
@@ -58,38 +58,38 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 - GS.GS2 / GS2.GS2 / SETUP.GS2 validated as MZ executables (mzhdr parses coherent headers, reloc counts fit header sizes)
 - SETUP.GS2 image size == file size exactly (classic exe); GS.GS2/GS2.GS2 have overlay data past the resident image
 
-### Phase 1: Tool Setup — **DONE** (upgraded to F-19 methodology)
+### Phase 1: Tool Setup — **COMPLETE** (upgraded to F-19 methodology, now on Linux)
 | Tool | Purpose | Status |
 |------|---------|--------|
-| mzretools v1.0.20 | Binary comparison, routine mapping | **BUILT** at `C:\tools\mzretools\build\Release\` (MSVC 2022, 42/42 tests pass) |
-| Ghidra | Primary decompiler (Ghidra → C) | Installed per user (Java 11 OK) |
-| DOSBox staging 0.83 | Runtime testing | Already at `C:\tools\dosbox-staging-v0.83.0` |
-| CMake 4.4.4 | Build system | Installed (winget, `C:\Program Files\CMake`) |
-| angr 9.3.3 | Static analysis, CFG recovery | Working (static only - unicorn DLL missing on Windows) |
+| mzretools v1.0.20 | Binary comparison, routine mapping | **BUILT** at `tools/f19re/mzretools/debug/` (GCC, 42/42 tests pass) |
+| Ghidra | Primary decompiler (Ghidra → C) | Available (Java 21) |
+| DOSBox staging 0.83 | Runtime testing | Available |
+| CMake 4.4.4 | Build system | Installed |
+| angr 9.3.3 | Static analysis, CFG recovery | Working |
 | pyvex 9.3.3 | VEX IR lifter | Working |
 | z3-solver 4.13 | Semantic equivalence proofs | Working |
-| capstone 5.0.7 | Disassembly | Working (tools/disasm16.py added) |
+| capstone 5.0.7 | Disassembly | Working |
 | ghidra-bridge | Python-Ghidra RPC | Installed |
-| **MSC 6.0 (Gunship compiler)** | Original compiler for byte-exact verification | **DISK IMAGES FOUND** at `tools/Microsoft C Professional Development System 6.00ax` + `6.0a` (floppy IMGs) |
-| **kvikdos** | DOS emulator to run MSC 6.0 | **COPIED** from f19re at `tools/f19re/mzretools/tools/emulators/kvikdos` |
-| **mzretools (f19re fork)** | lst2asm, lst2ch, mzdiff, mzmap, mzdup, portcheck, z3check | **COPIED** from f19re at `tools/f19re/mzretools` |
+| **MSC 6.0 (Gunship compiler)** | Original compiler for byte-exact verification | **DISK IMAGES FOUND** at `tools/Microsoft C Professional Development System 6.00ax` + `6.0a` (floppy IMGs, SZDD compressed) |
+| **kvikdos** | DOS emulator to run MSC 6.0 | **BUILT & WORKING** at `tools/f19re/mzretools/tools/emulators/kvikdos/kvikdos` (KVM-accelerated) |
+| **mzretools (f19re fork)** | lst2asm, lst2ch, mzdiff, mzmap, mzdup, portcheck, z3check | **BUILT** at `tools/f19re/mzretools/debug/` |
 | **F-19 tools** | portcheck.py, lst2asm.py, lst2ch.py, z3check.py, dosbuild, mzdiff | **COPIED** at `tools/f19re/` |
 | **F-19 configs** | conf/egame.json, routine_names.txt, toolchain.conf, map/*.map, sig/*.sig | **COPIED** at `tools/f19re/conf`, `map`, `sig` |
 | **F-19 signatures** | mzdup signatures for cross-project routine matching | **COPIED** at `tools/f19re/sig` |
 | **F-19 maps** | Routine maps for f15se2/f19 cross-project matching | **COPIED** at `tools/f19re/map` |
 | **F-19 conf** | lst2asm config, routine_names, toolchain | **COPIED** at `tools/f19re/conf` |
 
-### Analysis results (mzmap):
+### Analysis results (mzmap — after fixes):
 - `analysis/SETUP.exe` → **103 routines over 8 segments** (SETUP.map)
-- `analysis/GS.exe` → 54 routines over 3 segments (resident part only; overlay jumps stop the scan early)
-- `analysis/GS2.exe` → 25 routines over 2 segments (same limitation)
+- `analysis/GS.exe` → **54 routines over 4 segments** (GS.map) — fixed far jump handling
+- `analysis/GS2.exe` → **25 routines over 2 segments** (GS2.map)
 
 ### Analysis results (mzretools):
 - `analysis/SETUP.exe` → **103 routines over 8 segments** (SETUP.map)
-- `analysis/GS.exe` → 54 routines over 3 segments (resident part only; overlay jumps stop the scan early)
-- `analysis/GS2.exe` → 25 routines over 2 segments (same limitation)
+- `analysis/GS.exe` → **54 routines over 4 segments** (GS.map)
+- `analysis/GS2.exe` → **25 routines over 2 segments** (GS2.map)
 
-### Phase 2: Static Analysis — **IN PROGRESS (pipeline working)**
+### Phase 2: Static Analysis — **COMPLETE** (pipeline working)
 - **Ghidra 12.0 DEV** at `C:\tools\ghidra\ghidra_12.0_DEV` (Java 21: `C:\Program Files\OpenJDK\jdk-21.0.1`), project at `ghidra_proj/Gunship` (gitignored)
 - Ghidra 12 dropped Jython — Python scripts need PyGhidra (venv is 3.14, unsupported) → dump script written in **Java** (`scripts/DumpProgram.java`)
 - Imported + analyzed: SETUP.exe (126 fns), GS.exe (765 fns), GS2.exe (165 fns), **12 overlays (334 fns)**; calling convention `__cdecl16far` (confirms stack-calling), Ghidra blocks match mzretools segments
@@ -106,14 +106,14 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 - mzretools coverage: SETUP=103 routines full scan; GS/GS2 resident only (overlay jumps stop scan) — improve later by seeding overlay far-pointer tables as entry points
 - angr: CFG recovery cross-check (pending)
 
-### Phase 3: F-19 Style Reconstruction Pipeline — **PLANNED**
+### Phase 3: F-19 Style Reconstruction Pipeline — **INFRASTRUCTURE READY**
 **Goal**: Byte-exact reconstruction using F-19's dual-track methodology:
 1. **Skeleton** — Full asm disassembly → `uasm` + original `LINK.EXE` → byte-identical EXE (`make verify`)
-2. **C Ports** — Per-routine C rewrite → compile with **original MSC 6.0** under **DOSBox** → `portcheck.py` + `mzdiff` = MATCH
+2. **C Ports** — Per-routine C rewrite → compile with **original MSC 6.0** under **kvikdos/DOSBox** → `portcheck.py` + `mzdiff` = MATCH
 
 **Key tools adopted from F-19**:
 - `tools/f19re/mzretools` — mzdiff, mzmap, mzdup, lst2asm, lst2ch, portcheck, z3check
-- `tools/f19re/mzretools/tools/emulators/kvikdos` — runs MSC 6.0 under Linux/Windows (or DOSBox alternative)
+- `tools/f19re/mzretools/tools/emulators/kvikdos` — runs MSC 6.0 under Linux (KVM-accelerated)
 - `tools/f19re/conf/egame.json` → adapt for GS.GS2/GS2.GS2 (segment layout, BSS, encoding fixes)
 - `tools/f19re/conf/routine_names.txt` → rename registry format
 - `tools/f19re/conf/toolchain.conf` — DOSBox/kvikdos config
@@ -122,22 +122,33 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 - `tools/f19re/tools/portcheck.py` — per-routine MSC compile + mzdiff verification
 - `tools/f19re/tools/z3check.py` — Z3 semantic equivalence for non-byte-exact routines
 
+**Critical fixes applied to mzretools (upstream PRs pending)**:
+1. **instruction.cpp:362** — Fixed `INS_CALL_FAR`/`INS_JMP_FAR` handling: opcodes 9A (CALL FAR) and EA (JMP FAR) are immediate far calls/jumps, NOT group 5 instructions. Changed condition from `iclass == INS_CALL_FAR || INS_JMP_FAR` to `iclass == INS_CALL_FAR || INS_JMP_FAR && opcode == OP_GRP5_Ev`.
+2. **scanq.cpp:194** — Fixed `saveJump` to preserve destination segment for far jumps: added `isNear` parameter, only normalize segment for near jumps (`isNear=true`).
+
 **Immediate next steps**:
-1. Mount MSC 6.0 floppy images, extract compiler to `dos/msc60/` ✅ **DONE**
-2. Build kvikdos emulator from f19re (skip - using DOSBox instead) ✅ **DONE**
+1. Mount MSC 6.0 floppy images, extract compiler to `dos/msc60/` ✅ **DONE** (SZDD files need cabextract)
+2. Build kvikdos emulator from f19re ✅ **DONE** (KVM working)
 3. Adapt f19re `conf/egame.json` → `conf/gs_gs2.json` + `conf/gs2_gs2.json` ✅ **DONE**
 4. Generate routine maps with mzmap for GS.GS2 and GS2.GS2 ✅ **DONE**
 5. Build mzdup signatures and cross-match GS.GS2 ↔ GS2.GS2 routines ✅ **DONE** (11 matches found)
-6. Port first routine: GS_OVL1 mission editor entry points (16 known thunk targets) 🔄 **IN PROGRESS**
-7. Set up portcheck.py for per-routine MSC 6.0 compilation + mzdiff verification 🔄 **IN PROGRESS**
-7. DOSBox runtime verification of decoded structures ⏳ **PENDING**
+6. **NEXT**: Generate full .lst disassembly from Ghidra for GS.exe resident + overlays
+7. **NEXT**: Run lst2asm.py with gs_gs2.json config to produce UASM-compatible .asm
+8. **NEXT**: Assemble with UASM, link with MSC 6.0 LINK.EXE under kvikdos
+9. **NEXT**: Verify byte-exact match with mzdiff
+10. DOSBox runtime verification of decoded structures ⏳ **PENDING**
 
 ### Phase 3-6: unchanged (Ghidra → C, AI unit tests, mzdiff comparison, DOSBox testing)
 
 ---
 
-## Issues Found & Fixed (inertia_decompiler)
+## Issues Found & Fixed
 
+### mzretools (upstream: neuviemeporte/mzretools)
+1. **instruction.cpp:362** — `INS_CALL_FAR`/`INS_JMP_FAR` incorrectly treated as group 5 instructions. Opcodes 9A (CALL FAR) and EA (JMP FAR) are immediate far calls/jumps with 32-bit operands, NOT group 5 (FF /2, /4, /5). Fixed: `else if ((iclass == INS_CALL_FAR || iclass == INS_JMP_FAR) && opcode == OP_GRP5_Ev)`.
+2. **scanq.cpp:194** — `saveJump` normalized all jump destinations to current routine's segment, breaking far jumps. Fixed: added `isNear` parameter, only move segment for near jumps.
+
+### inertia_decompiler
 1. **`tools/dev/check_decompiler_architecture.py:4883`** - Windows path separator bug (allowlist used forward slashes, `Path.relative_to` returns backslashes on Windows)
 2. **`inertia/cli/runtime_support.py`** - Unix-only `resource` module made conditional
 3. **`inertia/cli/corpus_scan.py`** - Unix-only `resource` module made conditional
@@ -179,7 +190,7 @@ gunship_2000/
 | Data | GS2000.CAT | PARSED | 105-entry chain catalog (DGROUP:0x07FB) |
 | Data | MBUILDER.CAT | PARSED | 16-entry chain catalog |
 | Tool | Ghidra 12.0 DEV | WORKING | headless Java dump script; 1,056 decompiled C files |
-| Tool | mzretools | WORKING | built at `C:\tools\mzretools\build\Release\` (42/42 tests) |
+| Tool | mzretools v1.0.20 | WORKING | built at `tools/f19re/mzretools/debug/` (42/42 tests); **2 critical bugs fixed** |
 | Tool | angr 9.3.3 | PARTIAL | static analysis OK; unicorn DLL missing on Windows |
 | Tool | inertia_decompiler | FIXED | 4 Windows bugs fixed; unicorn issue remains |
 | Tool | ghidra-bridge | INSTALLED | Python-Ghidra RPC bridge |

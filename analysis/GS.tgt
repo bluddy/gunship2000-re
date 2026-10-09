@@ -1,0 +1,76 @@
+#
+# Size of the executable's load module covered by the map
+#
+Size 1a788
+#
+# Discovered segments, one per line, syntax is "SegmentName Type(CODE/DATA/STACK) Address [default]"
+# The default data segment is assumed to be used by all routines which don't have data segment overrides.
+# If no default segment is specified, the first one will be used as default.
+#
+Code1 CODE 17d1
+Code2 CODE 18d4
+#
+# Discovered routines, one per line, syntax is "RoutineName: Segment Type(NEAR/FAR) Extents[DS] [R/U]Block1[DS] [R/U]Block2[DS]... [annotation1] [annotation2]..."
+# The routine extents is the largest continuous block of instructions attributed to this routine and originating
+# at the location determined to be the routine's entrypoint.
+# Blocks are offset ranges relative to the segment that the routine belongs to, specifying address as belonging to the routine.
+# Blocks starting with R contain code that was determined reachable, U were unreachable but still likely belong to the routine.
+# The routine blocks may cover a greater area than the extents if the routine has disconected chunks it jumps into.
+# The extents block and/or the individual routine blocks can have an optional data segment override which is the name
+# of the data segment assumed to be selected within that block.# Possible annotation types:
+# ignore - ignore this routine in processing (comparison, signature extraction etc.)
+# complete - this routine was completely reconstructed into C, only influences stat display when printing map
+# external - is part of an external library (e.g. libc), ignore in comparison, don't count as uncompleted in stats
+# detached - routine has no callers, looks useless, don't count as uncompleted in stats
+# assembly - routine was written in assembly, don't include in comparisons by default
+# duplicate - routine is a duplicate of another
+#
+routine_29: Code1 NEAR 01f0-01f0
+routine_26: Code1 NEAR 01f2-025b R01f2-025b
+routine_9: Code1 NEAR 025c-04e3 R025c-04e3 R0b2a-0b3f U0b40-0b49 R0b4a-0b4f
+routine_10: Code1 NEAR 04e4-05f7 R04e4-05f7
+routine_6: Code1 NEAR 067b-068a R067b-068a
+routine_12: Code1 NEAR 068b-06c2 R068b-06c2
+routine_8: Code1 NEAR 06c3-06f9 R06c3-06f9
+routine_25: Code1 NEAR 0740-0767 R0740-0767
+start: Code1 NEAR 082f-0877 R082f-0877
+routine_2: Code1 NEAR 0878-08e8 R0878-08e8
+routine_3: Code1 NEAR 08e9-09e8 R08e9-09e8
+routine_27: Code1 NEAR 0b50-0b50
+routine_7: Code2 FAR 0099-0574 R0099-0574 R0be1-0cb9
+routine_16: Code2 NEAR 0575-0590 R0575-0590
+routine_18: Code2 NEAR 0591-05b0 R0591-05b0
+routine_19: Code2 NEAR 05de-0664 R05de-0664
+routine_21: Code2 NEAR 0665-070b R0665-070b
+routine_20: Code2 NEAR 070c-0737 R070c-0737
+routine_28: Code2 FAR 0738-07b2 R0738-07b2
+routine_43: Code2 FAR 07b3-07b3
+routine_44: Code2 NEAR 092f-092f
+routine_45: Code2 NEAR 0984-0984
+routine_46: Code2 NEAR 09ba-09ba
+routine_22: Code2 NEAR 0cd6-0ce8 R0cd6-0ce8
+routine_24: Code2 NEAR 0ce9-0cf9 R0ce9-0cf9
+routine_41: Code2 NEAR 0cfa-0cfa
+routine_42: Code2 NEAR 0d0b-0d0b
+routine_23: Code2 NEAR 0d20-0d2e R0d20-0d2e
+routine_15: Code2 FAR 0e05-101b R0e05-0efd U0efe-0f1a R0f1b-101b
+routine_37: Code2 NEAR 103f-103f
+routine_38: Code2 NEAR 113f-113f
+routine_39: Code2 NEAR 1248-1248
+routine_14: Code2 FAR 1294-134b R1294-134b
+routine_35: Code2 NEAR 13f2-13f2
+routine_34: Code2 NEAR 1429-1429
+routine_36: Code2 NEAR 1432-1432
+routine_17: Code2 FAR 1446-1457 R1446-1457
+routine_40: Code2 NEAR 1458-1458
+routine_4: Code2 FAR 1510-1534 R1510-1534
+routine_5: Code2 FAR 1535-15d8 R1535-1547 U1548-1549 R154a-15d8
+routine_13: Code2 NEAR 15d9-1603 R15d9-1603
+routine_11: Code2 FAR 160a-1613 R160a-1613
+routine_32: Code2 NEAR 1644-1644
+routine_33: Code2 FAR 16e2-16e2
+routine_31: Code2 FAR 173e-173e
+routine_30: Code2 FAR 1884-1884
+#
+# Discovered variables, one per line, syntax is "VariableName: Segment VAR OffsetWithinSegment"
+#

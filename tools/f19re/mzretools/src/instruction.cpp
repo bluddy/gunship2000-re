@@ -357,8 +357,9 @@ void Instruction::load(const Byte *data)  {
                 throw CpuError("Invalid group index for TEST opcode at " + addr.toString());
             }
         }
-        // another special case for operand override in group 5 far call and jmp instructions
-        else if (iclass == INS_CALL_FAR || iclass == INS_JMP_FAR) {
+        // special case for group 5 far call and jmp instructions (opcode FF /2, /4, /5)
+        // opcodes 9A (CALL FAR) and EA (JMP FAR) are immediate far calls/jumps, NOT group instructions
+        else if ((iclass == INS_CALL_FAR || iclass == INS_JMP_FAR) && opcode == OP_GRP5_Ev) {
             if (grpIdx != IGRP_5)
                 throw CpuError("Unexpected group index for far call/jump instruction: " + to_string(grpIdx) + " at " + addr.toString());
             modop1 = MODRM_Mp;
