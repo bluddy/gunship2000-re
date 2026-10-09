@@ -1,0 +1,9 @@
+info: detected DOS .exe packed with exepack: header_size=16 exepack_max_size=330 exepack_stub_plus_reloc_size=330
+info: detected DOS .exe packed with exepack: header_size=16 exepack_max_size=330 exepack_stub_plus_reloc_size=330 exepack_stub_size=290
+Microsoft (R) C Optimizing Compiler Version 6.00A   
+Copyright (c) Microsoft Corp 1984-1990. All rights reserved.
+
+D:\test.c
+info: detected DOS .exe packed with exepack: header_size=16 exepack_max_size=2012 exepack_stub_plus_reloc_size=2012
+info: detected DOS .exe packed with exepack: header_size=16 exepack_max_size=2012 exepack_stub_plus_reloc_size=2012 exepack_stub_size=290
+D:\test.c(1) : fatal error C1024: cannot open include file 'stdio.h'
