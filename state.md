@@ -70,8 +70,8 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 | z3-solver 4.13 | Semantic equivalence proofs | Working |
 | capstone 5.0.7 | Disassembly | Working |
 | ghidra-bridge | Python-Ghidra RPC | Installed |
-| **MSC 6.0 (Gunship compiler)** | Original compiler for byte-exact verification | **DISK IMAGES FOUND** at `tools/Microsoft C Professional Development System 6.00ax` + `6.0a` (floppy IMGs, SZDD compressed) |
-| **kvikdos** | DOS emulator to run MSC 6.0 | **BUILT & WORKING** at `tools/f19re/mzretools/tools/emulators/kvikdos/kvikdos` (KVM-accelerated) |
+| **MSC 6.0 (Gunship compiler)** | Original compiler for byte-exact verification | **WORKING UNDER KVIKDOS** — `/I C:\INCLUDE` flag works; known kvikdos bug: looks for `BC1.EXE` instead of `C1.EXE` for compiler passes |
+| **kvikdos** | DOS emulator to run MSC 6.0 | **BUILT & WORKING** at `tools/f19re/mzretools/tools/emulators/kvikdos/kvikdos` (KVM-accelerated); MSC 6.0 CL.EXE runs, INCLUDE path works with `/I` flag; known bug: misidentifies MSC 6.0 passes as Borland (`BC1.EXE` vs `C1.EXE`) |
 | **mzretools (f19re fork)** | lst2asm, lst2ch, mzdiff, mzmap, mzdup, portcheck, z3check | **BUILT** at `tools/f19re/mzretools/debug/` |
 | **F-19 tools** | portcheck.py, lst2asm.py, lst2ch.py, z3check.py, dosbuild, mzdiff | **COPIED** at `tools/f19re/` |
 | **F-19 configs** | conf/egame.json, routine_names.txt, toolchain.conf, map/*.map, sig/*.sig | **COPIED** at `tools/f19re/conf`, `map`, `sig` |
@@ -127,17 +127,18 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 2. **scanq.cpp:194** — Fixed `saveJump` to preserve destination segment for far jumps: added `isNear` parameter, only normalize segment for near jumps (`isNear=true`).
 
 **Immediate next steps**:
-1. Mount MSC 6.0 floppy images, extract compiler to `dos/msc60/` ✅ **DONE** (SZDD files need cabextract)
+1. Mount MSC 6.0 floppy images, extract compiler to `dos/msc60/` ✅ **DONE** (SZDD files extracted via 7zip)
 2. Build kvikdos emulator from f19re ✅ **DONE** (KVM working)
 3. Adapt f19re `conf/egame.json` → `conf/gs_gs2.json` + `conf/gs2_gs2.json` ✅ **DONE**
 4. Generate routine maps with mzmap for GS.GS2 and GS2.GS2 ✅ **DONE**
 5. Build mzdup signatures and cross-match GS.GS2 ↔ GS2.GS2 routines ✅ **DONE** (11 matches found)
 6. **Generate .lst from Ghidra dump for mzretools** ✅ **DONE** — `scripts/ghidra_dump_to_lst_final.py` converts DumpProgram.java output to mzretools .lst format
 7. mzmap verification on generated .lst ✅ **DONE** — 54 routines over 3 segments (matches original)
-8. **NEXT**: Run lst2asm.py with gs_gs2.json config to produce UASM-compatible .asm from Ghidra .lst
-9. **NEXT**: Assemble with UASM, link with MSC 6.0 LINK.EXE under kvikdos
-10. **NEXT**: Verify byte-exact match with mzdiff
-11. DOSBox runtime verification of decoded structures ⏳ **PENDING**
+8. **MSC 6.0 compiler working under kvikdos** ✅ **DONE** — `/I C:\INCLUDE` flag works; known kvikdos bug: looks for `BC1.EXE` instead of `C1.EXE` for compiler passes (upstream issue)
+9. **NEXT**: Run lst2asm.py with gs_gs2.json config to produce UASM-compatible .asm from Ghidra .lst
+10. **NEXT**: Assemble with UASM, link with MSC 6.0 LINK.EXE under kvikdos
+11. **NEXT**: Verify byte-exact match with mzdiff
+12. DOSBox runtime verification of decoded structures ⏳ **PENDING**
 
 ### Phase 3-6: unchanged (Ghidra → C, AI unit tests, mzdiff comparison, DOSBox testing)
 
@@ -148,6 +149,13 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 ### mzretools (upstream: neuviemeporte/mzretools)
 1. **instruction.cpp:362** — `INS_CALL_FAR`/`INS_JMP_FAR` incorrectly treated as group 5 instructions. Opcodes 9A (CALL FAR) and EA (JMP FAR) are immediate far calls/jumps with 32-bit operands, NOT group 5 (FF /2, /4, /5). Fixed: `else if ((iclass == INS_CALL_FAR || iclass == INS_JMP_FAR) && opcode == OP_GRP5_Ev)`.
 2. **scanq.cpp:194** — `saveJump` normalized all jump destinations to current routine's segment, breaking far jumps. Fixed: added `isNear` parameter, only move segment for near jumps.
+
+### mzretools (upstream: neuviemeporte/mzretools)
+1. **instruction.cpp:362** — `INS_CALL_FAR`/`INS_JMP_FAR` incorrectly treated as group 5 instructions. Opcodes 9A (CALL FAR) and EA (JMP FAR) are immediate far calls/jumps with 32-bit operands, NOT group 5 (FF /2, /4, /5). Fixed: `else if ((iclass == INS_CALL_FAR || iclass == INS_JMP_FAR) && opcode == OP_GRP5_Ev)`.
+2. **scanq.cpp:194** — `saveJump` normalized all jump destinations to current routine's segment, breaking far jumps. Fixed: added `isNear` parameter, only move segment for near jumps.
+
+### kvikdos (upstream: neuviemeporte/mzretools/tools/emulators/kvikdos)
+1. **Compiler pass detection bug** — Misidentifies Microsoft C 6.0 compiler passes as Borland C (`BC1.EXE`, `BC2.EXE`, `BC3.EXE`) instead of Microsoft C (`C1.EXE`, `C2.EXE`, `C3.EXE`). Causes "Out of memory" / "cannot open DOS executable" errors during compilation. Workaround: Use DOSBox for full compilation, or patch kvikdos.
 
 ### inertia_decompiler
 1. **`tools/dev/check_decompiler_architecture.py:4883`** - Windows path separator bug (allowlist used forward slashes, `Path.relative_to` returns backslashes on Windows)
