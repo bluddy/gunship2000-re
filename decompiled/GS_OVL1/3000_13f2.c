@@ -1,0 +1,13 @@
+/* GS.GS2 3000:13f2 undefined FUN_3000_13f2(void) */
+void __cdecl16far FUN_3000_13f2(char param_1)
+
+{
+  undefined2 unaff_DS;
+  
+  func_0x00000eb0();
+  func_0x00016a62(0xbf,0x8a4,0x119,0x61,7,3,0);
+  func_0x00016a62(0x1658,0x8a4,0x11a,0x60,5,5,0);
+  func_0x00016e72(0x1658,0x8a4,0x11c,0x62,*(char *)(param_1 * 2 + 0x2c06) + 0x11c,
+                  *(char *)(param_1 * 2 + 0x2c07) + 0x62,0x44);
+  return;
+}

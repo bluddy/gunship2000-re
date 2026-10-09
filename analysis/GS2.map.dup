@@ -1,0 +1,115 @@
+#
+# Size of the executable's load module covered by the map
+#
+Size 974f
+#
+# Discovered segments, one per line, syntax is "SegmentName Type(CODE/DATA/STACK) Address [default]"
+# The default data segment is assumed to be used by all routines which don't have data segment overrides.
+# If no default segment is specified, the first one will be used as default.
+#
+Code1 CODE 0851
+Code2 CODE 0926
+#
+# Discovered routines, one per line, syntax is "RoutineName: Segment Type(NEAR/FAR) Extents[DS] [R/U]Block1[DS] [R/U]Block2[DS]... [annotation1] [annotation2]..."
+# The routine extents is the largest continuous block of instructions attributed to this routine and originating
+# at the location determined to be the routine's entrypoint.
+# Blocks are offset ranges relative to the segment that the routine belongs to, specifying address as belonging to the routine.
+# Blocks starting with R contain code that was determined reachable, U were unreachable but still likely belong to the routine.
+# The routine blocks may cover a greater area than the extents if the routine has disconected chunks it jumps into.
+# The extents block and/or the individual routine blocks can have an optional data segment override which is the name
+# of the data segment assumed to be selected within that block.# Possible annotation types:
+# ignore - ignore this routine in processing (comparison, signature extraction etc.)
+# complete - this routine was completely reconstructed into C, only influences stat display when printing map
+# external - is part of an external library (e.g. libc), ignore in comparison, don't count as uncompleted in stats
+# detached - routine has no callers, looks useless, don't count as uncompleted in stats
+# assembly - routine was written in assembly, don't include in comparisons by default
+# duplicate - routine is a duplicate of another
+#
+routine_15: Code1 NEAR 01b0-01b1 R01b0-01b1
+# Routine routine_12 0851:01b2-0851:021b[00006a] is a potential duplicate of routine routine_26 17d1:01f2-17d1:025b[00006a], differs by 0 instructions
+routine_12: Code1 NEAR 01b2-021b R01b2-021b duplicate
+routine_8: Code1 NEAR 021c-0428 R021c-0428 R0984-0999 U099a-09a3 R09a4-09a9
+# Routine routine_9 0851:0429-0851:0528[000100] is a potential duplicate of routine routine_10 17d1:04e4-17d1:05f7[000114], differs by 5 instructions
+routine_9: Code1 NEAR 0429-0528 R0429-0528 duplicate
+routine_5: Code1 NEAR 05a3-05b2 R05a3-05b2
+# Routine routine_10 0851:05b3-0851:05ea[000038] is a potential duplicate of routine routine_12 17d1:068b-17d1:06c2[000038], differs by 0 instructions
+routine_10: Code1 NEAR 05b3-05ea R05b3-05ea duplicate
+# Routine routine_7 0851:05eb-0851:0621[000037] is a potential duplicate of routine routine_8 17d1:06c3-17d1:06f9[000037], differs by 0 instructions
+routine_7: Code1 NEAR 05eb-0621 R05eb-0621 duplicate
+# Routine routine_11 0851:0668-0851:068f[000028] is a potential duplicate of routine routine_25 17d1:0740-17d1:0767[000028], differs by 0 instructions
+routine_11: Code1 NEAR 0668-068f R0668-068f duplicate
+# Routine start 0851:06f8-0851:073b[000044] is a potential duplicate of routine start 17d1:082f-17d1:0877[000049], differs by 1 instructions
+start: Code1 NEAR 06f8-073b R06f8-073b duplicate
+routine_2: Code1 NEAR 073c-079c R073c-079c
+routine_3: Code1 NEAR 079d-0871 R079d-0871
+routine_14: Code1 NEAR 09aa-09c6 R09aa-09c6
+routine_6: Code2 FAR 0009-000a R0009-000a
+routine_13: Code2 FAR 000b-001c R000b-001c
+routine_18: Code2 NEAR 001d-0023 R001d-0023
+routine_23: Code2 NEAR 0024-0030 R0024-0030
+routine_25: Code2 NEAR 0031-003a R0031-003a
+routine_4: Code2 FAR 0143-015f R0143-015f
+# Routine routine_21 0926:01b3-0926:020e[00005c] is a potential duplicate of routine routine_33 18d4:16e2-18d4:173d[00005c], differs by 0 instructions
+routine_21: Code2 NEAR 01b3-020e R01b3-020e duplicate
+# Routine routine_17 0926:020f-0926:0243[000035] is a potential duplicate of routine routine_31 18d4:173e-18d4:1845[000108], differs by 0 instructions
+routine_17: Code2 FAR 020f-0311 R020f-0243 U0244-025a R025b-02de U02df-02e3 R02e4-0311 duplicate
+# Routine routine_19 0926:0312-0926:034f[00003e] is a potential duplicate of routine routine_47 18d4:1846-18d4:1883[00003e], differs by 0 instructions
+routine_19: Code2 NEAR 0312-034f R0312-034f duplicate
+# Routine routine_16 0926:0350-0926:03b8[000069] is a potential duplicate of routine routine_30 18d4:1884-18d4:18ec[000069], differs by 0 instructions
+routine_16: Code2 NEAR 0350-03b8 R0350-03b8 duplicate
+routine_20: Code2 NEAR 03b9-03cc R03b9-03cc
+routine_24: Code2 NEAR 03cd-03e4 R03cd-03e4
+# Routine routine_22 0926:03e5-0926:04bc[0000d8] is a potential duplicate of routine routine_49 18d4:193e-18d4:1a15[0000d8], differs by 0 instructions
+routine_22: Code2 NEAR 03e5-04bc R03e5-04bc duplicate
+#
+# Discovered variables, one per line, syntax is "VariableName: Segment VAR OffsetWithinSegment"
+#
+var_1: Code1 VAR 0002
+var_2: Code1 VAR 0004
+var_3: Code1 VAR 0006
+var_4: Code1 VAR 0007
+var_5: Code1 VAR 0008
+var_6: Code1 VAR 000a
+var_7: Code1 VAR 000c
+var_8: Code1 VAR 000e
+var_9: Code1 VAR 0010
+var_10: Code1 VAR 002c
+var_11: Code1 VAR 0690
+var_12: Code1 VAR 0692
+var_13: Code1 VAR 099a
+var_14: Code1 VAR 099c
+var_15: Code1 VAR 099e
+var_16: Code1 VAR 09a0
+var_17: Code1 VAR 09c7
+var_18: Code1 VAR 09cb
+var_19: Code1 VAR 09cd
+var_20: Code1 VAR 09db
+var_21: Code1 VAR 09dc
+var_22: Code1 VAR 09de
+var_23: Code1 VAR 09e0
+var_24: Code1 VAR 09e2
+var_25: Code1 VAR 09e4
+var_26: Code1 VAR 09e6
+var_27: Code1 VAR 0b48
+var_28: Code1 VAR 0b4b
+var_29: Code1 VAR 0b4d
+var_30: Code1 VAR 0b5f
+var_31: Code1 VAR 0b61
+var_32: Code1 VAR 0b63
+var_33: Code1 VAR 0b65
+var_34: Code1 VAR 0b67
+var_35: Code1 VAR 0b69
+var_36: Code1 VAR 0b6b
+var_37: Code1 VAR 0b6d
+var_38: Code1 VAR 0b6f
+var_39: Code2 VAR 0001
+var_40: Code2 VAR 0002
+var_41: Code2 VAR 000c
+var_42: Code2 VAR 0050
+var_43: Code2 VAR 0051
+var_44: Code2 VAR 04bd
+var_45: Code2 VAR 04bf
+var_46: Code2 VAR 04c1
+var_47: Code1 VAR fffb
+var_48: Code1 VAR fffd
+var_49: Code1 VAR ffff

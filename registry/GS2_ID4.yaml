@@ -1,0 +1,33 @@
+file:
+  name: GS2.GS2
+  ghidra_name: GS2_ID4.bin
+  format: Raw Binary
+  language: x86:LE:16:Real Mode
+  image_base: 0000:0000
+  entry: ''
+  function_count: 1
+blocks:
+- name: ram
+  range: 2000:9750-2000:d46f
+  perm: RWX
+  type: Default
+entries: []
+functions:
+- addr: 2000:d432
+  name: gs2_id4_sub_2000_d432
+  auto_name: FUN_2000_d432
+  sig: undefined gs2_id4_sub_2000_d432(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID4/2000_d432.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+structs: []
+variables: []
+strings: []

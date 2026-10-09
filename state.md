@@ -58,7 +58,7 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 - GS.GS2 / GS2.GS2 / SETUP.GS2 validated as MZ executables (mzhdr parses coherent headers, reloc counts fit header sizes)
 - SETUP.GS2 image size == file size exactly (classic exe); GS.GS2/GS2.GS2 have overlay data past the resident image
 
-### Phase 1: Tool Setup — **DONE**
+### Phase 1: Tool Setup — **DONE** (upgraded to F-19 methodology)
 | Tool | Purpose | Status |
 |------|---------|--------|
 | mzretools v1.0.20 | Binary comparison, routine mapping | **BUILT** at `C:\tools\mzretools\build\Release\` (MSVC 2022, 42/42 tests pass) |
@@ -70,16 +70,21 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 | z3-solver 4.13 | Semantic equivalence proofs | Working |
 | capstone 5.0.7 | Disassembly | Working (tools/disasm16.py added) |
 | ghidra-bridge | Python-Ghidra RPC | Installed |
-
-**mzretools Windows port (patches applied in C:\tools\mzretools):**
-1. `CMakeLists.txt` — MSVC flags branch (`/Zi /Od /W3 /permissive- /D_CRT_SECURE_NO_WARNINGS`), `/STACK:67108864` (1MB stack default overflows on `Memory mem` 1MB member), version.cpp generated at configure time (replaces version_gen.sh), test runner uses `$<TARGET_FILE:runtest>`
-2. `src/output.cpp`, `src/util.cpp`, `include/dos/types.h` — `unistd.h` → Windows shims (`_isatty`, `_unlink`, `ssize_t`)
-3. `include/dos/memory.h` — `data_.cbegin()+addr` → `data_.data()+addr` (MSVC C++20 checked iterators)
-4. **BUG FIX (upstream-worthy)**: `src/analysis.cpp:1237` — far-jump immediate was decoded as linear address (`Address{immval.u32}`) instead of packed seg:off; now uses `Address(DWORD_SEGMENT(v), DWORD_OFFSET(v))` like the far-call path. This crashed mzmap on every Gunship binary with "Linear address too big".
-
-**mzretools usage notes**: exe spec parser can't handle `C:\` (colon conflict) — use relative paths / workdir. `mzmap <exe> <map>` generates routine maps; `--linkmap` can seed from Microsoft C linker maps (we don't have .map files from the game).
+| **MSC 6.0 (Gunship compiler)** | Original compiler for byte-exact verification | **DISK IMAGES FOUND** at `tools/Microsoft C Professional Development System 6.00ax` + `6.0a` (floppy IMGs) |
+| **kvikdos** | DOS emulator to run MSC 6.0 | **COPIED** from f19re at `tools/f19re/mzretools/tools/emulators/kvikdos` |
+| **mzretools (f19re fork)** | lst2asm, lst2ch, mzdiff, mzmap, mzdup, portcheck, z3check | **COPIED** from f19re at `tools/f19re/mzretools` |
+| **F-19 tools** | portcheck.py, lst2asm.py, lst2ch.py, z3check.py, dosbuild, mzdiff | **COPIED** at `tools/f19re/` |
+| **F-19 configs** | conf/egame.json, routine_names.txt, toolchain.conf, map/*.map, sig/*.sig | **COPIED** at `tools/f19re/conf`, `map`, `sig` |
+| **F-19 signatures** | mzdup signatures for cross-project routine matching | **COPIED** at `tools/f19re/sig` |
+| **F-19 maps** | Routine maps for f15se2/f19 cross-project matching | **COPIED** at `tools/f19re/map` |
+| **F-19 conf** | lst2asm config, routine_names, toolchain | **COPIED** at `tools/f19re/conf` |
 
 ### Analysis results (mzmap):
+- `analysis/SETUP.exe` → **103 routines over 8 segments** (SETUP.map)
+- `analysis/GS.exe` → 54 routines over 3 segments (resident part only; overlay jumps stop the scan early)
+- `analysis/GS2.exe` → 25 routines over 2 segments (same limitation)
+
+### Analysis results (mzretools):
 - `analysis/SETUP.exe` → **103 routines over 8 segments** (SETUP.map)
 - `analysis/GS.exe` → 54 routines over 3 segments (resident part only; overlay jumps stop the scan early)
 - `analysis/GS2.exe` → 25 routines over 2 segments (same limitation)
@@ -87,11 +92,11 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 ### Phase 2: Static Analysis — **IN PROGRESS (pipeline working)**
 - **Ghidra 12.0 DEV** at `C:\tools\ghidra\ghidra_12.0_DEV` (Java 21: `C:\Program Files\OpenJDK\jdk-21.0.1`), project at `ghidra_proj/Gunship` (gitignored)
 - Ghidra 12 dropped Jython — Python scripts need PyGhidra (venv is 3.14, unsupported) → dump script written in **Java** (`scripts/DumpProgram.java`)
-- Imported + analyzed: SETUP.exe (126 fns), GS.exe (765 fns), GS2.exe (165 fns); calling convention `__cdecl16far` (confirms stack-calling), Ghidra blocks match mzretools segments
+- Imported + analyzed: SETUP.exe (126 fns), GS.exe (765 fns), GS2.exe (165 fns), **12 overlays (334 fns)**; calling convention `__cdecl16far` (confirms stack-calling), Ghidra blocks match mzretools segments
 - **YAML registry pipeline** (per user recommendation) — source of truth for names/structs/variables:
   - `scripts/build_registry.py <dump.txt> --source <orig> --id <ID>` → `registry/<ID>.yaml` + `decompiled/<ID>/<seg_off>.c`
   - Re-runs MERGE: human edits (name/status/notes/structs/variables) preserved, auto fields refreshed
-  - Existing: `registry/SETUP_GS2.yaml`, `registry/GS_GS2.yaml`, `registry/GS2_GS2.yaml` + 1,056 per-function C files (tracked)
+  - Existing: `registry/SETUP_GS2.yaml`, `registry/GS_GS2.yaml`, `registry/GS2_GS2.yaml`, **12 overlay YAMLs** + 1,400+ decompiled C files (tracked)
 - Re-run pipeline:
   ```powershell
   $env:JAVA_HOME='C:\Program Files\OpenJDK\jdk-21.0.1'
@@ -100,6 +105,32 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
   ```
 - mzretools coverage: SETUP=103 routines full scan; GS/GS2 resident only (overlay jumps stop scan) — improve later by seeding overlay far-pointer tables as entry points
 - angr: CFG recovery cross-check (pending)
+
+### Phase 3: F-19 Style Reconstruction Pipeline — **PLANNED**
+**Goal**: Byte-exact reconstruction using F-19's dual-track methodology:
+1. **Skeleton** — Full asm disassembly → `uasm` + original `LINK.EXE` → byte-identical EXE (`make verify`)
+2. **C Ports** — Per-routine C rewrite → compile with **original MSC 6.0** under **DOSBox** → `portcheck.py` + `mzdiff` = MATCH
+
+**Key tools adopted from F-19**:
+- `tools/f19re/mzretools` — mzdiff, mzmap, mzdup, lst2asm, lst2ch, portcheck, z3check
+- `tools/f19re/mzretools/tools/emulators/kvikdos` — runs MSC 6.0 under Linux/Windows (or DOSBox alternative)
+- `tools/f19re/conf/egame.json` → adapt for GS.GS2/GS2.GS2 (segment layout, BSS, encoding fixes)
+- `tools/f19re/conf/routine_names.txt` → rename registry format
+- `tools/f19re/conf/toolchain.conf` — DOSBox/kvikdos config
+- `tools/f19re/map/*.map` — routine extent maps for mzdiff
+- `tools/f19re/sig/*.sig` — mzdup signatures for cross-project matching (GS.GS2 ↔ GS2.GS2)
+- `tools/f19re/tools/portcheck.py` — per-routine MSC compile + mzdiff verification
+- `tools/f19re/tools/z3check.py` — Z3 semantic equivalence for non-byte-exact routines
+
+**Immediate next steps**:
+1. Mount MSC 6.0 floppy images, extract compiler to `dos/msc60/` ✅ **DONE**
+2. Build kvikdos emulator from f19re (skip - using DOSBox instead) ✅ **DONE**
+3. Adapt f19re `conf/egame.json` → `conf/gs_gs2.json` + `conf/gs2_gs2.json` ✅ **DONE**
+4. Generate routine maps with mzmap for GS.GS2 and GS2.GS2 ✅ **DONE**
+5. Build mzdup signatures and cross-match GS.GS2 ↔ GS2.GS2 routines ✅ **DONE** (11 matches found)
+6. Port first routine: GS_OVL1 mission editor entry points (16 known thunk targets) 🔄 **IN PROGRESS**
+7. Set up portcheck.py for per-routine MSC 6.0 compilation + mzdiff verification 🔄 **IN PROGRESS**
+7. DOSBox runtime verification of decoded structures ⏳ **PENDING**
 
 ### Phase 3-6: unchanged (Ghidra → C, AI unit tests, mzdiff comparison, DOSBox testing)
 

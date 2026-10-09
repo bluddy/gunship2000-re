@@ -1,0 +1,198 @@
+file:
+  name: GS2.GS2
+  ghidra_name: GS2_ID9.bin
+  format: Raw Binary
+  language: x86:LE:16:Real Mode
+  image_base: 0000:0000
+  entry: ''
+  function_count: 12
+blocks:
+- name: ram
+  range: 2000:d470-3000:727f
+  perm: RWX
+  type: Default
+entries: []
+functions:
+- addr: 2000:d5ca
+  name: gs2_id9_sub_2000_d5ca
+  auto_name: FUN_2000_d5ca
+  sig: undefined gs2_id9_sub_2000_d5ca(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID9/2000_d5ca.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:d602
+  name: gs2_id9_sub_2000_d602
+  auto_name: FUN_2000_d602
+  sig: undefined gs2_id9_sub_2000_d602(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID9/2000_d602.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:d624
+  name: gs2_id9_sub_2000_d624
+  auto_name: FUN_2000_d624
+  sig: undefined gs2_id9_sub_2000_d624(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID9/2000_d624.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:d66e
+  name: gs2_id9_sub_2000_d66e
+  auto_name: FUN_2000_d66e
+  sig: undefined gs2_id9_sub_2000_d66e(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID9/2000_d66e.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:db16
+  name: gs2_id9_sub_2000_db16
+  auto_name: FUN_2000_db16
+  sig: undefined gs2_id9_sub_2000_db16(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID9/2000_db16.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:db62
+  name: gs2_id9_sub_2000_db62
+  auto_name: FUN_2000_db62
+  sig: undefined gs2_id9_sub_2000_db62(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID9/2000_db62.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:dc2d
+  name: gs2_id9_sub_2000_dc2d
+  auto_name: FUN_2000_dc2d
+  sig: undefined gs2_id9_sub_2000_dc2d(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID9/2000_dc2d.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:deaa
+  name: gs2_id9_sub_2000_deaa
+  auto_name: FUN_2000_deaa
+  sig: undefined gs2_id9_sub_2000_deaa(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID9/2000_deaa.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:dfe4
+  name: gs2_id9_sub_2000_dfe4
+  auto_name: FUN_2000_dfe4
+  sig: undefined gs2_id9_sub_2000_dfe4(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID9/2000_dfe4.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:e0df
+  name: gs2_id9_sub_2000_e0df
+  auto_name: FUN_2000_e0df
+  sig: undefined gs2_id9_sub_2000_e0df(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID9/2000_e0df.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:e123
+  name: gs2_id9_sub_2000_e123
+  auto_name: FUN_2000_e123
+  sig: undefined gs2_id9_sub_2000_e123(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID9/2000_e123.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:e148
+  name: gs2_id9_sub_2000_e148
+  auto_name: FUN_2000_e148
+  sig: undefined gs2_id9_sub_2000_e148(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID9/2000_e148.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+structs: []
+variables: []
+strings: []

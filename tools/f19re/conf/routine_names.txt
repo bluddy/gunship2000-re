@@ -1,0 +1,280 @@
+# Manual routine renames for map/*.map — format: routine_N newname
+# (offsets verified against lst/EGAME.EXE.lst)
+routine_289 setViewPosition   # seg000:1b56
+routine_393 aspectScaleY      # seg000:19da  ax = y - (y>>2)
+routine_366 drawMapTileObject # seg000:178a  per-tile object draw (called from drawMapTiles)
+routine_276 scaleCoordToLod   # seg000:0918
+routine_277 process3dg        # seg000:099a
+routine_249 complementAngle  # seg000:3374  0x4000 - valueToAngle
+routine_143 rebuildOrientation # seg000:3253  far buildRotationMatrix + clear dirty/counter
+routine_74 moveNearFar        # seg000:5001
+routine_61 setCommWorldbufPtr  # seg000:5045
+routine_138 computeBearing     # seg000:d29d  atan2-style bearing
+routine_140 sinMul             # seg000:d3ec  fixedMulQ14(sine(a),b)
+routine_141 cosMul             # seg000:d404  sinMul(a+0x4000,b)
+routine_129 setDrawColor       # seg000:8f9c  pageFront[2]=pageBack[2]=c
+routine_128 drawStringActivePage # seg000:91e5 draws str when byte_388CA==0
+routine_305 drawTargetBox      # seg000:c4fc  4-arg box draw
+routine_200 rasterize3DWorld   # seg000:1a64  sub_20908 + far sub_2F0A2
+routine_158 sine               # seg000:1c2d  asm sin lookup (stays asm)
+routine_161 fixedMulQ14        # seg000:1bc6  asm fixed multiply (stays asm)
+routine_303 drawHudViewLine   # seg000:8f38  half-scale/clip line wrapper
+routine_111 drawStringCentered # seg000:9219  strStruct fields + gfx_drawString
+routine_253 mapXToScreen      # seg000:8b06  (mapX-centerX)>>(10-zoom)+0x5B
+routine_254 mapYToScreen      # seg000:8b1d  ((mapY-centerY)>>(10-zoom))*3>>2 +0x9F
+routine_149 clampValue        # seg000:d223  plain clamp v>max?max:v<min?min:v
+routine_152 randomRange       # seg000:d46b  (rand()*max)>>15
+routine_115 clampRange        # seg000:d1fa  clamp with <=-0x4000 wrap-to-max
+routine_66  printError        # seg000:104c  drawStringBothPages(msg,0,0x60,0xF)+getch
+routine_124 fillPanelBox       # seg000:90e8  setDrawColor+2-panel fillRectBoth
+routine_207 drawPanelText      # seg000:90cb  fillPanelBox+drawCenteredLabelBox
+routine_313 drawCenteredLabelBox # seg000:9123 panel title bar+centered text
+routine_99  load3DG            # seg000:0f7c  regn.3DG loader
+routine_101 load3DT            # seg000:0e1a  .3dT tile-matrix loader
+routine_100 load3D3            # seg000:0adc  full .3D3 loader (model + 2 LOD files)
+routine_71  load3DAll          # seg000:0abe  load3DG+load3D3+load3DT(regnFile)
+routine_275 signExtendByte     # seg000:d419  byte->int16 sign extend
+routine_222 signOf             # seg000:d436  sgn(x): -1/0/1
+routine_279 seedRng            # seg000:d453  if(!g_inputDisabled) seed=time; srand
+routine_340 exitTimeAccel        # seg000:e010  if(timeAccelMode==2) reset to 1
+routine_211 resetSimObjectLocks  # seg000:4bc8
+routine_336 initWeaponLoadout    # seg000:4c05
+routine_137 hudMessage           # seg000:92b1
+routine_174 applyGravityFall   # seg000:4b38  wreck alt += fallVel, vel->-16
+routine_183 findWaypointFeatures # seg000:4e09  name/copy 2 target slots via storeDefs
+routine_362 drawWeaponRadarInfo # seg000:ab2d  <name> <doppler|impul> radar + max/eff range
+routine_360 matVecDotAxis # seg000:c95f  world->view rotation: dot(vec, matrix column i) -> int32
+routine_307 drawLockReticle # seg000:c60c  'Zahvat celi' label + crosshair @0xE4,0xA0 when target locked
+routine_271 findStoreAtGrid # seg000:c9b2  grid->storeDefs index via findNearestTileObject + cache
+routine_259 drawMapArc # seg000:8c76  polar arc/circle sweep on map, x=cx+r*sin y=cy-r*cos
+routine_262 sendSoundCmd       # seg000:4c98  hwPortWrite((v<<8)+0xDB)
+routine_185 hwPortWrite        # seg000:4cac  noop hw thunk
+routine_281 zoomIn             # seg000:8a1b  zoom/map level up
+routine_341 zoomOut            # seg000:8a54  zoom/map level down
+routine_123 redrawTacMap       # seg000:87ec  redraw tactical map (stub)
+routine_186 initTacMapView     # seg000:8751  scope clip/center init + zoomIn
+routine_280 clearStatusPanel   # seg000:7e62  drawPanelText(2,"",0)
+routine_343 initFlightParams    # seg000:4bf8  altitude=1000, range=6400
+routine_184 initFrameRandom     # seg000:4b53  seedRng+clearStatusPanel+night mode
+routine_337 updatePanelMode    # seg000:8610  mode 0=redrawTacMap,1=drawPanelText SET
+routine_146 commitCommSnapshot  # seg000:4c3c  snapshot view/combat state into commData + recordFrame(8,0)
+routine_177 recordFrame         # seg000:4caf  append {tick,y>>7,x>>7,a,b} to replay log
+routine_330 updateStatusPanel  # seg000:86fc  mode0x16 draws 7 weapon bits + dispatch
+routine_264 buildStoreName     # seg000:4d03  strcpy+cond strcat(weapon name pair)+truncate 25
+routine_40 initStoreData      # seg000:4d77  build name table + store world coords
+routine_335 drawPanelModeText # seg000:8651  mode dispatch; 0x13 builds "Skanner <dir>"
+routine_263 projectWorldPoint  # seg000:7e29  clear clip flag + projectVertex(x<<5,(0x8000-y)<<5,z)
+routine_255 drawMapPoint      # seg000:8fe7  setDrawColor + drawFullscreenLine(x,y,x,y)
+routine_136 drawStatusItem    # seg000:9007  dual-page dirty-checked status cell draw
+routine_282 drawPanelGridText # seg000:9071  drawStringBothPages at panel grid (col,row)
+routine_298 bearingToStore    # seg000:ca74  computeTargetBearing(storeDefs[i].coordX,coordY,1)
+routine_297 bearingToSimObject# seg000:ca94  computeTargetBearing(simObj[i].f1,f2,0)
+routine_260 drawGaugeBar     # seg000:877f  bidir bar meter: val<0 below 0x7B, val>0 above 0xAD
+routine_171 tickWeaponSlots    # seg000:4905  4-slot weapon timer update -> drawStatusItem
+routine_269 getWeaponStat      # seg000:92cd  statTab[idx][classTab[storeDefs[sel].nameIdx&0x7F]&0xF]
+routine_165 plotMapObject      # seg000:8b41  clipped map pt, 1=OOB, big=2x2 dot
+routine_309 getStoreMapCode    # seg000:cb1a  store map glyph: air/gnd code+0x100 or nameIdx
+routine_304 hudPitchScale      # seg000:caf2  HUD pitch-ladder scale: (0x4000-|pitch|)<<12/(viewZ+0x1000)-0x4000
+routine_241 updateEngineSound  # seg000:df1a  engine drone on/off dispatch
+routine_188 setupLodDistances # seg000:dfb4  LOD dist tbl + near/far/bias
+routine_339 copyStoreToWaypoint # seg000:e026  waypoints[dst]=storeDefs[src].{coordX,coordY}
+routine_173 updateTracerParticles # seg000:4aa8  smoke-trail particle ring, recycle 1/16 frames
+routine_342 countermeasures   # seg000:47f1  CM dispenser: cooldown, slot alloc, "<name> wypu}en" msg
+routine_172 updateBulletsAndFire # seg000:4956  tracer integrate + gun fire spawn
+routine_175 updateHudGauge    # seg000:4769  key dispatch + HUD gauge level (alt*roll*range*flags)
+routine_328 drawStatusBar      # seg000:9d5e  horiz status bar: clamp, draw fillRectBoth if >0x6F
+routine_283 formatMissionClock # seg000:9da3  "H:MM:SS" clock via 3x formatTwoDigit, night-mode lead char
+routine_346 formatTwoDigit     # seg000:9e0f  val%60 + leading-zero pad into g_nameBuf
+routine_139 blitSprite         # seg000:9912  fill SpriteParams + clipped/opaque far blit
+routine_58 resFileOpen       # seg000:e19a  forwards to openFile
+routine_60 resFileClose      # seg000:e1be  forwards to closeFile
+routine_266 samCanAcquireTarget # seg000:7757  SAM/weapon acquisition cone check
+routine_170 spawnSamThreat     # seg000:585c  periodic SA-14 SAM launch spawner
+routine_218 drawClippedLineRegion
+routine_268 destroySimObject  # seg000:7800  mark sim object destroyed: kill count, wreck pos, event, sound
+routine_270 destroyGroundTarget # seg000:790e  mark ground target destroyed: events, symbol, smoke, sound
+routine_333 fireMissile # seg000:7ba0  fire selected missile: ammo, projectile slot fill, lock, sound
+routine_7   main             # seg000:0010  program entry: comm-block bind, gfx/ovl init, session
+routine_24  drawCockpit       # seg000:0170  cockpit pic blit + regn name setup
+routine_25  runGameSession    # seg000:01fc  IRQ/int9 install, game loop, restore
+routine_43  initMissionStrings # seg000:0446  trampoline -> sub_10ABE regn loader
+routine_46  setTimerIrqHandler # seg000:1d12  int21h AH=35/25 IRQ vector install (asm)
+routine_53  restoreTimerIrqHandler # seg000:1d59 (asm)
+routine_48  runGameLoop       # seg000:1cd2  register-save shim -> sub_11CDE
+routine_18  gfxInit           # seg000:026a  gfx page/buffer alloc
+routine_15  setupOverlaySlots # seg000:03b2  overlay slot-descriptor copy (asm)
+routine_14  getOverlayLoadSeg # seg000:02b4  DOS exec 4B03h overlay load/mem probe (asm)
+routine_27  restoreCbreakHandler # seg000:1ca6
+routine_33  setupDac          # seg000:1bb4  int10h AX=1012 DAC block set (asm)
+# --- classification pass: Code1 asm helpers ---
+routine_157 cosine            # seg000:1c1d  asm cos lookup: +0x4000 into sinInterp (stays asm)
+routine_245 sinInterp         # seg000:1c39  shared sin/cos table interp core (asm)
+routine_235 sineFar           # seg000:1c58  far shim -> sinInterpB (asm)
+routine_315 cosineFar         # seg000:1c5c  far shim -> cosineB (asm)
+routine_367 cosineB           # seg000:1c60  +0x4000 bias into sinInterpB (asm)
+routine_322 sinInterpB        # seg000:1c64  second sin-table interp core (asm)
+routine_31  getIntVector      # seg000:1cb7  ds:0 [si] -> bx=off,ax=seg fetch (asm)
+routine_73  gameLoopBody      # seg000:1cde  noreturn main game loop (asm)
+routine_75  readBiosTick      # seg000:1fb3  int1Ah AH=0 into tick globals (asm)
+routine_344 biosTickLo        # seg000:1fe2  int1Ah -> ax=low tick (asm)
+routine_72  initTimerState    # seg000:2073  cli-guarded timer state init (asm)
+routine_370 nullsub3          # seg000:a5c7  ret stub (asm)
+routine_78  nullsub4          # seg000:e6ae  ret stub (asm)
+routine_6   nullsub1          # seg000:0268  ret stub (asm)
+routine_5   nullsub2          # seg000:0269  ret stub (asm)
+routine_10  crtPad0           # seg000:0000  16 zero bytes before _main
+# --- classification pass: MSC 5.1 CRT/libc (IDA FLIRT + SLIBCE byte match) ---
+routine_4   __cinit           # seg000:e932  CRT init: dosver, env walk, setargv/envp
+routine_8   _exit             # seg000:e9f6
+routine_9   __exit            # seg000:ea0d
+routine_30  __ctermsub        # seg000:ea52
+routine_13  initterm          # seg000:ea7f  near init/term proc-table walker (asm)
+routine_12  inittermfar       # seg000:ea8e  far init/term proc-table walker (asm)
+routine_2   __FF_MSGBANNER    # seg000:eaa2
+routine_57  __chkstk          # seg000:eac8
+routine_29  __nullcheck       # seg000:eade
+routine_11  __NMSG_TEXT       # seg000:ecfc
+routine_3   __NMSG_WRITE      # seg000:ed27
+routine_54  __maperror        # seg000:edb2
+routine_76  dosmaperr         # seg000:edb8  sets _doserrno + errno from DOS err (asm)
+routine_69  _fclose           # seg000:ede6
+routine_65  _fopen            # seg000:eed2
+routine_67  _fread            # seg000:eefa
+routine_92  __filbuf          # seg000:f0e0
+routine_94  __freebuf         # seg000:f1a0
+routine_112 __getbuf          # seg000:f1ce
+routine_87  __openfile        # seg000:f23a
+routine_93  _fflush           # seg000:f332
+routine_86  __getstream       # seg000:f3a0
+routine_95  _close            # seg000:f3da
+routine_110 _open             # seg000:f474
+routine_191 __cXENIXtoDOSmode # seg000:f607
+routine_91  _read             # seg000:f618
+routine_113 _write            # seg000:f6f6
+routine_196 writeBlock        # seg000:f79c  _write inner int21h AH=40h block write (asm)
+routine_195 _stackavail       # seg000:f81e
+routine_114 __nfree           # seg000:f830  near-heap free (IDA unknown_libname_1)
+routine_194 __nmalloc         # seg000:f842  near-heap alloc (IDA unknown_libname_2)
+routine_286 __amalloc         # seg000:f88b  arena-based alloc (asm)
+routine_349 __amexpand        # seg000:f96e
+routine_348 __amlink          # seg000:f9a8
+routine_285 __amallocbrk      # seg000:f9ca
+routine_347 _brkctl           # seg000:f9ea
+routine_372 brkctlFindSeg     # seg000:fa58  _brkctl heap-segment table search (asm)
+routine_96  _strcat           # seg000:faae
+routine_42  _strcpy           # seg000:faee
+routine_127 _strlen           # seg000:fb20
+routine_97  _itoa             # seg000:fb3c
+routine_144 _kbhit            # seg000:fb58
+routine_89  _getch            # seg000:fb6c
+routine_28  _int86            # seg000:fb84
+routine_70  _movedata         # seg000:fc02
+routine_68  _segread          # seg000:fc20
+routine_192 _strupr           # seg000:fc44
+routine_90  _memcpy           # seg000:fc66
+routine_116 _abs              # seg000:fcf2
+routine_345 _srand            # seg000:fd08
+routine_244 _rand             # seg000:fd1a
+routine_98  _remove           # seg000:fd40  dos\\unlink.asm
+routine_145 __bios_keybrd     # seg000:fd4e
+routine_153 __aNldiv          # seg000:fd62
+routine_150 __aNlmul          # seg000:fdfe
+routine_63  __aNlshl          # seg000:fe32
+routine_151 __aNlshr          # seg000:fe3e
+routine_358 __aNNalshl        # seg000:fe4a  ptr-mode <<= wrapper (IDA unknown_libname_3)
+routine_359 __aNNalshr        # seg000:fe6a  ptr-mode >>= wrapper (IDA unknown_libname_4)
+routine_325 __aNuldiv         # seg000:fe8a
+routine_154 __aNulshr         # seg000:feec
+# --- classification pass: seg001 3D/clip pipeline (asm, f15 egseg1 twins) ---
+routine_373 installDivZeroHandler   # seg001:00b5  save+install int0 vector (asm)
+routine_375 installDivZeroVector    # seg001:00d9  restore saved int0 vector (asm)
+routine_291 drawFlatHorizon         # seg001:060e  flag set + call renderHorizonSky (asm)
+routine_355 storeObjTransformByOpcode # seg001:09d8  opcode&3 indexed transform store (asm)
+routine_293 transformAndCullObjectFar # seg001:09e9  arg->cx/bx/bp + transformAndCullObject (asm)
+routine_368 advanceModelPointerLod  # seg001:09fc  si=modelptr + skipDisplayListByLod (asm)
+routine_299 renderSortedListFar     # seg001:0a18  far shim -> renderSortedList (asm)
+routine_369 rotatePoint3dFar        # seg001:0b6c  reg args + rotatePoint3d (asm)
+routine_290 transformModelVerticesFar # seg001:0d7c  far shim -> transformModelVertices (asm)
+routine_385 transformVertexListThunk # seg001:116a  si=modelptr + projectModelEdges (asm)
+routine_125 projectModelEdgesFar    # seg001:12d2  4-arg shuffle -> projectModelEdges (asm)
+routine_387 transposeOrientationMatrix # seg001:153d  3x3 transpose (asm)
+routine_246 multiplyMatrix3x3Far    # seg001:155c  3-arg shuffle -> multiplyMatrix3x3 (asm)
+routine_386 drawModelDisplayList    # seg001:1700  si=modelptr + renderPrimitiveList (asm)
+routine_388 testVisibilityMask      # seg001:1b46  flag + lodsw & mask (asm)
+routine_238 clipLineFar             # seg001:1c4a  call clipLineCohenSutherland; retf (asm)
+routine_221 drawClipLineGlobal      # seg001:1c4e  reg saves + clipLineCohenSutherland (asm)
+routine_204 flushSpanDirtyRect      # seg001:1e28  reg-convention overlay call (asm)
+routine_203 resetScanlineSpans      # seg001:1e3e  far shim -> resetScanlineSpansImpl (asm)
+routine_205 clipAndRasterizeEdge    # seg001:1fc0  reg saves + clipAndRasterizeEdgeImpl (asm)
+# --- classification pass: seg002 gauges + joystick (asm, f15 egseg2 twins) ---
+routine_104 drawInstrumentGaugesFar # seg002:0006  call drawInstrumentGauges; retf (asm)
+routine_23  setupInstrumentLayoutFar # seg002:000a  call setupInstrumentLayout; retf (asm)
+routine_163 drawInstrumentGauges2Far # seg002:000e  call drawInstrumentGauges2; retf (asm)
+routine_36  setupInstrumentLayout   # seg002:0994  gauge layout globals init (asm)
+routine_251 drawInstrumentGauges2   # seg002:09a8  second instrument-panel renderer (asm)
+routine_162 initJoystickCalibration # seg002:0bde  calibrate center + axis extremes (asm)
+routine_250 copyJoySample           # seg002:0bec  copy axis read into calib slots (asm)
+routine_148 readCalibratedJoystick  # seg002:0bff  read both axes calibrated (asm)
+routine_242 readJoyAxis             # seg002:0c0e  axis-read worker (asm)
+routine_243 scaleJoyAxis            # seg002:0c54  axis delta scaling + clamp (asm)
+routine_26  _copyJoystickData       # seg002:0cc5  copy joy block to es:di (asm)
+routine_17  _restoreJoystickData    # seg002:0cd7  restore joy block from arg (asm)
+# --- classification pass: seg003 ---
+routine_50  restoreInt9Handler      # seg003:005e  cli; write int9 vector from CS-stored (asm)
+# --- classification pass: seg004 reserved BSS/overlay area (all zeros, not code) ---
+routine_34   bss4_01ba      # seg004:0x01ba  reserved zero fill (not code)
+routine_226  bss4_01bf      # seg004:0x01bf  reserved zero fill (not code)
+routine_231  bss4_01c4      # seg004:0x01c4  reserved zero fill (not code)
+routine_233  bss4_01c9      # seg004:0x01c9  reserved zero fill (not code)
+routine_232  bss4_01ce      # seg004:0x01ce  reserved zero fill (not code)
+routine_193  bss4_01d3      # seg004:0x01d3  reserved zero fill (not code)
+routine_239  bss4_01d8      # seg004:0x01d8  reserved zero fill (not code)
+routine_227  bss4_01f1      # seg004:0x01f1  reserved zero fill (not code)
+routine_19   bss4_01f6      # seg004:0x01f6  reserved zero fill (not code)
+routine_317  bss4_01fb      # seg004:0x01fb  reserved zero fill (not code)
+routine_320  bss4_0200      # seg004:0x0200  reserved zero fill (not code)
+routine_319  bss4_0205      # seg004:0x0205  reserved zero fill (not code)
+routine_316  bss4_020a      # seg004:0x020a  reserved zero fill (not code)
+routine_234  bss4_0214      # seg004:0x0214  reserved zero fill (not code)
+routine_300  bss4_0232      # seg004:0x0232  reserved zero fill (not code)
+routine_236  bss4_0237      # seg004:0x0237  reserved zero fill (not code)
+routine_220  bss4_023c      # seg004:0x023c  reserved zero fill (not code)
+routine_237  bss4_0241      # seg004:0x0241  reserved zero fill (not code)
+routine_56   bss4_0246      # seg004:0x0246  reserved zero fill (not code)
+routine_55   bss4_024b      # seg004:0x024b  reserved zero fill (not code)
+routine_229  bss4_0255      # seg004:0x0255  reserved zero fill (not code)
+routine_228  bss4_025a      # seg004:0x025a  reserved zero fill (not code)
+routine_202  bss4_025f      # seg004:0x025f  reserved zero fill (not code)
+routine_230  bss4_0264      # seg004:0x0264  reserved zero fill (not code)
+routine_121  bss4_0269      # seg004:0x0269  reserved zero fill (not code)
+routine_311  bss4_0273      # seg004:0x0273  reserved zero fill (not code)
+routine_318  bss4_0282      # seg004:0x0282  reserved zero fill (not code)
+routine_223  bss4_0287      # seg004:0x0287  reserved zero fill (not code)
+routine_39   bss4_028c      # seg004:0x028c  reserved zero fill (not code)
+routine_105  bss4_0296      # seg004:0x0296  reserved zero fill (not code)
+routine_126  bss4_029b      # seg004:0x029b  reserved zero fill (not code)
+routine_83   bss4_02b9      # seg004:0x02b9  reserved zero fill (not code)
+routine_84   bss4_02c3      # seg004:0x02c3  reserved zero fill (not code)
+routine_79   bss4_02d2      # seg004:0x02d2  reserved zero fill (not code)
+routine_81   bss4_02dc      # seg004:0x02dc  reserved zero fill (not code)
+routine_80   bss4_02e1      # seg004:0x02e1  reserved zero fill (not code)
+routine_22   bss4_02eb      # seg004:0x02eb  reserved zero fill (not code)
+routine_219  bss4_02f0      # seg004:0x02f0  reserved zero fill (not code)
+routine_37   bss4_02f5      # seg004:0x02f5  reserved zero fill (not code)
+routine_350  bss4_02ff      # seg004:0x02ff  reserved zero fill (not code)
+routine_189  bss4_030e      # seg004:0x030e  reserved zero fill (not code)
+routine_21   bss4_0313      # seg004:0x0313  reserved zero fill (not code)
+routine_120  bss4_0318      # seg004:0x0318  reserved zero fill (not code)
+routine_224  bss4_031d      # seg004:0x031d  reserved zero fill (not code)
+routine_225  bss4_0327      # seg004:0x0327  reserved zero fill (not code)
+routine_35   bss4_0331      # seg004:0x0331  reserved zero fill (not code)
+routine_32   bss4_0336      # seg004:0x0336  reserved zero fill (not code)
+routine_51   bss4_0345      # seg004:0x0345  reserved zero fill (not code)
+routine_20   bss4_0354      # seg004:0x0354  reserved zero fill (not code)
+routine_332  bss4_038b      # seg004:0x038b  reserved zero fill (not code)
+routine_45   bss4_03ae      # seg004:0x03ae  reserved zero fill (not code)
+routine_44   bss4_03b3      # seg004:0x03b3  reserved zero fill (not code)
+routine_240  bss4_03b8      # seg004:0x03b8  reserved zero fill (not code)
+routine_323  bss4_03c2      # seg004:0x03c2  reserved zero fill (not code)
+routine_252  bss4_03c7      # seg004:0x03c7  reserved zero fill (not code)
+routine_156  bss4_03cc      # seg004:0x03cc  reserved zero fill (not code)

@@ -1,0 +1,78 @@
+/* GS2.GS2 2000:4a2e undefined FUN_2000_4a2e(void) */
+void __cdecl16far FUN_2000_4a2e(uint param_1,int param_2)
+
+{
+  undefined2 unaff_DS;
+  undefined2 uVar1;
+  undefined2 uVar2;
+  undefined2 uVar3;
+  
+  func_0x00005187();
+  func_0x00007e2f(0x37f,4,0xaa,0x13c,0xbc);
+  func_0x00007e50(0x7e0,2);
+  func_0x0000510a(0x7e0,4,0xac,0x540b,0x7e0,2);
+  func_0x00007e50(0x37f,10);
+  if (param_2 == 0) {
+    if (*(byte *)0x593c == param_1) {
+      uVar1 = 0x37f;
+      func_0x0000510a(0x7e0,0x32,0xac,0x5275,0x7e0,2);
+      if (((*(byte *)0xaa4 & 0xf) == 0) || (uVar1 = 0x2000, DAT_2000_ad23 != '\0')) {
+        func_0x0000515a(uVar1,4,0xb2,0x4b,5,10,0x20);
+      }
+      else {
+        if ((*(byte *)0xaa4 & 0xf) == 1) {
+          uVar1 = 0x222d;
+        }
+        else {
+          uVar1 = 0x2222;
+        }
+        func_0x0000510a(0x2000,0x4c,0xb2,uVar1,0x2000,2);
+      }
+      if ((*(byte *)((uint)*(byte *)0x593c * 0x20 + 0xb76) & 0x20) == 0) {
+        func_0x0000515a(0x37f,0x32,0xac,0x20,6,10,0x20);
+        func_0x0000515a(0x37f,0xe0,0xac,0x5c,6,10,0x20);
+      }
+    }
+    else {
+      func_0x0000510a(0x7e0,0x32,0xac,0x535b,0x7e0,2);
+    }
+    if (((*(byte *)(param_1 * 0x1e) & 7) == 6) && ((*(byte *)(param_1 * 0x1e) & 0xf8) != 0)) {
+      return;
+    }
+    uVar3 = 0x37;
+    uVar2 = 0xac;
+    uVar1 = 0xab;
+  }
+  else {
+    if (*(byte *)0x593c == param_1) {
+      uVar1 = 0x37f;
+      func_0x0000510a(0x7e0,0x32,0xac,0x3a2c,0x7e0,2);
+      if (((*(byte *)0xaa4 & 0xf) == 0) || (uVar1 = 0x2000, DAT_2000_ad23 != '\0')) {
+        func_0x0000515a(uVar1,0x87,0xac,0x4b,5,10,0x20);
+      }
+      else {
+        if ((*(byte *)0xaa4 & 0xf) == 1) {
+          uVar1 = 0x222d;
+        }
+        else {
+          uVar1 = 0x2222;
+        }
+        func_0x0000510a(0x2000,0xcf,0xac,uVar1,0x2000,2);
+      }
+      if ((*(byte *)((uint)*(byte *)0x593c * 0x20 + 0xb76) & 0x20) == 0) {
+        func_0x0000515a(0x37f,0x32,0xac,0x20,6,10,0x20);
+      }
+    }
+    else {
+      func_0x0000510a(0x7e0,0x32,0xac,0x52dc,0x7e0,2);
+    }
+    if (*(char *)(param_1 * 0x46 + 0x489) != '\b') {
+      return;
+    }
+    uVar3 = 0x108;
+    uVar2 = 0xb2;
+    uVar1 = 4;
+  }
+  func_0x0000515a(0x37f,uVar1,uVar2,uVar3,6,10,0x20);
+  return;
+}

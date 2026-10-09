@@ -1,0 +1,18 @@
+file:
+  name: GS2.GS2
+  ghidra_name: GS2_ID7.bin
+  format: Raw Binary
+  language: x86:LE:16:Real Mode
+  image_base: 0000:0000
+  entry: ''
+  function_count: 0
+blocks:
+- name: ram
+  range: 1000:9750-1000:e52f
+  perm: RWX
+  type: Default
+entries: []
+functions: []
+structs: []
+variables: []
+strings: []

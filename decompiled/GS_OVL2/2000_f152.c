@@ -1,0 +1,138 @@
+/* GS.GS2 2000:f152 undefined FUN_2000_f152(void) */
+void __cdecl16far FUN_2000_f152(void)
+
+{
+  char *pcVar1;
+  bool bVar2;
+  int iVar3;
+  uint uVar4;
+  uint uVar5;
+  undefined2 uVar6;
+  undefined2 unaff_DS;
+  ulong uVar7;
+  long lVar8;
+  undefined2 local_10;
+  undefined2 uStack_e;
+  undefined2 *puStack_c;
+  int local_a;
+  undefined2 *puStack_8;
+  uint uVar9;
+  
+  func_0x00000eb0();
+  puStack_8 = (undefined2 *)0xbf;
+  local_a = 0xf166;
+  iVar3 = func_0x00014e66();
+  if (-1 < iVar3) {
+    puStack_8 = (undefined2 *)0x0;
+    local_a = 0x1f13;
+    puStack_c = (undefined2 *)0x686;
+    uStack_e = 0x14e6;
+    local_10 = 0xf17f;
+    func_0x000156c4();
+    *(undefined2 *)0xb60f = 8;
+    *(undefined2 *)0x9bb2 = 0;
+    *(undefined2 *)0x9bb4 = 0;
+    *(undefined2 *)0x9bba = 0;
+    *(undefined2 *)0x9bb6 = 0;
+    puStack_8 = (undefined2 *)0xffff;
+    local_a = 0x14e6;
+    puStack_c = (undefined2 *)0xf19d;
+    FUN_2000_f938();
+    pcVar1 = (char *)*(undefined4 *)0x9f18;
+    uVar6 = (undefined2)((ulong)pcVar1 >> 0x10);
+    uVar4 = *pcVar1 * 0x421 ^
+            *(uint *)((((int)*pcVar1 ^ *(uint *)((char *)pcVar1 + 2)) % 0x13) * 2 + 0x4ba8) ^
+            *(uint *)((char *)pcVar1 + 2);
+    puStack_8 = (undefined2 *)((uVar4 >> 1) + uVar4);
+    local_a = 0x4c94;
+    puStack_c = &local_10;
+    uStack_e = 0x14e6;
+    local_10 = 0xf1f6;
+    func_0x000032d0();
+    puStack_8 = &local_10;
+    local_a = *(undefined2 *)0x9f1a;
+    puStack_c = (undefined2 *)(*(int *)0x9f18 + 4);
+    uStack_e = 0xbf;
+    local_10 = 0xf20f;
+    func_0x00003d8c();
+    puStack_8 = (undefined2 *)0xbf;
+    local_a = 0xf21b;
+    uVar7 = func_0x00002ea2();
+    uVar5 = uVar4 >> 1;
+    iVar3 = uVar5 + uVar4;
+    uVar9 = (uint)CARRY2(uVar5,uVar4);
+    *(bool *)0x9bb9 = uVar7 == CONCAT12(CARRY2(uVar5,uVar4),iVar3);
+    puStack_8 = (undefined2 *)0xbf;
+    local_a = 0xf24a;
+    lVar8 = func_0x00002ea2();
+    bVar2 = lVar8 == CONCAT22(uVar9,iVar3);
+    *(bool *)0x9bb9 = bVar2;
+    puStack_8 = (undefined2 *)0x78;
+    local_a = (int)bVar2;
+    puStack_c = (undefined2 *)0x1;
+    uStack_e = 0xbf;
+    uVar6 = 0x106a;
+    local_10 = 0xf26e;
+    func_0x0001077a();
+    uVar9 = 0;
+    while (uVar9 < 5) {
+      uStack_e = 0xfe92;
+      local_a = 0;
+      puStack_c = (undefined2 *)0xa;
+      local_10 = 0;
+      puStack_8 = (undefined2 *)uStack_e;
+      uVar6 = func_0x00003bb8(uVar6);
+      func_0x0001077a(0xbf,0,uVar6);
+      uStack_e = 99;
+      local_10 = 0x2b2;
+      func_0x0001077a(0x106a,0,*(char *)((int)*(undefined4 *)0x9f18 + 0x5e) + -0x30);
+      uVar6 = 0xbf;
+      puStack_8 = (undefined2 *)0xf288;
+      func_0x00003c64();
+      uVar9 = 0x106a;
+    }
+    *(undefined1 *)0x9bb8 = 0;
+    puStack_8 = (undefined2 *)0x0;
+    puStack_c = (undefined2 *)0xf2f5;
+    local_a = uVar6;
+    func_0x000003da();
+    puStack_8 = (undefined2 *)0x78;
+    local_a = (int)*(char *)0x9bb9;
+    puStack_c = (undefined2 *)0x1;
+    uStack_e = 0;
+    local_10 = 0xf308;
+    func_0x0001077a();
+    puStack_8 = (undefined2 *)0x1;
+    local_a = 0x106a;
+    puStack_c = (undefined2 *)0xf317;
+    func_0x00000614();
+    puStack_8 = (undefined2 *)0x2;
+    local_a = 0;
+    puStack_c = (undefined2 *)0xf326;
+    func_0x00000614();
+    puStack_8 = (undefined2 *)0x0;
+    local_a = 0;
+    puStack_c = (undefined2 *)0xf335;
+    func_0x00000614();
+    puStack_8 = (undefined2 *)0x3;
+    local_a = 0;
+    puStack_c = (undefined2 *)0xf344;
+    func_0x00000614();
+    puStack_8 = (undefined2 *)0x4;
+    local_a = 0;
+    puStack_c = (undefined2 *)0xf353;
+    func_0x00000614();
+    puStack_8 = (undefined2 *)0x5;
+    local_a = 0;
+    puStack_c = (undefined2 *)0xf362;
+    func_0x00000614();
+    puStack_8 = (undefined2 *)0x6;
+    local_a = 0;
+    puStack_c = (undefined2 *)0xf371;
+    func_0x00000614();
+    puStack_8 = (undefined2 *)0xf379;
+    func_0x0001534e();
+    return;
+  }
+  return;
+}

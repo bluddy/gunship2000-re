@@ -1,0 +1,26 @@
+{
+  "id": "GS_OVL1",
+  "source": "GS.GS2",
+  "data_start": 139280,
+  "size": 57808,
+  "real_base_seg": 6777,
+  "ghidra_seg": 10873,
+  "entries": [
+    "20F4:52CA",
+    "1ABF:00DA",
+    "1ABF:02CA",
+    "1ABF:02F2",
+    "1ABF:0328",
+    "1ABF:014A",
+    "1ABF:0368",
+    "1ABF:01C6",
+    "1ABF:01DE",
+    "1ABF:0212",
+    "1ABF:0062",
+    "1ABF:022A",
+    "1ABF:006A",
+    "1ABF:0242",
+    "1ABF:028A",
+    "20F4:540A"
+  ]
+}

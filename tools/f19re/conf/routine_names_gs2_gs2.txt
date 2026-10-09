@@ -1,0 +1,101 @@
+# Manual routine renames for GS2.GS2 — format: routine_N newname
+# (offsets verified against lst/GS2_GS2.lst)
+
+# Overlay id2 (joystick/init) - base 0x0975
+routine_1000 id2_joystick_init        # 0975:0000 - thunk idx 0
+routine_1010 id2_joystick_calibrate   # 0975:045A - thunk idx 1
+
+# Overlay id3 (main flight module) - base 0x0975
+routine_2000 id3_main_entry           # 0975:0000 - thunk idx 2
+routine_2010 id3_flight_loop          # 0975:005C - thunk idx 3
+
+# Overlay id4 (settings/graphics) - base 0x1975
+routine_3000 id4_settings_menu        # 1975:0000 - thunk idx 4
+
+# Overlay id5 (input/joystick) - base 0x1975
+routine_4000 id5_input_handler        # 1975:0000 - thunk idx 5
+
+# Overlay id6 (gameplay/UI) - base 0x0975
+routine_5000 id6_gameplay_main        # 0975:0000 - thunk idx 6
+
+# Overlay id7 (unknown) - base 0x0975
+routine_6000 id7_unknown              # 0975:458D - thunk idx 5
+
+# Overlay id8 (combat) - base 0x1D47
+routine_7000 id8_combat_main          # 1D47:00AA - thunk idx 6
+
+# Overlay id9 (comms/wingman) - base 0x1D47
+routine_7100 id9_wingman_comms        # 1D47:00AA - thunk idx 7
+
+# Overlay id10 (startup data/string pool) - base 0x272D
+routine_8000 id10_string_pool         # 272D:0000 - startup data
+routine_8010 id10_ui_strings          # settings, joystick, wingman callouts
+
+# Resident code (segment 0851)
+routine_10000 entry_point             # 0851:06F8
+routine_10010 save_psp_registers      # 0851:06F8
+routine_10020 bootstrap               # 0851:0529 (file 37452)
+routine_10020 stack_switch            # 0851:06F8
+routine_10030 dir_walk                # 0851:0529 (file 37549)
+routine_10040 overlay_loader          # 0851:0529 (call 08D2C)
+routine_10050 file_open               # 0851:0529 (call 08F39)
+routine_10060 crt_startup             # 0851:0529 (ljmp 02A2:0016)
+routine_10070 main_entry              # 02A2:0016 (CRT)
+routine_10080 main                    # main()
+
+# CRT routines (segment 02A2)
+routine_20000 crt_startup_02A2        # 02A2:0016
+routine_20010 crt_envp_setup          # 02A2:xxxx
+routine_20020 crt_argv_setup          # 02A2:xxxx
+routine_2030 crt_main_call            # 02A2:xxxx
+routine_2040 crt_bss_zero             # 02A2:xxxx
+
+# Overlay thunks (10 thunks at 38917-39016)
+routine_30000 thunk_idx0_id2          # 38917: 0975:0000 idx 0
+routine_30010 thunk_idx1_id3          # 38927: 1D47:00AA idx 1
+routine_30020 thunk_idx2_id3b         # 38937: 1D47:00AA idx 2
+routine_30030 thunk_idx3_id2b         # 38947: 0975:0000 idx 3
+routine_30040 thunk_idx4_id2c         # 38957: 0975:045A idx 4
+routine_30050 thunk_idx5_id3c         # 38967: 0975:005C idx 5
+routine_30060 thunk_idx6_id5          # 38977: 1975:0000 idx 6
+routine_30070 thunk_idx7_id9          # 38987: 1D47:458D idx 7
+routine_30080 thunk_idx8_id4          # 38997: 1975:0000 idx 8
+routine_30090 thunk_idx9_id6          # 39007: 0975:0000 idx 9
+
+# String pool (id10 data @296944, DS=0x272D)
+routine_5000 string_quit_dos          # 0x2FC4 "Quit to DOS (Y/N)"
+routine_5010 string_esc_continue      # 0x2FD6 "[ESC] to Continue"
+routine_5020 string_crt_full_3d       # 0x2FF7 "[C] CRT FULL 3D ON"
+routine_5030 string_distant_objects   # 0x300B "[D] DISTANT OBJECTS ON"
+routine_5030 string_graduated_sky     # 0x3023 "[G] GRADIATED SKY ON"
+routine_5040 string_fancy_fills       # 0x3039 "[F] FANCY FILLS ON"
+routine_5050 string_palette_effects   # 0x304D "[P] PALETTE EFFECTS ON"
+routine_5060 string_all_sounds_off    # 0x306F "[A] ALL SOUNDS OFF"
+routine_5070 string_digitized_sound   # 0x3082 "[D] DIGITIZED SOUND OFF"
+routine_5080 string_rotor_sound       # 0x309A "[R] ROTOR SOUND OFF"
+routine_5090 string_warning_sound     # 0x30AE "[W] WARNING SOUND OFF"
+routine_5100 string_center_joystick   # 0x30CC "CENTER THE JOYSTICK(S)"
+routine_5110 string_move_joystick     # 0x30E3 "MOVE THE JOYSTICK"
+routine_5120 string_upper_left        # 0x30F5 "TO THE UPPER-LEFT"
+routine_5130 string_lower_right       # 0x3107 "TO THE LOWER-RIGHT"
+routine_5140 string_press_button      # 0x311A "THEN PRESS A BUTTON"
+routine_5150 string_disengaging       # 0x3163 "[ DIS-ENGAGING ]"
+routine_5160 string_out_of_action     # 0x31F5 "[ OUT OF ACTION ]"
+routine_5170 string_demo_mode         # 0x3208 "GUNSHIP 2000: DEMO MODE"
+routine_5180 string_copyright         # 0x3220 "Copyright 1991 MicroProse Software Inc."
+routine_5190 string_call_it_day       # 0x3248 "CALL IT A DAY (Y/N)"
+routine_5195 string_joystick_error    # 0x326B "* JOYSTICK ERROR *"
+routine_5200 string_reached_dest      # 0x327E ": I've reached destination"
+routine_5210 string_engaging_enemy    # 0x3299 ": I'm engaging enemy"
+routine_5220 string_going_in          # 0x32AF ": I'm going in..."
+routine_5230 string_taking_damage     # 0x32C1 ": I'm taking damage"
+routine_5240 string_fuel_low          # 0x32D5 ": My fuel is low"
+routine_5250 string_fuel_critical     # 0x32E6 ": My fuel is critical"
+routine_5260 string_reached_safe      # 0x331A ": I've reached safe zone"
+routine_5270 string_permission_fire   # 0x3333 ": Permission to fire!"
+routine_5280 string_objective_sighted # 0x3349 ": Objective sighted!"
+routine_5290 string_exiting_combat    # 0x335E ": Exiting combat zone"
+routine_5300 string_change_secondary  # 0x3374 ": Change secondary to "
+routine_5310 string_ascii_table       # 0x2D82 "!\"#$%&'()*+,-.0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXY"
+routine_5320 string_wingman_impul     # 0x32AF ": I'm going in..."
+# ... more strings in id10 data

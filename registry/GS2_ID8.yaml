@@ -1,0 +1,168 @@
+file:
+  name: GS2.GS2
+  ghidra_name: GS2_ID8.bin
+  format: Raw Binary
+  language: x86:LE:16:Real Mode
+  image_base: 0000:0000
+  entry: ''
+  function_count: 10
+blocks:
+- name: ram
+  range: 2000:d470-3000:72cf
+  perm: RWX
+  type: Default
+entries: []
+functions:
+- addr: 2000:d839
+  name: gs2_id8_sub_2000_d839
+  auto_name: FUN_2000_d839
+  sig: undefined gs2_id8_sub_2000_d839(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID8/2000_d839.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:dda3
+  name: gs2_id8_sub_2000_dda3
+  auto_name: FUN_2000_dda3
+  sig: undefined gs2_id8_sub_2000_dda3(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID8/2000_dda3.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:ddf5
+  name: gs2_id8_sub_2000_ddf5
+  auto_name: FUN_2000_ddf5
+  sig: undefined gs2_id8_sub_2000_ddf5(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID8/2000_ddf5.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:df74
+  name: gs2_id8_sub_2000_df74
+  auto_name: FUN_2000_df74
+  sig: undefined gs2_id8_sub_2000_df74(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID8/2000_df74.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:e356
+  name: gs2_id8_sub_2000_e356
+  auto_name: FUN_2000_e356
+  sig: undefined gs2_id8_sub_2000_e356(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID8/2000_e356.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:e4fc
+  name: gs2_id8_sub_2000_e4fc
+  auto_name: FUN_2000_e4fc
+  sig: undefined gs2_id8_sub_2000_e4fc(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID8/2000_e4fc.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:e6c0
+  name: gs2_id8_sub_2000_e6c0
+  auto_name: FUN_2000_e6c0
+  sig: undefined gs2_id8_sub_2000_e6c0(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID8/2000_e6c0.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:e6ee
+  name: gs2_id8_sub_2000_e6ee
+  auto_name: FUN_2000_e6ee
+  sig: undefined gs2_id8_sub_2000_e6ee(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID8/2000_e6ee.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:e747
+  name: gs2_id8_sub_2000_e747
+  auto_name: FUN_2000_e747
+  sig: undefined gs2_id8_sub_2000_e747(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID8/2000_e747.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:e7d8
+  name: gs2_id8_sub_2000_e7d8
+  auto_name: FUN_2000_e7d8
+  sig: undefined gs2_id8_sub_2000_e7d8(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID8/2000_e7d8.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+structs: []
+variables: []
+strings: []

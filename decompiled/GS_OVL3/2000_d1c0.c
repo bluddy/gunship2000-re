@@ -1,0 +1,16 @@
+/* GS.GS2 2000:d1c0 undefined FUN_2000_d1c0(void) */
+void __cdecl16far FUN_2000_d1c0(int param_1,int param_2)
+
+{
+  int iVar1;
+  undefined2 unaff_DS;
+  
+  func_0x00000eb0();
+  iVar1 = (int)*(char *)(param_1 * 0x29 + -0x52a8);
+  func_0x00016658(0xbf,0x892,(iVar1 / 6) * 0x30,iVar1 % 6 << 5,0x30,0x20,0x880,0xf7);
+  func_0x0001077a(0x1658,0,0,0xee,0);
+  if (param_2 != 0) {
+    func_0x00016658(0x106a,0x880,0xf7,0xd,0x30,0x20,0x86e,0xf7,0xd);
+  }
+  return;
+}

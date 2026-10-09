@@ -1,0 +1,573 @@
+file:
+  name: GS.GS2
+  ghidra_name: GS_OVL0.bin
+  format: Raw Binary
+  language: x86:LE:16:Real Mode
+  image_base: 0000:0000
+  entry: ''
+  function_count: 37
+blocks:
+- name: ram
+  range: 2000:a790-2000:e32f
+  perm: RWX
+  type: Default
+entries: []
+functions:
+- addr: 2000:a7ce
+  name: gs_ovl0_sub_2000_a7ce
+  auto_name: FUN_2000_a7ce
+  sig: undefined gs_ovl0_sub_2000_a7ce(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_a7ce.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:ade4
+  name: gs_ovl0_sub_2000_ade4
+  auto_name: FUN_2000_ade4
+  sig: undefined gs_ovl0_sub_2000_ade4(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_ade4.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:b180
+  name: gs_ovl0_sub_2000_b180
+  auto_name: FUN_2000_b180
+  sig: undefined gs_ovl0_sub_2000_b180(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_b180.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:b54a
+  name: gs_ovl0_sub_2000_b54a
+  auto_name: FUN_2000_b54a
+  sig: undefined gs_ovl0_sub_2000_b54a(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_b54a.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:b5a2
+  name: gs_ovl0_sub_2000_b5a2
+  auto_name: FUN_2000_b5a2
+  sig: undefined gs_ovl0_sub_2000_b5a2(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_b5a2.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:b6c6
+  name: gs_ovl0_sub_2000_b6c6
+  auto_name: FUN_2000_b6c6
+  sig: undefined gs_ovl0_sub_2000_b6c6(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_b6c6.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:b722
+  name: gs_ovl0_sub_2000_b722
+  auto_name: FUN_2000_b722
+  sig: undefined gs_ovl0_sub_2000_b722(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_b722.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:b742
+  name: gs_ovl0_sub_2000_b742
+  auto_name: FUN_2000_b742
+  sig: undefined gs_ovl0_sub_2000_b742(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_b742.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:b82c
+  name: gs_ovl0_sub_2000_b82c
+  auto_name: FUN_2000_b82c
+  sig: undefined gs_ovl0_sub_2000_b82c(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_b82c.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:b994
+  name: gs_ovl0_sub_2000_b994
+  auto_name: FUN_2000_b994
+  sig: undefined gs_ovl0_sub_2000_b994(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_b994.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:ba50
+  name: gs_ovl0_sub_2000_ba50
+  auto_name: FUN_2000_ba50
+  sig: undefined gs_ovl0_sub_2000_ba50(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_ba50.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:bada
+  name: gs_ovl0_sub_2000_bada
+  auto_name: FUN_2000_bada
+  sig: undefined gs_ovl0_sub_2000_bada(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_bada.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:be5a
+  name: gs_ovl0_sub_2000_be5a
+  auto_name: FUN_2000_be5a
+  sig: undefined gs_ovl0_sub_2000_be5a(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_be5a.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:bf34
+  name: gs_ovl0_sub_2000_bf34
+  auto_name: FUN_2000_bf34
+  sig: undefined gs_ovl0_sub_2000_bf34(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_bf34.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:bf88
+  name: gs_ovl0_sub_2000_bf88
+  auto_name: FUN_2000_bf88
+  sig: undefined gs_ovl0_sub_2000_bf88(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_bf88.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:bfba
+  name: gs_ovl0_sub_2000_bfba
+  auto_name: FUN_2000_bfba
+  sig: undefined gs_ovl0_sub_2000_bfba(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_bfba.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:c09a
+  name: gs_ovl0_sub_2000_c09a
+  auto_name: FUN_2000_c09a
+  sig: undefined gs_ovl0_sub_2000_c09a(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_c09a.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:c0f0
+  name: gs_ovl0_sub_2000_c0f0
+  auto_name: FUN_2000_c0f0
+  sig: undefined gs_ovl0_sub_2000_c0f0(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_c0f0.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:c328
+  name: gs_ovl0_sub_2000_c328
+  auto_name: FUN_2000_c328
+  sig: undefined gs_ovl0_sub_2000_c328(void)
+  return_type: undefined
+  calling_convention: unknown
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_c328.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:ccb2
+  name: gs_ovl0_sub_2000_ccb2
+  auto_name: FUN_2000_ccb2
+  sig: undefined gs_ovl0_sub_2000_ccb2(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_ccb2.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:ce20
+  name: gs_ovl0_sub_2000_ce20
+  auto_name: FUN_2000_ce20
+  sig: undefined gs_ovl0_sub_2000_ce20(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_ce20.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:d0a8
+  name: gs_ovl0_sub_2000_d0a8
+  auto_name: FUN_2000_d0a8
+  sig: undefined gs_ovl0_sub_2000_d0a8(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_d0a8.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:d22a
+  name: gs_ovl0_sub_2000_d22a
+  auto_name: FUN_2000_d22a
+  sig: undefined gs_ovl0_sub_2000_d22a(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_d22a.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:d494
+  name: gs_ovl0_sub_2000_d494
+  auto_name: FUN_2000_d494
+  sig: undefined gs_ovl0_sub_2000_d494(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_d494.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:d4d4
+  name: gs_ovl0_sub_2000_d4d4
+  auto_name: FUN_2000_d4d4
+  sig: undefined gs_ovl0_sub_2000_d4d4(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_d4d4.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:d70c
+  name: gs_ovl0_sub_2000_d70c
+  auto_name: FUN_2000_d70c
+  sig: undefined gs_ovl0_sub_2000_d70c(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_d70c.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:d732
+  name: gs_ovl0_sub_2000_d732
+  auto_name: FUN_2000_d732
+  sig: undefined gs_ovl0_sub_2000_d732(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_d732.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:d77a
+  name: gs_ovl0_sub_2000_d77a
+  auto_name: FUN_2000_d77a
+  sig: undefined gs_ovl0_sub_2000_d77a(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_d77a.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:d9b6
+  name: gs_ovl0_sub_2000_d9b6
+  auto_name: FUN_2000_d9b6
+  sig: undefined gs_ovl0_sub_2000_d9b6(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_d9b6.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:da32
+  name: gs_ovl0_sub_2000_da32
+  auto_name: FUN_2000_da32
+  sig: undefined gs_ovl0_sub_2000_da32(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_da32.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:dbbc
+  name: gs_ovl0_sub_2000_dbbc
+  auto_name: FUN_2000_dbbc
+  sig: undefined gs_ovl0_sub_2000_dbbc(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_dbbc.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:dcf6
+  name: gs_ovl0_sub_2000_dcf6
+  auto_name: FUN_2000_dcf6
+  sig: undefined gs_ovl0_sub_2000_dcf6(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_dcf6.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:df0c
+  name: gs_ovl0_sub_2000_df0c
+  auto_name: FUN_2000_df0c
+  sig: undefined gs_ovl0_sub_2000_df0c(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_df0c.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:df4c
+  name: gs_ovl0_sub_2000_df4c
+  auto_name: FUN_2000_df4c
+  sig: undefined gs_ovl0_sub_2000_df4c(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_df4c.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:df78
+  name: gs_ovl0_sub_2000_df78
+  auto_name: FUN_2000_df78
+  sig: undefined gs_ovl0_sub_2000_df78(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_df78.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:e126
+  name: gs_ovl0_sub_2000_e126
+  auto_name: FUN_2000_e126
+  sig: undefined gs_ovl0_sub_2000_e126(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_e126.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:e288
+  name: gs_ovl0_sub_2000_e288
+  auto_name: FUN_2000_e288
+  sig: undefined gs_ovl0_sub_2000_e288(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS_OVL0/2000_e288.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+structs: []
+variables: []
+strings: []

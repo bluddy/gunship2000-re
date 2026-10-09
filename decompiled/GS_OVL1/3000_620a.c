@@ -1,0 +1,45 @@
+/* GS.GS2 3000:620a undefined FUN_3000_620a(void) */
+int __cdecl16far FUN_3000_620a(int param_1,undefined2 param_2)
+
+{
+  undefined2 uVar1;
+  undefined2 unaff_DS;
+  
+  func_0x00000eb0();
+  *(undefined2 *)0xa246 = 0xffff;
+  if (param_1 == 2) {
+    func_0x0001b3ec(0xbf);
+    return -1;
+  }
+  func_0x00010be0(0xbf,0x2ee4);
+  func_0x00003ac4(0x10bc,*(undefined2 *)0xbc36);
+  func_0x00010be0(0xbf,0x2efc);
+  FUN_3000_61d8();
+  *(undefined2 *)0xbc36 = *(undefined2 *)0xbc34;
+  *(undefined2 *)0xbc34 = *(undefined2 *)0xbc32;
+  *(undefined2 *)0xbc32 = *(undefined2 *)0xbc30;
+  *(undefined2 *)0xbc30 = 0xa000;
+  func_0x00017666(0x10bc,1,0x2f0a);
+  func_0x00017b12(0x1741);
+  func_0x00017ada(0x1741,0x2f16);
+  func_0x00017666(0x1741,2,0x2f23);
+  func_0x00017666(0x1741,3,0x2f30);
+  func_0x0000c8c0(0x1741,0x8a4,*(int *)0x2a34 + 2,*(int *)0x2a36 + 1,*(int *)0x2a38 + -3,6,0xca);
+  func_0x0000c980(0xc87,3);
+  func_0x0000c928(0xc87,0xb);
+  func_0x0000ca50(0xc87,param_2);
+  func_0x00010be0(0xc87,0x2f3e);
+  FUN_3000_60a8(&param_1);
+  FUN_3000_7bd8();
+  *(undefined2 *)0xbc30 = *(undefined2 *)0xbc32;
+  *(undefined2 *)0xbc32 = *(undefined2 *)0xbc34;
+  *(undefined2 *)0xbc34 = *(undefined2 *)0xbc36;
+  func_0x00010be0(0x10bc,0x2f4a);
+  FUN_3000_61f4();
+  uVar1 = func_0x000165c5(0x10bc,4);
+  *(undefined2 *)0xbc36 = uVar1;
+  func_0x00010be0(0x1658,0x2f62);
+  func_0x00017b12(0x10bc);
+  func_0x00017ada(0x1741,0x2f75);
+  return param_1;
+}

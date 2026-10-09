@@ -1,0 +1,94 @@
+# Manual routine renames for GS.GS2 — format: routine_N newname
+# (offsets verified against lst/GS_GS2.lst)
+
+# Overlay rec0 (campaign/replay) - base 0x1A79
+routine_1 editor_entry_mission_select   # 1ABF:0062 - thunk idx 1
+routine_2 editor_entry_mission_edit     # 1ABF:006A - thunk idx 2
+routine_3 editor_entry_campaign         # 1ABF:00DA - thunk idx 3
+routine_4 editor_entry_replay           # 1ABF:014A - thunk idx 4
+routine_5 editor_entry_briefing         # 1ABF:01C6 - thunk idx 5
+routine_6 editor_entry_debrief          # 1ABF:01DE - thunk idx 6
+routine_7 editor_entry_options          # 1ABF:0212 - thunk idx 7
+routine_8 editor_entry_credits          # 1ABF:0062 - thunk idx 8
+
+# Overlay rec1 (mission editor) - base 0x1A79
+routine_9 editor_main_entry             # 1ABF:00DA - main editor entry
+routine_10 editor_save_mission          # 1ABF:014A
+routine_20 editor_load_mission          # 1ABF:02CA
+routine_30 editor_delete_mission        # 1ABF:02F2
+routine_40 editor_place_unit            # 1ABF:0328
+routine_50 editor_set_waypoint          # 1ABF:014A
+routine_60 editor_place_object          # 1ABF:01C6
+routine_70 editor_set_trigger           # 1ABF:01DE
+routine_80 editor_set_briefing          # 1ABF:01C6
+routine_90 editor_validate_mission      # 1ABF:01DE
+routine_100 editor_preview_mission      # 1ABF:0212
+routine_110 editor_export_mission       # 1ABF:0062
+routine_120 editor_import_mission       # 1ABF:022A
+routine_130 editor_test_mission         # 1ABF:006A
+routine_140 editor_undo_redo            # 1ABF:0242
+routine_150 editor_settings             # 1ABF:028A
+routine_160 editor_exit                 # 20F4:52CA
+
+# Overlay rec2 (briefing) - base 0x1A79
+routine_200 briefing_main               # 1A79:17D4
+routine_210 briefing_load_mission       # 1C89:000C
+routine_220 briefing_show_objectives    # 1F13:096A
+routine_230 briefing_select_helicopter  # 1C89:0032
+routine_240 briefing_select_weapons     # 1C89:00B74
+routine_250 briefing_select_copilot     # 1C89:00A12
+routine_260 briefing_show_map           # 1DF9:0196
+routine_270 briefing_launch             # 1BFF:000A
+
+# Overlay rec3 (debrief/awards) - base 0x1A79
+routine_300 debrief_main                # 1C07:002A
+routine_310 debrief_show_results        # 1A79:0000
+routine_320 debrief_awards              # 1C07:1B4C
+routine_330 debrief_promotion           # 1DBD:0002
+routine_340 debrief_save_progress       # 1BF6:0006
+routine_350 debrief_next_mission        # 1CF5:0004
+routine_360 debrief_replay              # 1A79:01E6
+routine_370 debrief_quit                # 1AB5:000A
+routine_380 debrief_stats               # 1C4B:0002
+routine_390 debrief_career_summary      # 1A79:0000
+routine_400 debrief_continue            # 1BB6:0000
+routine_410 debrief_retry               # 1D6B:0002
+routine_420 debrief_mission_log         # 1AB5:0C18
+routine_430 debrief_end_campaign        # 1D6B:034C
+
+# Resident code (segment 17D1)
+routine_1000 entry_point                # 17D1:082F
+routine_1010 save_psp_registers         # 17D1:082F
+routine_1020 bootstrap                  # 17D1:0878
+routine_1030 stack_switch               # 17D1:08E9
+routine_1040 dir_walk                   # 17D1:08E9
+routine_1050 overlay_loader             # 17D1:025C
+routine_1060 file_open                  # 17D1:04E4
+routine_1070 zero_range                 # 17D1:067B
+routine_1080 ems_xms_init               # 17D1:08D4
+routine_1090 crt_startup                # 17D1:0018
+routine_1100 main_entry                 # 17D1:0DEA
+routine_1110 flag_parser                # 17D1:0D28
+routine_1120 game_init                  # 17D1:0046
+
+# CRT routines (segment 00BF)
+routine_2000 crt_startup_00BF          # 00BF:0018
+routine_2010 crt_envp_setup             # 00BF:0308
+routine_2020 crt_argv_setup             # 00BF:049A
+routine_2030 crt_main_call              # 00BF:0110
+routine_2040 crt_bss_zero               # 00BF:02C0
+
+# DGROUP string pack (offsets from DGROUP base 0x2B38)
+routine_3000 string_gs2000_cat          # 0x07FB "GS2000.CAT"
+routine_3010 string_gs2000_dat          # 0x0806 "GS2000.DAT"
+routine_3020 string_misc_gs2            # 0x0811 "MISC.GS2"
+routine_3030 string_c_file_info         # 0x6848 "_C_FILE_INFO="
+routine_3040 string_ms_crt_banner       # 0x0008 "MS Run-Time Library..."
+
+# Overlay thunks (51 thunks at 17D1:0E42-0F64)
+routine_4000 thunk_entry_0             # 17D1:0E42 - idx 0 (resident)
+routine_4010 thunk_entry_1             # 17D1:0E4C - idx 1
+routine_4020 thunk_entry_2             # 17D1:0E56 - idx 2
+# ... (51 total thunks)
+
+# EOF

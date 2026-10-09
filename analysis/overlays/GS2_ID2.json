@@ -1,0 +1,12 @@
+{
+  "id": "GS2_ID2",
+  "source": "GS2.GS2",
+  "data_start": 41248,
+  "size": 11584,
+  "real_base_seg": 2421,
+  "ghidra_seg": 6517,
+  "entries": [
+    "0975:0000",
+    "0975:045A"
+  ]
+}

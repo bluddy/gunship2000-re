@@ -159,6 +159,97 @@ formats:
     sources: [ghidra]
     evidence: "decompiled 1f61_029a/0428/04ca/060e/008e/00fc; INT21 open/read/lseek cluster at image 0x27AE-0x2A2A"
     open_questions: "magic at DS:0x9BF; DS:0x86C4/0x86C0 catalog state writer (directory file location + seg*16+hdr file mapping now confirmed elsewhere)"
+  - id: fmt.overlay_functions_gs_gs2
+    claim: >
+      GS.GS2 overlay rec1 (mission editor, 142 functions): entry points at
+      1ABF:0062/006A/00DA/014A/01C6/01DE/0212/022A/0242/028A (mission
+      select/edit/load/save), 20F4:52CA/540A (20F4 segment exports); AI
+      system at 3000:3aee/3a48/3a48/4080/4288 (slot allocation, unit lookup,
+      state machine, scoring); main state machine at 3000:0158/0574.
+      rec0 (campaign, 37 fns), rec2 (briefing, 75 fns), rec3 (debrief, 43 fns).
+    certainty: high
+    sources: [binary, ghidra]
+    evidence: >
+      thunk table mapping verified; thunk targets match rec1 entry points
+      (140498, 140506, 140618, 140730, 140854, 140878, 140930, 140954,
+      140978, 141050, 141114, 141154, 141208, 141272, 187018, 187338);
+      AI functions at 3000:3aee/3a48/4080/4288 confirmed by string refs
+      and cross-references; state machines at 3000:0158/0574 decompiled.
+  - id: fmt.overlay_functions_gs2_gs2
+    claim: >
+      GS2.GS2 9 overlays (ids 2-10): id2/3/6/7 @0x975 (arena1, 64KB), id4/5
+      @0x1975 (arena2), id8/9 @0x1D47 (arena3), id10 @0x272D (startup data
+      117KB string pool + BSS + stack). id2/10 loaded at startup (flags
+      0x05/0x01). 10 thunks @38,917->38,916 (stub 0851:0529), trailer idx
+      0..7 verified against record w0. id2 (joystick init), id3 (64KB main),
+      id4 (settings), id5 (input), id6 (gameplay UI), id8/9 (combat/comms).
+    certainty: high
+    sources: [binary, ghidra]
+    evidence: >
+      directory @38,523 count=9 verified; arena chain arithmetic exact
+      (id2 w2=40272->id3 w2=52832->id4 w2=121008...); 10 thunks at
+      38,917-39,016 with trailer idx=record idx verified via w0 match;
+      string pool in id10 (296944+) resolves push-imm refs from ids 2-9.
+  - id: fmt.mz_reloc_format
+    claim: "MZ relocation table entries are (offset, segment) order (LE), linear = seg*16+off; runtime = link + L everywhere; 2,017 entries in GS.GS2 @file 30, 300 in GS2.GS2 @file 30"
+    certainty: confirmed
+    sources: [binary]
+    evidence: "reloc[0] (0,0)->lin5=word 00BF (call 00bf:02c0 seg); reloc[919]->lin 57335=lcall seg; reloc[85]->lin 3094=mov di,2b38 imm; verified all 2017/300"
+  - id: fmt.gs_dgroup_init
+    claim: >
+      GS.GS2 DGROUP (link 0x2B38) init data ships as overlay rec4 (startup,
+      base 0x2896): rec4 data = 10,784-B gap [0x2896,0x2B38) (RTLink far
+      ptrs) + DGROUP [0x0000,0x742E) at file 250,608 -> ends exactly at EOF
+      (280,350); rec4 end link 0x327B = DGROUP:0x742E = CRT BSS-zero start
+      [0x742E,0xE2A0). String pack inside (byte-verified): DGROUP 0x07FB =
+      "GS2000.CAT", 0x0806 = "GS2000.DAT", 0x0811 = "MISC.GS2",
+      0x6848 = "_C_FILE_INFO=", 0x0008 = MS CRT banner. GS2.GS2 analog =
+      id10 (flag 0x01, base 0x272D): string pool at data start (file
+      296,944 = DS-relative 0), BSS tail, MZ stack SS=0x45FE inside it.
+    certainty: confirmed
+    sources: [binary]
+    evidence: >
+      file-position arithmetic exact in both files; string bytes read
+      directly; push/mov-imm refs from overlay code resolve against
+      DGROUP0 file positions (250,608 / 296,944) byte-exactly.
+  - id: fmt.mz_header
+    claim: "GS.GS2 header: 512-para header, e_cp covers resident image only (116616 bytes), 2017 relocs, entry 17D1:082F; overlay/arena data follows file image"
+    certainty: confirmed
+    sources: [binary, mzretools]
+    evidence: "mzhdr; reloc scan (all 2017 targets in-image, word2 max 0x18D4); Ghidra blocks"
+  - id: fmt.catalog
+    claim: >
+      GS2000.CAT / GS2000.DAT / MBUILDER.CAT are resource catalogs with
+      identical format: [u16 count] + count * 24-byte records
+      {name[12], ?[4], length u32, file_offset u32}; directory occupies
+      first 2+24*count bytes, file data follows and offsets chain from there.
+    certainty: confirmed
+    sources: [binary]
+    evidence: >
+      GS2000.CAT: count=105 (ADS.PIC...), first offset=2522=2+105*24,
+      next offset 22463=2522+19941 (length field) - chain verified.
+      GS2000.DAT: count=85 (BASE.SCN, BRIEFING.SCN...), dir end=2042=2+85*24.
+      Matches overlay loader FUN_1f61_060e read pattern exactly.
+  - id: fmt.catalog_reader
+    claim: "Catalog reader FUN_1f61_060e reads [u16 count] + count*24 records (name[12], ?[4], len u32 @+0x10, off u32 @+0x14); used for GS2000.CAT (105), GS2000.DAT (85), MBUILDER.CAT (16)"
+    certainty: confirmed
+    sources: [binary, ghidra]
+    evidence: "decompiled 1f61_060e.c matches catalog format exactly; DS:0x806='GS2000.DAT' verified"
+  - id: exec.overlay_cross_refs
+    claim: >
+      Overlay cross-references: GS.GS2 rec1 (mission editor) calls resident
+      CRT (00BF:02C0) and resident code (037F:xxxx) via far calls; rec0-3
+      internal calls use arena-relative seg:off; thunk table (51 entries)
+      mediates rec0-3 calls. GS2.GS2 id2-9 call resident CRT (02A2:xxxx)
+      and resident code (037F:xxxx) via far calls; id10 provides string pool
+      at DS=0x272D. Thunk trailer = record index verified for both.
+    certainty: high
+    sources: [binary, ghidra]
+    evidence: >
+      GS.GS2: 51 thunks with trailer=rec_idx (0..3, FFFF resident); GS2.GS2:
+      10 thunks trailer=rec_idx (0..7) verified via w0==ljmp_seg; far call
+      targets in overlays point to arena bases (0x1A79, 0x1975, 0x1D47,
+      0x272D) and resident segs (0x037F, 0x02A2, 0x0DEA).
   - id: fmt.catalog
     claim: >
       GS2000.CAT / GS2000.DAT / MBUILDER.CAT are resource catalogs with

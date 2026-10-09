@@ -1,0 +1,48 @@
+file:
+  name: GS2.GS2
+  ghidra_name: GS2_ID5.bin
+  format: Raw Binary
+  language: x86:LE:16:Real Mode
+  image_base: 0000:0000
+  entry: ''
+  function_count: 2
+blocks:
+- name: ram
+  range: 2000:9750-2000:bbbf
+  perm: RWX
+  type: Default
+entries: []
+functions:
+- addr: 2000:bb78
+  name: gs2_id5_sub_2000_bb78
+  auto_name: FUN_2000_bb78
+  sig: undefined gs2_id5_sub_2000_bb78(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID5/2000_bb78.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+- addr: 2000:bb94
+  name: gs2_id5_sub_2000_bb94
+  auto_name: FUN_2000_bb94
+  sig: undefined gs2_id5_sub_2000_bb94(void)
+  return_type: undefined
+  calling_convention: __cdecl16far
+  is_thunk: false
+  decompiled: true
+  status: identified
+  c: decompiled/GS2_ID5/2000_bb94.c
+  certainty: low
+  sources:
+  - binary
+  - ghidra
+  evidence: Unanalyzed, likely helper function
+structs: []
+variables: []
+strings: []
