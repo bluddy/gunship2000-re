@@ -152,8 +152,9 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 10. **Track 1 (Skeleton): GS2.exe + SETUP.exe byte-identical rebuilds** ✅ **DONE (2026-10-10)** — same pipeline, one command each (`venv\Scripts\python scripts/build_verify.py GS2` / `SETUP`). GS2 load file (40,271 B, 300 relocs) byte-identical; **SETUP whole file** (21,687 B — classic MZ, no overlay — 261 relocs) byte-identical. See the Track 1 section for the SETUP-specific fixes (collapsed-function export, bss straddling the image end, bss-tail truncation in normalize).
 11. **Full executable inventory completed (2026-10-10)** — 24 MZ + 4 COM executables in `game/` (not 3!). **Chosen for Track 1 expansion** (self-contained, high-value): AdLib (`ASOUND.GS2/GS3/GS4/LOG`), Roland (`RSOUND.GS2/GS3/GS4/LOG`), `MGRAPHIC.GS2`, `LABS.GS2`, `PLAYER.GS2`, `GS2000.COM`. Skipped as unnecessary: DSOUND/ISOUND/NSOUND (sound variants), MISC.GS2 (F-19 leftover), ADS.GS2 (loader), SETUP.EXE/CD (small COM variant). See § Executable Inventory.
 12. **Track 1 expansion FROZEN (2026-10-10)** after ASOUND2 byte-identical (commit `31e41e0`) — remaining drivers hit a systematic IDA-DS=FF0 symbolic-operand bug (root-caused, fix designed). All findings, the ASOUND3 diagnosis, resume plan, and infra notes are frozen in `docs/track1_expansion_sound_drivers.md`. IDA DBs + listings already exported for ASOUND3/4/L, RSOUND2/3/4/L, MGRAPHIC, LABS, PLAYER; targets registered in `build_verify.py`.
-13. **NEXT (Track 2 - C Ports)**: per-routine MSC 6.0 C ports of GS.GS2 / GS2.GS2 / SETUP.GS2 — DOSBox-X backend for compilation (avoids kvikdos compiler pass bug); `portcheck.py` + `mzdiff` verification
-14. DOSBox runtime verification of decoded structures ⏳ **PENDING**
+13. **Track 2 (C Ports) INFRASTRUCTURE READY (2026-10-10)** — `scripts/portcheck_gs.py` working end-to-end: compile C with MSC 6.0 under DOSBox-X → extract routine bytes from `/Fc` .cod listing → compare against original binary bytes. Tested with simple routine, pipeline functional.
+14. **NEXT (Track 2 - C Ports)**: per-routine MSC 6.0 C ports of GS.GS2 / GS2.GS2 / SETUP.GS2 — DOSBox-X backend for compilation; `portcheck.py` + `mzdiff` verification
+15. DOSBox runtime verification of decoded structures ⏳ **PENDING**
 
 ### Phase 3-6: unchanged (Ghidra → C, AI unit tests, mzdiff comparison, DOSBox testing)
 
