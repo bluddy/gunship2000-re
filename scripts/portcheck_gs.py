@@ -59,9 +59,11 @@ def parse_cod_listing(cod_path: str, routine_name: str) -> bytes:
         if in_routine and "ENDP" in line.upper():
             break
         if in_routine:
-            # Parse code bytes: offset followed by hex bytes
-            # Example: *** 000000  33 c0      xor ax,ax
-            match = re.match(r'\s*\*{3}\s+[0-9A-F]{6}\s+((?:[0-9A-F]{2}\s+)+)', line)
+            # Parse code bytes from MSC /Fc listing format:
+            # *** 000000\t9a 00 00 00 00 \t\tcall\tFAR PTR _sub_10bf_02c0
+            # Extract hex bytes between offset and double-tab/instruction
+            # Offset uses lowercase hex; bytes are uppercase
+            match = re.match(r'\s*\*{3}\s+[0-9a-fA-F]{6}[\t\s]+(.+?)(?:\t{2,}|\s{2,}|$)', line)
             if match:
                 hex_bytes = match.group(1).strip().split()
                 routine_bytes.extend(bytes(int(b, 16) for b in hex_bytes))
@@ -74,14 +76,20 @@ def to_83_cod(name: str) -> str:
     return base + ".COD"
 
 def get_original_bytes(exe_path: str, segment: int, offset: int, length: int) -> bytes:
-    """Extract bytes from original EXE at given segment:offset (load module)."""
+    """Extract bytes from original EXE at given IDA segment:offset.
+    
+    IDA uses segment base 0x1000 for first code segment (seg000).
+    Load module starts at header_paras * 16 in the file.
+    File offset = load_offset + (segment - 0x1000) * 16 + offset
+    """
     with open(exe_path, "rb") as f:
         f.seek(0x08)
         header_paras = int.from_bytes(f.read(2), "little")
         load_offset = header_paras * 16
     
-    linear_addr = segment * 16 + offset
-    file_offset = load_offset + linear_addr
+    # IDA segment 0x1000 = first code segment at load module offset 0
+    linear_in_module = (segment - 0x1000) * 16 + offset
+    file_offset = load_offset + linear_in_module
     
     with open(exe_path, "rb") as f:
         f.seek(file_offset)
