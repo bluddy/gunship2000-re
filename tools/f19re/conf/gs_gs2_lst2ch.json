@@ -1,0 +1,25 @@
+{
+    "preamble": [
+        ".286",
+        "OPTION NOSCOPED",
+        "dgroup group dseg, bss"
+    ],
+    "coda": [ "END start" ],
+    "include": "lst/gs_gs2.inc",
+    "in_segments": [
+        "seg000", "seg001", "seg002", "seg003", "seg004", "dseg", "bss"
+    ],
+    "code_segments": [
+        "seg000", "seg001", "seg002", "seg003", "seg004"
+    ],
+    "data_segments": [ "dseg" ],
+    "data_size": "0x65e0",
+    "bss": [
+        { "seg": "dseg", "begin": "0x65e0", "end": "0x9ebf" }
+    ],
+    "subs": [
+        { "from": "assume (ds|es|ss):dseg\\b", "to": "assume \\1:dgroup" }
+    ],
+    "extract": [],
+    "replace": []
+}
