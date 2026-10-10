@@ -13,6 +13,8 @@ from util import error, info, debug, start_proc, start_segment, end_proc, end_se
 curseg = ''
 curproc = ''
 lineno = 0
+# Track external symbols (FAR PTR calls) per routine
+curproc_externs = set()
 
 def process_token(token):
     # remove undserscores from tokens except ones starting with double underscore and known library symbols
@@ -36,12 +38,27 @@ def process_line(line):
         parts = stripped.split()
         if len(parts) >= 3:
             # Find the instruction part (after hex bytes)
-            # Hex bytes are 2-char hex values, instruction starts after them
-            # Simple heuristic: instruction starts at position where we see non-hex
-            instr_parts = parts[2:]  # skip *** and offset
+            parts = parts[2:]  # skip *** and offset
             # Filter out hex byte tokens (2-char hex)
-            instr_tokens = [p for p in instr_parts if not re.match(r'^[0-9a-fA-F]{2}$', p)]
+            instr_tokens = [p for p in parts if not re.match(r'^[0-9a-fA-F]{2}$', p)]
             if instr_tokens:
+                instr = ' '.join(instr_tokens)
+                # Track external FAR PTR calls
+                # Pattern: call FAR PTR _symbol
+                far_call_match = re.search(r'call\s+FAR\s+PTR\s+([_\w]+)', instr, re.IGNORECASE)
+                if far_call_match:
+                    sym = far_call_match.group(1)
+                    # MSC adds underscore prefix to C functions
+                    if not sym.startswith('_'):
+                        sym = '_' + sym
+                    curproc_externs.add(sym)
+                    # Also track jmp FAR PTR
+                far_jmp_match = re.search(r'jmp\s+FAR\s+PTR\s+([_\w]+)', instr, re.IGNORECASE)
+                if far_jmp_match:
+                    sym = far_jmp_match.group(1)
+                    if not sym.startswith('_'):
+                        sym = '_' + sym
+                    curproc_externs.add(sym)
                 return ' '.join(instr_tokens)
         return ''
     tokens = line.split()
@@ -94,17 +111,23 @@ def process_assembly(file, outdir):
             if not curseg:
                 error(f"New procedure '{newproc} 'without open segment", lineno)
             curproc = newproc
+            # Reset externs for new routine
+            global curproc_externs
+            curproc_externs = set()
             outfilename = f"{outdir}/{newproc}.asm"
             info(f"Found routine: '{curproc}' -> {outfilename}")
             if outfile:
                 outfile.close()
-                outfile = None
             outfile = open(outfilename,"w")
         elif endproc := end_proc(p):
             if not curseg:
                 error(f"Closing procedure '{endproc} 'without open segment", lineno)
             if not curproc:
                 error(f"Closing procedure '{endproc}' without it being open", lineno)
+            # Write EXTRN declarations before ENDP
+            if curproc_externs and outfile:
+                for sym in sorted(curproc_externs):
+                    outfile.write(f"EXTRN {sym}:FAR\n")
             # ENDP does not mean procedure ended, there could be a function chunk belonging to the current procedure past it, 
             # so keep curproc value as it is
             debug(f"Routine end: '{curproc}'")

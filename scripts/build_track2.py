@@ -38,7 +38,7 @@ def to_83(name: str) -> str:
 def run_dosbox(config_path: str, timeout: int = 120) -> tuple[bool, str]:
     try:
         result = subprocess.run(
-            [DOSBOX_X, "-exit", "-conf", config_path],
+            [DOSBOX_X, "-exit", "-log-con", "-conf", config_path],
             capture_output=True, text=True, timeout=timeout, cwd=os.getcwd()
         )
         return result.returncode == 0, result.stdout + result.stderr
@@ -58,9 +58,27 @@ def compile_c_module(c_files: list, module_name: str, workdir: str) -> tuple[boo
         shutil.copy2(c_file, os.path.join(msc_dir, c_83))
         c_83_list.append(c_83)
     
-    # DOSBox config
+    # Use first C file's name for COD base (8.3 format)
+    first_c = os.path.basename(c_files[0])
+    cod_base = os.path.splitext(first_c)[0].upper()[:8]
+    c_83_list = [os.path.basename(f).upper()[:8] + ".C" for f in c_files]
     c_args = " ".join(c_83_list)
-    cod_base = module_name.upper()[:8]
+    
+    # Create batch file for compilation
+    bat_content = f"""@echo off
+echo BATCH_START
+dir bin\\cl.exe
+ver
+bin\\cl /c /Gs /Fc{cod_base} /Ic:\\include {c_args}
+echo CL_RAN
+dir *.COD
+dir *.OBJ
+echo BATCH_END
+"""
+    bat_path = os.path.join(msc_dir, "compile.bat")
+    with open(bat_path, "w", encoding="ascii") as f:
+        f.write(bat_content)
+    
     config = f"""[sdl]
 fullscreen=false
 [dosbox]
@@ -75,7 +93,28 @@ nosound=true
 [autoexec]
 mount c {MSC_ROOT}
 c:
-bin\\cl /c /Gs /Fc{cod_base} /Ic:\\include {c_args} > compile.log 2>&1
+compile.bat
+exit
+"""
+    bat_path = os.path.join(msc_dir, "compile.bat")
+    with open(bat_path, "w", encoding="ascii") as f:
+        f.write(bat_content)
+    
+    config = f"""[sdl]
+fullscreen=false
+[dosbox]
+machine=svga_s3
+memsize=16
+[cpu]
+core=normal
+cputype=386
+cycles=max
+[mixer]
+nosound=true
+[autoexec]
+mount c {MSC_ROOT}
+c:
+compile.bat
 exit
 """
     config_path = os.path.join(workdir, "dosbox_compile.conf")
@@ -84,13 +123,10 @@ exit
     
     success, output = run_dosbox(config_path, timeout=180)
     
-    # Check compile log
-    log_path = os.path.join(msc_dir, "compile.log")
-    if os.path.exists(log_path):
-        with open(log_path, "r") as f:
-            log = f.read()
-            print(f"Compile log:\n{log}")
+    # Print DOSBox output for debugging
+    print(f"DOSBox output:\n{output}")
     
+    # Check if COD file was created
     cod_path = os.path.join(msc_dir, f"{cod_base}.COD")
     if not os.path.exists(cod_path):
         return False, f".cod file not found: {cod_path}"
@@ -99,7 +135,7 @@ exit
     shutil.copy2(cod_path, os.path.join(workdir, f"{cod_base}.cod"))
     
     # Cleanup MSC dir
-    for fname in c_83_list + [f"{cod_base}.COD", f"{cod_base}.OBJ", "compile.log"]:
+    for fname in c_83_list + [f"{cod_base}.COD", f"{cod_base}.OBJ", "compile.log", "compile.bat"]:
         fpath = os.path.join(msc_dir, fname)
         if os.path.exists(fpath):
             os.remove(fpath)
@@ -136,7 +172,7 @@ def replace_routines(ida_asm: str, routine_dir: str, output_asm: str) -> bool:
         return False
 
 def assemble_link(asm_file: str, name: str) -> tuple[bool, str]:
-    """Assemble with UASM (Windows) and link with LINK.EXE via link_mz.sh."""
+    """Assemble with UASM (Windows) and link with LINK.EXE via DOSBox."""
     try:
         # UASM (Windows) - compile 16-bit code
         obj_file = os.path.join(os.getcwd(), f"{name}.obj")
@@ -150,18 +186,66 @@ def assemble_link(asm_file: str, name: str) -> tuple[bool, str]:
             print(f"stderr: {result.stderr}")
             return False, ""
         
-        # Link via link_mz.sh (kvikdos)
+        # Link via DOSBox (like link_mz.sh but using DOSBox)
         print(f"Linking {name}.obj...")
+        
+        msc_dir = os.path.join(os.getcwd(), MSC_ROOT)
+        build_dir = os.path.join(os.path.expanduser("~"), "gunship_build")
+        os.makedirs(build_dir, exist_ok=True)
+        
+        # Copy .obj to build dir
+        build_obj = os.path.join(build_dir, f"{name}.obj")
+        shutil.copy2(obj_file, build_obj)
+        
+        # Create response file for LINK
+        rsp_content = f"""D:\\{name}.obj
+D:\\{name}.exe
+D:\\{name}.map
+;
+"""
+        rsp_path = os.path.join(build_dir, f"{name}.rsp")
+        with open(rsp_path, "w", encoding="ascii") as f:
+            f.write(rsp_content)
+        
+        # DOSBox config for linking
+        link_config = f"""[sdl]
+fullscreen=false
+[dosbox]
+machine=svga_s3
+memsize=16
+[cpu]
+core=normal
+cputype=386
+cycles=max
+[mixer]
+nosound=true
+[autoexec]
+mount c {MSC_ROOT}
+mount d {build_dir.replace(os.sep, '/')}
+d:
+C:\\BINB\\LINK.EXE @D:\\{name}.rsp
+exit
+"""
+        link_config_path = os.path.join(os.getcwd(), f"link_{name}.conf")
+        with open(link_config_path, "w", encoding="ascii") as f:
+            f.write(link_config)
+        
         result = subprocess.run([
-            "wsl", "bash", "scripts/link_mz.sh", name
+            DOSBOX_X, "-exit", "-log-con", "-conf", link_config_path
         ], capture_output=True, text=True, timeout=120, cwd=os.getcwd())
+        
         if result.returncode != 0:
             print(f"Link failed (rc={result.returncode})")
             print(f"stdout: {result.stdout}")
             print(f"stderr: {result.stderr}")
             return False, ""
         
-        exe_path = os.path.join(os.path.expanduser("~"), "gunship_build", f"{name}.exe")
+        exe_path = os.path.join(build_dir, f"{name}.exe")
+        if not os.path.exists(exe_path):
+            print(f"Link failed: {exe_path} not created")
+            return False, ""
+        
+        print(f"Linked: {exe_path}")
         return True, exe_path
     except Exception as e:
         print(f"Assemble/link error: {e}")
@@ -170,10 +254,23 @@ def assemble_link(asm_file: str, name: str) -> tuple[bool, str]:
         return False, ""
 
 def run_mzdiff(orig_exe: str, test_exe: str, map_file: str) -> bool:
-    """Run mzdiff to compare."""
+    """Run mzdiff (via WSL) to compare."""
     try:
+        # Convert Windows paths to WSL paths
+        def to_wsl_path(win_path: str) -> str:
+            win_path = os.path.abspath(win_path)
+            drive, path = os.path.splitdrive(win_path)
+            drive_letter = drive[0].lower()  # 'C:' -> 'c'
+            wsl_path = f"/mnt/{drive_letter}{path.replace(os.sep, '/')}"
+            return wsl_path
+        
+        orig_wsl = to_wsl_path(orig_exe)
+        test_wsl = to_wsl_path(test_exe)
+        map_wsl = to_wsl_path(map_file)
+        
         result = subprocess.run([
-            MZDIFF, orig_exe, test_exe, "--map", map_file
+            "wsl", "/home/yotam/projects/gunship2000-re/tools/f19re/mzretools/debug/mzdiff",
+            orig_wsl, test_wsl, "--map", map_wsl
         ], capture_output=True, text=True, timeout=60)
         print(result.stdout)
         if result.stderr:
