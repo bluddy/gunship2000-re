@@ -135,8 +135,9 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 **DOSBox-X MSC 6.0 Compilation — GOTCHAS (2026-10-10)**:
 - **8.3 filename limit**: ALL source/batch/object files MUST be ≤8.3 format (e.g. `t.c`, `c.bat`, `t.obj`). Long names become `COMPIL~1.BAT` and break CL.EXE/LINK.EXE.
 - **ASCII encoding only**: Source files must be pure ASCII (no UTF-8 BOM, no UTF-16). PowerShell defaults to UTF-16 LE — use `Set-Content -Encoding ASCII`.
+- **No `2>&1` redirection**: DOS only supports `> file` (stdout). Stderr goes to console. Use separate runs or check ERRORLEVEL.
 - **DOSBox-X config**: `dosbox_msc60.conf` mounts `tools/msc6.0/C600` as `C:\` with PATH `c:\bin;c:\binb`, INCLUDE `c:\include`, LIB `c:\lib`.
-- **Compile command**: `bin\cl /c /Ic:\include t.c` (compile-only, produces `t.obj`). Without `/c`, CL prompts interactively for linker inputs.
+- **Compile command**: `bin\cl /c /Gs /Fc<name>.cod /Ic:\include t.c` (compile-only, no stack probes, generate .cod listing). Without `/c`, CL prompts interactively for linker inputs. Use `/Gs` to disable `_chkstk` prologue for leaf routines.
 
 **Immediate next steps**:
 1. Mount MSC 6.0 floppy images, extract compiler to `tools/msc6.0/C600/` ✅ **DONE**
