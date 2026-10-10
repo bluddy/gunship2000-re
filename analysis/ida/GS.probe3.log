@@ -1,0 +1,90 @@
+IDA has found an unpacked version of database: C:\Users\yotam\projects\gunship_2000\analysis\ida\GS.i64
+on the disk.
+
+Should we proceed with the unpacked files?
+ -> Pro~c~eed with unpacked base
+
+  bytes   pages size description
+--------- ----- ---- --------------------------------------------
+   696320    85 8192 allocating memory for b-tree...
+   442368    54 8192 allocating memory for virtual array...
+   262144    32 8192 allocating memory for name pointers...
+-----------------------------------------------------------------
+  1400832            total memory allocated
+
+Loading processor module C:\Program Files\IDA Professional 9.1\procs\pc.dll for metapc...Initializing processor module metapc...OK
+Loading type libraries...
+Autoanalysis subsystem has been initialized.
+Database for file 'GS.exe' has been loaded.
+Hex-Rays Decompiler plugin has been loaded (v9.1.0.250226)
+  The hotkeys are F5: decompile, Ctrl-F5: decompile all.
+
+  Please check the Edit/Plugins menu for more information.
+Hex-rays version 9.1.0.250226 has been detected, gooMBA plugin ready to use
+[MCP] Plugin loaded (idalib mode, server managed externally)
+  [0] name=seg000 start=00010000 end=000106F2
+  [1] name=seg001 start=000106F2 end=00010BF6
+  [2] name=seg002 start=00010BF6 end=000165A4
+  [3] name=seg003 start=000165A4 end=000165CE
+  [4] name=seg004 start=000165CE end=0001B1D9
+  [5] name=seg005 start=0001B1D9 end=0001B634
+  [6] name=seg006 start=0001B634 end=0001BCA8
+  [7] name=seg007 start=0001BCA8 end=0001C6B1
+  [8] name=seg008 start=0001C6B1 end=0001C87A
+  [9] name=seg009 start=0001C87A end=0001D026
+  [10] name=seg010 start=0001D026 end=0001DEA6
+  [11] name=seg011 start=0001DEA6 end=0001EF40
+  [12] name=seg012 start=0001EF40 end=0001F329
+  [13] name=seg013 start=0001F329 end=0001F61C
+  [14] name=seg014 start=0001F61C end=0001FFAD
+  [15] name=seg015 start=0001FFAD end=0002000B
+  [16] name=seg016 start=0002000B end=000202BB
+  [17] name=seg017 start=000202BB end=000206A6
+  [18] name=seg018 start=000206A6 end=00020923
+  [19] name=seg019 start=00020923 end=00020BC8
+  [20] name=seg020 start=00020BC8 end=00020E4A
+  [21] name=seg021 start=00020E4A end=000212A0
+  [22] name=seg022 start=000212A0 end=00021347
+  [23] name=seg023 start=00021347 end=00021634
+  [24] name=seg024 start=00021634 end=0002330A
+  [25] name=seg025 start=0002330A end=00023513
+  [26] name=seg026 start=00023513 end=000239C8
+  [27] name=seg027 start=000239C8 end=00023ACB
+  [28] name=seg028 start=00023ACB end=00023ED8
+  [29] name=seg029 start=00023ED8 end=00024DE8
+  [30] name=seg030 start=00024DE8 end=00024E66
+  [31] name=seg031 start=00024E66 end=00025812
+  [32] name=seg032 start=00025812 end=00025F06
+  [33] name=seg033 start=00025F06 end=00026270
+  [34] name=seg034 start=00026270 end=0002634B
+  [35] name=seg035 start=0002634B end=00026584
+  [36] name=seg036 start=00026584 end=0002741C
+  [37] name=seg037 start=0002741C end=00027D10
+  [38] name=seg038 start=00027D10 end=00028D44
+  [39] name=seg039 start=00028D44 end=0002A790
+  [40] name=seg040 start=0002A790 end=0002AB50
+  [41] name=seg041 start=0002AB50 end=0002ABF0
+  [42] name=seg042 start=0002ABF0 end=0002B720
+  [43] name=seg043 start=0002B720 end=0002BB60
+  [44] name=seg044 start=0002BB60 end=0002BF60
+  [45] name=seg045 start=0002BF60 end=0002BFF0
+  [46] name=seg046 start=0002BFF0 end=0002C070
+  [47] name=seg047 start=0002C070 end=0002C4B0
+  [48] name=seg048 start=0002C4B0 end=0002C890
+  [49] name=seg049 start=0002C890 end=0002CF50
+  [50] name=seg050 start=0002CF50 end=0002D500
+  [51] name=seg051 start=0002D500 end=0002D6B0
+  [52] name=seg052 start=0002D6B0 end=0002DBD0
+  [53] name=seg053 start=0002DBD0 end=0002DF90
+  [54] name=seg054 start=0002DF90 end=0002F130
+  [55] name=seg055 start=0002F130 end=00030F40
+  [56] name=seg056 start=00030F40 end=00038960
+  [57] name=seg057 start=00038960 end=0003A380
+  [58] name=seg058 start=0003A380 end=0003B380
+  [59] name=seg059 start=0003B380 end=00049620
+  [60] name=seg060 start=00049620 end=00049E20
+  [61] name=seg061 start=00049E20 end=00049E21
+sub_106F2 EA=000106F2 name=seg001 start=000106F2 off=0000
+sub_10EB0 EA=00010EB0 name=seg002 start=00010BF6 off=02BA
+Flushing buffers, please wait...ok
+Unloading IDP module C:\Program Files\IDA Professional 9.1\procs\pc.dll...

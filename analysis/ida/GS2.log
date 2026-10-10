@@ -1,0 +1,58 @@
+Possible file format: MS-DOS executable (EXE) (C:\Program Files\IDA Professional 9.1\loaders\dos.dll)
+
+  bytes   pages size description
+--------- ----- ---- --------------------------------------------
+  1654784   202 8192 allocating memory for b-tree...
+  1654784   202 8192 allocating memory for virtual array...
+   262144    32 8192 allocating memory for name pointers...
+-----------------------------------------------------------------
+  3571712            total memory allocated
+
+Loading file 'C:\Users\yotam\projects\gunship_2000\analysis\GS2.exe' into database...
+Detected file format: MS-DOS executable (EXE)
+Assuming __cdecl calling convention by default
+Loading processor module C:\Program Files\IDA Professional 9.1\procs\pc.dll for metapc...Initializing processor module metapc...OK
+Autoanalysis subsystem has been initialized.
+The input file has extra information at the end
+(tail 64B13h, loaded 974Fh), continue? -> ~Y~es
+Reading relocation table...
+  0. Creating a new segment  (00018510-000567E0) ... ... OK
+  1. Creating a new segment  (00055FE0-000567E0) ... ... OK
+  2. Creating a new segment  (0004E9A0-00055FE0) ... ... OK
+  3. Creating a new segment  (000506A0-00055FE0) ... ... OK
+  4. Creating a new segment  (0003E9A0-0004E9A0) ... ... OK
+  5. Creating a new segment  (00012A20-00018510) ... ... OK
+  6. Creating a new segment  (00018440-00018510) ... ... OK
+  7. Creating a new segment  (00017E00-00018440) ... ... OK
+  8. Creating a new segment  (0003A290-0003E9A0) ... ... OK
+  9. Creating a new segment  (000137F0-00017E00) ... ... OK
+ 10. Creating a new segment  (000171D0-00017E00) ... ... OK
+ 11. Creating a new segment  (000372D0-0003A290) ... ... OK
+ 12. Creating a new segment  (00010000-00012A20) ... ... OK
+ 13. Creating a new segment  (0003A730-0003E9A0) ... ... OK
+ 14. Creating a new segment  (0003D980-0003E9A0) ... ... OK
+ 15. Creating a new segment  (00019260-000372D0) ... ... OK
+ 16. Creating a new segment  (000567E0-000567E1) ... ... OK
+ 17. Creating a new segment  (00019750-000372D0) ... ... OK
+ 18. Creating a new segment  (00029750-000372D0) ... ... OK
+ 19. Creating a new segment  (0002D470-000372D0) ... ... OK
+Searching for the data segment...
+Looking for ' - Copyright'...
+Marking typical code sequences...
+Flushing buffers, please wait...ok
+File 'C:\Users\yotam\projects\gunship_2000\analysis\GS2.exe' has been successfully loaded into the database.
+Flushing buffers, please wait...ok
+Hex-Rays Decompiler plugin has been loaded (v9.1.0.250226)
+  The hotkeys are F5: decompile, Ctrl-F5: decompile all.
+
+  Please check the Edit/Plugins menu for more information.
+Hex-rays version 9.1.0.250226 has been detected, gooMBA plugin ready to use
+[MCP] Plugin loaded (idalib mode, server managed externally)
+IDA is analysing the input file...
+You may start to explore the input file right now.
+Propagating type information...
+Function argument information has been propagated
+The initial autoanalysis has been finished.
+ida_export_lst: wrote C:\Users\yotam\projects\gunship_2000\analysis\ida\GS2.i64.lst
+Flushing buffers, please wait...ok
+Unloading IDP module C:\Program Files\IDA Professional 9.1\procs\pc.dll...

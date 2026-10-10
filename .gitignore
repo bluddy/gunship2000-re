@@ -40,3 +40,11 @@ analysis/ghidra/*.txt
 
 # Logs (keep minimal)
 logs/*.log
+
+# IDA working artifacts (regenerable via scripts/ida_*.idc from original binaries;
+# the exported .i64.lst listings ARE tracked as pipeline inputs)
+analysis/ida/*.i64
+analysis/ida/*.session*
+analysis/ida/*.uasm.lst
+analysis/ida/*.asm
+analysis/ida/*_rebuilt.*

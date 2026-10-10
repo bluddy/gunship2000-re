@@ -1,0 +1,159 @@
+Possible file format: MS-DOS executable (EXE) (C:\Program Files\IDA Professional 9.1\loaders\dos.dll)
+
+  bytes   pages size description
+--------- ----- ---- --------------------------------------------
+   524288    64 8192 allocating memory for b-tree...
+   458752    56 8192 allocating memory for virtual array...
+   262144    32 8192 allocating memory for name pointers...
+-----------------------------------------------------------------
+  1245184            total memory allocated
+
+Loading file 'C:\Users\yotam\projects\gunship_2000\analysis\GS_noovl.exe' into database...
+Detected file format: MS-DOS executable (EXE)
+Assuming __cdecl calling convention by default
+Loading processor module C:\Program Files\IDA Professional 9.1\procs\pc.dll for metapc...Initializing processor module metapc...OK
+Autoanalysis subsystem has been initialized.
+Reading relocation table...
+  0. Creating a new segment  (00027D10-00049E20) ... ... OK
+  1. Creating a new segment  (00049620-00049E20) ... ... OK
+  2. Creating a new segment  (00010BF0-00027D10) ... ... OK
+  3. Creating a new segment  (00026580-00027D10) ... ... OK
+  4. Creating a new segment  (0003B380-00049620) ... ... OK
+  5. Creating a new segment  (0001DEA0-00026580) ... ... OK
+  6. Creating a new segment  (000239C0-00026580) ... ... OK
+  7. Creating a new segment  (00023AC0-00026580) ... ... OK
+  8. Creating a new segment  (00026340-00026580) ... ... OK
+  9. Creating a new segment  (00025810-00026340) ... ... OK
+ 10. Creating a new segment  (00021630-000239C0) ... ... OK
+ 11. Creating a new segment  (000106F0-00010BF0) ... ... OK
+ 12. Creating a new segment  (0001C870-0001DEA0) ... ... OK
+ 13. Creating a new segment  (000206A0-00021630) ... ... OK
+ 14. Creating a new segment  (00021340-00021630) ... ... OK
+ 15. Creating a new segment  (0001B1D0-0001C870) ... ... OK
+ 16. Creating a new segment  (00024E60-00025810) ... ... OK
+ 17. Creating a new segment  (0001D020-0001DEA0) ... ... OK
+ 18. Creating a new segment  (000165C0-0001B1D0) ... ... OK
+ 19. Creating a new segment  (000212A0-00021340) ... ... OK
+ 20. Creating a new segment  (000165A0-000165C0) ... ... OK
+ 21. Creating a new segment  (00024DE0-00024E60) ... ... OK
+ 22. Creating a new segment  (0001F320-000206A0) ... ... OK
+ 23. Creating a new segment  (00027410-00027D10) ... ... OK
+ 24. Creating a new segment  (00020BC0-000212A0) ... ... OK
+ 25. Creating a new segment  (0001C6B0-0001C870) ... ... OK
+ 26. Creating a new segment  (00020000-000206A0) ... ... OK
+ 27. Creating a new segment  (0001BCA0-0001C6B0) ... ... OK
+ 28. Creating a new segment  (0001EF40-0001F320) ... ... OK
+ 29. Creating a new segment  (0001F610-00020000) ... ... OK
+ 30. Creating a new segment  (00023ED0-00024DE0) ... ... OK
+ 31. Creating a new segment  (00010000-000106F0) ... ... OK
+ 32. Creating a new segment  (00023510-000239C0) ... ... OK
+ 33. Creating a new segment  (00020920-00020BC0) ... ... OK
+ 34. Creating a new segment  (0001FFA0-00020000) ... ... OK
+ 35. Creating a new segment  (00020E40-000212A0) ... ... OK
+ 36. Creating a new segment  (00026270-00026340) ... ... OK
+ 37. Creating a new segment  (000202B0-000206A0) ... ... OK
+ 38. Creating a new segment  (00023300-00023510) ... ... OK
+ 39. Creating a new segment  (0001B630-0001BCA0) ... ... OK
+ 40. Creating a new segment  (00025F00-00026270) ... ... OK
+ 41. Creating a new segment  (0003A380-0003B380) ... ... OK
+ 42. Creating a new segment  (00028D40-0003A380) ... ... OK
+ 43. Creating a new segment  (00049E20-00049E21) ... ... OK
+ 44. Creating a new segment  (0002A790-0003A380) ... ... OK
+ 45. Creating a new segment  (00038960-0003A380) ... ... OK
+ 46. Creating a new segment  (0002C890-00038960) ... ... OK
+ 47. Creating a new segment  (0002F130-00038960) ... ... OK
+ 48. Creating a new segment  (0002DF90-0002F130) ... ... OK
+ 49. Creating a new segment  (0002BFF0-0002C890) ... ... OK
+ 50. Creating a new segment  (0002C070-0002C890) ... ... OK
+ 51. Creating a new segment  (0002DBD0-0002DF90) ... ... OK
+ 52. Creating a new segment  (0002BF60-0002BFF0) ... ... OK
+ 53. Creating a new segment  (0002CF50-0002DBD0) ... ... OK
+ 54. Creating a new segment  (0002AB50-0002BF60) ... ... OK
+ 55. Creating a new segment  (0002C4B0-0002C890) ... ... OK
+ 56. Creating a new segment  (0002BB60-0002BF60) ... ... OK
+ 57. Creating a new segment  (0002D6B0-0002DBD0) ... ... OK
+ 58. Creating a new segment  (0002D500-0002D6B0) ... ... OK
+ 59. Creating a new segment  (0002B720-0002BB60) ... ... OK
+ 60. Creating a new segment  (00030F40-00038960) ... ... OK
+ 61. Creating a new segment  (0002ABF0-0002B720) ... ... OK
+Searching for the data segment...
+Looking for ' - Copyright'...
+Marking typical code sequences...
+Flushing buffers, please wait...ok
+File 'C:\Users\yotam\projects\gunship_2000\analysis\GS_noovl.exe' has been successfully loaded into the database.
+Flushing buffers, please wait...ok
+Hex-Rays Decompiler plugin has been loaded (v9.1.0.250226)
+  The hotkeys are F5: decompile, Ctrl-F5: decompile all.
+
+  Please check the Edit/Plugins menu for more information.
+Hex-rays version 9.1.0.250226 has been detected, gooMBA plugin ready to use
+[MCP] Plugin loaded (idalib mode, server managed externally)
+IDA is analysing the input file...
+You may start to explore the input file right now.
+Propagating type information...
+Function argument information has been propagated
+The initial autoanalysis has been finished.
+SEG seg000 start=00010000 end=000106F2 size=000006F2
+SEG seg001 start=000106F2 end=00010BF6 size=00000504
+SEG seg002 start=00010BF6 end=000165A4 size=000059AE
+SEG seg003 start=000165A4 end=000165CE size=0000002A
+SEG seg004 start=000165CE end=0001B1D9 size=00004C0B
+SEG seg005 start=0001B1D9 end=0001B634 size=0000045B
+SEG seg006 start=0001B634 end=0001BCA8 size=00000674
+SEG seg007 start=0001BCA8 end=0001C6B1 size=00000A09
+SEG seg008 start=0001C6B1 end=0001C87A size=000001C9
+SEG seg009 start=0001C87A end=0001D026 size=000007AC
+SEG seg010 start=0001D026 end=0001DEA6 size=00000E80
+SEG seg011 start=0001DEA6 end=0001EF40 size=0000109A
+SEG seg012 start=0001EF40 end=0001F329 size=000003E9
+SEG seg013 start=0001F329 end=0001F61C size=000002F3
+SEG seg014 start=0001F61C end=0001FFAD size=00000991
+SEG seg015 start=0001FFAD end=0002000B size=0000005E
+SEG seg016 start=0002000B end=000202BB size=000002B0
+SEG seg017 start=000202BB end=000206A6 size=000003EB
+SEG seg018 start=000206A6 end=00020923 size=0000027D
+SEG seg019 start=00020923 end=00020BC8 size=000002A5
+SEG seg020 start=00020BC8 end=00020E4A size=00000282
+SEG seg021 start=00020E4A end=000212A0 size=00000456
+SEG seg022 start=000212A0 end=00021347 size=000000A7
+SEG seg023 start=00021347 end=00021634 size=000002ED
+SEG seg024 start=00021634 end=0002330A size=00001CD6
+SEG seg025 start=0002330A end=00023513 size=00000209
+SEG seg026 start=00023513 end=000239C8 size=000004B5
+SEG seg027 start=000239C8 end=00023ACB size=00000103
+SEG seg028 start=00023ACB end=00023ED8 size=0000040D
+SEG seg029 start=00023ED8 end=00024DE8 size=00000F10
+SEG seg030 start=00024DE8 end=00024E66 size=0000007E
+SEG seg031 start=00024E66 end=00025812 size=000009AC
+SEG seg032 start=00025812 end=00025F06 size=000006F4
+SEG seg033 start=00025F06 end=00026270 size=0000036A
+SEG seg034 start=00026270 end=0002634B size=000000DB
+SEG seg035 start=0002634B end=00026584 size=00000239
+SEG seg036 start=00026584 end=0002741C size=00000E98
+SEG seg037 start=0002741C end=00027D10 size=000008F4
+SEG seg038 start=00027D10 end=00028D44 size=00001034
+SEG seg039 start=00028D44 end=0002A790 size=00001A4C
+SEG seg040 start=0002A790 end=0002AB50 size=000003C0
+SEG seg041 start=0002AB50 end=0002ABF0 size=000000A0
+SEG seg042 start=0002ABF0 end=0002B720 size=00000B30
+SEG seg043 start=0002B720 end=0002BB60 size=00000440
+SEG seg044 start=0002BB60 end=0002BF60 size=00000400
+SEG seg045 start=0002BF60 end=0002BFF0 size=00000090
+SEG seg046 start=0002BFF0 end=0002C070 size=00000080
+SEG seg047 start=0002C070 end=0002C4B0 size=00000440
+SEG seg048 start=0002C4B0 end=0002C890 size=000003E0
+SEG seg049 start=0002C890 end=0002CF50 size=000006C0
+SEG seg050 start=0002CF50 end=0002D500 size=000005B0
+SEG seg051 start=0002D500 end=0002D6B0 size=000001B0
+SEG seg052 start=0002D6B0 end=0002DBD0 size=00000520
+SEG seg053 start=0002DBD0 end=0002DF90 size=000003C0
+SEG seg054 start=0002DF90 end=0002F130 size=000011A0
+SEG seg055 start=0002F130 end=00030F40 size=00001E10
+SEG seg056 start=00030F40 end=00038960 size=00007A20
+SEG seg057 start=00038960 end=0003A380 size=00001A20
+SEG seg058 start=0003A380 end=0003B380 size=00001000
+SEG seg059 start=0003B380 end=00049620 size=0000E2A0
+SEG seg060 start=00049620 end=00049E20 size=00000800
+SEG seg061 start=00049E20 end=00049E21 size=00000001
+Flushing buffers, please wait...ok
+Unloading IDP module C:\Program Files\IDA Professional 9.1\procs\pc.dll...

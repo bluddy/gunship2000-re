@@ -1,0 +1,56 @@
+Possible file format: MS-DOS executable (EXE) (C:\Program Files\IDA Professional 9.1\loaders\dos.dll)
+
+  bytes   pages size description
+--------- ----- ---- --------------------------------------------
+   524288    64 8192 allocating memory for b-tree...
+    81920    10 8192 allocating memory for virtual array...
+   262144    32 8192 allocating memory for name pointers...
+-----------------------------------------------------------------
+   868352            total memory allocated
+
+Loading file 'C:\Users\yotam\projects\gunship_2000\analysis\SETUP.exe' into database...
+Detected file format: MS-DOS executable (EXE)
+Assuming __cdecl calling convention by default
+Loading processor module C:\Program Files\IDA Professional 9.1\procs\pc.dll for metapc...Initializing processor module metapc...OK
+Autoanalysis subsystem has been initialized.
+Reading relocation table...
+  0. Creating a new segment  (000111D0-000169B0) ... ... OK
+  1. Creating a new segment  (000161B0-000169B0) ... ... OK
+  2. Creating a new segment  (00011130-000111D0) ... ... OK
+  3. Creating a new segment  (00013860-000161B0) ... ... OK
+  4. Creating a new segment  (000130F0-00013860) ... ... OK
+  5. Creating a new segment  (00013C90-000161B0) ... ... OK
+  6. Creating a new segment  (00012FB0-000130F0) ... ... OK
+  7. Creating a new segment  (00012F50-00012FB0) ... ... OK
+  8. Creating a new segment  (00010000-00011130) ... ... OK
+  9. Creating a new segment  (00014220-000161B0) ... ... OK
+ 10. Creating a new segment  (00014210-00014220) ... ... OK
+Searching for the data segment...
+Looking for ' - Copyright'...
+Default DS register: 0x1422
+Plan  FLIRT signature: MSC v6.0/v7.0 & MSVC v1.0/v1.5 DOS runtime
+autoload.cfg: mv16rdos.sig autoloads ms16dos.til
+Type library 'ms16dos' loaded. Applying types...
+Types applied to 0 names.
+main() function at 10000, named "_main"
+Type library 'ms16win' loaded. Applying types...
+Types applied to 0 names.
+Marking typical code sequences...
+Flushing buffers, please wait...ok
+File 'C:\Users\yotam\projects\gunship_2000\analysis\SETUP.exe' has been successfully loaded into the database.
+Flushing buffers, please wait...ok
+Hex-Rays Decompiler plugin has been loaded (v9.1.0.250226)
+  The hotkeys are F5: decompile, Ctrl-F5: decompile all.
+
+  Please check the Edit/Plugins menu for more information.
+Hex-rays version 9.1.0.250226 has been detected, gooMBA plugin ready to use
+[MCP] Plugin loaded (idalib mode, server managed externally)
+IDA is analysing the input file...
+You may start to explore the input file right now.
+Using FLIRT signature: MSC v6.0/v7.0 & MSVC v1.0/v1.5 DOS runtime
+Propagating type information...
+Function argument information has been propagated
+The initial autoanalysis has been finished.
+ida_export_lst: wrote C:\Users\yotam\projects\gunship_2000\analysis\ida\SETUP.i64.lst
+Flushing buffers, please wait...ok
+Unloading IDP module C:\Program Files\IDA Professional 9.1\procs\pc.dll...

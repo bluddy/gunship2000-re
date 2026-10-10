@@ -1,0 +1,56 @@
+
+  bytes   pages size description
+--------- ----- ---- --------------------------------------------
+   696320    85 8192 allocating memory for b-tree...
+   442368    54 8192 allocating memory for virtual array...
+   262144    32 8192 allocating memory for name pointers...
+-----------------------------------------------------------------
+  1400832            total memory allocated
+
+Loading processor module C:\Program Files\IDA Professional 9.1\procs\pc.dll for metapc...Initializing processor module metapc...OK
+Loading type libraries...
+Autoanalysis subsystem has been initialized.
+Database for file 'GS.exe' has been loaded.
+Hex-Rays Decompiler plugin has been loaded (v9.1.0.250226)
+  The hotkeys are F5: decompile, Ctrl-F5: decompile all.
+
+  Please check the Edit/Plugins menu for more information.
+Hex-rays version 9.1.0.250226 has been detected, gooMBA plugin ready to use
+[MCP] Plugin loaded (idalib mode, server managed externally)
+sub_106F2 EA=000106F2
+C:\Users\yotam\projects\gunship_2000\scripts\ida_check_labels.idc: Runtime error on C:\Users\yotam\projects\gunship_2000\scripts\ida_check_labels.idc:14: Attempt to call undefined function 'GetSegName' -> OK
+Flushing buffers, please wait...ok
+Unloading IDP module C:\Program Files\IDA Professional 9.1\procs\pc.dll...IDA has found an unpacked version of database: C:\Users\yotam\projects\gunship_2000\analysis\ida\GS.i64
+on the disk.
+
+Should we proceed with the unpacked files?
+ -> Pro~c~eed with unpacked base
+
+  bytes   pages size description
+--------- ----- ---- --------------------------------------------
+   696320    85 8192 allocating memory for b-tree...
+   442368    54 8192 allocating memory for virtual array...
+   262144    32 8192 allocating memory for name pointers...
+-----------------------------------------------------------------
+  1400832            total memory allocated
+
+Loading processor module C:\Program Files\IDA Professional 9.1\procs\pc.dll for metapc...Initializing processor module metapc...OK
+Loading type libraries...
+Autoanalysis subsystem has been initialized.
+Database for file 'GS.exe' has been loaded.
+Hex-Rays Decompiler plugin has been loaded (v9.1.0.250226)
+  The hotkeys are F5: decompile, Ctrl-F5: decompile all.
+
+  Please check the Edit/Plugins menu for more information.
+Hex-rays version 9.1.0.250226 has been detected, gooMBA plugin ready to use
+[MCP] Plugin loaded (idalib mode, server managed externally)
+sub_106F2 EA=000106F2
+  in segment seg001, seg start=000106F2, offset in seg=0000
+loc_10C08 EA=00010C08
+  in segment seg002, seg start=00010BF6, offset in seg=0012
+sub_10EB0 EA=00010EB0
+  in segment seg002, seg start=00010BF6, offset in seg=02BA
+seg001 start attr=FFFFFFFFFFFFFFFF
+seg001 orgbase=FFFFFFFFFFFFFFFF
+Flushing buffers, please wait...ok
+Unloading IDP module C:\Program Files\IDA Professional 9.1\procs\pc.dll...

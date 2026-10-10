@@ -1,0 +1,41 @@
+
+  bytes   pages size description
+--------- ----- ---- --------------------------------------------
+   524288    64 8192 allocating memory for b-tree...
+   163840    20 8192 allocating memory for virtual array...
+   262144    32 8192 allocating memory for name pointers...
+-----------------------------------------------------------------
+   950272            total memory allocated
+
+Loading processor module C:\Program Files\IDA Professional 9.1\procs\pc.dll for metapc...Initializing processor module metapc...OK
+Loading type libraries...
+Autoanalysis subsystem has been initialized.
+Database for file 'GS2.exe' has been loaded.
+Hex-Rays Decompiler plugin has been loaded (v9.1.0.250226)
+  The hotkeys are F5: decompile, Ctrl-F5: decompile all.
+
+  Please check the Edit/Plugins menu for more information.
+Hex-rays version 9.1.0.250226 has been detected, gooMBA plugin ready to use
+[MCP] Plugin loaded (idalib mode, server managed externally)
+SEG seg000 start=00010000 end=00012A26 size=00002A26
+SEG seg001 start=00012A26 end=000137FA size=00000DD4
+SEG seg002 start=000137FA end=000171D1 size=000039D7
+SEG seg003 start=000171D1 end=00017E08 size=00000C37
+SEG seg004 start=00017E08 end=00018446 size=0000063E
+SEG seg005 start=00018446 end=00018510 size=000000CA
+SEG seg006 start=00018510 end=00019267 size=00000D57
+SEG seg007 start=00019267 end=00019750 size=000004E9
+SEG seg008 start=00019750 end=00029750 size=00010000
+SEG seg009 start=00029750 end=0002D470 size=00003D20
+SEG seg010 start=0002D470 end=000372D0 size=00009E60
+SEG seg011 start=000372D0 end=0003A290 size=00002FC0
+SEG seg012 start=0003A290 end=0003A730 size=000004A0
+SEG seg013 start=0003A730 end=0003D980 size=00003250
+SEG seg014 start=0003D980 end=0003E9A0 size=00001020
+SEG seg015 start=0003E9A0 end=0004E9A0 size=00010000
+SEG seg016 start=0004E9A0 end=000506A0 size=00001D00
+SEG seg017 start=000506A0 end=00055FE0 size=00005940
+SEG seg018 start=00055FE0 end=000567E0 size=00000800
+SEG seg019 start=000567E0 end=000567E1 size=00000001
+Flushing buffers, please wait...ok
+Unloading IDP module C:\Program Files\IDA Professional 9.1\procs\pc.dll...

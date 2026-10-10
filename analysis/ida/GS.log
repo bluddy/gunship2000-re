@@ -1,0 +1,100 @@
+Possible file format: MS-DOS executable (EXE) (C:\Program Files\IDA Professional 9.1\loaders\dos.dll)
+
+  bytes   pages size description
+--------- ----- ---- --------------------------------------------
+  1114112   136 8192 allocating memory for b-tree...
+  1114112   136 8192 allocating memory for virtual array...
+   262144    32 8192 allocating memory for name pointers...
+-----------------------------------------------------------------
+  2490368            total memory allocated
+
+Loading file 'C:\Users\yotam\projects\gunship_2000\analysis\GS.exe' into database...
+Detected file format: MS-DOS executable (EXE)
+Assuming __cdecl calling convention by default
+Loading processor module C:\Program Files\IDA Professional 9.1\procs\pc.dll for metapc...Initializing processor module metapc...OK
+Autoanalysis subsystem has been initialized.
+The input file has extra information at the end
+(tail 4271Eh, loaded 1A788h), continue? -> ~Y~es
+Reading relocation table...
+  0. Creating a new segment  (00027D10-00049E20) ... ... OK
+  1. Creating a new segment  (00049620-00049E20) ... ... OK
+  2. Creating a new segment  (00010BF0-00027D10) ... ... OK
+  3. Creating a new segment  (00026580-00027D10) ... ... OK
+  4. Creating a new segment  (0003B380-00049620) ... ... OK
+  5. Creating a new segment  (0001DEA0-00026580) ... ... OK
+  6. Creating a new segment  (000239C0-00026580) ... ... OK
+  7. Creating a new segment  (00023AC0-00026580) ... ... OK
+  8. Creating a new segment  (00026340-00026580) ... ... OK
+  9. Creating a new segment  (00025810-00026340) ... ... OK
+ 10. Creating a new segment  (00021630-000239C0) ... ... OK
+ 11. Creating a new segment  (000106F0-00010BF0) ... ... OK
+ 12. Creating a new segment  (0001C870-0001DEA0) ... ... OK
+ 13. Creating a new segment  (000206A0-00021630) ... ... OK
+ 14. Creating a new segment  (00021340-00021630) ... ... OK
+ 15. Creating a new segment  (0001B1D0-0001C870) ... ... OK
+ 16. Creating a new segment  (00024E60-00025810) ... ... OK
+ 17. Creating a new segment  (0001D020-0001DEA0) ... ... OK
+ 18. Creating a new segment  (000165C0-0001B1D0) ... ... OK
+ 19. Creating a new segment  (000212A0-00021340) ... ... OK
+ 20. Creating a new segment  (000165A0-000165C0) ... ... OK
+ 21. Creating a new segment  (00024DE0-00024E60) ... ... OK
+ 22. Creating a new segment  (0001F320-000206A0) ... ... OK
+ 23. Creating a new segment  (00027410-00027D10) ... ... OK
+ 24. Creating a new segment  (00020BC0-000212A0) ... ... OK
+ 25. Creating a new segment  (0001C6B0-0001C870) ... ... OK
+ 26. Creating a new segment  (00020000-000206A0) ... ... OK
+ 27. Creating a new segment  (0001BCA0-0001C6B0) ... ... OK
+ 28. Creating a new segment  (0001EF40-0001F320) ... ... OK
+ 29. Creating a new segment  (0001F610-00020000) ... ... OK
+ 30. Creating a new segment  (00023ED0-00024DE0) ... ... OK
+ 31. Creating a new segment  (00010000-000106F0) ... ... OK
+ 32. Creating a new segment  (00023510-000239C0) ... ... OK
+ 33. Creating a new segment  (00020920-00020BC0) ... ... OK
+ 34. Creating a new segment  (0001FFA0-00020000) ... ... OK
+ 35. Creating a new segment  (00020E40-000212A0) ... ... OK
+ 36. Creating a new segment  (00026270-00026340) ... ... OK
+ 37. Creating a new segment  (000202B0-000206A0) ... ... OK
+ 38. Creating a new segment  (00023300-00023510) ... ... OK
+ 39. Creating a new segment  (0001B630-0001BCA0) ... ... OK
+ 40. Creating a new segment  (00025F00-00026270) ... ... OK
+ 41. Creating a new segment  (0003A380-0003B380) ... ... OK
+ 42. Creating a new segment  (00028D40-0003A380) ... ... OK
+ 43. Creating a new segment  (00049E20-00049E21) ... ... OK
+ 44. Creating a new segment  (0002A790-0003A380) ... ... OK
+ 45. Creating a new segment  (00038960-0003A380) ... ... OK
+ 46. Creating a new segment  (0002C890-00038960) ... ... OK
+ 47. Creating a new segment  (0002F130-00038960) ... ... OK
+ 48. Creating a new segment  (0002DF90-0002F130) ... ... OK
+ 49. Creating a new segment  (0002BFF0-0002C890) ... ... OK
+ 50. Creating a new segment  (0002C070-0002C890) ... ... OK
+ 51. Creating a new segment  (0002DBD0-0002DF90) ... ... OK
+ 52. Creating a new segment  (0002BF60-0002BFF0) ... ... OK
+ 53. Creating a new segment  (0002CF50-0002DBD0) ... ... OK
+ 54. Creating a new segment  (0002AB50-0002BF60) ... ... OK
+ 55. Creating a new segment  (0002C4B0-0002C890) ... ... OK
+ 56. Creating a new segment  (0002BB60-0002BF60) ... ... OK
+ 57. Creating a new segment  (0002D6B0-0002DBD0) ... ... OK
+ 58. Creating a new segment  (0002D500-0002D6B0) ... ... OK
+ 59. Creating a new segment  (0002B720-0002BB60) ... ... OK
+ 60. Creating a new segment  (00030F40-00038960) ... ... OK
+ 61. Creating a new segment  (0002ABF0-0002B720) ... ... OK
+Searching for the data segment...
+Looking for ' - Copyright'...
+Marking typical code sequences...
+Flushing buffers, please wait...ok
+File 'C:\Users\yotam\projects\gunship_2000\analysis\GS.exe' has been successfully loaded into the database.
+Flushing buffers, please wait...ok
+Hex-Rays Decompiler plugin has been loaded (v9.1.0.250226)
+  The hotkeys are F5: decompile, Ctrl-F5: decompile all.
+
+  Please check the Edit/Plugins menu for more information.
+Hex-rays version 9.1.0.250226 has been detected, gooMBA plugin ready to use
+[MCP] Plugin loaded (idalib mode, server managed externally)
+IDA is analysing the input file...
+You may start to explore the input file right now.
+Propagating type information...
+Function argument information has been propagated
+The initial autoanalysis has been finished.
+ida_export_lst: wrote C:\Users\yotam\projects\gunship_2000\analysis\ida\GS.i64.lst
+Flushing buffers, please wait...ok
+Unloading IDP module C:\Program Files\IDA Professional 9.1\procs\pc.dll...

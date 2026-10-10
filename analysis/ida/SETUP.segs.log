@@ -1,0 +1,32 @@
+
+  bytes   pages size description
+--------- ----- ---- --------------------------------------------
+   524288    64 8192 allocating memory for b-tree...
+    90112    11 8192 allocating memory for virtual array...
+   262144    32 8192 allocating memory for name pointers...
+-----------------------------------------------------------------
+   876544            total memory allocated
+
+Loading processor module C:\Program Files\IDA Professional 9.1\procs\pc.dll for metapc...Initializing processor module metapc...OK
+Loading type libraries...
+Autoanalysis subsystem has been initialized.
+Database for file 'SETUP.exe' has been loaded.
+Hex-Rays Decompiler plugin has been loaded (v9.1.0.250226)
+  The hotkeys are F5: decompile, Ctrl-F5: decompile all.
+
+  Please check the Edit/Plugins menu for more information.
+Hex-rays version 9.1.0.250226 has been detected, gooMBA plugin ready to use
+[MCP] Plugin loaded (idalib mode, server managed externally)
+SEG seg000 start=00010000 end=00011134 size=00001134
+SEG seg001 start=00011134 end=000111DB size=000000A7
+SEG seg002 start=000111DB end=00012F5C size=00001D81
+SEG seg003 start=00012F5C end=00012FB9 size=0000005D
+SEG seg004 start=00012FB9 end=000130FA size=00000141
+SEG seg005 start=000130FA end=0001386D size=00000773
+SEG seg006 start=0001386D end=00013C9A size=0000042D
+SEG seg007 start=00013C9A end=00014210 size=00000576
+SEG seg008 start=00014210 end=00014220 size=00000010
+SEG dseg start=00014220 end=000161B0 size=00001F90
+SEG seg010 start=000161B0 end=000169B0 size=00000800
+Flushing buffers, please wait...ok
+Unloading IDP module C:\Program Files\IDA Professional 9.1\procs\pc.dll...

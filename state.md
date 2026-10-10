@@ -136,13 +136,53 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 7. mzmap verification on generated .lst ✅ **DONE** — 54 routines over 3 segments (matches original)
 8. **MSC 6.0 compiler working under kvikdos** ✅ **DONE** — `/I C:\INCLUDE` flag works; known kvikdos bug: looks for `BC1.EXE` instead of `C1.EXE` for compiler passes (upstream issue)
 9. **MSC 6.0 compiler working under DOSBox** ✅ **DONE** — DOSBox staging 0.83 compiles successfully; output is `TEST.OBJ` (uppercase); no compiler pass detection bug
-9. **NEXT (Track 1 - Skeleton)**: Run lst2asm.py with gs_gs2.json config to produce UASM-compatible .asm from Ghidra .lst
-10. **NEXT (Track 1 - Skeleton)**: Assemble with UASM, link with MSC 6.0 LINK.EXE under kvikdos
-11. **NEXT (Track 1 - Skeleton)**: Verify byte-exact match with mzdiff
-12. **NEXT (Track 2 - C Ports)**: Use DOSBox for per-routine MSC 6.0 compilation (avoids kvikdos compiler pass bug); run `portcheck.py` + `mzdiff` verification
-13. DOSBox runtime verification of decoded structures ⏳ **PENDING**
+9. **Track 1 (Skeleton): GS.exe byte-identical rebuild** ✅ **DONE (2026-10-09)** — IDA listing → `gen_lst2asm_conf.py` → `lst2asm.py` → UASM → MSC 6.0 LINK.EXE (kvikdos) → `normalize_mz.py`. **Full load file (116,616 B: header + image + 2017-entry reloc table) is byte-identical to `analysis/GS.exe`** — 0 differing bytes; CS:IP 17D1:082F, SS:SP 3962:0800, minalloc 1F8A all exact. (Original's 163,734-byte game-data overlay is appended data, not build output.)
+10. **NEXT (Track 2 - C Ports)**: Use DOSBox for per-routine MSC 6.0 compilation (avoids kvikdos compiler pass bug); run `portcheck.py` + `mzdiff` verification
+11. **NEXT**: apply the same pipeline to GS2.GS2 and SETUP.GS2
+12. DOSBox runtime verification of decoded structures ⏳ **PENDING**
 
 ### Phase 3-6: unchanged (Ghidra → C, AI unit tests, mzdiff comparison, DOSBox testing)
+
+---
+
+## Track 1: GS.exe Byte-Identical Rebuild — DONE (2026-10-09)
+
+**Pipeline** (all in-repo, re-runnable):
+`analysis/ida/GS.i64.lst` (IDA batch export, `scripts/ida_export_lst.idc`) →
+`scripts/gen_lst2asm_conf.py` (byte-driven config) → `tools/f19re/mzretools/tools/lst2asm.py` →
+`analysis/ida/GS.asm` → UASM 2.57 (`wsl uasm -q -Fo /tmp/GS.obj`) →
+`scripts/link_gs.sh` (MSC 6.0 LINK.EXE under kvikdos) → copy back →
+`scripts/normalize_mz.py` → **0 differing bytes vs `analysis/GS.exe[0..0x1C788]`**.
+
+**Verification**: `scripts/hdrdump.py`, `cmp_segsizes.py`, `diff_relocs.py`, `diff_bytes.py`,
+`find_sizediv.py <seg>`, `check_relocs.py`.
+
+**Byte-driven encoding fixes in `gen_lst2asm_conf.py`** (IDA listings lose original encodings;
+each fix reads the original byte(s) and forces an exact reproduction):
+- plain `call/jmp` with orig 9A/EA → `far ptr` (avoids UASM's `push cs; call near`); E9 → `near ptr`
+  (UASM would pick short EB); 0F 8x jcc → `near ptr`; cross-seg E8 → `near ptr`
+- **non-canonical far splits** (orig pairs target offset with a different segment para, e.g.
+  `1C4B:06C4` vs canonical `1C89:2E4`) → `db 0EAh / dw off / dw seg <frame>` (keeps the fixup)
+- `push imm8` (6A): listing prints `0FFFFh`; UASM assembles 68 → rewrite as signed `-1`
+- explicit `[reg+0]` (mod=10, disp16) → `db` of original bytes (UASM canonicalizes to mod=00)
+- `ax,imm` dual encodings (83 /xx vs 05/3D/...) → `db` of original bytes (426 sites)
+- alignment pads: original used 00 in many code gaps, lst2asm writes nops → `db` of original
+  bytes (914 sites, incl. hex `align 10h` form and trailing aligns)
+- IDA renders the relocated DGROUP para at `seg002:010D` (`loc_10CFD`, read at runtime by
+  `mov ax, cs:loc_10CFD`) as bogus `cmp [bp+di], bh` → `dw seg seg059` (+1 reloc)
+- RTLink bind slots `jmp far ptr 0:0` → `db` of original 5 bytes (31 slots, NOT relocated)
+- **structural**: `seg039`'s trailing `db 8 dup(?)` (IDA's pre-BSS gap) removed + `seg040`
+  PARA-aligned (gap must not enter the load module); contentless post-image `seg061` given
+  STACK class + `db 200h dup(?)` (reproduces orig minalloc 1F8A; IDA only sees 1 byte)
+- `normalize_mz.py` then aligns header metadata LINK can't reproduce: checksum word (orig
+  zeroed), filler @0x1C, and the reloc table bytes (same address set; orig's entries use frame
+  segments that subdivide seg007 at BD40h/C4B0h — invisible to IDA — and multi-object link
+  order)
+
+**Gotchas encoded**: lst2asm squeezes whitespace (multi-space `from` texts must be squeezed);
+`read_bytes` slot reads must stay 5 bytes for far slots; IDA `align` may be hex (`align 10h`);
+data labels have no colon (needed for far-split expectations); `.286` + `OPTION NOSCOPED`
+required; `push ah`-style register names must not parse as hex literals (byte check guards).
 
 ---
 
