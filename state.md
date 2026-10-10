@@ -139,7 +139,9 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 9. **Track 1 (Skeleton): GS.exe byte-identical rebuild** ✅ **DONE (2026-10-09)** — IDA listing → `gen_lst2asm_conf.py` → `lst2asm.py` → UASM → MSC 6.0 LINK.EXE (kvikdos) → `normalize_mz.py`. **Full load file (116,616 B: header + image + 2017-entry reloc table) is byte-identical to `analysis/GS.exe`** — 0 differing bytes; CS:IP 17D1:082F, SS:SP 3962:0800, minalloc 1F8A all exact. (Original's 163,734-byte game-data overlay is appended data, not build output.)
 10. **NEXT (Track 2 - C Ports)**: Use DOSBox for per-routine MSC 6.0 compilation (avoids kvikdos compiler pass bug); run `portcheck.py` + `mzdiff` verification
 11. **Track 1 (Skeleton): GS2.exe + SETUP.exe byte-identical rebuilds** ✅ **DONE (2026-10-10)** — same pipeline, one command each (`venv\Scripts\python scripts/build_verify.py GS2` / `SETUP`). GS2 load file (40,271 B, 300 relocs) byte-identical; **SETUP whole file** (21,687 B — classic MZ, no overlay — 261 relocs) byte-identical. See the Track 1 section for the SETUP-specific fixes (collapsed-function export, bss straddling the image end, bss-tail truncation in normalize).
-12. DOSBox runtime verification of decoded structures ⏳ **PENDING**
+12. **Full executable inventory completed (2026-10-10)** — 24 MZ + 4 COM executables in `game/` (not 3!). **Chosen for Track 1 expansion** (self-contained, high-value): AdLib (`ASOUND.GS2/GS3/GS4/LOG`), Roland (`RSOUND.GS2/GS3/GS4/LOG`), `MGRAPHIC.GS2`, `LABS.GS2`, `PLAYER.GS2`, `GS2000.COM`. Skipped as unnecessary: DSOUND/ISOUND/NSOUND (sound variants), MISC.GS2 (F-19 leftover), ADS.GS2 (loader), SETUP.EXE/CD (small COM variant). See § Executable Inventory.
+13. **NEXT (Track 2 - C Ports)**: Use DOSBox for per-routine MSC 6.0 compilation (avoids kvikdos compiler pass bug); run `portcheck.py` + `mzdiff` verification
+14. DOSBox runtime verification of decoded structures ⏳ **PENDING**
 
 ### Phase 3-6: unchanged (Ghidra → C, AI unit tests, mzdiff comparison, DOSBox testing)
 
@@ -219,7 +221,47 @@ required; `push ah`-style register names must not parse as hex literals (byte ch
 
 ---
 
-## Issues Found & Fixed
+## Executable Inventory (game/) — 24 MZ + 4 COM
+
+Discovered 2026-10-10 by scanning every `game/` file for MZ magic (the earlier "3 executables"
+belief came from the registry only tracking the big `.GS2` ones). All MZ files here are real
+self-contained programs, **not RTLink overlay segments** — they have their own headers/reloc
+tables and are exec'd by the launcher stub. The game's sound system is a set of pluggable
+driver EXEs chosen at runtime.
+
+### Chosen for Track 1 expansion (10 binaries)
+| File | Size | Type | ID / notes |
+|---|---|---|---|
+| `ASOUND.GS2` | 13,314 | MZ, 12 relocs, CS:IP 0000:0010 | "GS2000 AdLib I 8-10-92" |
+| `ASOUND.GS3` | 12,660 | MZ, 10 relocs | "GS2000 AdLib N 6-29-92" |
+| `ASOUND.GS4` | 18,998 | MZ, 10 relocs | "AdLib Sound Card" |
+| `ASOUND.LOG` | 6,120 | MZ, 10 relocs | "AdLib Logo 7-18-91" |
+| `RSOUND.GS2` | 13,163 | MZ, 36 relocs | "GS2000 MT32 I 7-20-92" |
+| `RSOUND.GS3` | 17,019 | MZ, 28 relocs | "GS2000 MT32 N 6-29-92" |
+| `RSOUND.GS4` | 21,865 | MZ, 28 relocs | "Roland MT-32" |
+| `RSOUND.LOG` | 5,481 | MZ, 28 relocs | "RolandMT-32 3-25-91" |
+| `MGRAPHIC.GS2` | 7,158 | MZ, 3 relocs, CS:IP 0000:009E | "MGRAPHIC.EXE 3-22-91", MCGA graphics |
+| `LABS.GS2` | 10,097 | MZ, 0 relocs, hdr 32, CS:IP 0255:000E | MSC 6 CRT; Labs logo screenshow |
+| `PLAYER.GS2` | 10,962 | MZ, 0 relocs, hdr 32, CS:IP 0292:000E | MSC 6 CRT; player intro |
+| `GS2000.COM` | 2,738 | **COM** (no MZ) | main launcher stub; execs setup.gs2, labs.gs2, player.gs2, gs.gs2, gs2.gs2 |
+
+- The 4 AdLib + 4 Roland files are version/role variants (`.GS2`/`.GS3`/`.GS4` = game revisions
+  1992, `.LOG` = 1991 logo-splash music). Likely share most code → good byte-identity regression
+  targets and cross-referencing aids.
+- `LABS.GS2`/`PLAYER.GS2`/`ADS.GS2` share the 32-byte-hdr MSC 6 CRT shape (CS:IP = `02xx:000E`).
+- `GS2000.COM` is a real 8086 COM (starts `mov sp,0x804`); needs a COM (not MZ) build path —
+  UASM can assemble a `.COM` (org 100h) directly, no LINK/MZ header needed.
+
+### Skipped (not necessary for Track 1)
+| File(s) | Why skipped |
+|---|---|
+| `DSOUND.GS2`, `ISOUND.GS2/GS3/GS4/LOG`, `NSOUND.GS2/GS3/GS4` | More sound-driver variants (MT32/DMA, PC-speaker, Tandy/no-sound); ISOUND.LOG is a sound **debugger**. AdLib+Roland chosen as the representative sound drivers. |
+| `MISC.GS2` ("MISCOVR.EXE 1989") | F-19-era leftover, 980 B, not referenced by GS2000 stub. |
+| `ADS.GS2` | Overlay **loader** (CRT overlay-load errors, refs MGRAPHIC.GS2 + GS2000.CAT) — a host/loader, not a payload; overlaps MGRAPHIC/LABS work. |
+| `SETUP.EXE` / `SETUP.CD` | 2,558 B COM; identical to each other; smaller sibling of GS2000 stub that also refs `ads.gs2`. The real setup is the already-done `SETUP.GS2`. |
+| `PACK2.CD` | 2,738 B COM, 11 bytes differ from `GS2000.COM` — CD-distribution twin, no unique content. |
+
+---
 
 ### mzretools (upstream: neuviemeporte/mzretools)
 1. **instruction.cpp:362** — `INS_CALL_FAR`/`INS_JMP_FAR` incorrectly treated as group 5 instructions. Opcodes 9A (CALL FAR) and EA (JMP FAR) are immediate far calls/jumps with 32-bit operands, NOT group 5 (FF /2, /4, /5). Fixed: `else if ((iclass == INS_CALL_FAR || iclass == INS_JMP_FAR) && opcode == OP_GRP5_Ev)`.
