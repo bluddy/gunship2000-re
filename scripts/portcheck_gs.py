@@ -48,8 +48,12 @@ def parse_cod_listing(cod_path: str, routine_name: str) -> bytes:
     in_routine = False
     routine_bytes = bytearray()
     
+    # MSC prefixes C function names with underscore in .cod listing
+    search_name = "_" + routine_name
+    
     for line in lines:
-        if routine_name.upper() + " PROC" in line.upper():
+        # Match with flexible whitespace: _name PROC or _name\tPROC etc.
+        if search_name.upper() in line.upper() and "PROC" in line.upper():
             in_routine = True
             continue
         if in_routine and "ENDP" in line.upper():
@@ -63,6 +67,11 @@ def parse_cod_listing(cod_path: str, routine_name: str) -> bytes:
                 routine_bytes.extend(bytes(int(b, 16) for b in hex_bytes))
     
     return bytes(routine_bytes)
+
+def to_83_cod(name: str) -> str:
+    """Convert routine name to 8.3 .cod filename."""
+    base = name.upper()[:8]
+    return base + ".COD"
 
 def get_original_bytes(exe_path: str, segment: int, offset: int, length: int) -> bytes:
     """Extract bytes from original EXE at given segment:offset (load module)."""
@@ -84,15 +93,17 @@ def verify_routine(module: str, routine_name: str, c_source: str,
     
     msc_dir = os.path.join(os.getcwd(), MSC_ROOT)
     
+    # 8.3 names
+    c_83 = f"{routine_name[:8]}.c"
+    cod_83 = f"{routine_name[:8].upper()}.COD"  # 8.3 .cod filename
+    
     with tempfile.TemporaryDirectory() as tmpdir:
         # Write C source with 8.3 name in MSC dir
-        c_83 = f"{routine_name[:8]}.c"
         c_path = os.path.join(msc_dir, c_83)
         with open(c_path, "w", encoding="ascii") as f:
             f.write(c_source)
         
-        # Create DOSBox config
-        cod_83 = c_83.replace(".C", ".cod")
+        # Create DOSBox config - use 8.3 .cod filename
         config_content = f"""[sdl]
 fullscreen=false
 [dosbox]
@@ -107,7 +118,7 @@ nosound=true
 [autoexec]
 mount c {MSC_ROOT}
 c:
-bin\\cl /c /Fc{c_83.replace('.C', '')}.cod /Ic:\\include {c_83} > compile.log
+bin\\cl /c /Gs /Fc{cod_83[:-4]} /Ic:\\include {c_83} > compile.log
 exit
 """
         config_path = os.path.join(tmpdir, "dosbox_portcheck.conf")
@@ -135,7 +146,8 @@ exit
             return False
         
         # Get original bytes
-        orig_exe = f"analysis/{module}.exe"
+        module_exe = {"gs_gs2": "GS", "gs2_gs2": "GS2", "setup_gs2": "SETUP"}.get(module, module)
+        orig_exe = f"analysis/{module_exe}.exe"
         actual_length = length if length > 0 else len(routine_bytes)
         original_bytes = get_original_bytes(orig_exe, segment, offset, actual_length)
         
@@ -146,10 +158,10 @@ exit
                 os.remove(fpath)
         
         if routine_bytes[:actual_length] == original_bytes:
-            print(f"✓ {routine_name}: MATCH ({len(routine_bytes)} bytes)")
+            print(f"OK {routine_name}: MATCH ({len(routine_bytes)} bytes)")
             return True
         else:
-            print(f"✗ {routine_name}: MISMATCH")
+            print(f"FAIL {routine_name}: MISMATCH")
             print(f"  Expected ({len(original_bytes)}): {original_bytes.hex()}")
             print(f"  Got      ({len(routine_bytes)}): {routine_bytes.hex()}")
             return False
