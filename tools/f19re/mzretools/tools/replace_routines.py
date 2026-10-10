@@ -26,7 +26,7 @@ def process_assembly(infile, outfile, routine_dir):
             if os.path.isfile(routine_path):
                 info(f'Routine {newproc} -> found implementation in {routine_path}')
                 proc = newproc
-                outfile.write(f'include {routine_dir}\{proc}.asm')
+                outfile.write(f'include {routine_dir}{os.path.sep}{proc}.asm')
             else:
                 info(f'Routine {newproc} -> no implementation')
                 outfile.write(line)
