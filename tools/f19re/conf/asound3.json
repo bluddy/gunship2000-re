@@ -1,0 +1,1877 @@
+{
+    "preamble": [
+        ".286",
+        "OPTION NOSCOPED"
+    ],
+    "coda": [
+        "END start"
+    ],
+    "include": "lst/asound3.inc",
+    "in_segments": [
+        "seg000",
+        "seg001",
+        "seg002"
+    ],
+    "code_segments": [
+        "seg000"
+    ],
+    "data_segments": [
+        "seg001",
+        "seg002"
+    ],
+    "data_size": "0x2f74",
+    "bss": [
+        {
+            "seg": "seg002",
+            "begin": "0x0",
+            "end": "0xf"
+        },
+        {
+            "seg": "seg001",
+            "begin": "0x16d4",
+            "end": "0x194f"
+        }
+    ],
+    "subs": [
+        {
+            "from": ",\\s*fs:nothing,\\s*gs:nothing",
+            "to": ""
+        }
+    ],
+    "extract": [],
+    "replace": [
+        {
+            "seg": "seg000",
+            "off": "0xdc",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_101D5"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x14f",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_101D2"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x4c8",
+            "from": "call",
+            "to": [
+                "call far ptr sub_104B2"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x4d4",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr locret_105E4"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x720",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_1066C"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x735",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_1065E"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x751",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10665"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x77b",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10673"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x7a5",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10673"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x7ba",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_1065E"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x7eb",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_1067A"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x815",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10673"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x838",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_1066C"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x83f",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_1065E"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x846",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_1065E"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x84d",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_1065E"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x854",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10665"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x85b",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10665"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x862",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10657"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x869",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10657"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x870",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10673"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x877",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10657"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x87e",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10657"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x885",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10650"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x88c",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_1065E"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x94e",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_1067A"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x955",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10673"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x95c",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10673"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x963",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10650"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x96a",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10650"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x971",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10650"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x978",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10650"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x97f",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_1066C"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x98a",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_1067A"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x991",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10657"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x998",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_1066C"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x99f",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10673"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x9a6",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10673"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x9ad",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10673"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x9c2",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_1066C"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x9c9",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10673"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x9d0",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_1066C"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x9d7",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_1066C"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x9de",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr sub_10673"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xc71",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_10CEE"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xc7b",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_10CEE"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xe9b",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_11008"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xedc",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_10F74"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xf70",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_11005"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1362",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_1184A"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1390",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_117A3"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x13a7",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_1172A"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x13b2",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_1172A"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x13c0",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_116F8"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x13ce",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_1141C"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1454",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr def_11707"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1462",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_114C6"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x14c3",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_1150C"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x150c",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr def_11707"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1562",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr def_11707"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x158e",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr def_11707"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x15a9",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr def_11707"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x15c3",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr def_11707"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x162d",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr def_11707"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x163f",
+            "from": "call",
+            "to": [
+                "call far ptr sub_104B2"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x16a1",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr def_11707"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x16bf",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr def_11707"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x16f0",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr def_11707"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x16f4",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr def_11707"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1700",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr def_11707"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1726",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_11393"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x17cc",
+            "from": "jmp",
+            "to": [
+                "jmp near ptr loc_1184A"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x21d",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x3db",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x47d",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x65d",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x66b",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x679",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x8dd",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x937",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xc11",
+            "from": "align 2",
+            "to": [
+                "db 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xdbb",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xe4b",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xf73",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1007",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1035",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x106b",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x107d",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x10d7",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x116f",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1185",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x119b",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x11b1",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x13b5",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x13c3",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x13fd",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x141b",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1445",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1457",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x150f",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1565",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1591",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x16f3",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x16f7",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1729",
+            "from": "align 2",
+            "to": [
+                "db 90h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1899",
+            "from": "align 8",
+            "to": [
+                "db 00h, 00h, 00h, 00h, 00h, 00h, 00h"
+            ]
+        },
+        {
+            "seg": "seg001",
+            "off": "0x15ea",
+            "from": "align 4",
+            "to": [
+                "db 00h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1e",
+            "from": "sub ax, 3932h",
+            "to": [
+                "db 2Dh, 32h, 39h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x21",
+            "from": "sub ax, 3239h",
+            "to": [
+                "db 2Dh, 39h, 32h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x2ab",
+            "from": "cmp ax, 40h",
+            "to": [
+                "db 3Dh, 40h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x2be",
+            "from": "cmp ax, 60h",
+            "to": [
+                "db 3Dh, 60h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x8c3",
+            "from": "add ax, 32h",
+            "to": [
+                "db 05h, 32h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x91d",
+            "from": "add ax, 32h",
+            "to": [
+                "db 05h, 32h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xc1e",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xc33",
+            "from": "add ax, 40h",
+            "to": [
+                "db 05h, 40h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xc3e",
+            "from": "and ax, 0C0h",
+            "to": [
+                "db 25h, 0C0h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xc4a",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xc8c",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xcb4",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xd14",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xd17",
+            "from": "add ax, 0A0h",
+            "to": [
+                "db 05h, 0A0h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xd24",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xd37",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xd51",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xd62",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xd7f",
+            "from": "and ax, 20h",
+            "to": [
+                "db 25h, 20h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xd93",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xda5",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xdc6",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xdc9",
+            "from": "add ax, 0A0h",
+            "to": [
+                "db 05h, 0A0h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xdcf",
+            "from": "add ax, 10h",
+            "to": [
+                "db 05h, 10h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xddb",
+            "from": "and ax, 1Fh",
+            "to": [
+                "db 25h, 1Fh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xded",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xe08",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xe21",
+            "from": "and ax, 20h",
+            "to": [
+                "db 25h, 20h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xe35",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xe56",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xe59",
+            "from": "add ax, 0B0h",
+            "to": [
+                "db 05h, 0B0h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xe65",
+            "from": "and ax, 0DFh",
+            "to": [
+                "db 25h, 0DFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xe87",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xe96",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xea1",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xeaa",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xebc",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xec5",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xed7",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xee7",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xeef",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xef2",
+            "from": "add ax, 0B0h",
+            "to": [
+                "db 05h, 0B0h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xefe",
+            "from": "and ax, 0DFh",
+            "to": [
+                "db 25h, 0DFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xf16",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xf2b",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xf42",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xf59",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xf7c",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xf84",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xf87",
+            "from": "add ax, 0B0h",
+            "to": [
+                "db 05h, 0B0h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xf93",
+            "from": "and ax, 0DFh",
+            "to": [
+                "db 25h, 0DFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xfab",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xfc0",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xfd7",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xfee",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x100e",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1011",
+            "from": "add ax, 0B0h",
+            "to": [
+                "db 05h, 0B0h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x101d",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1020",
+            "from": "or ax, 20h",
+            "to": [
+                "db 0Dh, 20h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1042",
+            "from": "add ax, 40h",
+            "to": [
+                "db 05h, 40h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1059",
+            "from": "and ax, 3Fh",
+            "to": [
+                "db 25h, 3Fh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1061",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1073",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1096",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x10b4",
+            "from": "add ax, 0C0h",
+            "to": [
+                "db 05h, 0C0h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x10c0",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x10ce",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x10ee",
+            "from": "add ax, 60h",
+            "to": [
+                "db 05h, 60h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x10f9",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x110d",
+            "from": "and ax, 0Fh",
+            "to": [
+                "db 25h, 0Fh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1123",
+            "from": "add ax, 80h",
+            "to": [
+                "db 05h, 80h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x112f",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1143",
+            "from": "and ax, 0Fh",
+            "to": [
+                "db 25h, 0Fh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1159",
+            "from": "add ax, 20h",
+            "to": [
+                "db 05h, 20h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1165",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x117b",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1191",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x11a7",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x11bd",
+            "from": "and ax, 0Fh",
+            "to": [
+                "db 25h, 0Fh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x11d3",
+            "from": "add ax, 0E0h",
+            "to": [
+                "db 05h, 0E0h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x11df",
+            "from": "and ax, 3",
+            "to": [
+                "db 25h, 03h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x11f1",
+            "from": "add ax, 40h",
+            "to": [
+                "db 05h, 40h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x11fd",
+            "from": "and ax, 3Fh",
+            "to": [
+                "db 25h, 3Fh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x120e",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1247",
+            "from": "and ax, 0DFh",
+            "to": [
+                "db 25h, 0DFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1259",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1262",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1276",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x129c",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x12bb",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x12dc",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x12fd",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1314",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x132d",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x135d",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x136c",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x137b",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x138b",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x13a2",
+            "from": "and ax, 80h",
+            "to": [
+                "db 25h, 80h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1584",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x16f8",
+            "from": "sub ax, 0FFF3h",
+            "to": [
+                "db 2Dh, 0F3h, 0FFh"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x16fb",
+            "from": "cmp ax, 0Ch",
+            "to": [
+                "db 3Dh, 0Ch, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1769",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1774",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1784",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x17bb",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x17c7",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x17d9",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1812",
+            "from": "and ax, 0FFh",
+            "to": [
+                "db 25h, 0FFh, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xc15",
+            "from": "sub sp, 0Ch",
+            "to": [
+                "db 81h, 0ECh, 0Ch, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xd0d",
+            "from": "sub sp, 0Ch",
+            "to": [
+                "db 81h, 0ECh, 0Ch, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xdbf",
+            "from": "sub sp, 0Ah",
+            "to": [
+                "db 81h, 0ECh, 0Ah, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xe4f",
+            "from": "sub sp, 2",
+            "to": [
+                "db 81h, 0ECh, 02h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0xe7b",
+            "from": "sub sp, 6",
+            "to": [
+                "db 81h, 0ECh, 06h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1039",
+            "from": "sub sp, 4",
+            "to": [
+                "db 81h, 0ECh, 04h, 00h"
+            ]
+        },
+        {
+            "seg": "seg000",
+            "off": "0x1351",
+            "from": "sub sp, 0Ah",
+            "to": [
+                "db 81h, 0ECh, 0Ah, 00h"
+            ]
+        },
+        {
+            "seg": "seg001",
+            "off": "0x0",
+            "from": "segment",
+            "to": [
+                "seg001          segment para public 'UNK' use16"
+            ]
+        }
+    ],
+    "remove": [
+        {
+            "seg": "seg000",
+            "off": "0x0",
+            "from": ".686p"
+        },
+        {
+            "seg": "seg000",
+            "off": "0x0",
+            "from": ".mmx"
+        },
+        {
+            "seg": "seg000",
+            "off": "0x0",
+            "from": ".model"
+        },
+        {
+            "seg": "seg002",
+            "off": "0x0",
+            "from": "end start"
+        }
+    ],
+    "insert": [],
+    "preserves": [],
+    "externs": [],
+    "publics": [],
+    "header_preamble": [
+        "#ifndef ASOUND3_EXE",
+        "#define ASOUND3_EXE",
+        "#include <stdio.h>",
+        "",
+        "#if !defined(MSDOS) && !defined(__MSDOS__)",
+        "#define far",
+        "#endif",
+        "",
+        "#define __int32 long",
+        "#define __int8 char",
+        "#define __cdecl",
+        "#define __far far"
+    ],
+    "header_coda": "#endif // ASOUND3_EXE"
+}

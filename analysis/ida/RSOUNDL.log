@@ -1,0 +1,42 @@
+Possible file format: MS-DOS executable (EXE) (C:\Program Files\IDA Professional 9.1\loaders\dos.dll)
+
+  bytes   pages size description
+--------- ----- ---- --------------------------------------------
+   524288    64 8192 allocating memory for b-tree...
+    65536     8 8192 allocating memory for virtual array...
+   262144    32 8192 allocating memory for name pointers...
+-----------------------------------------------------------------
+   851968            total memory allocated
+
+Loading file 'C:\Users\yotam\projects\gunship_2000\analysis\RSOUNDL.exe' into database...
+Detected file format: MS-DOS executable (EXE)
+Assuming __cdecl calling convention by default
+Loading processor module C:\Program Files\IDA Professional 9.1\procs\pc.dll for metapc...Initializing processor module metapc...OK
+Autoanalysis subsystem has been initialized.
+Reading relocation table...
+  0. Creating a new segment  (00010000-000114E0) ... ... OK
+  1. Creating a new segment  (000114D0-000114E0) ... ... OK
+  2. Creating a new segment  (00010FF0-000114D0) ... ... OK
+Searching for the data segment...
+Looking for ' - Copyright'...
+Marking typical code sequences...
+Flushing buffers, please wait...ok
+File 'C:\Users\yotam\projects\gunship_2000\analysis\RSOUNDL.exe' has been successfully loaded into the database.
+Flushing buffers, please wait...ok
+Hex-Rays Decompiler plugin has been loaded (v9.1.0.250226)
+  The hotkeys are F5: decompile, Ctrl-F5: decompile all.
+
+  Please check the Edit/Plugins menu for more information.
+Hex-rays version 9.1.0.250226 has been detected, gooMBA plugin ready to use
+[MCP] Plugin loaded (idalib mode, server managed externally)
+IDA is analysing the input file...
+You may start to explore the input file right now.
+Propagating type information...
+Function argument information has been propagated
+The initial autoanalysis has been finished.
+ida_export: 29 functions, 0 hidden
+ida_export: 0 hidden chunks
+ida_export: wrote C:\Users\yotam\projects\gunship_2000\analysis\RSOUNDL.exe.i64.segs.log
+ida_export: wrote C:\Users\yotam\projects\gunship_2000\analysis\RSOUNDL.exe.i64.lst
+Flushing buffers, please wait...ok
+Unloading IDP module C:\Program Files\IDA Professional 9.1\procs\pc.dll...

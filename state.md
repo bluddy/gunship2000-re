@@ -1,7 +1,7 @@
 # Gunship 2000 Reverse Engineering - State Summary
 
-**Phase**: Phase 0 COMPLETE / Phase 1 COMPLETE / Phase 2 COMPLETE / Phase 3 INFRASTRUCTURE READY
-**Date**: 2026-10-09
+**Phase**: Phase 0 COMPLETE / Phase 1 COMPLETE / Phase 2 COMPLETE / Phase 3 TRACK 1 SKELETON DONE, TRACK 2 (C PORTS) NEXT
+**Date**: 2026-10-10
 **Platform**: Linux (WSL)
 **Goal**: Fully reverse engineer and rebuild Gunship 2000 from original binaries
 
@@ -140,8 +140,9 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 10. **NEXT (Track 2 - C Ports)**: Use DOSBox for per-routine MSC 6.0 compilation (avoids kvikdos compiler pass bug); run `portcheck.py` + `mzdiff` verification
 11. **Track 1 (Skeleton): GS2.exe + SETUP.exe byte-identical rebuilds** ✅ **DONE (2026-10-10)** — same pipeline, one command each (`venv\Scripts\python scripts/build_verify.py GS2` / `SETUP`). GS2 load file (40,271 B, 300 relocs) byte-identical; **SETUP whole file** (21,687 B — classic MZ, no overlay — 261 relocs) byte-identical. See the Track 1 section for the SETUP-specific fixes (collapsed-function export, bss straddling the image end, bss-tail truncation in normalize).
 12. **Full executable inventory completed (2026-10-10)** — 24 MZ + 4 COM executables in `game/` (not 3!). **Chosen for Track 1 expansion** (self-contained, high-value): AdLib (`ASOUND.GS2/GS3/GS4/LOG`), Roland (`RSOUND.GS2/GS3/GS4/LOG`), `MGRAPHIC.GS2`, `LABS.GS2`, `PLAYER.GS2`, `GS2000.COM`. Skipped as unnecessary: DSOUND/ISOUND/NSOUND (sound variants), MISC.GS2 (F-19 leftover), ADS.GS2 (loader), SETUP.EXE/CD (small COM variant). See § Executable Inventory.
-13. **NEXT (Track 2 - C Ports)**: Use DOSBox for per-routine MSC 6.0 compilation (avoids kvikdos compiler pass bug); run `portcheck.py` + `mzdiff` verification
-14. DOSBox runtime verification of decoded structures ⏳ **PENDING**
+13. **Track 1 expansion FROZEN (2026-10-10)** after ASOUND2 byte-identical (commit `31e41e0`) — remaining drivers hit a systematic IDA-DS=FF0 symbolic-operand bug (root-caused, fix designed). All findings, the ASOUND3 diagnosis, resume plan, and infra notes are frozen in `docs/track1_expansion_sound_drivers.md`. IDA DBs + listings already exported for ASOUND3/4/L, RSOUND2/3/4/L, MGRAPHIC, LABS, PLAYER; targets registered in `build_verify.py`.
+14. **NEXT (Track 2 - C Ports)**: per-routine MSC 6.0 C ports of GS.GS2 / GS2.GS2 / SETUP.GS2 — DOSBox backend for compilation (avoids kvikdos compiler pass bug); `portcheck.py` + `mzdiff` verification
+15. DOSBox runtime verification of decoded structures ⏳ **PENDING**
 
 ### Phase 3-6: unchanged (Ghidra → C, AI unit tests, mzdiff comparison, DOSBox testing)
 
@@ -229,7 +230,7 @@ self-contained programs, **not RTLink overlay segments** — they have their own
 tables and are exec'd by the launcher stub. The game's sound system is a set of pluggable
 driver EXEs chosen at runtime.
 
-### Chosen for Track 1 expansion (10 binaries)
+### Chosen for Track 1 expansion (10 binaries) — PAUSED after ASOUND2; see `docs/track1_expansion_sound_drivers.md`
 | File | Size | Type | ID / notes |
 |---|---|---|---|
 | `ASOUND.GS2` | 13,314 | MZ, 12 relocs, CS:IP 0000:0010 | "GS2000 AdLib I 8-10-92" |
@@ -314,6 +315,7 @@ gunship_2000/
 | Binary | GS.GS2 | **REBUILD BYTE-IDENTICAL** | MZ + RTLink dir + DGROUP init (rec4) + string pack; 765 fns in registry; load file 116,616 B reproduced exactly |
 | Binary | GS2.GS2 | **REBUILD BYTE-IDENTICAL** | MZ + RTLink dir (count=9, ids 2-10) + 10 thunks + startup chain; 165 fns in registry; load file 40,271 B reproduced exactly |
 | Binary | SETUP.GS2 | **REBUILD BYTE-IDENTICAL** | classic MZ (image == file), 126 fns, 261 relocs, cs:ip=11d:1e; whole 21,687 B file reproduced exactly |
+| Binary | ASOUND.GS2 (ASOUND2) | **REBUILD BYTE-IDENTICAL** | Track 1 expansion; 12 relocs; other sound drivers frozen — see `docs/track1_expansion_sound_drivers.md` |
 | Data | GS2000.DAT | PARSED | 85-entry chain catalog (count + count×24, len/off u32) — read by `FUN_1f61_060e` via DGROUP:0x806 |
 | Data | GS2000.CAT | PARSED | 105-entry chain catalog (DGROUP:0x07FB) |
 | Data | MBUILDER.CAT | PARSED | 16-entry chain catalog |
