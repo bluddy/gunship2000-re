@@ -109,16 +109,16 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 ### Phase 3: F-19 Style Reconstruction Pipeline — **INFRASTRUCTURE READY**
 **Goal**: Byte-exact reconstruction using F-19's dual-track methodology:
 1. **Skeleton** — Full asm disassembly → `uasm` + original `LINK.EXE` → byte-identical EXE (`make verify`)
-2. **C Ports** — Per-routine C rewrite → compile with **original MSC 6.0** under **DOSBox** → `portcheck.py` + `mzdiff` = MATCH
+2. **C Ports** — Per-routine C rewrite → compile with **original MSC 6.0** under **DOSBox-X** → `portcheck.py` + `mzdiff` = MATCH
 
 **Key tools adopted from F-19**:
 - `tools/f19re/mzretools` — mzdiff, mzmap, mzdup, lst2asm, lst2ch, portcheck, z3check
 - `tools/f19re/mzretools/tools/emulators/kvikdos` — runs MSC 6.0 LINK.EXE under Linux (KVM-accelerated); **CL.EXE fails** (looks for `BC1.EXE` instead of `C1.EXE`); use DOSBox for compilation
-- **MSC 6.0 (Gunship compiler)** at `tools/msc6.0/C600/` (mounted as `C:\` in DOSBox):
+- **MSC 6.0 (Gunship compiler)** at `tools/msc6.0/C600/` (mounted as `C:\` in DOSBox-X):
   - `C:\BIN\` — C1.EXE, C2.EXE, C3.EXE, CL.EXE
   - `C:\BINB\` — LINK.EXE, ILINK.EXE, LIB.EXE, BIND.EXE
-  - `C:\INCLUDE\` — standard headers (stdio.h, etc.)
-  - `C:\LIB\` — libraries (llibc.lib, etc.)
+  - `C:\INCLUDE\` — standard headers (STDIO.H, etc.)
+  - `C:\LIB\` — libraries (SLIBC.LIB, etc.)
 - `tools/f19re/conf/egame.json` → adapt for GS.GS2/GS2.GS2 (segment layout, BSS, encoding fixes)
 - `tools/f19re/conf/routine_names.txt` → rename registry format
 - `tools/f19re/conf/toolchain.conf` — DOSBox/kvikdos config
@@ -132,20 +132,26 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 1. **instruction.cpp:362** — Fixed `INS_CALL_FAR`/`INS_JMP_FAR` handling: opcodes 9A (CALL FAR) and EA (JMP FAR) are immediate far calls/jumps, NOT group 5 instructions. Changed condition from `iclass == INS_CALL_FAR || INS_JMP_FAR` to `iclass == INS_CALL_FAR || INS_JMP_FAR && opcode == OP_GRP5_Ev`.
 2. **scanq.cpp:194** — Fixed `saveJump` to preserve destination segment for far jumps: added `isNear` parameter, only normalize segment for near jumps (`isNear=true`).
 
+**DOSBox-X MSC 6.0 Compilation — GOTCHAS (2026-10-10)**:
+- **8.3 filename limit**: ALL source/batch/object files MUST be ≤8.3 format (e.g. `t.c`, `c.bat`, `t.obj`). Long names become `COMPIL~1.BAT` and break CL.EXE/LINK.EXE.
+- **ASCII encoding only**: Source files must be pure ASCII (no UTF-8 BOM, no UTF-16). PowerShell defaults to UTF-16 LE — use `Set-Content -Encoding ASCII`.
+- **DOSBox-X config**: `dosbox_msc60.conf` mounts `tools/msc6.0/C600` as `C:\` with PATH `c:\bin;c:\binb`, INCLUDE `c:\include`, LIB `c:\lib`.
+- **Compile command**: `bin\cl /c /Ic:\include t.c` (compile-only, produces `t.obj`). Without `/c`, CL prompts interactively for linker inputs.
+
 **Immediate next steps**:
 1. Mount MSC 6.0 floppy images, extract compiler to `tools/msc6.0/C600/` ✅ **DONE**
-2. Build kvikdos emulator from f19re ✅ **DONE** (KVM working; LINK.EXE works, CL.EXE fails → use DOSBox for compilation)
+2. Build kvikdos emulator from f19re ✅ **DONE** (KVM working; LINK.EXE works, CL.EXE fails → use DOSBox-X for compilation)
 3. Adapt f19re `conf/egame.json` → `conf/gs_gs2.json` + `conf/gs2_gs2.json` ✅ **DONE**
 4. Generate routine maps with mzmap for GS.GS2 and GS2.GS2 ✅ **DONE**
 5. Build mzdup signatures and cross-match GS.GS2 ↔ GS2.GS2 routines ✅ **DONE** (11 matches found)
 6. **Generate .lst from Ghidra dump for mzretools** ✅ **DONE** — `scripts/ghidra_dump_to_lst_final.py` converts DumpProgram.java output to mzretools .lst format
 7. mzmap verification on generated .lst ✅ **DONE** — 54 routines over 3 segments (matches original)
-8. **MSC 6.0 compiler working under DOSBox** ✅ **DONE** — DOSBox staging 0.83 compiles successfully
+8. **MSC 6.0 compiler working under DOSBox-X** ✅ **DONE** (8.3/ASCII constraints documented)
 9. **Track 1 (Skeleton): GS.exe byte-identical rebuild** ✅ **DONE (2026-10-09)** — IDA listing → `gen_lst2asm_conf.py` → `lst2asm.py` → UASM → MSC 6.0 LINK.EXE (kvikdos) → `normalize_mz.py`. **Full load file (116,616 B: header + image + 2017-entry reloc table) is byte-identical to `analysis/GS.exe`** — 0 differing bytes; CS:IP 17D1:082F, SS:SP 3962:0800, minalloc 1F8A all exact. (Original's 163,734-byte game-data overlay is appended data, not build output.)
 10. **Track 1 (Skeleton): GS2.exe + SETUP.exe byte-identical rebuilds** ✅ **DONE (2026-10-10)** — same pipeline, one command each (`venv\Scripts\python scripts/build_verify.py GS2` / `SETUP`). GS2 load file (40,271 B, 300 relocs) byte-identical; **SETUP whole file** (21,687 B — classic MZ, no overlay — 261 relocs) byte-identical. See the Track 1 section for the SETUP-specific fixes (collapsed-function export, bss straddling the image end, bss-tail truncation in normalize).
 11. **Full executable inventory completed (2026-10-10)** — 24 MZ + 4 COM executables in `game/` (not 3!). **Chosen for Track 1 expansion** (self-contained, high-value): AdLib (`ASOUND.GS2/GS3/GS4/LOG`), Roland (`RSOUND.GS2/GS3/GS4/LOG`), `MGRAPHIC.GS2`, `LABS.GS2`, `PLAYER.GS2`, `GS2000.COM`. Skipped as unnecessary: DSOUND/ISOUND/NSOUND (sound variants), MISC.GS2 (F-19 leftover), ADS.GS2 (loader), SETUP.EXE/CD (small COM variant). See § Executable Inventory.
 12. **Track 1 expansion FROZEN (2026-10-10)** after ASOUND2 byte-identical (commit `31e41e0`) — remaining drivers hit a systematic IDA-DS=FF0 symbolic-operand bug (root-caused, fix designed). All findings, the ASOUND3 diagnosis, resume plan, and infra notes are frozen in `docs/track1_expansion_sound_drivers.md`. IDA DBs + listings already exported for ASOUND3/4/L, RSOUND2/3/4/L, MGRAPHIC, LABS, PLAYER; targets registered in `build_verify.py`.
-13. **NEXT (Track 2 - C Ports)**: per-routine MSC 6.0 C ports of GS.GS2 / GS2.GS2 / SETUP.GS2 — DOSBox backend for compilation (avoids kvikdos compiler pass bug); `portcheck.py` + `mzdiff` verification
+13. **NEXT (Track 2 - C Ports)**: per-routine MSC 6.0 C ports of GS.GS2 / GS2.GS2 / SETUP.GS2 — DOSBox-X backend for compilation (avoids kvikdos compiler pass bug); `portcheck.py` + `mzdiff` verification
 14. DOSBox runtime verification of decoded structures ⏳ **PENDING**
 
 ### Phase 3-6: unchanged (Ghidra → C, AI unit tests, mzdiff comparison, DOSBox testing)

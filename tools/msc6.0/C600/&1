@@ -1,0 +1,2 @@
+test_compile.c
+fatal error C1023: cannot open source file 'test_compile.c'
