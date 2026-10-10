@@ -26,7 +26,7 @@ IDA_ASM = "analysis/ida/GS.asm"  # IDA-generated asm from Track 1
 ORIG_EXE = "analysis/GS.exe"
 EXTRACT_TOOL = "tools/f19re/mzretools/tools/extract_routines.py"
 REPLACE_TOOL = "tools/f19re/mzretools/tools/replace_routines.py"
-UASM = "wsl uasm"
+UASM = r"C:\tools\uasm\uasm64.exe"
 LINK_SCRIPT = "scripts/link_mz.sh"
 MZDIFF = "tools/f19re/mzretools/debug/mzdiff"
 
@@ -136,28 +136,37 @@ def replace_routines(ida_asm: str, routine_dir: str, output_asm: str) -> bool:
         return False
 
 def assemble_link(asm_file: str, name: str) -> tuple[bool, str]:
-    """Assemble with UASM and link with LINK.EXE via link_mz.sh."""
+    """Assemble with UASM (Windows) and link with LINK.EXE via link_mz.sh."""
     try:
-        # UASM
+        # UASM (Windows) - compile 16-bit code
+        obj_file = os.path.join(os.getcwd(), f"{name}.obj")
+        print(f"Assembling {asm_file} -> {obj_file}")
         result = subprocess.run([
-            "wsl", "uasm", "-q", "-Fo", f"/tmp/{name}.obj", asm_file
-        ], capture_output=True, text=True, timeout=60)
+            UASM, "-0", "-q", "-Fo", obj_file, asm_file
+        ], capture_output=True, text=True, timeout=60, cwd=os.getcwd())
         if result.returncode != 0:
-            print(f"UASM failed: {result.stderr}")
+            print(f"UASM failed (rc={result.returncode})")
+            print(f"stdout: {result.stdout}")
+            print(f"stderr: {result.stderr}")
             return False, ""
         
-        # Link via link_mz.sh
+        # Link via link_mz.sh (kvikdos)
+        print(f"Linking {name}.obj...")
         result = subprocess.run([
             "wsl", "bash", "scripts/link_mz.sh", name
         ], capture_output=True, text=True, timeout=120, cwd=os.getcwd())
         if result.returncode != 0:
-            print(f"Link failed: {result.stderr}")
+            print(f"Link failed (rc={result.returncode})")
+            print(f"stdout: {result.stdout}")
+            print(f"stderr: {result.stderr}")
             return False, ""
         
-        exe_path = f"~/gunship_build/{name}.exe"
+        exe_path = os.path.join(os.path.expanduser("~"), "gunship_build", f"{name}.exe")
         return True, exe_path
     except Exception as e:
         print(f"Assemble/link error: {e}")
+        import traceback
+        traceback.print_exc()
         return False, ""
 
 def run_mzdiff(orig_exe: str, test_exe: str, map_file: str) -> bool:

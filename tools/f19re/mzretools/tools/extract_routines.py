@@ -28,6 +28,22 @@ def process_line(line):
     # ignore empty lines and comments
     if not line or line_empty(line) or line[0] == ';':
         return ''
+    # handle MSC code byte annotation lines (starting with ***)
+    stripped = line.lstrip()
+    if stripped.startswith('***'):
+        # MSC format: *** <offset> <hex bytes> <instruction>
+        # Extract instruction part after the hex bytes
+        parts = stripped.split()
+        if len(parts) >= 3:
+            # Find the instruction part (after hex bytes)
+            # Hex bytes are 2-char hex values, instruction starts after them
+            # Simple heuristic: instruction starts at position where we see non-hex
+            instr_parts = parts[2:]  # skip *** and offset
+            # Filter out hex byte tokens (2-char hex)
+            instr_tokens = [p for p in instr_parts if not re.match(r'^[0-9a-fA-F]{2}$', p)]
+            if instr_tokens:
+                return ' '.join(instr_tokens)
+        return ''
     tokens = line.split()
     # return segment start and end as is
     if start_segment(line) or end_segment(line):
