@@ -1,6 +1,7 @@
+#!/usr/bin/env python3
 """
-Portcheck for Gunship 2000 - compile C modules with MSC 6.0 under DOSBox
-and verify against original binaries using mzdiff.
+Portcheck for Gunship 2000 - compile C routines with MSC 6.0 under DOSBox-X
+and verify against original binary bytes.
 """
 
 import argparse
@@ -8,129 +9,171 @@ import os
 import subprocess
 import sys
 import tempfile
-import shutil
+import re
 from pathlib import Path
 
-# Module-specific compiler flags (determined empirically)
-MODULE_FLAGS = {
-    "gs_gs2": "/Os",
-    "gs2_gs2": "/Os",
-    "setup_gs2": "/Os",
-    "gs_ovl0": "/Os",
-    "gs_ovl1": "/Os",
-    "gs_ovl2": "/Os",
-    "gs_ovl3": "/Os",
-    "gs2_id2": "/Os",
-    "gs2_id3": "/Os",
-    "gs2_id4": "/Os",
-    "gs2_id5": "/Os",
-    "gs2_id6": "/Os",
-    "gs2_id7": "/Os",
-    "gs2_id8": "/Os",
-    "gs2_id9": "/Os",
-}
+# MSC 6.0 under DOSBox-X
+DOSBOX_X = r"C:\DOSBox-X\dosbox-x.exe"
+MSC_ROOT = "tools/msc6.0/C600"
 
-# DOSBox configuration
-DOSBOX = r"C:\tools\dosbox-staging-v0.83.0\dosbox.exe"
-DOSBOX_CONF = "dosbox_msc60.conf"
-MSC_ROOT = "dos/msc60"
+# 8.3 filename constraints
+def to_83(name: str) -> str:
+    """Convert filename to 8.3 format (uppercase, max 8.3)."""
+    base, ext = os.path.splitext(name)
+    base = base.upper()[:8]
+    ext = ext.upper()[:4]
+    return base + ext
 
-# Paths
-GAME_DIR = Path("game")
-ANALYSIS_DIR = Path("analysis")
-REGISTRY_DIR = Path("registry")
-DECOMPILED_DIR = Path("decompiled")
-TOOLS_DIR = Path("tools")
-F19RE_TOOLS = Path("tools/f19re/mzretools/build")
-
-# MSC 6.0 compiler flags
-MSC_FLAGS = "/AS /Gs /Os /Fc{0}.cod /c"
-
-def run_cmd(cmd, cwd=None, capture=True, timeout=300):
-    """Run a command and return (success, stdout, stderr)."""
+def run_dosbox(config_path: str, timeout: int = 60) -> tuple[bool, str]:
+    """Run DOSBox-X with config and return (success, output)."""
     try:
-        result = subprocess.run(cmd, cwd=cwd, capture_output=capture, 
-                                text=True, timeout=timeout, shell=True)
-        return result.returncode == 0, result.stdout, result.stderr
+        result = subprocess.run(
+            [DOSBOX_X, "-exit", "-conf", config_path],
+            capture_output=True, text=True, timeout=timeout, cwd=os.getcwd()
+        )
+        return result.returncode == 0, result.stdout + result.stderr
     except subprocess.TimeoutExpired:
-        return False, "", f"Timeout after {timeout}s"
+        return False, f"Timeout after {timeout}s"
     except Exception as e:
-        return False, "", str(e)
+        return False, str(e)
 
-def build_module(module_name, source_file, routines=None):
-    """Compile a C module with MSC 6.0 under DOSBox."""
-    flags = MODULE_FLAGS.get(module_name, "/Os")
-    c_file = Path(source_file)
-    obj_file = c_file.with_suffix(".obj")
-    cod_file = c_file.with_suffix(".cod")
+def parse_cod_listing(cod_path: str, routine_name: str) -> bytes:
+    """Parse MSC /Fc .cod listing to extract routine code bytes."""
+    if not os.path.exists(cod_path):
+        return b""
     
-    # Build DOSBox command
-    # We need to run CL.EXE with the right flags
-    cl_cmd = f"cl {flags} /Fc{c_file.stem}.cod /c {c_file.name}"
+    with open(cod_path, "r", encoding="cp437", errors="ignore") as f:
+        lines = f.readlines()
     
-    # Create a batch file to run in DOSBox
-    batch_content = f"""@echo off
-cd /d c:\\src
-{cl_cmd} 2>&1
-echo EXIT_CODE=%ERRORLEVEL%
+    in_routine = False
+    routine_bytes = bytearray()
+    
+    for line in lines:
+        if routine_name.upper() + " PROC" in line.upper():
+            in_routine = True
+            continue
+        if in_routine and "ENDP" in line.upper():
+            break
+        if in_routine:
+            # Parse code bytes: offset followed by hex bytes
+            # Example: *** 000000  33 c0      xor ax,ax
+            match = re.match(r'\s*\*{3}\s+[0-9A-F]{6}\s+((?:[0-9A-F]{2}\s+)+)', line)
+            if match:
+                hex_bytes = match.group(1).strip().split()
+                routine_bytes.extend(bytes(int(b, 16) for b in hex_bytes))
+    
+    return bytes(routine_bytes)
+
+def get_original_bytes(exe_path: str, segment: int, offset: int, length: int) -> bytes:
+    """Extract bytes from original EXE at given segment:offset (load module)."""
+    with open(exe_path, "rb") as f:
+        f.seek(0x08)
+        header_paras = int.from_bytes(f.read(2), "little")
+        load_offset = header_paras * 16
+    
+    linear_addr = segment * 16 + offset
+    file_offset = load_offset + linear_addr
+    
+    with open(exe_path, "rb") as f:
+        f.seek(file_offset)
+        return f.read(length)
+
+def verify_routine(module: str, routine_name: str, c_source: str, 
+                   segment: int, offset: int, length: int) -> bool:
+    """Compile C routine and verify against original binary."""
+    
+    msc_dir = os.path.join(os.getcwd(), MSC_ROOT)
+    
+    with tempfile.TemporaryDirectory() as tmpdir:
+        # Write C source with 8.3 name in MSC dir
+        c_83 = f"{routine_name[:8]}.c"
+        c_path = os.path.join(msc_dir, c_83)
+        with open(c_path, "w", encoding="ascii") as f:
+            f.write(c_source)
+        
+        # Create DOSBox config
+        cod_83 = c_83.replace(".C", ".cod")
+        config_content = f"""[sdl]
+fullscreen=false
+[dosbox]
+machine=svga_s3
+memsize=16
+[cpu]
+core=normal
+cputype=386
+cycles=max
+[mixer]
+nosound=true
+[autoexec]
+mount c {MSC_ROOT}
+c:
+bin\\cl /c /Fc{c_83.replace('.C', '')}.cod /Ic:\\include {c_83} > compile.log
+exit
 """
-    
-    # Write batch file
-    batch_file = Path("compile_temp.bat")
-    batch_file.write_text(batch_content, encoding="ascii")
-    
-    # Run in DOSBox
-    dosbox_cmd = [
-        "dosbox.exe", "-conf", "dosbox_msc60.conf",
-        "-c", f"compile_temp.bat > compile.log 2>&1",
-        "-exit"
-    ]
-    
-    success, stdout, stderr = run_cmd(dosbox_cmd, timeout=120)
-    
-    # Check compile.log for results
-    if Path("compile.log").exists():
-        with open("compile.log", "r") as f:
-            log = f.read()
-        print(log)
-    
-    return success
-
-def mzdiff_routine(original_exe, test_exe, routine_name, map_file):
-    """Run mzdiff on a specific routine."""
-    # Get routine address from map
-    # Run mzdiff
-    pass
+        config_path = os.path.join(tmpdir, "dosbox_portcheck.conf")
+        with open(config_path, "w", encoding="ascii") as f:
+            f.write(config_content)
+        
+        # Run DOSBox
+        success, output = run_dosbox(config_path)
+        
+        if not success:
+            print(f"Compile failed for {routine_name}")
+            # Check compile.log
+            log_path = os.path.join(msc_dir, "compile.log")
+            if os.path.exists(log_path):
+                with open(log_path, "r") as f:
+                    print(f.read())
+            return False
+        
+        # Parse routine bytes from .cod
+        cod_path = os.path.join(msc_dir, cod_83)
+        routine_bytes = parse_cod_listing(cod_path, routine_name)
+        
+        if not routine_bytes:
+            print(f"Could not extract bytes for {routine_name}")
+            return False
+        
+        # Get original bytes
+        orig_exe = f"analysis/{module}.exe"
+        actual_length = length if length > 0 else len(routine_bytes)
+        original_bytes = get_original_bytes(orig_exe, segment, offset, actual_length)
+        
+        # Cleanup MSC dir
+        for fname in [c_83, f"{routine_name[:8]}.OBJ", cod_83, "compile.log"]:
+            fpath = os.path.join(msc_dir, fname)
+            if os.path.exists(fpath):
+                os.remove(fpath)
+        
+        if routine_bytes[:actual_length] == original_bytes:
+            print(f"✓ {routine_name}: MATCH ({len(routine_bytes)} bytes)")
+            return True
+        else:
+            print(f"✗ {routine_name}: MISMATCH")
+            print(f"  Expected ({len(original_bytes)}): {original_bytes.hex()}")
+            print(f"  Got      ({len(routine_bytes)}): {routine_bytes.hex()}")
+            return False
 
 def main():
-    parser = argparse.ArgumentParser(description="Gunship 2000 portcheck - MSC 6.0 + DOSBox + mzdiff")
-    parser.add_argument("module", help="Module name (gs_gs2, gs2_gs2, etc.)")
-    parser.add_argument("routine", nargs="?", help="Specific routine to verify")
-    parser.add_argument("--source", help="Source file to compile")
-    parser.add_argument("--all", action="store_true", help="Verify all routines in module")
-    parser.add_argument("--clean", action="store_true", help="Clean build artifacts")
+    parser = argparse.ArgumentParser(description="Gunship 2000 portcheck - verify C routine against original")
+    parser.add_argument("module", help="Module name (gs_gs2, gs2_gs2, setup_gs2)")
+    parser.add_argument("routine", help="Routine name")
+    parser.add_argument("--source", required=True, help="C source file")
+    parser.add_argument("--segment", type=lambda x: int(x, 0), required=True, help="Segment (hex)")
+    parser.add_argument("--offset", type=lambda x: int(x, 0), required=True, help="Offset (hex)")
+    parser.add_argument("--length", type=lambda x: int(x, 0), help="Length (optional)")
     
     args = parser.parse_args()
     
-    if args.clean:
-        # Clean build artifacts
-        for f in Path(".").glob("*.obj"):
-            f.unlink(missing_ok=True)
-        for f in Path(".").glob("*.cod"):
-            f.unlink(missing_ok=True)
-        for f in Path(".").glob("compile.log"):
-            f.unlink(missing_ok=True)
-        print("Cleaned build artifacts")
-        return
+    with open(args.source, "r") as f:
+        c_source = f.read()
     
-    if args.routine:
-        print(f"Verifying routine {args.routine} in module {args.module}")
-        # TODO: Implement single routine verification
-    elif args.all:
-        print(f"Verifying all routines in module {args.module}")
-        # TODO: Implement full module verification
-    else:
-        parser.print_help()
+    length = args.length if args.length else 0
+    
+    ok = verify_routine(args.module, args.routine, c_source, 
+                       args.segment, args.offset, length)
+    
+    sys.exit(0 if ok else 1)
 
 if __name__ == "__main__":
     main()
