@@ -38,8 +38,8 @@ ohdr *= 16
 
 # declared content size of the original (from the page-count fields)
 lastpg, pages = struct.unpack_from('<HH', o, 2)
-content = (pages - 1) * 512 + lastpg
-assert content == 0x1C788, hex(content)
+content = (pages - 1) * 512 + lastpg if lastpg else pages * 512
+assert ohdr < content <= len(o), f'bad content size {content:#x}'
 
 # 1) the load module must already match byte for byte
 mo, mn = o[ohdr:content], bytes(n[ohdr:content])
@@ -47,6 +47,17 @@ if mo != mn:
     diffs = [i for i in range(len(mo)) if mo[i] != mn[i]]
     sys.exit(f'load module differs in {len(diffs)} bytes '
              f'(first at {ohdr + diffs[0]:#x}) - not normalizing')
+
+# 1b) LINK writes a segment's trailing `db ?` (bss) bytes into the file even
+# though they carry no data; the original ends at `content` (that RAM is
+# covered by minalloc instead). Strip the extra tail.
+if len(n) > content:
+    n = n[:content]
+
+# 1c) header words that describe the file size / memory budget LINK computed
+# against its own inflated file image; recompute from the original layout
+n[0x02:0x06] = o[0x02:0x06]                  # page-count fields (e_cblp/e_cp)
+n[0x0A:0x0C] = o[0x0A:0x0C]                  # minalloc
 
 # 2) header fields that must already agree
 for off in (0x00, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0E, 0x10,

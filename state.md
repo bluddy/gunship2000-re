@@ -138,14 +138,14 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 9. **MSC 6.0 compiler working under DOSBox** ✅ **DONE** — DOSBox staging 0.83 compiles successfully; output is `TEST.OBJ` (uppercase); no compiler pass detection bug
 9. **Track 1 (Skeleton): GS.exe byte-identical rebuild** ✅ **DONE (2026-10-09)** — IDA listing → `gen_lst2asm_conf.py` → `lst2asm.py` → UASM → MSC 6.0 LINK.EXE (kvikdos) → `normalize_mz.py`. **Full load file (116,616 B: header + image + 2017-entry reloc table) is byte-identical to `analysis/GS.exe`** — 0 differing bytes; CS:IP 17D1:082F, SS:SP 3962:0800, minalloc 1F8A all exact. (Original's 163,734-byte game-data overlay is appended data, not build output.)
 10. **NEXT (Track 2 - C Ports)**: Use DOSBox for per-routine MSC 6.0 compilation (avoids kvikdos compiler pass bug); run `portcheck.py` + `mzdiff` verification
-11. **NEXT**: apply the same pipeline to GS2.GS2 (`scripts/build_verify.py GS2`) and SETUP.GS2 (`build_verify.py SETUP` — first re-export the SETUP listing from IDA with the collapsed `start` function expanded: entry is a 0xC3-byte collapsed chunk at `seg002:001E`, IDA hides it as `[... BYTES: COLLAPSED FUNCTION start]`, so the `start` proc/public is missing from the listing)
+11. **Track 1 (Skeleton): GS2.exe + SETUP.exe byte-identical rebuilds** ✅ **DONE (2026-10-10)** — same pipeline, one command each (`venv\Scripts\python scripts/build_verify.py GS2` / `SETUP`). GS2 load file (40,271 B, 300 relocs) byte-identical; **SETUP whole file** (21,687 B — classic MZ, no overlay — 261 relocs) byte-identical. See the Track 1 section for the SETUP-specific fixes (collapsed-function export, bss straddling the image end, bss-tail truncation in normalize).
 12. DOSBox runtime verification of decoded structures ⏳ **PENDING**
 
 ### Phase 3-6: unchanged (Ghidra → C, AI unit tests, mzdiff comparison, DOSBox testing)
 
 ---
 
-## Track 1: GS.exe Byte-Identical Rebuild — DONE (2026-10-09)
+## Track 1: GS.exe / GS2.exe / SETUP.exe Byte-Identical Rebuild — ALL DONE (2026-10-09 / 10)
 
 **Pipeline** (all in-repo, re-runnable; **one command**: `venv\Scripts\python scripts\build_verify.py GS`):
 `analysis/ida/GS.i64.lst` (IDA batch export, `scripts/ida_export_lst.idc`) →
@@ -183,6 +183,39 @@ each fix reads the original byte(s) and forces an exact reproduction):
 `read_bytes` slot reads must stay 5 bytes for far slots; IDA `align` may be hex (`align 10h`);
 data labels have no colon (needed for far-split expectations); `.286` + `OPTION NOSCOPED`
 required; `push ah`-style register names must not parse as hex literals (byte check guards).
+
+### GS2 additions (all byte-driven, in `gen_lst2asm_conf.py`)
+- **longform db**: over-long disp16 (`80 BC 01 00 00`) and byte-fitting `81 /x iw` where UASM
+  picks `83 /x ib` → db of the original bytes (capstone-driven)
+- **push-symbolic db**: `push offset`/`push seg` whose listing imm ≠ expected (IDA renders raw
+  immediates as symbols, e.g. `push 4` = `push offset unk_3A294`) → db the original `68 imm16`
+  (plain `push 0004h` re-optimizes to 6A)
+- **DGROUP group reconstruction**: direct `[disp16]` refs with `(label_EA − disp)` bases →
+  `DGROUP GROUP seg011, seg012` + `ds:` assume rewrites (`es:`/`push offset` stay segment-relative)
+- **db_bytes run compression**: runs ≥8 → `N dup(XXh)` (UASM "instruction string too long",
+  helper.py MAXLINE=120)
+
+### SETUP specifics (2026-10-10)
+- **Collapsed functions/chunks**: IDA hides bodies as `[NNN BYTES: COLLAPSED FUNCTION ...]` —
+  81 entries; content would be silently missing. `scripts/ida_export_lst.idc` clears FUNC_HIDDEN
+  on all 123 functions (iterate with `get_next_func(0)`, not `-1`) before `gen_file(OFILE_LST)`;
+  the 8 leftover `COLLAPSED CHUNK` (tail) entries need `scripts/ida_expand_chunks.py`
+  (IDC `get_fchunk_attr` has no FLAGS; Python `ida_funcs.getn_fchunk(i)` + `set_visible_func`;
+  MUST end with `ida_pro.qexit(0)` or IDA waits for UI and the DB never saves).
+- **bss straddling the image end**: `dseg` spans 0x14220..0x161B0 but the image ends at
+  0x14EB7 (= dseg:0C97) — 4,782 `db/dw ?` lines (incl. labels like `word_14F90` that code
+  references) beyond. gen now KEEPS them: `?` reserves space without file bytes, preserves label
+  definitions and true segment size, and orig minalloc 0x1B0 covers dseg tail + stack. The tail
+  [image_end, seg end] is added to `bss` so `align` pads `db ?` (not initialized zeros).
+  Only pure `db N dup(?)` IDA gap-fills (GS seg039) are still removed + PARA-aligned.
+  **bss bounds are LISTING offsets**: `first_off + size - 1` (seg007's listing starts at 0007,
+  so `size - 1` under-runs and config.py raises `invalid block range`).
+- **normalize_mz.py**: LINK writes a mixed segment's `db ?` tail into the file (rebuild 26,544
+  vs orig 21,687 — 4,857 zero bytes = dseg tail) → strip to `content`, then re-copy the
+  page-count fields (0x02/0x04) and minalloc (0x0A) LINK computed against the inflated image.
+  The load module itself is byte-identical before any of this.
+- header: CS:IP 011D:001E, SS:SP 061B:0800, minalloc 01B0, hdr 1536, 261 relocs @0x1E;
+  no overlay (file == content == 0x54B7).
 
 ---
 
@@ -236,9 +269,9 @@ gunship_2000/
 
 | Category | File | Status | Notes |
 |----------|------|--------|-------|
-| Binary | GS.GS2 | **STRUCTURE DECODED** | MZ + RTLink dir + DGROUP init (rec4) + string pack; 765 fns in registry |
-| Binary | GS2.GS2 | **STRUCTURE DECODED** | MZ + RTLink dir (count=9, ids 2-10) + 10 thunks + startup chain; 165 fns in registry |
-| Binary | SETUP.GS2 | PARSED | classic MZ (image == file), 126 fns, 261 relocs, cs:ip=11d:1e |
+| Binary | GS.GS2 | **REBUILD BYTE-IDENTICAL** | MZ + RTLink dir + DGROUP init (rec4) + string pack; 765 fns in registry; load file 116,616 B reproduced exactly |
+| Binary | GS2.GS2 | **REBUILD BYTE-IDENTICAL** | MZ + RTLink dir (count=9, ids 2-10) + 10 thunks + startup chain; 165 fns in registry; load file 40,271 B reproduced exactly |
+| Binary | SETUP.GS2 | **REBUILD BYTE-IDENTICAL** | classic MZ (image == file), 126 fns, 261 relocs, cs:ip=11d:1e; whole 21,687 B file reproduced exactly |
 | Data | GS2000.DAT | PARSED | 85-entry chain catalog (count + count×24, len/off u32) — read by `FUN_1f61_060e` via DGROUP:0x806 |
 | Data | GS2000.CAT | PARSED | 105-entry chain catalog (DGROUP:0x07FB) |
 | Data | MBUILDER.CAT | PARSED | 16-entry chain catalog |
