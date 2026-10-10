@@ -2,44 +2,65 @@
 
 Ranges: original = IDA EA range; rebuilt = LINK map range.
 Uses difflib at byte level (robust against decode-grouping artifacts),
-then disassembles around each divergence.
-Usage: find_sizediv.py seg002 [max_report]
+then disassembles around each divergence; reports size-changing blocks
+plus a category tally.
+Usage: find_sizediv.py [SEG] [--segs LOG] [--orig PATH] [--new PATH]
+                       [--map PATH] [--max N]
 """
+import argparse
 import difflib
 import re
 import struct
-import sys
+from collections import Counter
 from capstone import Cs, CS_ARCH_X86, CS_MODE_16
 
-seg = sys.argv[1] if len(sys.argv) > 1 else 'seg002'
-max_report = int(sys.argv[2]) if len(sys.argv) > 2 else 12
+ap = argparse.ArgumentParser()
+ap.add_argument('seg', nargs='?', default='seg002')
+ap.add_argument('--segs', default=r'analysis\ida\GS.segs2.log')
+ap.add_argument('--orig', default=r'analysis\GS.exe')
+ap.add_argument('--new', default=r'analysis\ida\GS_rebuilt.exe')
+ap.add_argument('--map', dest='mapfile', default=None,
+                help='LINK map (default: --new with .map extension)')
+ap.add_argument('--max', type=int, default=12)
+args = ap.parse_args()
+seg = args.seg
+max_report = args.max
+mapfile = args.mapfile or re.sub(r'\.exe$', '.map', args.new, flags=re.I)
 
-# IDA segment dump -> EA ranges
+# IDA segment dump -> EA ranges + IDA base (seg000 start)
 segre = re.compile(r'^SEG (\S+) start=([0-9A-F]+) end=([0-9A-F]+)')
 ida_start = ida_end = None
-with open(r'analysis\ida\GS.segs2.log', encoding='utf-8', errors='replace') as f:
+base = None
+with open(args.segs, encoding='utf-8', errors='replace') as f:
     for line in f:
         m = segre.match(line.strip())
-        if m and m.group(1) == seg:
+        if not m:
+            continue
+        if m.group(1) == 'seg000':
+            base = int(m.group(2), 16)
+        if m.group(1) == seg:
             ida_start, ida_end = int(m.group(2), 16), int(m.group(3), 16)
 if ida_start is None:
-    sys.exit(f'segment {seg} not found in ida dump')
+    raise SystemExit(f'segment {seg} not found in {args.segs}')
+if base is None:
+    raise SystemExit(f'seg000 not found in {args.segs}')
 
 # LINK map -> link ranges
 mapre = re.compile(r'^\s+([0-9A-F]+)H\s+([0-9A-F]+)H\s+([0-9A-F]+)H\s+(\S+)\s+(\S+)')
 new_start = new_end = None
-with open(r'analysis\ida\GS_rebuilt.map', errors='replace') as f:
+with open(mapfile, errors='replace') as f:
     for line in f:
         m = mapre.match(line)
         if m and m.group(4) == seg.upper():
             new_start, new_end = int(m.group(1), 16), int(m.group(2), 16) + 1
 if new_start is None:
-    sys.exit(f'segment {seg} not found in link map')
+    raise SystemExit(f'segment {seg} not found in {mapfile}')
 
-orig_full = open(r'analysis\GS.exe', 'rb').read()
-orig = orig_full[0x2000 + (ida_start - 0x10000): 0x2000 + (ida_end - 0x10000)]
+orig_full = open(args.orig, 'rb').read()
+ohdr = struct.unpack_from('<H', orig_full, 8)[0] * 16
+orig = orig_full[ohdr + (ida_start - base): ohdr + (ida_end - base)]
 
-nd = open(r'analysis\ida\GS_rebuilt.exe', 'rb').read()
+nd = open(args.new, 'rb').read()
 hdr, = struct.unpack_from('<H', nd, 8)
 hdr *= 16
 new = nd[hdr + new_start: hdr + new_end]

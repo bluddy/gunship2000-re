@@ -1,24 +1,40 @@
 """Byte-level comparison of original vs rebuilt load modules.
 
 Prints every differing range with a classification hint and disassembly
-context from both sides.
-Usage: diff_bytes.py [max_ranges]
+context from both sides, then a category tally.
+Exit code: 0 when identical, 1 when any bytes differ (CI-friendly).
+
+Usage: diff_bytes.py [--orig PATH] [--new PATH] [--max-ranges N]
+Defaults: analysis\\GS.exe vs analysis\\ida\\GS_rebuilt.exe
 """
+import argparse
 import struct
 import sys
+from collections import Counter
 from capstone import Cs, CS_ARCH_X86, CS_MODE_16
 
-max_ranges = int(sys.argv[1]) if len(sys.argv) > 1 else 40
+ap = argparse.ArgumentParser()
+ap.add_argument('--orig', default=r'analysis\GS.exe')
+ap.add_argument('--new', default=r'analysis\ida\GS_rebuilt.exe')
+ap.add_argument('--max-ranges', type=int, default=40)
+args = ap.parse_args()
 
-o = open(r'analysis\GS.exe', 'rb').read()
-n = open(r'analysis\ida\GS_rebuilt.exe', 'rb').read()
+o = open(args.orig, 'rb').read()
+n = open(args.new, 'rb').read()
 ohdr = struct.unpack_from('<H', o, 8)[0] * 16
 nhdr = struct.unpack_from('<H', n, 8)[0] * 16
 om = o[ohdr:]
 nm = n[nhdr:]
-# compare the rebuilt module length (orig continues into its overlay)
-L = len(nm)
+# compare over the original's declared load module (orig continues with
+# overlays); pad the rebuilt side if it is still short (WIP builds)
+lastpg, pages = struct.unpack_from('<HH', o, 2)
+content = (pages - 1) * 512 + lastpg if lastpg else pages * 512
+L = content - ohdr
+if len(nm) < L:
+    print(f'NOTE: rebuilt module is {L - len(nm)} bytes short')
+    nm = nm + bytes(L - len(nm))
 om = om[:L]
+nm = nm[:L]
 
 md = Cs(CS_ARCH_X86, CS_MODE_16)
 
@@ -35,7 +51,8 @@ while i < L:
         i += 1
 
 total = sum(j - i for i, j in ranges)
-print(f'module bytes compared: {L:#x} ({L}), differing: {total} '
+print(f'comparing {args.new} vs {args.orig}:')
+print(f'  module bytes: {L:#x} ({L}), differing: {total} '
       f'in {len(ranges)} ranges')
 
 
@@ -54,12 +71,14 @@ def classify(a, b):
 
 
 shown = 0
+tally = Counter()
 for (i, j) in ranges:
-    if shown >= max_ranges:
-        break
-    shown += 1
     a, b = om[i:j], nm[i:j]
     hint = classify(a, b)
+    tally[hint if hint else f'other: orig {a[:8].hex()} new {b[:8].hex()}'] += 1
+    if shown >= args.max_ranges:
+        continue
+    shown += 1
     print(f'\n[{i:#07x}..{j:#07x}) len {j-i}: orig {a[:12].hex()}  new {b[:12].hex()}'
           + (f'  <== {hint}' if hint else ''))
     lo = max(0, i - 8)
@@ -74,4 +93,13 @@ for (i, j) in ranges:
         mark = '>>' if i <= ins.address < j else '  '
         print(f'    {mark} {ins.address:#07x}: {ins.mnemonic} {ins.op_str}')
 if len(ranges) > shown:
-    print(f'\n... {len(ranges) - shown} more ranges not shown')
+    print(f'\n... {len(ranges) - shown} more ranges not shown '
+          f'(raise --max-ranges to see them)')
+
+if tally:
+    print('\ncategory tally:')
+    for k, v in tally.most_common():
+        print(f'{v:5}  {k}')
+
+sys.exit(0 if total == 0 else 1)
+

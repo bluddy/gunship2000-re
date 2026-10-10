@@ -29158,8 +29158,8 @@
     "externs": [],
     "publics": [],
     "header_preamble": [
-        "#ifndef GS_GS2",
-        "#define GS_GS2",
+        "#ifndef GS_EXE",
+        "#define GS_EXE",
         "#include <stdio.h>",
         "",
         "#if !defined(MSDOS) && !defined(__MSDOS__)",
@@ -29171,5 +29171,5 @@
         "#define __cdecl",
         "#define __far far"
     ],
-    "header_coda": "#endif // GS_GS2"
+    "header_coda": "#endif // GS_EXE"
 }

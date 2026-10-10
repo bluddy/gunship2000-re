@@ -1,9 +1,16 @@
-"""Byte-compare original GS.exe load module vs rebuilt GS.EXE."""
-import struct
-import sys
+"""Byte-compare original vs rebuilt MZ load modules (quick first-look).
 
-orig_path = r'analysis\GS.exe'
-new_path = sys.argv[1] if len(sys.argv) > 1 else r'C:\Users\yotam\projects\gunship_2000\analysis\ida\GS_rebuilt.exe'
+Usage: cmp_mz.py [--orig PATH] [--new PATH]
+"""
+import argparse
+import struct
+
+ap = argparse.ArgumentParser()
+ap.add_argument('--orig', default=r'analysis\GS.exe')
+ap.add_argument('--new', default=r'analysis\ida\GS_rebuilt.exe')
+args = ap.parse_args()
+orig_path = args.orig
+new_path = args.new
 
 def mz_info(path):
     d = open(path, 'rb').read()
@@ -40,5 +47,8 @@ if first is not None:
     print(f'orig[{s:#x}..]: {om[s:s+48].hex()}')
     print(f'new [{s:#x}..]: {nm[s:s+48].hex()}')
 
-# original had nreloc relocation entries; new should too for load-time fixups
+# original had nreloc relocation entries; new should also for load-time fixups
 print(f'orig relocs={orel}  new relocs={nrel}')
+
+import sys
+sys.exit(0 if (first is None and len(om) == len(nm)) else 1)

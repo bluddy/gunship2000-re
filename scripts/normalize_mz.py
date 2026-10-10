@@ -14,12 +14,19 @@ this script only aligns header-level metadata that LINK cannot reproduce:
     the same bytes, so the original table is copied verbatim.
 
 Fails loudly if the load module itself differs.
+
+Usage: normalize_mz.py [--orig PATH] [--new PATH]
 """
+import argparse
 import struct
 import sys
 
-ORIG = r'analysis\GS.exe'
-NEW = r'analysis\ida\GS_rebuilt.exe'
+ap = argparse.ArgumentParser()
+ap.add_argument('--orig', default=r'analysis\GS.exe')
+ap.add_argument('--new', default=r'analysis\ida\GS_rebuilt.exe')
+args = ap.parse_args()
+ORIG = args.orig
+NEW = args.new
 
 o = open(ORIG, 'rb').read()
 n = bytearray(open(NEW, 'rb').read())

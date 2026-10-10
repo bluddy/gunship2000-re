@@ -138,7 +138,7 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 9. **MSC 6.0 compiler working under DOSBox** ✅ **DONE** — DOSBox staging 0.83 compiles successfully; output is `TEST.OBJ` (uppercase); no compiler pass detection bug
 9. **Track 1 (Skeleton): GS.exe byte-identical rebuild** ✅ **DONE (2026-10-09)** — IDA listing → `gen_lst2asm_conf.py` → `lst2asm.py` → UASM → MSC 6.0 LINK.EXE (kvikdos) → `normalize_mz.py`. **Full load file (116,616 B: header + image + 2017-entry reloc table) is byte-identical to `analysis/GS.exe`** — 0 differing bytes; CS:IP 17D1:082F, SS:SP 3962:0800, minalloc 1F8A all exact. (Original's 163,734-byte game-data overlay is appended data, not build output.)
 10. **NEXT (Track 2 - C Ports)**: Use DOSBox for per-routine MSC 6.0 compilation (avoids kvikdos compiler pass bug); run `portcheck.py` + `mzdiff` verification
-11. **NEXT**: apply the same pipeline to GS2.GS2 and SETUP.GS2
+11. **NEXT**: apply the same pipeline to GS2.GS2 (`scripts/build_verify.py GS2`) and SETUP.GS2 (`build_verify.py SETUP` — first re-export the SETUP listing from IDA with the collapsed `start` function expanded: entry is a 0xC3-byte collapsed chunk at `seg002:001E`, IDA hides it as `[... BYTES: COLLAPSED FUNCTION start]`, so the `start` proc/public is missing from the listing)
 12. DOSBox runtime verification of decoded structures ⏳ **PENDING**
 
 ### Phase 3-6: unchanged (Ghidra → C, AI unit tests, mzdiff comparison, DOSBox testing)
@@ -147,11 +147,11 @@ Full detail in `registry/file_registry.md` § "Overlay System". Headlines:
 
 ## Track 1: GS.exe Byte-Identical Rebuild — DONE (2026-10-09)
 
-**Pipeline** (all in-repo, re-runnable):
+**Pipeline** (all in-repo, re-runnable; **one command**: `venv\Scripts\python scripts\build_verify.py GS`):
 `analysis/ida/GS.i64.lst` (IDA batch export, `scripts/ida_export_lst.idc`) →
 `scripts/gen_lst2asm_conf.py` (byte-driven config) → `tools/f19re/mzretools/tools/lst2asm.py` →
 `analysis/ida/GS.asm` → UASM 2.57 (`wsl uasm -q -Fo /tmp/GS.obj`) →
-`scripts/link_gs.sh` (MSC 6.0 LINK.EXE under kvikdos) → copy back →
+`scripts/link_mz.sh GS` (MSC 6.0 LINK.EXE under kvikdos) → copy back →
 `scripts/normalize_mz.py` → **0 differing bytes vs `analysis/GS.exe[0..0x1C788]`**.
 
 **Verification**: `scripts/hdrdump.py`, `cmp_segsizes.py`, `diff_relocs.py`, `diff_bytes.py`,

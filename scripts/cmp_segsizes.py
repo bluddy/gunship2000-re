@@ -1,12 +1,20 @@
-"""Compare per-segment sizes: IDA dump vs LINK map, and listing lines vs asm lines."""
+"""Compare per-segment sizes: IDA dump vs LINK map.
+
+Usage: cmp_segsizes.py [--segs LOG] [--map PATH]
+"""
+import argparse
 import re
-import sys
+
+ap = argparse.ArgumentParser()
+ap.add_argument('--segs', default=r'analysis\ida\GS.segs2.log')
+ap.add_argument('--map', dest='mapfile', default=r'analysis\ida\GS_rebuilt.map')
+args = ap.parse_args()
 
 # 1) IDA segment dump
 segre = re.compile(r'^SEG (\S+) start=([0-9A-F]+) end=([0-9A-F]+) size=([0-9A-F]+)')
 ida = {}
 order = []
-for line in open(r'analysis\ida\GS.segs2.log', encoding='utf-8', errors='replace'):
+for line in open(args.segs, encoding='utf-8', errors='replace'):
     m = segre.match(line.strip())
     if m:
         name = m.group(1)
@@ -17,7 +25,7 @@ for line in open(r'analysis\ida\GS.segs2.log', encoding='utf-8', errors='replace
 mapre = re.compile(r'^\s+([0-9A-F]+)H\s+([0-9A-F]+)H\s+([0-9A-F]+)H\s+(\S+)\s+(\S+)')
 link = {}
 lorder = []
-for line in open(r'analysis\ida\GS_rebuilt.map', errors='replace'):
+for line in open(args.mapfile, errors='replace'):
     m = mapre.match(line)
     if m:
         name = m.group(4).upper()
@@ -38,6 +46,8 @@ for name in order:
     if d != 0:
         print(f'{name:7} {i:8X} {l:8X} {d:+7X}  <-- DIFF')
 print(f'{"TOTAL":7} {tot_i:8X} {tot_l:8X} {tot_l-tot_i:+7X}')
+print('note: IDA sizes can include phantom gap bytes the original never '
+      'loaded (pre-BSS gap, seg061 tail) - trust diff_bytes for content')
 
 # extra link segments not in ida
 for name in lorder:
