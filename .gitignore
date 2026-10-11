@@ -35,6 +35,7 @@ tools/msc6.0/C600/*.COD
 tools/msc6.0/C600/*.OBJ
 tools/msc6.0/C600/*.OBJ
 link_gs_gs2.conf
+tools/f19re/mzretools/build/
 
 # Cache
 .cache/
