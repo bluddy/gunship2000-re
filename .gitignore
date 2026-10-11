@@ -29,6 +29,12 @@ game/*.MAP
 *.pyd
 __pycache__/
 *.pyc
+*.cod
+*.COD
+tools/msc6.0/C600/*.COD
+tools/msc6.0/C600/*.OBJ
+tools/msc6.0/C600/*.OBJ
+link_gs_gs2.conf
 
 # Cache
 .cache/
