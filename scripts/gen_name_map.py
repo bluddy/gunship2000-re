@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Generate function/global name mapping from registry + analysis.
+"""Generate struct/variable/global name mapping from analysis + registry.
 
-Reads registry/GS_GS2.yaml, extracts identified functions with their
-meaningful names, and emits a mapping file (addr -> name) for use
-with rename_all.py.
+Reads registry/GS_GS2.yaml and emits src/gs_gs2/name_map.yaml with
+function, struct, variable, and global entries for use with rename_all.py.
 
 Usage:
     python scripts/gen_name_map.py
@@ -17,6 +16,11 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REGISTRY = os.path.join(REPO, 'registry', 'GS_GS2.yaml')
 OUTPUT = os.path.join(REPO, 'src', 'gs_gs2', 'name_map.yaml')
+
+def addr_to_fun_name(addr):
+    """Convert '10bf:02c0' -> 'FUN_10bf_02c0' (lowercase, as used in C source)."""
+    seg, off = addr.split(':')
+    return f'FUN_{seg}_{off}'
 
 def main():
     with open(REGISTRY) as f:
