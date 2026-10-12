@@ -28,7 +28,7 @@ void __cdecl16far FUN_1c87_01f6(char *param_1)
         *(undefined1 *)0x857e = 0;
         return;
       }
-      FUN_1c87_0578();
+      text_render_wrapped();
       iStack_10 = FUN_10bf_2234();
     }
     else {
@@ -108,7 +108,7 @@ LAB_1c87_0424:
           *(undefined1 *)0x857e = 0;
           return;
         }
-        FUN_1c87_0578();
+        text_render_wrapped();
       }
     }
     param_1 = param_1 + iStack_10;

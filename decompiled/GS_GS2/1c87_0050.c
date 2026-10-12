@@ -1,6 +1,6 @@
-/* GS.GS2 1c87:0050 undefined FUN_1c87_0050(void) */
+/* GS.GS2 1c87:0050 undefined text_window_setup(void) */
 void __cdecl16far
-FUN_1c87_0050(undefined2 param_1,int param_2,int param_3,int param_4,int param_5,int param_6)
+text_window_setup(undefined2 param_1,int param_2,int param_3,int param_4,int param_5,int param_6)
 
 {
   undefined2 unaff_DS;

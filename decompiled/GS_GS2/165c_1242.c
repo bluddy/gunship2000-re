@@ -189,7 +189,7 @@ void __cdecl16far FUN_165c_1242(int param_1,uint param_2,uint param_3)
         uStack_c._1_1_ = 0xa2;
         uStack_14 = 0x29;
         uStack_13 = 0x7a;
-        FUN_165c_0466();
+        world_to_screen_project();
       }
     }
   }

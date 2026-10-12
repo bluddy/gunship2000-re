@@ -1,5 +1,5 @@
-/* GS.GS2 165c:0418 undefined FUN_165c_0418(void) */
-byte __cdecl16far FUN_165c_0418(int param_1,int param_2,int param_3)
+/* GS.GS2 165c:0418 undefined terrain_check_type(void) */
+byte __cdecl16far terrain_check_type(int param_1,int param_2,int param_3)
 
 {
   uint uVar1;

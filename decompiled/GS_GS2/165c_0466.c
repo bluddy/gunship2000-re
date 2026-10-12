@@ -1,5 +1,5 @@
-/* GS.GS2 165c:0466 undefined FUN_165c_0466(void) */
-void __cdecl16far FUN_165c_0466(uint param_1,uint param_2,int *param_3,int *param_4,int param_5)
+/* GS.GS2 165c:0466 undefined world_to_screen_project(void) */
+void __cdecl16far world_to_screen_project(uint param_1,uint param_2,int *param_3,int *param_4,int param_5)
 
 {
   undefined2 uVar1;
@@ -19,7 +19,7 @@ void __cdecl16far FUN_165c_0466(uint param_1,uint param_2,int *param_3,int *para
   if ((*(byte *)(uVar5 + (int)*(undefined4 *)0xb854) & 4) == 0) {
     if ((param_5 == 0) && (iVar2 = FUN_239c_0086(2), iVar2 != 0)) {
       uVar5 = 0x6a79;
-      iVar2 = FUN_165c_0418(param_1,param_2,1);
+      iVar2 = terrain_check_type(param_1,param_2,1);
       if (iVar2 != 0) {
         param_5 = 1;
       }

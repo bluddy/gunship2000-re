@@ -12,7 +12,7 @@ void __cdecl16far FUN_202b_01c0(int param_1)
   for (iVar4 = 0; iVar4 < *(int *)0x8fc4; iVar4 = iVar4 + 1) {
     iVar3 = iVar4 * 0x38;
     if (*(char *)(iVar3 + -0x78fc) == param_1) {
-      FUN_1c87_0050(0x880,*(undefined2 *)(iVar3 + -0x78f8),*(undefined2 *)(iVar3 + -0x78f6),
+      text_window_setup(0x880,*(undefined2 *)(iVar3 + -0x78f8),*(undefined2 *)(iVar3 + -0x78f6),
                     *(undefined1 *)(iVar3 + -0x78c7),*(undefined1 *)(iVar3 + -0x78c6),0xffff);
       FUN_1c87_0110((int)*(char *)(iVar3 + -0x78fb));
       iVar2 = thunk_EXT_FUN_0000_0000(0x1c87,(int)*(char *)(iVar3 + -0x78fb));

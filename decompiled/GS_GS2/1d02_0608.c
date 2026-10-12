@@ -30,7 +30,7 @@ void __cdecl16far FUN_1d02_0608(int param_1,int param_2)
     iStack_8 = param_1 + -1;
     puStack_a = (undefined1 *)0x10bf;
     uStack_c = 0xd686;
-    FUN_1d02_06bc();
+    resource_slot_alloc();
     return;
   }
   puStack_6 = local_12;

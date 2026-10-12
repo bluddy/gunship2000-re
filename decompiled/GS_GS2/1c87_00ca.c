@@ -14,6 +14,6 @@ void __cdecl16far FUN_1c87_00ca(undefined2 param_1,int param_2,int param_3)
     *(int *)0x8574 = (*(int *)0x8562 - iVar1) + param_3 + 1;
   }
   FUN_1c87_052c();
-  FUN_1c87_0578(param_1,0);
+  text_render_wrapped(param_1,0);
   return;
 }

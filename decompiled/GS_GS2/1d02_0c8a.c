@@ -12,7 +12,7 @@ FUN_1d02_0c8a(undefined2 param_1,undefined2 param_2,undefined2 param_3,undefined
   FUN_1d02_0a52(iVar1,param_1,param_2,param_3,10,iVar1);
   FUN_1c87_01c6();
   iVar1 = -1;
-  FUN_1c87_0050(0x880,param_1,param_2,param_3,6);
+  text_window_setup(0x880,param_1,param_2,param_3,6);
   FUN_1c87_00b8(*(undefined1 *)(iVar1 * 0xc + -0x7a57));
   FUN_1c87_0110(3);
   FUN_1c87_003a(param_4);

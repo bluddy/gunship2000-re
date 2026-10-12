@@ -185,7 +185,7 @@ LAB_165c_344c:
                   puStack_c = (uint *)local_20;
                   uStack_10 = CONCAT22(local_1e[0],uVar7);
                   iStack_12 = 0x9ab3;
-                  FUN_165c_0466();
+                  world_to_screen_project();
                 }
               }
               return;

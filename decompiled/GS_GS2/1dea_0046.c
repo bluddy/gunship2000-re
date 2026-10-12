@@ -1,7 +1,7 @@
-/* GS.GS2 1dea:0046 undefined FUN_1dea_0046(void) */
+/* GS.GS2 1dea:0046 undefined mission_init(void) */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void __cdecl16far FUN_1dea_0046(void)
+void __cdecl16far mission_init(void)
 
 {
   byte bVar1;

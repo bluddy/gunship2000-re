@@ -41,7 +41,7 @@ void __cdecl16far FUN_165c_0204(void)
   uStack_12 = 0x880;
   uStack_14 = 0x106f;
   uStack_16 = 0x680d;
-  FUN_1c87_0050();
+  text_window_setup();
   iStack_a = 0x1c87;
   iStack_c = 0x6817;
   FUN_1c87_0110();

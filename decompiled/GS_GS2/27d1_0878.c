@@ -27,7 +27,7 @@ void __cdecl16near FUN_27d1_0878(void)
   *(int *)0xb74 = iVar1;
   *(undefined2 *)0xb78 = *(undefined2 *)0xd31;
   bVar2 = false;
-  FUN_28d4_0099();
+  ems_memory_manager();
   if ((!bVar2) || (*(int *)0xd2f != 0)) {
     *(undefined1 *)0xb96 = 0xff;
   }

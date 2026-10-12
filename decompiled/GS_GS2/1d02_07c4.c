@@ -1,5 +1,5 @@
-/* GS.GS2 1d02:07c4 undefined FUN_1d02_07c4(void) */
-void __cdecl16far FUN_1d02_07c4(int param_1,int param_2)
+/* GS.GS2 1d02:07c4 undefined resource_slot_swap(void) */
+void __cdecl16far resource_slot_swap(int param_1,int param_2)
 
 {
   undefined2 *puVar1;

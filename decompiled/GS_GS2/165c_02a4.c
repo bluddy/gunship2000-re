@@ -1,6 +1,6 @@
-/* GS.GS2 165c:02a4 undefined FUN_165c_02a4(void) */
+/* GS.GS2 165c:02a4 undefined project_coords(void) */
 void __cdecl16far
-FUN_165c_02a4(undefined2 param_1,undefined2 param_2,undefined2 param_3,undefined2 param_4,
+project_coords(undefined2 param_1,undefined2 param_2,undefined2 param_3,undefined2 param_4,
              int *param_5,int *param_6)
 
 {

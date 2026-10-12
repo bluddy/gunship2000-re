@@ -1,5 +1,5 @@
-/* GS.GS2 1dea:0400 undefined FUN_1dea_0400(void) */
-void __cdecl16far FUN_1dea_0400(void)
+/* GS.GS2 1dea:0400 undefined campaign_state_machine(void) */
+void __cdecl16far campaign_state_machine(void)
 
 {
   undefined2 *puVar1;

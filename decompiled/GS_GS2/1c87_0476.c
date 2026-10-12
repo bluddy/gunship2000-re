@@ -7,6 +7,6 @@ void __cdecl16far FUN_1c87_0476(void)
   local_4 = 0x1c87;
   FUN_10bf_02c0();
   local_4 = 0;
-  FUN_1c87_0578(&local_4);
+  text_render_wrapped(&local_4);
   return;
 }

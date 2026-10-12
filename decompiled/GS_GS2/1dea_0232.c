@@ -40,7 +40,7 @@ LAB_1dea_02d2:
         FUN_1dea_0c0e();
         return;
       }
-      FUN_1dea_0400();
+      campaign_state_machine();
       FUN_20bc_0020(0x81a);
       FUN_27d1_0e4c(0x20bc,(int)*(char *)0x8618);
       return;

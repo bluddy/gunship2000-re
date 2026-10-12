@@ -8,7 +8,7 @@ void __cdecl16far FUN_24e6_088a(char *param_1,undefined2 param_2,undefined2 para
   if (*param_1 == '\0') {
     return;
   }
-  FUN_1c87_0050(0x880,0,0xbf,0x140,9,0);
+  text_window_setup(0x880,0,0xbf,0x140,9,0);
   FUN_1c87_0110(param_2);
   FUN_1c87_00b8(param_3);
   FUN_1c87_01a2(0,2);

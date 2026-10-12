@@ -1,7 +1,7 @@
-/* GS.GS2 1dea:0896 undefined FUN_1dea_0896(void) */
+/* GS.GS2 1dea:0896 undefined mission_score_evaluate(void) */
 /* WARNING: Removing unreachable block (ram,0x0001e98b) */
 
-void __cdecl16far FUN_1dea_0896(int param_1)
+void __cdecl16far mission_score_evaluate(int param_1)
 
 {
   uint *puVar1;

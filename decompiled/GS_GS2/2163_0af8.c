@@ -24,7 +24,7 @@ void __cdecl16far FUN_2163_0af8(int param_1,undefined2 param_2,undefined2 param_
   iStack_12 = 0x880;
   uStack_14 = 0x10bf;
   uStack_16 = 0x2149;
-  FUN_1c87_0050();
+  text_window_setup();
   puStack_8 = (undefined1 *)0x3;
   FUN_1c87_0110();
   puStack_8 = (undefined1 *)0xa;

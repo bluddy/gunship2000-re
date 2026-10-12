@@ -18,7 +18,7 @@ void __cdecl16far FUN_1dea_0730(void)
   local_a = 0xe5ed;
   FUN_1dea_085a();
   local_a = 0x10bf;
-  FUN_1dea_0896();
+  mission_score_evaluate();
   local_a = 0xe5fb;
   FUN_27d1_0f0a();
   if (uVar8 == 0) {

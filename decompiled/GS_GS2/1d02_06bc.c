@@ -1,5 +1,5 @@
-/* GS.GS2 1d02:06bc undefined FUN_1d02_06bc(void) */
-void __cdecl16far FUN_1d02_06bc(int param_1,undefined2 param_2)
+/* GS.GS2 1d02:06bc undefined resource_slot_alloc(void) */
+void __cdecl16far resource_slot_alloc(int param_1,undefined2 param_2)
 
 {
   char cVar1;
@@ -28,7 +28,7 @@ LAB_1d02_070e:
         iStack_6 = iStack_18;
         iStack_8 = 0x10bf;
         uStack_a = 0xd73e;
-        FUN_1d02_07c4();
+        resource_slot_swap();
         *(undefined1 *)(param_1 * 10 + -0x43f8) = 4;
         return;
       }
@@ -46,7 +46,7 @@ LAB_1d02_070e:
         iStack_6 = iStack_18;
         iStack_8 = 0x10bf;
         uStack_a = 0xd7a0;
-        FUN_1d02_07c4();
+        resource_slot_swap();
       }
       *(undefined1 *)(param_1 * 10 + -0x43f8) = 4;
       puStack_4 = (undefined1 *)0x8;

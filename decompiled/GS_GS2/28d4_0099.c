@@ -1,5 +1,5 @@
-/* GS.GS2 28d4:0099 undefined FUN_28d4_0099(void) */
-undefined2 __cdecl16far FUN_28d4_0099(void)
+/* GS.GS2 28d4:0099 undefined ems_memory_manager(void) */
+undefined2 __cdecl16far ems_memory_manager(void)
 
 {
   byte *pbVar1;

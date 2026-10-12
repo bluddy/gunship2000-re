@@ -1,5 +1,5 @@
-/* GS.GS2 165c:02e8 undefined FUN_165c_02e8(void) */
-void __cdecl16far FUN_165c_02e8(void)
+/* GS.GS2 165c:02e8 undefined render_loop(void) */
+void __cdecl16far render_loop(void)
 
 {
   int iVar1;
@@ -31,7 +31,7 @@ void __cdecl16far FUN_165c_02e8(void)
     uStack_c = *(undefined2 *)(iVar1 + -0x5d7a);
     local_e = *(uint *)(iVar1 + -0x5d7c);
     local_10 = *(undefined2 *)(iVar1 + -0x5d7e);
-    FUN_165c_02a4();
+    project_coords();
     puStack_6 = (undefined2 *)local_10;
     puStack_8 = (uint *)local_e;
     uStack_a = (uint)*(byte *)(iVar1 + -0x5d74);
@@ -52,7 +52,7 @@ void __cdecl16far FUN_165c_02e8(void)
       uStack_c = *(undefined2 *)(iVar1 + -0x46ee);
       local_e = *(uint *)(iVar1 + -0x46f0);
       local_10 = *(undefined2 *)(iVar1 + -0x46f2);
-      FUN_165c_02a4();
+      project_coords();
       puStack_6 = (undefined2 *)local_10;
       puStack_8 = (uint *)local_e;
       uStack_c = 0;

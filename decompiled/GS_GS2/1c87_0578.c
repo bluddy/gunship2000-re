@@ -1,5 +1,5 @@
-/* GS.GS2 1c87:0578 undefined FUN_1c87_0578(void) */
-void __cdecl16far FUN_1c87_0578(int param_1,int param_2)
+/* GS.GS2 1c87:0578 undefined text_render_wrapped(void) */
+void __cdecl16far text_render_wrapped(int param_1,int param_2)
 
 {
   byte bVar1;

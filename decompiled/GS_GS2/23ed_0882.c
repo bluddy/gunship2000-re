@@ -49,7 +49,7 @@ void __cdecl16far FUN_23ed_0882(int param_1)
   uStack_12 = 0x880;
   uStack_14 = 0x106f;
   uStack_16 = 0x479c;
-  FUN_1c87_0050();
+  text_window_setup();
   puStack_a = (undefined1 *)0x1c87;
   puStack_c = (undefined1 *)0x47a6;
   FUN_1c87_0110();
