@@ -2546,8 +2546,8 @@ functions:
   c: decompiled/GS_GS2/165c_0276.c
 - addr: 165c:02a4
   name: project_coords
-  auto_name: FUN_165c_02a4
-  sig: undefined FUN_165c_02a4(void)
+  auto_name: project_coords
+  sig: undefined project_coords(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
@@ -2561,8 +2561,8 @@ functions:
   - binary
 - addr: 165c:02e8
   name: render_loop
-  auto_name: FUN_165c_02e8
-  sig: undefined FUN_165c_02e8(void)
+  auto_name: render_loop
+  sig: undefined render_loop(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
@@ -2576,8 +2576,8 @@ functions:
   - binary
 - addr: 165c:0418
   name: terrain_check_type
-  auto_name: FUN_165c_0418
-  sig: undefined FUN_165c_0418(void)
+  auto_name: terrain_check_type
+  sig: undefined terrain_check_type(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
@@ -2591,8 +2591,8 @@ functions:
   - binary
 - addr: 165c:0466
   name: world_to_screen_project
-  auto_name: FUN_165c_0466
-  sig: undefined FUN_165c_0466(void)
+  auto_name: world_to_screen_project
+  sig: undefined world_to_screen_project(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
@@ -3596,8 +3596,8 @@ functions:
   c: decompiled/GS_GS2/1c87_003a.c
 - addr: 1c87:0050
   name: text_window_setup
-  auto_name: FUN_1c87_0050
-  sig: undefined FUN_1c87_0050(void)
+  auto_name: text_window_setup
+  sig: undefined text_window_setup(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
@@ -3771,8 +3771,8 @@ functions:
   c: decompiled/GS_GS2/1c87_052c.c
 - addr: 1c87:0578
   name: text_render_wrapped
-  auto_name: FUN_1c87_0578
-  sig: undefined FUN_1c87_0578(void)
+  auto_name: text_render_wrapped
+  sig: undefined text_render_wrapped(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
@@ -3966,8 +3966,8 @@ functions:
   c: decompiled/GS_GS2/1d02_068c.c
 - addr: 1d02:06bc
   name: resource_slot_alloc
-  auto_name: FUN_1d02_06bc
-  sig: undefined FUN_1d02_06bc(void)
+  auto_name: resource_slot_alloc
+  sig: undefined resource_slot_alloc(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
@@ -3981,8 +3981,8 @@ functions:
   - binary
 - addr: 1d02:07c4
   name: resource_slot_swap
-  auto_name: FUN_1d02_07c4
-  sig: undefined FUN_1d02_07c4(void)
+  auto_name: resource_slot_swap
+  sig: undefined resource_slot_swap(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
@@ -4116,8 +4116,8 @@ functions:
   c: decompiled/GS_GS2/1dea_0006.c
 - addr: 1dea:0046
   name: mission_init
-  auto_name: FUN_1dea_0046
-  sig: undefined FUN_1dea_0046(void)
+  auto_name: mission_init
+  sig: undefined mission_init(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
@@ -4151,8 +4151,8 @@ functions:
   c: decompiled/GS_GS2/1dea_0334.c
 - addr: 1dea:0400
   name: campaign_state_machine
-  auto_name: FUN_1dea_0400
-  sig: undefined FUN_1dea_0400(void)
+  auto_name: campaign_state_machine
+  sig: undefined campaign_state_machine(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
@@ -4216,8 +4216,8 @@ functions:
   c: decompiled/GS_GS2/1dea_085a.c
 - addr: 1dea:0896
   name: mission_score_evaluate
-  auto_name: FUN_1dea_0896
-  sig: undefined FUN_1dea_0896(void)
+  auto_name: mission_score_evaluate
+  sig: undefined mission_score_evaluate(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
@@ -7511,8 +7511,8 @@ functions:
   c: decompiled/GS_GS2/27d1_0f5a.c
 - addr: 28d4:0099
   name: ems_memory_manager
-  auto_name: FUN_28d4_0099
-  sig: undefined FUN_28d4_0099(void)
+  auto_name: ems_memory_manager
+  sig: undefined ems_memory_manager(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false

@@ -3,7 +3,7 @@
  */
 extern void _far FUN_10bf_02c0(void);
 extern void _far FUN_165c_0276(void);
-extern void _far FUN_165c_02a4(unsigned short, unsigned short, unsigned short, unsigned short, int*, int*);
+extern void _far project_coords(unsigned short, unsigned short, unsigned short, unsigned short, int*, int*);
 extern void _far FUN_206a_00da(unsigned short, unsigned short, unsigned short, unsigned short, unsigned short);
 extern void _far FUN_165c_0204(void);
 extern void _far FUN_1c87_01f6(unsigned short, unsigned short, unsigned short, unsigned short, unsigned short, unsigned short);
@@ -22,7 +22,7 @@ void _far render_loop(void)
         unsigned int local_e = *(unsigned int *)(uStack_12 * 0x20 - 0x5d7c);
         unsigned short local_10 = *(unsigned short *)(uStack_12 * 0x20 - 0x5d7e);
         
-        FUN_165c_02a4(uStack_a, uStack_c, local_10, local_e, &local_10, &local_e);
+        project_coords(uStack_a, uStack_c, local_10, local_e, &local_10, &local_e);
         FUN_206a_00da(local_10, local_e, 0x691e, 0x10bf, uStack_a);
     }
     
@@ -34,7 +34,7 @@ void _far render_loop(void)
             unsigned int local_e = *(unsigned int *)(uStack_12 * 0x3e - 0x46f0);
             unsigned short local_10 = *(unsigned short *)(uStack_12 * 0x3e - 0x46f2);
             
-            FUN_165c_02a4(uStack_a, uStack_c, local_10, local_e, &local_10, &local_e);
+            project_coords(uStack_a, uStack_c, local_10, local_e, &local_10, &local_e);
             FUN_206a_00da(local_10, local_e, 0x696f, 0x10bf, 0x206a);
         }
     }

@@ -18,7 +18,7 @@ void _far world_to_screen_project(
     // Check if entity type has bit 4 clear (not hidden?)
     if ((*(unsigned char *)(uVar5 + (int)*(unsigned long *)0xb854) & 4) == 0) {
         if ((param_5 == 0) && (FUN_239c_0086(2) != 0)) {
-            int iVar2 = FUN_165c_0418(param_1, param_2, 1);
+            int iVar2 = terrain_check_type(param_1, param_2, 1);
             if (iVar2 != 0) {
                 param_5 = 1;
             }

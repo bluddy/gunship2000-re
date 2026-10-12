@@ -1,0 +1,3062 @@
+_comment: Auto-generated name mapping for GS.GS2 functions. addr -> name.
+functions:
+  1000:0000:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_0000
+  1000:0010:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_0010
+  1000:0052:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_0052
+  1000:012e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_012e
+  1000:01d2:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_01d2
+  1000:0230:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_0230
+  1000:028c:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_028c
+  1000:0328:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_0328
+  1000:0362:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_0362
+  1000:039e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_039e
+  1000:03da:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_03da
+  1000:0544:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_0544
+  1000:05a2:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_05a2
+  1000:0614:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_0614
+  1000:0672:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_0672
+  1000:06b4:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_06b4
+  1000:06f2:
+    certainty: unidentified
+    description: ''
+    name: FUN_1000_06f2
+  106f:0080:
+    certainty: unidentified
+    description: ''
+    name: FUN_106f_0080
+  106f:00c0:
+    certainty: unidentified
+    description: ''
+    name: FUN_106f_00c0
+  106f:011c:
+    certainty: unidentified
+    description: ''
+    name: FUN_106f_011c
+  106f:017a:
+    certainty: unidentified
+    description: ''
+    name: FUN_106f_017a
+  106f:02bc:
+    certainty: unidentified
+    description: ''
+    name: FUN_106f_02bc
+  106f:0430:
+    certainty: unidentified
+    description: ''
+    name: FUN_106f_0430
+  106f:04a0:
+    certainty: unidentified
+    description: ''
+    name: FUN_106f_04a0
+  10bf:0018:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0018
+  10bf:00eb:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_00eb
+  10bf:0110:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0110
+  10bf:01d5:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_01d5
+  10bf:0258:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0258
+  10bf:0285:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0285
+  10bf:0298:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0298
+  10bf:02ba:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_02ba
+  10bf:02c0:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_02c0
+  10bf:02e4:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_02e4
+  10bf:0308:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0308
+  10bf:049a:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_049a
+  10bf:0518:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0518
+  10bf:0543:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0543
+  10bf:057a:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_057a
+  10bf:05a0:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_05a0
+  10bf:05a8:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_05a8
+  10bf:05b5:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_05b5
+  10bf:05c2:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_05c2
+  10bf:05c8:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_05c8
+  10bf:05f6:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_05f6
+  10bf:06b0:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_06b0
+  10bf:06dc:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_06dc
+  10bf:06f2:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_06f2
+  10bf:072a:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_072a
+  10bf:080e:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_080e
+  10bf:0828:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0828
+  10bf:092e:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_092e
+  10bf:096c:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_096c
+  10bf:0a02:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0a02
+  10bf:0ae6:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0ae6
+  10bf:0b12:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0b12
+  10bf:0b56:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0b56
+  10bf:0c3e:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0c3e
+  10bf:0cb1:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0cb1
+  10bf:0cf0:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0cf0
+  10bf:0d6c:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0d6c
+  10bf:0db8:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_0db8
+  10bf:150a:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_150a
+  10bf:1528:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1528
+  10bf:1554:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1554
+  10bf:156e:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_156e
+  10bf:15a0:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_15a0
+  10bf:1a78:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1a78
+  10bf:1aac:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1aac
+  10bf:1ab4:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1ab4
+  10bf:1ad2:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1ad2
+  10bf:1b32:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1b32
+  10bf:1b52:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1b52
+  10bf:1bcc:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1bcc
+  10bf:1be6:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1be6
+  10bf:1d77:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1d77
+  10bf:1d88:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1d88
+  10bf:1e72:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1e72
+  10bf:1f26:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1f26
+  10bf:1f70:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1f70
+  10bf:1f7e:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1f7e
+  10bf:1fb2:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1fb2
+  10bf:1fc6:
+    certainty: unidentified
+    description: ''
+    name: thunk_FUN_10bf_1ff3
+  10bf:1fcc:
+    certainty: unidentified
+    description: ''
+    name: thunk_FUN_10bf_1fd2
+  10bf:1fd2:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1fd2
+  10bf:1ff3:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_1ff3
+  10bf:201c:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_201c
+  10bf:2098:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2098
+  10bf:2124:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2124
+  10bf:2175:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2175
+  10bf:2196:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2196
+  10bf:21d6:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_21d6
+  10bf:2208:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2208
+  10bf:2234:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2234
+  10bf:2250:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2250
+  10bf:2278:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2278
+  10bf:22b6:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_22b6
+  10bf:22fc:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_22fc
+  10bf:2350:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2350
+  10bf:236c:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_236c
+  10bf:23dc:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_23dc
+  10bf:246a:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_246a
+  10bf:24ea:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_24ea
+  10bf:256a:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_256a
+  10bf:26e0:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_26e0
+  10bf:273a:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_273a
+  10bf:2778:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2778
+  10bf:27fe:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_27fe
+  10bf:2866:
+    certainty: unidentified
+    description: ''
+    name: thunk_FUN_10bf_27fe
+  10bf:286c:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_286c
+  10bf:2934:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2934
+  10bf:29ca:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_29ca
+  10bf:2a12:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2a12
+  10bf:2a30:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2a30
+  10bf:2a84:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2a84
+  10bf:2aae:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2aae
+  10bf:2af0:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2af0
+  10bf:2b48:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2b48
+  10bf:2b66:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2b66
+  10bf:2bc6:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2bc6
+  10bf:2c0e:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2c0e
+  10bf:2c3a:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2c3a
+  10bf:2c74:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2c74
+  10bf:2cc8:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2cc8
+  10bf:2cd6:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2cd6
+  10bf:2cec:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2cec
+  10bf:2d1e:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2d1e
+  10bf:2d30:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2d30
+  10bf:2d58:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2d58
+  10bf:2d88:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2d88
+  10bf:2d96:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2d96
+  10bf:2dae:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2dae
+  10bf:2dd2:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2dd2
+  10bf:2dee:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2dee
+  10bf:2e03:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2e03
+  10bf:2e26:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2e26
+  10bf:2e38:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2e38
+  10bf:2e43:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2e43
+  10bf:2e76:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2e76
+  10bf:2e8e:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2e8e
+  10bf:2e95:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2e95
+  10bf:2ebe:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2ebe
+  10bf:2ed4:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2ed4
+  10bf:2ee2:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2ee2
+  10bf:2efc:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2efc
+  10bf:2f96:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2f96
+  10bf:2fc8:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_2fc8
+  10bf:3068:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_3068
+  10bf:3094:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_3094
+  10bf:30b4:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_30b4
+  10bf:30d2:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_30d2
+  10bf:3130:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_3130
+  10bf:315a:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_315a
+  10bf:319c:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_319c
+  10bf:31d2:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_31d2
+  10bf:3218:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_3218
+  10bf:32d7:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_32d7
+  10bf:3366:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_3366
+  10bf:34d3:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_34d3
+  10bf:3508:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_3508
+  10bf:388c:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_388c
+  10bf:38ba:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_38ba
+  10bf:3c02:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_3c02
+  10bf:3c57:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_3c57
+  10bf:3cbb:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_3cbb
+  10bf:3fe7:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_3fe7
+  10bf:403d:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_403d
+  10bf:40b6:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_40b6
+  10bf:41ae:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_41ae
+  10bf:41d0:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_41d0
+  10bf:4205:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4205
+  10bf:428a:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_428a
+  10bf:42a0:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_42a0
+  10bf:42a9:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_42a9
+  10bf:42b9:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_42b9
+  10bf:42d0:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_42d0
+  10bf:430a:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_430a
+  10bf:4336:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4336
+  10bf:43ac:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_43ac
+  10bf:43d5:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_43d5
+  10bf:4431:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4431
+  10bf:4531:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4531
+  10bf:4697:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4697
+  10bf:4bb8:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4bb8
+  10bf:4be4:
+    certainty: unidentified
+    description: ''
+    name: thunk_FUN_10bf_51b6
+  10bf:4c38:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4c38
+  10bf:4c3f:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4c3f
+  10bf:4d0b:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4d0b
+  10bf:4d51:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4d51
+  10bf:4dec:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4dec
+  10bf:4df1:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4df1
+  10bf:4e05:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4e05
+  10bf:4e3e:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4e3e
+  10bf:4f50:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4f50
+  10bf:4f98:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4f98
+  10bf:4fb0:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4fb0
+  10bf:4ff8:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_4ff8
+  10bf:5026:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_5026
+  10bf:5035:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_5035
+  10bf:503a:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_503a
+  10bf:50d6:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_50d6
+  10bf:50fc:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_50fc
+  10bf:5198:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_5198
+  10bf:51b6:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_51b6
+  10bf:5204:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_5204
+  10bf:522b:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_522b
+  10bf:523e:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_523e
+  10bf:526e:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_526e
+  10bf:52b4:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_52b4
+  10bf:52dc:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_52dc
+  10bf:53e7:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_53e7
+  10bf:54fc:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_54fc
+  10bf:556a:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_556a
+  10bf:5592:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_5592
+  10bf:55d8:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_55d8
+  10bf:5702:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_5702
+  10bf:5726:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_5726
+  10bf:581e:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_581e
+  10bf:5840:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_5840
+  10bf:58f2:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_58f2
+  10bf:5942:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_5942
+  10bf:596c:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_596c
+  10bf:5990:
+    certainty: unidentified
+    description: ''
+    name: FUN_10bf_5990
+  165a:0004:
+    certainty: unidentified
+    description: ''
+    name: FUN_165a_0004
+  165c:000e:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_000e
+  165c:0118:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0118
+  165c:0204:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0204
+  165c:0276:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0276
+  165c:02a4:
+    certainty: high
+    description: Coordinate projection helper using FUN_10bf_2efc
+    name: project_coords
+  165c:02e8:
+    certainty: high
+    description: Main 3D render loop iterating entities
+    name: render_loop
+  165c:0418:
+    certainty: high
+    description: Checks terrain type bitmask at entity position
+    name: terrain_check_type
+  165c:0466:
+    certainty: high
+    description: World-to-screen coordinate projection with trig lookup
+    name: world_to_screen_project
+  165c:05d4:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_05d4
+  165c:076c:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_076c
+  165c:0806:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0806
+  165c:0854:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0854
+  165c:0890:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0890
+  165c:0a7a:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0a7a
+  165c:0b44:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0b44
+  165c:0c2a:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0c2a
+  165c:0c6c:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0c6c
+  165c:0cb2:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0cb2
+  165c:0d2e:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0d2e
+  165c:0d7c:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0d7c
+  165c:0db8:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0db8
+  165c:0dd2:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0dd2
+  165c:0fea:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_0fea
+  165c:1064:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_1064
+  165c:10d6:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_10d6
+  165c:1152:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_1152
+  165c:1242:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_1242
+  165c:1582:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_1582
+  165c:1590:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_1590
+  165c:1888:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_1888
+  165c:19d8:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_19d8
+  165c:1ad4:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_1ad4
+  165c:1f8e:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_1f8e
+  165c:2170:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_2170
+  165c:21aa:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_21aa
+  165c:238a:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_238a
+  165c:23cc:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_23cc
+  165c:2440:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_2440
+  165c:24b0:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_24b0
+  165c:2616:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_2616
+  165c:2658:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_2658
+  165c:26c4:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_26c4
+  165c:27b6:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_27b6
+  165c:27be:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_27be
+  165c:27d4:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_27d4
+  165c:2886:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_2886
+  165c:2cb6:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_2cb6
+  165c:2cce:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_2cce
+  165c:2e00:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_2e00
+  165c:2f80:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_2f80
+  165c:30ce:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_30ce
+  165c:310e:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_310e
+  165c:314e:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_314e
+  165c:352c:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_352c
+  165c:37e0:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_37e0
+  165c:3868:
+    certainty: unidentified
+    description: ''
+    name: FUN_165c_3868
+  1b1d:000a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b1d_000a
+  1b1d:008a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b1d_008a
+  1b1d:00f8:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b1d_00f8
+  1b1d:012c:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b1d_012c
+  1b1d:0190:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b1d_0190
+  1b1d:01be:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b1d_01be
+  1b1d:01ec:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b1d_01ec
+  1b1d:0220:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b1d_0220
+  1b1d:023e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b1d_023e
+  1b1d:02de:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b1d_02de
+  1b1d:0314:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b1d_0314
+  1b63:0004:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_0004
+  1b63:0012:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_0012
+  1b63:0066:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_0066
+  1b63:00da:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_00da
+  1b63:0160:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_0160
+  1b63:01d0:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_01d0
+  1b63:024c:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_024c
+  1b63:02a6:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_02a6
+  1b63:02d6:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_02d6
+  1b63:0366:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_0366
+  1b63:03ea:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_03ea
+  1b63:047a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_047a
+  1b63:04ee:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_04ee
+  1b63:0570:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_0570
+  1b63:0612:
+    certainty: unidentified
+    description: ''
+    name: FUN_1b63_0612
+  1bca:0066:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_0066
+  1bca:00ac:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_00ac
+  1bca:00be:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_00be
+  1bca:0170:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_0170
+  1bca:0202:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_0202
+  1bca:034c:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_034c
+  1bca:03e0:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_03e0
+  1bca:040a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_040a
+  1bca:041c:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_041c
+  1bca:0454:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_0454
+  1bca:0528:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_0528
+  1bca:055e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_055e
+  1bca:05ae:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_05ae
+  1bca:063c:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_063c
+  1bca:0790:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_0790
+  1bca:07b8:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_07b8
+  1bca:081c:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_081c
+  1bca:0862:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_0862
+  1bca:089e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_089e
+  1bca:09a8:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_09a8
+  1bca:09bc:
+    certainty: unidentified
+    description: ''
+    name: FUN_1bca_09bc
+  1c6b:0014:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c6b_0014
+  1c6b:0116:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c6b_0116
+  1c87:000a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_000a
+  1c87:003a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_003a
+  1c87:0050:
+    certainty: high
+    description: Initializes text window parameters
+    name: text_window_setup
+  1c87:00b8:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_00b8
+  1c87:00ca:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_00ca
+  1c87:0110:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_0110
+  1c87:0136:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_0136
+  1c87:0158:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_0158
+  1c87:016a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_016a
+  1c87:0186:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_0186
+  1c87:01a2:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_01a2
+  1c87:01c6:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_01c6
+  1c87:01e0:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_01e0
+  1c87:01f6:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_01f6
+  1c87:0476:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_0476
+  1c87:0498:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_0498
+  1c87:04b2:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_04b2
+  1c87:04e8:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_04e8
+  1c87:052c:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_052c
+  1c87:0578:
+    certainty: high
+    description: Word-wrapped text rendering to window
+    name: text_render_wrapped
+  1c87:071e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_071e
+  1c87:073a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1c87_073a
+  1d02:000a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_000a
+  1d02:0072:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_0072
+  1d02:00f6:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_00f6
+  1d02:017a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_017a
+  1d02:01ea:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_01ea
+  1d02:0236:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_0236
+  1d02:02d0:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_02d0
+  1d02:02e8:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_02e8
+  1d02:03a4:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_03a4
+  1d02:0460:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_0460
+  1d02:051c:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_051c
+  1d02:058a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_058a
+  1d02:05b0:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_05b0
+  1d02:05de:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_05de
+  1d02:0608:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_0608
+  1d02:068c:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_068c
+  1d02:06bc:
+    certainty: high
+    description: Resource slot allocation with name matching
+    name: resource_slot_alloc
+  1d02:07c4:
+    certainty: high
+    description: Swaps two resource slots (5 words each)
+    name: resource_slot_swap
+  1d02:087e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_087e
+  1d02:08a6:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_08a6
+  1d02:0906:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_0906
+  1d02:0a52:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_0a52
+  1d02:0c12:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_0c12
+  1d02:0c4e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_0c4e
+  1d02:0c8a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_0c8a
+  1d02:0d0e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_0d0e
+  1d02:0d2a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_0d2a
+  1d02:0d46:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_0d46
+  1d02:0e34:
+    certainty: unidentified
+    description: ''
+    name: FUN_1d02_0e34
+  1dea:0006:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0006
+  1dea:0046:
+    certainty: high
+    description: Mission/campaign initialization entry point
+    name: mission_init
+  1dea:0232:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0232
+  1dea:0334:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0334
+  1dea:0400:
+    certainty: high
+    description: Campaign main loop state machine
+    name: campaign_state_machine
+  1dea:0564:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0564
+  1dea:06dc:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_06dc
+  1dea:06f4:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_06f4
+  1dea:0730:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0730
+  1dea:085a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_085a
+  1dea:0896:
+    certainty: high
+    description: 'Mission scoring: targets, bonuses, difficulty, time, wingmen'
+    name: mission_score_evaluate
+  1dea:0c0e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0c0e
+  1dea:0c4c:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0c4c
+  1dea:0d28:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0d28
+  1dea:0e86:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0e86
+  1dea:0e98:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0e98
+  1dea:0ebe:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0ebe
+  1dea:0eda:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0eda
+  1dea:0f3a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0f3a
+  1dea:0f8a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0f8a
+  1dea:0fa4:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_0fa4
+  1dea:1012:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_1012
+  1dea:1048:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_1048
+  1dea:1086:
+    certainty: unidentified
+    description: ''
+    name: FUN_1dea_1086
+  1ef4:0000:
+    certainty: unidentified
+    description: ''
+    name: FUN_1ef4_0000
+  1ef4:0030:
+    certainty: unidentified
+    description: ''
+    name: FUN_1ef4_0030
+  1ef4:0058:
+    certainty: unidentified
+    description: ''
+    name: FUN_1ef4_0058
+  1ef4:02c2:
+    certainty: unidentified
+    description: ''
+    name: FUN_1ef4_02c2
+  1ef4:0306:
+    certainty: unidentified
+    description: ''
+    name: FUN_1ef4_0306
+  1ef4:034e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1ef4_034e
+  1ef4:03ba:
+    certainty: unidentified
+    description: ''
+    name: FUN_1ef4_03ba
+  1f32:000a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f32_000a
+  1f32:00a6:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f32_00a6
+  1f32:0156:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f32_0156
+  1f32:01e8:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f32_01e8
+  1f32:0294:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f32_0294
+  1f61:008e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_008e
+  1f61:00fc:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_00fc
+  1f61:013a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_013a
+  1f61:0164:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_0164
+  1f61:0190:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_0190
+  1f61:0236:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_0236
+  1f61:029a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_029a
+  1f61:040a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_040a
+  1f61:0428:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_0428
+  1f61:04ca:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_04ca
+  1f61:050e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_050e
+  1f61:053c:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_053c
+  1f61:056a:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_056a
+  1f61:05bc:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_05bc
+  1f61:05dc:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_05dc
+  1f61:060e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_060e
+  1f61:06ac:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_06ac
+  1f61:077e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_077e
+  1f61:0962:
+    certainty: unidentified
+    description: ''
+    name: FUN_1f61_0962
+  1ffa:000e:
+    certainty: unidentified
+    description: ''
+    name: FUN_1ffa_000e
+  2000:000c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2000_000c
+  2000:006c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2000_006c
+  202b:000c:
+    certainty: unidentified
+    description: ''
+    name: FUN_202b_000c
+  202b:001a:
+    certainty: unidentified
+    description: ''
+    name: FUN_202b_001a
+  202b:005c:
+    certainty: unidentified
+    description: ''
+    name: FUN_202b_005c
+  202b:00ba:
+    certainty: unidentified
+    description: ''
+    name: FUN_202b_00ba
+  202b:01c0:
+    certainty: unidentified
+    description: ''
+    name: FUN_202b_01c0
+  202b:0282:
+    certainty: unidentified
+    description: ''
+    name: FUN_202b_0282
+  202b:033e:
+    certainty: unidentified
+    description: ''
+    name: FUN_202b_033e
+  202b:039a:
+    certainty: unidentified
+    description: ''
+    name: FUN_202b_039a
+  206a:000a:
+    certainty: unidentified
+    description: ''
+    name: FUN_206a_000a
+  206a:0018:
+    certainty: unidentified
+    description: ''
+    name: FUN_206a_0018
+  206a:0066:
+    certainty: unidentified
+    description: ''
+    name: FUN_206a_0066
+  206a:00da:
+    certainty: unidentified
+    description: ''
+    name: FUN_206a_00da
+  206a:01c4:
+    certainty: unidentified
+    description: ''
+    name: FUN_206a_01c4
+  206a:0208:
+    certainty: unidentified
+    description: ''
+    name: FUN_206a_0208
+  2092:0024:
+    certainty: unidentified
+    description: ''
+    name: FUN_2092_0024
+  2092:0194:
+    certainty: unidentified
+    description: ''
+    name: FUN_2092_0194
+  2092:01e6:
+    certainty: unidentified
+    description: ''
+    name: FUN_2092_01e6
+  2092:0282:
+    certainty: unidentified
+    description: ''
+    name: FUN_2092_0282
+  20bc:000a:
+    certainty: unidentified
+    description: ''
+    name: FUN_20bc_000a
+  20bc:0020:
+    certainty: unidentified
+    description: ''
+    name: FUN_20bc_0020
+  20bc:0036:
+    certainty: unidentified
+    description: ''
+    name: FUN_20bc_0036
+  20bc:01e6:
+    certainty: unidentified
+    description: ''
+    name: FUN_20bc_01e6
+  20bc:0238:
+    certainty: unidentified
+    description: ''
+    name: FUN_20bc_0238
+  20e4:002a:
+    certainty: unidentified
+    description: ''
+    name: FUN_20e4_002a
+  20e4:01b2:
+    certainty: unidentified
+    description: ''
+    name: FUN_20e4_01b2
+  20e4:0214:
+    certainty: unidentified
+    description: ''
+    name: FUN_20e4_0214
+  20e4:0276:
+    certainty: unidentified
+    description: ''
+    name: FUN_20e4_0276
+  20e4:03aa:
+    certainty: unidentified
+    description: ''
+    name: FUN_20e4_03aa
+  212a:0000:
+    certainty: unidentified
+    description: ''
+    name: FUN_212a_0000
+  212a:003c:
+    certainty: unidentified
+    description: ''
+    name: FUN_212a_003c
+  212a:0050:
+    certainty: unidentified
+    description: ''
+    name: FUN_212a_0050
+  212a:0080:
+    certainty: unidentified
+    description: ''
+    name: FUN_212a_0080
+  2134:0008:
+    certainty: unidentified
+    description: ''
+    name: FUN_2134_0008
+  2134:024c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2134_024c
+  2163:0052:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_0052
+  2163:0104:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_0104
+  2163:0116:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_0116
+  2163:04ba:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_04ba
+  2163:0558:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_0558
+  2163:05a2:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_05a2
+  2163:06e8:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_06e8
+  2163:07d8:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_07d8
+  2163:0900:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_0900
+  2163:0a5c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_0a5c
+  2163:0ab0:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_0ab0
+  2163:0af8:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_0af8
+  2163:0e44:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_0e44
+  2163:0ee2:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_0ee2
+  2163:12e6:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_12e6
+  2163:146a:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_146a
+  2163:14d0:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_14d0
+  2163:1506:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_1506
+  2163:1546:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_1546
+  2163:15a4:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_15a4
+  2163:173a:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_173a
+  2163:180e:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_180e
+  2163:182e:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_182e
+  2163:1924:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_1924
+  2163:1998:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_1998
+  2163:1a10:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_1a10
+  2163:1a8c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_1a8c
+  2163:1b36:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_1b36
+  2163:1b7a:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_1b7a
+  2163:1be8:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_1be8
+  2163:1c56:
+    certainty: unidentified
+    description: ''
+    name: FUN_2163_1c56
+  2330:000e:
+    certainty: unidentified
+    description: ''
+    name: FUN_2330_000e
+  2330:001c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2330_001c
+  2330:0064:
+    certainty: unidentified
+    description: ''
+    name: FUN_2330_0064
+  2330:00ca:
+    certainty: unidentified
+    description: ''
+    name: FUN_2330_00ca
+  2330:0122:
+    certainty: unidentified
+    description: ''
+    name: FUN_2330_0122
+  2330:01a0:
+    certainty: unidentified
+    description: ''
+    name: FUN_2330_01a0
+  2351:0008:
+    certainty: unidentified
+    description: ''
+    name: FUN_2351_0008
+  2351:0092:
+    certainty: unidentified
+    description: ''
+    name: FUN_2351_0092
+  2351:00d2:
+    certainty: unidentified
+    description: ''
+    name: FUN_2351_00d2
+  2351:00ec:
+    certainty: unidentified
+    description: ''
+    name: FUN_2351_00ec
+  2351:0130:
+    certainty: unidentified
+    description: ''
+    name: FUN_2351_0130
+  2351:016c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2351_016c
+  2351:01a4:
+    certainty: unidentified
+    description: ''
+    name: FUN_2351_01a4
+  2351:01fe:
+    certainty: unidentified
+    description: ''
+    name: FUN_2351_01fe
+  2351:021c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2351_021c
+  2351:0240:
+    certainty: unidentified
+    description: ''
+    name: FUN_2351_0240
+  2351:0258:
+    certainty: unidentified
+    description: ''
+    name: FUN_2351_0258
+  2351:0408:
+    certainty: unidentified
+    description: ''
+    name: FUN_2351_0408
+  2351:0452:
+    certainty: unidentified
+    description: ''
+    name: FUN_2351_0452
+  239c:0008:
+    certainty: unidentified
+    description: ''
+    name: FUN_239c_0008
+  239c:005c:
+    certainty: unidentified
+    description: ''
+    name: FUN_239c_005c
+  239c:0086:
+    certainty: unidentified
+    description: ''
+    name: FUN_239c_0086
+  239c:00d8:
+    certainty: unidentified
+    description: ''
+    name: FUN_239c_00d8
+  23ac:000c:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ac_000c
+  23ed:0016:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_0016
+  23ed:0044:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_0044
+  23ed:0078:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_0078
+  23ed:00b0:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_00b0
+  23ed:00dc:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_00dc
+  23ed:00fc:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_00fc
+  23ed:0146:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_0146
+  23ed:0184:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_0184
+  23ed:01ac:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_01ac
+  23ed:02d6:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_02d6
+  23ed:034c:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_034c
+  23ed:03bc:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_03bc
+  23ed:052c:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_052c
+  23ed:068e:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_068e
+  23ed:084a:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_084a
+  23ed:0882:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_0882
+  23ed:09b8:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_09b8
+  23ed:0b26:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_0b26
+  23ed:0c0a:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_0c0a
+  23ed:0c88:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_0c88
+  23ed:0cd0:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_0cd0
+  23ed:0d18:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_0d18
+  23ed:0db4:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_0db4
+  23ed:0e00:
+    certainty: unidentified
+    description: ''
+    name: FUN_23ed_0e00
+  24de:0008:
+    certainty: unidentified
+    description: ''
+    name: FUN_24de_0008
+  24de:005e:
+    certainty: unidentified
+    description: ''
+    name: FUN_24de_005e
+  24e6:0006:
+    certainty: unidentified
+    description: ''
+    name: FUN_24e6_0006
+  24e6:04ee:
+    certainty: unidentified
+    description: ''
+    name: FUN_24e6_04ee
+  24e6:05ae:
+    certainty: unidentified
+    description: ''
+    name: FUN_24e6_05ae
+  24e6:05ee:
+    certainty: unidentified
+    description: ''
+    name: FUN_24e6_05ee
+  24e6:07aa:
+    certainty: unidentified
+    description: ''
+    name: FUN_24e6_07aa
+  24e6:0864:
+    certainty: unidentified
+    description: ''
+    name: FUN_24e6_0864
+  24e6:088a:
+    certainty: unidentified
+    description: ''
+    name: FUN_24e6_088a
+  24e6:08fe:
+    certainty: unidentified
+    description: ''
+    name: FUN_24e6_08fe
+  24e6:0926:
+    certainty: unidentified
+    description: ''
+    name: FUN_24e6_0926
+  24e6:0982:
+    certainty: unidentified
+    description: ''
+    name: FUN_24e6_0982
+  24e6:0994:
+    certainty: unidentified
+    description: ''
+    name: FUN_24e6_0994
+  2581:0002:
+    certainty: unidentified
+    description: ''
+    name: FUN_2581_0002
+  2581:0200:
+    certainty: unidentified
+    description: ''
+    name: FUN_2581_0200
+  2581:039c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2581_039c
+  2581:03e0:
+    certainty: unidentified
+    description: ''
+    name: FUN_2581_03e0
+  2581:03ee:
+    certainty: unidentified
+    description: ''
+    name: FUN_2581_03ee
+  2581:0422:
+    certainty: unidentified
+    description: ''
+    name: FUN_2581_0422
+  2581:04b4:
+    certainty: unidentified
+    description: ''
+    name: FUN_2581_04b4
+  2581:0528:
+    certainty: unidentified
+    description: ''
+    name: FUN_2581_0528
+  2581:0568:
+    certainty: unidentified
+    description: ''
+    name: FUN_2581_0568
+  2581:05c4:
+    certainty: unidentified
+    description: ''
+    name: FUN_2581_05c4
+  2581:0606:
+    certainty: unidentified
+    description: ''
+    name: FUN_2581_0606
+  2581:0686:
+    certainty: unidentified
+    description: ''
+    name: FUN_2581_0686
+  25f0:0006:
+    certainty: unidentified
+    description: ''
+    name: FUN_25f0_0006
+  25f0:0014:
+    certainty: unidentified
+    description: ''
+    name: FUN_25f0_0014
+  25f0:005e:
+    certainty: unidentified
+    description: ''
+    name: FUN_25f0_005e
+  25f0:00ca:
+    certainty: unidentified
+    description: ''
+    name: FUN_25f0_00ca
+  25f0:0152:
+    certainty: unidentified
+    description: ''
+    name: FUN_25f0_0152
+  25f0:01fe:
+    certainty: unidentified
+    description: ''
+    name: FUN_25f0_01fe
+  25f0:02ac:
+    certainty: unidentified
+    description: ''
+    name: FUN_25f0_02ac
+  25f0:0324:
+    certainty: unidentified
+    description: ''
+    name: FUN_25f0_0324
+  2627:0000:
+    certainty: unidentified
+    description: ''
+    name: FUN_2627_0000
+  2627:0084:
+    certainty: unidentified
+    description: ''
+    name: FUN_2627_0084
+  2634:000c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2634_000c
+  2634:0204:
+    certainty: unidentified
+    description: ''
+    name: FUN_2634_0204
+  2658:0008:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0008
+  2658:0045:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0053:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:005a:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0061:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0068:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0076:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0092:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0099:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:00a7:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:00ca:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:00d1:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:00d8:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:00df:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:00fb:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0117:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0131:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0131
+  2658:013a:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0141:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0148:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0156:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:015d:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0164:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:016b:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0172:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0179:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:01a3:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:01aa:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0301:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:0308:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:030f:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:032b:
+    certainty: unidentified
+    description: ''
+    name: thunk_EXT_FUN_0000_0000
+  2658:034c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_034c
+  2658:0410:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0410
+  2658:043f:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_043f
+  2658:0497:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0497
+  2658:04e2:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_04e2
+  2658:0576:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0576
+  2658:0724:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0724
+  2658:08b0:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_08b0
+  2658:08d1:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_08d1
+  2658:08f2:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_08f2
+  2658:0937:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0937
+  2658:0976:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0976
+  2658:0a8e:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0a8e
+  2658:0ad6:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0ad6
+  2658:0af0:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0af0
+  2658:0b0f:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0b0f
+  2658:0b58:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0b58
+  2658:0b8e:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0b8e
+  2658:0c00:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0c00
+  2658:0d20:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0d20
+  2658:0e0c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0e0c
+  2658:0e3e:
+    certainty: unidentified
+    description: ''
+    name: FUN_2658_0e3e
+  2741:000c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_000c
+  2741:0072:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_0072
+  2741:00a0:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_00a0
+  2741:00c6:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_00c6
+  2741:0110:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_0110
+  2741:015c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_015c
+  2741:01a4:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_01a4
+  2741:0222:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_0222
+  2741:023c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_023c
+  2741:0256:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_0256
+  2741:026e:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_026e
+  2741:028a:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_028a
+  2741:02a4:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_02a4
+  2741:02e8:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_02e8
+  2741:044e:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_044e
+  2741:04c2:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_04c2
+  2741:04d4:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_04d4
+  2741:0538:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_0538
+  2741:05a2:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_05a2
+  2741:05e2:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_05e2
+  2741:0600:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_0600
+  2741:0636:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_0636
+  2741:0646:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_0646
+  2741:0670:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_0670
+  2741:0698:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_0698
+  2741:06ca:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_06ca
+  2741:0702:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_0702
+  2741:072a:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_072a
+  2741:085c:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_085c
+  2741:089e:
+    certainty: unidentified
+    description: ''
+    name: FUN_2741_089e
+  27d1:01f0:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_01f0
+  27d1:01f2:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_01f2
+  27d1:025c:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_025c
+  27d1:04e4:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_04e4
+  27d1:05f8:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_05f8
+  27d1:067b:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_067b
+  27d1:068b:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_068b
+  27d1:06c3:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_06c3
+  27d1:06fa:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_06fa
+  27d1:0740:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0740
+  27d1:082f:
+    certainty: unidentified
+    description: ''
+    name: entry
+  27d1:0878:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0878
+  27d1:08e9:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_08e9
+  27d1:0a19:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0a19
+  27d1:0a6d:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0a6d
+  27d1:0b2a:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0b2a
+  27d1:0b4a:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0b4a
+  27d1:0b50:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0b50
+  27d1:0e42:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0e42
+  27d1:0e4c:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0e4c
+  27d1:0e56:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0e56
+  27d1:0e60:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0e60
+  27d1:0e6a:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0e6a
+  27d1:0e74:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0e74
+  27d1:0e7e:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0e7e
+  27d1:0e88:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0e88
+  27d1:0e92:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0e92
+  27d1:0e9c:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0e9c
+  27d1:0ea6:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0ea6
+  27d1:0eb0:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0eb0
+  27d1:0eba:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0eba
+  27d1:0ec4:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0ec4
+  27d1:0ece:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0ece
+  27d1:0ed8:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0ed8
+  27d1:0ee2:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0ee2
+  27d1:0eec:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0eec
+  27d1:0ef6:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0ef6
+  27d1:0f00:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0f00
+  27d1:0f0a:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0f0a
+  27d1:0f14:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0f14
+  27d1:0f1e:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0f1e
+  27d1:0f28:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0f28
+  27d1:0f32:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0f32
+  27d1:0f3c:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0f3c
+  27d1:0f46:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0f46
+  27d1:0f50:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0f50
+  27d1:0f5a:
+    certainty: unidentified
+    description: ''
+    name: FUN_27d1_0f5a
+  28d4:0099:
+    certainty: high
+    description: EMS memory manager / main loop entry
+    name: ems_memory_manager
+  28d4:0575:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0575
+  28d4:0591:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0591
+  28d4:05de:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_05de
+  28d4:0665:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0665
+  28d4:070c:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_070c
+  28d4:0738:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0738
+  28d4:07b3:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_07b3
+  28d4:092f:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_092f
+  28d4:0984:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0984
+  28d4:09ba:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_09ba
+  28d4:0b63:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0b63
+  28d4:0be1:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0be1
+  28d4:0bf8:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0bf8
+  28d4:0c0f:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0c0f
+  28d4:0c1f:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0c1f
+  28d4:0cd6:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0cd6
+  28d4:0ce9:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0ce9
+  28d4:0cfa:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0cfa
+  28d4:0d0b:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0d0b
+  28d4:0d20:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0d20
+  28d4:0e05:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_0e05
+  28d4:103f:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_103f
+  28d4:10b7:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_10b7
+  28d4:113f:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_113f
+  28d4:1248:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_1248
+  28d4:1294:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_1294
+  28d4:13f2:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_13f2
+  28d4:1429:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_1429
+  28d4:1432:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_1432
+  28d4:1446:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_1446
+  28d4:1458:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_1458
+  28d4:145f:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_145f
+  28d4:146c:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_146c
+  28d4:1510:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_1510
+  28d4:1535:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_1535
+  28d4:15d9:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_15d9
+  28d4:160a:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_160a
+  28d4:1644:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_1644
+  28d4:16e2:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_16e2
+  28d4:173e:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_173e
+  28d4:1846:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_1846
+  28d4:1884:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_1884
+  28d4:18ed:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_18ed
+  28d4:1901:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_1901
+  28d4:193e:
+    certainty: unidentified
+    description: ''
+    name: FUN_28d4_193e

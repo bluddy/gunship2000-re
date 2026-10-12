@@ -4,7 +4,7 @@
  */
 extern void _far FUN_10bf_02c0(void);
 extern int _far FUN_10bf_2aae(unsigned short*, unsigned short, unsigned short);
-extern void _far FUN_1d02_07c4(unsigned short, unsigned short);
+extern void _far resource_slot_swap(unsigned short, unsigned short);
 extern void _far FUN_10bf_2250(unsigned short*, unsigned short, unsigned short);
 extern void _far FUN_1d02_08a6(unsigned short*, unsigned short, unsigned short);
 extern void _far FUN_2741_0256(unsigned short*, unsigned short, unsigned short);
@@ -35,7 +35,7 @@ void _far resource_slot_alloc(int param_1, unsigned short param_2)
     LAB_FOUND:
         if (iStack_18 >= 0) {
             // Found match, move to front
-            FUN_1d02_07c4(param_1, iStack_18);
+            resource_slot_swap(param_1, iStack_18);
             *(char *)(param_1 * 10 - 0x43f8) = 4;
             return;
         }
@@ -52,7 +52,7 @@ void _far resource_slot_alloc(int param_1, unsigned short param_2)
         }
         
         if (iStack_18 >= 0) {
-            FUN_1d02_07c4(param_1, iStack_18);
+            resource_slot_swap(param_1, iStack_18);
         }
         
         *(char *)(param_1 * 10 - 0x43f8) = 4;
