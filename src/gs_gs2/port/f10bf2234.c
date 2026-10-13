@@ -1,12 +1,16 @@
-/* GS.GS2 10bf:2234 - called from 1d02_0608 */
-extern void _far FUN_10bf_02c0(void);
-extern int _far FUN_10bf_2234(unsigned short param_1)
+/* GS.GS2 10bf:2234 - strlen
+ * Returns length of string at param_1
+ */
+extern int _far strlen(char *param_1)
 {
-    FUN_10bf_02c0();
-    /* Original: 
-       iVar1 = FUN_10bf_2234(param_2);
-       FUN_10bf_2bc6(param_1 + param_2, param_2, iVar1 + 1);
-    */
-    /* Return value used as index/count */
-    return 0; /* Placeholder - need actual implementation */
+    char *pcVar1;
+    unsigned int uVar2;
+    uVar2 = 0xffff;
+    do {
+        if (uVar2 == 0) break;
+        uVar2 = uVar2 - 1;
+        pcVar1 = param_1;
+        param_1 = param_1 + 1;
+    } while (*pcVar1 != '\0');
+    return ~uVar2 - 1;
 }
