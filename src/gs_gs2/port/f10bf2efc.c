@@ -1,13 +1,28 @@
 /* GS.GS2 10bf:2efc - fixed_point_div
- * 32-bit fixed-point division with sign handling
- * Returns quotient in DX:AX (DX = high word, AX = low word)
+ * 32-bit signed division: (param_2:param_1) / (param_4:param_3)
+ * Returns 32-bit quotient in DX:AX
  */
-extern void _far fixed_point_div(void);
-void _far fixed_point_div(void)
+extern long _far fixed_point_div(unsigned int param_1, int param_2,
+                                 unsigned int param_3, int param_4)
 {
-    /* This is a 32-bit / 32-bit division with sign handling.
-       Returns (param_1:param_2) / (param_3:param_4) as 32-bit quotient. */
-    /* Implementation: call INT 21h with AH=0x00 for division? No, this is a custom routine. */
-    /* Placeholder - needs actual 32-bit division implementation */
-    return;
+    int neg;
+    unsigned long num;
+    unsigned long den;
+    unsigned long quot;
+    neg = 0;
+    num = ((unsigned long)(unsigned int)param_2 << 16) | param_1;
+    den = ((unsigned long)(unsigned int)param_4 << 16) | param_3;
+    if (param_2 < 0) {
+        neg = neg ^ 1;
+        num = ~num + 1;
+    }
+    if (param_4 < 0) {
+        neg = neg ^ 1;
+        den = ~den + 1;
+    }
+    quot = num / den;
+    if (neg != 0) {
+        quot = ~quot + 1;
+    }
+    return (long)quot;
 }
