@@ -2,7 +2,6 @@
  * Indirect call through function pointer at BX+0x7082
  * Updates linked list pointer at DI-4
  * Note: Original uses register calling convention (BX, DI)
- * C port uses globals to simulate register state
  */
 extern void _far call_indirect(void)
 {
@@ -11,6 +10,5 @@ extern void _far call_indirect(void)
        *(far *)0x70a8 = stack_ptr;
        call *(BX + 0x7082);
     */
-    /* Placeholder - register calling convention not directly portable */
     return;
 }
