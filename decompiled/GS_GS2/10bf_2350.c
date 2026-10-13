@@ -2,6 +2,6 @@
 void FUN_10bf_2350(void)
 
 {
-  FUN_10bf_2c74();
+  itoa();
   return;
 }

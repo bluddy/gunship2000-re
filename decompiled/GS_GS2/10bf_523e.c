@@ -1,5 +1,5 @@
-/* GS.GS2 10bf:523e undefined FUN_10bf_523e(void) */
-undefined2 __cdecl16near FUN_10bf_523e(void)
+/* GS.GS2 10bf:523e undefined buffer_adjust(void) */
+undefined2 __cdecl16near buffer_adjust(void)
 
 {
   int iVar1;

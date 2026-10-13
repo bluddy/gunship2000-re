@@ -36,7 +36,7 @@ undefined2 __cdecl16far FUN_20e4_03aa(int param_1,int param_2)
         puStack_8 = &local_c;
         uStack_a = 0x10bf;
         local_c = 0x1281;
-        FUN_10bf_2250();
+        strncpy_word();
         iStack_4 = param_1;
         iStack_6 = 4;
         puStack_8 = (undefined2 *)0x10bf;

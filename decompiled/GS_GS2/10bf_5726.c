@@ -1,5 +1,5 @@
-/* GS.GS2 10bf:5726 undefined FUN_10bf_5726(void) */
-undefined1 * __cdecl16far FUN_10bf_5726(undefined2 *param_1,undefined1 *param_2,int param_3)
+/* GS.GS2 10bf:5726 undefined format_number_string(void) */
+undefined1 * __cdecl16far format_number_string(undefined2 *param_1,undefined1 *param_2,int param_3)
 
 {
   int iVar1;

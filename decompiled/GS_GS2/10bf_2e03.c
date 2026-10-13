@@ -1,5 +1,5 @@
-/* GS.GS2 10bf:2e03 undefined FUN_10bf_2e03(void) */
-void FUN_10bf_2e03(void)
+/* GS.GS2 10bf:2e03 undefined dos_int21h_call(void) */
+void dos_int21h_call(void)
 
 {
   code *pcVar1;

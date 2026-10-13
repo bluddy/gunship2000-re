@@ -1,5 +1,5 @@
-/* GS.GS2 10bf:3508 undefined FUN_10bf_3508(void) */
-undefined4 __cdecl16near FUN_10bf_3508(void)
+/* GS.GS2 10bf:3508 undefined float_to_fixed2(void) */
+undefined4 __cdecl16near float_to_fixed2(void)
 
 {
   uint uVar1;

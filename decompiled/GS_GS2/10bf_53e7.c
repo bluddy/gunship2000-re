@@ -4,6 +4,6 @@ void __cdecl16far FUN_10bf_53e7(void)
 {
   FUN_10bf_4d51();
   FUN_10bf_52dc();
-  FUN_10bf_4bb8();
+  entity_buffer_add();
   return;
 }

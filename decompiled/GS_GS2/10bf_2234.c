@@ -1,5 +1,5 @@
-/* GS.GS2 10bf:2234 undefined FUN_10bf_2234(void) */
-int __cdecl16far FUN_10bf_2234(char *param_1)
+/* GS.GS2 10bf:2234 undefined strlen(void) */
+int __cdecl16far strlen(char *param_1)
 
 {
   char *pcVar1;

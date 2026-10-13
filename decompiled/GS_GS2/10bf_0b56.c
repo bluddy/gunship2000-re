@@ -36,7 +36,7 @@ LAB_10bf_0b7e:
     while( true ) {
       param_2 = param_2 + 1;
       if ((*param_2 == 0) || (!bVar2)) {
-        iVar3 = FUN_10bf_1bcc(param_1,uVar4,param_3,0x1a4);
+        iVar3 = serial_port_open(param_1,uVar4,param_3,0x1a4);
         if (iVar3 < 0) {
           return (undefined2 *)0x0;
         }

@@ -2,6 +2,6 @@
 void __cdecl16far FUN_10bf_522b(void)
 
 {
-  FUN_10bf_523e();
+  buffer_adjust();
   return;
 }

@@ -1,5 +1,5 @@
-/* GS.GS2 10bf:2c74 undefined FUN_10bf_2c74(void) */
-byte * __cdecl16far FUN_10bf_2c74(void)
+/* GS.GS2 10bf:2c74 undefined itoa(void) */
+byte * __cdecl16far itoa(void)
 
 {
   ulong uVar1;

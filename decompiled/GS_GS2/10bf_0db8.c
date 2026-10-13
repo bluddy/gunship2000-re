@@ -448,7 +448,7 @@ LAB_10bf_11f3:
             ppbStack_c = &local_3e;
             uStack_e = 0x10bf;
             uStack_10 = 0x1e45;
-            FUN_10bf_3094();
+            fixed_point_mul_assign();
           }
         }
 LAB_10bf_11f7:

@@ -21,7 +21,7 @@ void __cdecl16far FUN_2627_0084(undefined2 param_1,undefined2 param_2)
   pcStack_6 = acStack_59 + 1;
   pcStack_8 = (char *)0x10bf;
   uStack_a = 0x6317;
-  iVar2 = FUN_10bf_2234();
+  iVar2 = strlen();
   do {
     iVar1 = iVar2;
     if (iVar1 + -1 < 0) break;
@@ -31,6 +31,6 @@ void __cdecl16far FUN_2627_0084(undefined2 param_1,undefined2 param_2)
   pcStack_8 = (char *)param_1;
   uStack_a = 0x10bf;
   uStack_c = 0x6345;
-  FUN_10bf_21d6();
+  strcpy_word();
   return;
 }

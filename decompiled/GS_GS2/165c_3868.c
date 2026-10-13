@@ -70,7 +70,7 @@ void __cdecl16far FUN_165c_3868(void)
   FUN_10bf_2c3a();
   local_e = (undefined2 *******)0x10bf;
   ppppppuStack_10 = (undefined2 ******)0x9e9c;
-  FUN_10bf_2250();
+  strncpy_word();
   local_e = &local_e;
   ppppppuStack_10 = (undefined2 ******)0x10bf;
   uStack_12 = 0x9eb4;

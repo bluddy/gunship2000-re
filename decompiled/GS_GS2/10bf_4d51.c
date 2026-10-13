@@ -12,7 +12,7 @@ void __cdecl16far FUN_10bf_4d51(void)
     puVar1 = (undefined2 *)puVar1[-2];
   }
   else {
-    FUN_10bf_32d7();
+    convert_to_screen_coords();
   }
   *in_BX = *puVar1;
   in_BX[1] = puVar1[1];

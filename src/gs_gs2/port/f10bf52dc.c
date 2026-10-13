@@ -3,7 +3,7 @@
  * Calls external function via DX pointer, handles return codes
  * Returns: pointer to pushed data at 0x70fe
  */
-extern void _far FUN_10bf_52b4(unsigned short);
+extern void _far entity_data_check(unsigned short);
 extern void _far FUN_10bf_2d58(void);
 extern void _far FUN_10bf_0543(unsigned short);
 unsigned short _far push_entity_data(unsigned short param_1, unsigned short param_2, unsigned short param_3, unsigned short param_4)
@@ -47,7 +47,7 @@ unsigned short _far push_entity_data(unsigned short param_1, unsigned short para
     *(unsigned char *)0x7105 = *(unsigned char *)0x7105 | 0x80;
 LAB_10bf_535d:
     *(unsigned int *)0x70ea = uVar4;
-    int iVar3 = FUN_10bf_52b4(0x70ea);
+    int iVar3 = entity_data_check(0x70ea);
     if (iVar3 == 0) {
         char cVar1 = '!';
         if (*(char *)0x7115 != 0 || 2 < *(unsigned int *)0x70ea) {

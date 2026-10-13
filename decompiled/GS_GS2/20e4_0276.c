@@ -24,7 +24,7 @@ undefined2 __cdecl16far FUN_20e4_0276(int param_1)
       puStack_6 = (undefined2 *)local_12;
       uStack_8 = 0x10bf;
       piStack_a = (int *)0x10fa;
-      FUN_10bf_21d6();
+      strcpy_word();
       puStack_4 = (undefined1 *)0xc82;
       puStack_6 = (undefined2 *)local_12;
       uStack_8 = 0x10bf;

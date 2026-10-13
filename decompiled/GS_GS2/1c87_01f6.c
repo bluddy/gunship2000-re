@@ -20,7 +20,7 @@ void __cdecl16far FUN_1c87_01f6(char *param_1)
       *(undefined1 *)0x857e = 0;
       return;
     }
-    FUN_10bf_2250();
+    strncpy_word();
     uStack_1a = 0;
     iVar4 = FUN_10bf_2a84();
     if (iVar4 == 0) {
@@ -29,7 +29,7 @@ void __cdecl16far FUN_1c87_01f6(char *param_1)
         return;
       }
       text_render_wrapped();
-      iStack_10 = FUN_10bf_2234();
+      iStack_10 = strlen();
     }
     else {
       iStack_10 = iVar4 - (int)local_ba;

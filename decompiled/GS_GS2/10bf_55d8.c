@@ -26,7 +26,7 @@ FUN_10bf_55d8(undefined2 *param_1,undefined1 *param_2,int param_3,int param_4)
     puVar1 = puVar1 + 1;
     *puVar1 = 0x2e;
   }
-  puVar1 = (undefined1 *)FUN_10bf_21d6(puVar1 + (uint)(*(char *)0x7146 == '\0') + param_3,0x7140);
+  puVar1 = (undefined1 *)strcpy_word(puVar1 + (uint)(*(char *)0x7146 == '\0') + param_3,0x7140);
   if (param_4 != 0) {
     *puVar1 = 0x45;
   }

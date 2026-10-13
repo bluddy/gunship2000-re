@@ -3,7 +3,7 @@
  * param_1 = buffer param, param_2 = unit type string, param_3 = ?, param_4 = output buffer slot
  * Returns: pointer to allocated slot or NULL
  */
-extern void _far FUN_10bf_1bcc(unsigned short, unsigned short, unsigned short, unsigned short);
+extern void _far serial_port_open(unsigned short, unsigned short, unsigned short, unsigned short);
 void _far parse_unit_type(unsigned short param_1, unsigned char *param_2, unsigned short param_3, unsigned short *param_4)
 {
     unsigned char bVar1 = *param_2;
@@ -30,7 +30,7 @@ LAB_10bf_0b7e:
         while (1) {
             param_2 = param_2 + 1;
             if (*param_2 == 0 || !bVar2) {
-                int iVar3 = FUN_10bf_1bcc(param_1, uVar4, param_3, 0x1a4);
+                int iVar3 = serial_port_open(param_1, uVar4, param_3, 0x1a4);
                 if (iVar3 < 0) return (void *)0;
                 *(int *)0x68c0 = *(int *)0x68c0 + 1;
                 *(unsigned char *)(param_4 + 3) = uStack_6;

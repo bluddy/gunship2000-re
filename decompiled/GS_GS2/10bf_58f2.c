@@ -12,7 +12,7 @@ FUN_10bf_58f2(undefined2 param_1,undefined2 param_2,int param_3,undefined2 param
       FUN_10bf_5840(param_1,param_2,param_4,param_5);
       return;
     }
-    FUN_10bf_5726(param_1,param_2,param_4);
+    format_number_string(param_1,param_2,param_4);
   }
   return;
 }

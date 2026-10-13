@@ -75,7 +75,7 @@ LAB_23ac_0395:
   pppiStack_a = (int ***)local_42;
   ppiStack_c = (int **)0x20bc;
   uStack_e = 0x3b16;
-  FUN_10bf_2250();
+  strncpy_word();
   uStack_3e = 0;
   local_6 = (int ***)*(undefined2 *)0xb8d0;
   puStack_8 = local_42;

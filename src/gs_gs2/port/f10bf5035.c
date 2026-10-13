@@ -3,7 +3,7 @@
  * Returns result from handler function
  * Note: Indirect calls through function tables (0x707e, 0x7082) not ported
  */
-extern void _far FUN_10bf_32d7(unsigned short *, unsigned short *);
+extern void _far convert_to_screen_coords(unsigned short *, unsigned short *);
 extern unsigned short _far entity_dispatch(void)
 {
     unsigned int *puVar1;
@@ -17,12 +17,12 @@ extern unsigned short _far entity_dispatch(void)
         uVar4 = 0x1e;
         if (*(char *)(iVar2 - 0xe) != 7) {
             *(int *)0x6ea8 = iVar2 - 0xc;
-            FUN_10bf_32d7((unsigned short *)0, (unsigned short *)0);
+            convert_to_screen_coords((unsigned short *)0, (unsigned short *)0);
             goto LAB_10bf_5056;
         }
     } else if (*(char *)(iVar2 - 0xe) == 7) {
         uVar4 = 0x1e;
-        FUN_10bf_32d7((unsigned short *)0, (unsigned short *)0);
+        convert_to_screen_coords((unsigned short *)0, (unsigned short *)0);
     }
     *(int *)0x6ea8 = iVar2 - 0xc;
 LAB_10bf_5056:

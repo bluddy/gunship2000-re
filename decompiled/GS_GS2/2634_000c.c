@@ -60,7 +60,7 @@ void __cdecl16far FUN_2634_000c(void)
     local_c = &local_c;
     uStack_e = 0x10bf;
     local_10 = (undefined2 **)0x63d2;
-    FUN_10bf_2250();
+    strncpy_word();
     local_160 = cStack_7d * 10 + (int)cStack_7c + -0x210;
     piStack_8 = (int *)&local_10;
     pcStack_a = (char *)local_82;

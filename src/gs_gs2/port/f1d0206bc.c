@@ -3,9 +3,9 @@
  * Searches 4 slots for matching name, allocates or evicts LRU
  */
 extern void _far FUN_10bf_02c0(void);
-extern int _far FUN_10bf_2aae(unsigned short*, unsigned short, unsigned short);
+extern int _far strcmp_ci(unsigned short*, unsigned short, unsigned short);
 extern void _far resource_slot_swap(unsigned short, unsigned short);
-extern void _far FUN_10bf_2250(unsigned short*, unsigned short, unsigned short);
+extern void _far strncpy_word(unsigned short*, unsigned short, unsigned short);
 extern void _far FUN_1d02_08a6(unsigned short*, unsigned short, unsigned short);
 extern void _far FUN_2741_0256(unsigned short*, unsigned short, unsigned short);
 
@@ -25,7 +25,7 @@ void _far resource_slot_alloc(int param_1, unsigned short param_2)
             }
             // Compare name
             unsigned short* puStack_4 = (unsigned short*)(iStack_16 * 10 - 0x43f7);
-            int iVar3 = FUN_10bf_2aae(puStack_4, param_2, 0x10bf);
+            int iVar3 = strcmp_ci(puStack_4, param_2, 0x10bf);
             if (iVar3 == 0) {
                 iStack_18 = iStack_16;
                 goto LAB_FOUND;
@@ -61,7 +61,7 @@ void _far resource_slot_alloc(int param_1, unsigned short param_2)
         unsigned short* puStack_4 = (unsigned short*)0x8;
         unsigned short iStack_6 = param_2;
         unsigned short iStack_8 = param_1 * 10 - 0x43f7;
-        FUN_10bf_2250(puStack_4, iStack_6, iStack_8);
+        strncpy_word(puStack_4, iStack_6, iStack_8);
         
         // Initialize slot data
         puStack_4 = (unsigned short*)0x10bf;

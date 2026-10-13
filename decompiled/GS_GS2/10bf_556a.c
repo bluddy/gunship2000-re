@@ -4,9 +4,9 @@ undefined2 __cdecl16far FUN_10bf_556a(void)
 {
   undefined1 in_CF;
   
-  FUN_10bf_4bb8();
-  FUN_10bf_4bb8();
-  FUN_10bf_5035();
+  entity_buffer_add();
+  entity_buffer_add();
+  entity_dispatch();
   if (!(bool)in_CF) {
     return 1;
   }

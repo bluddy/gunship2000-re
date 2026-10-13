@@ -22,7 +22,7 @@ void __cdecl16far FUN_1d02_08a6(int param_1,undefined2 param_2)
   uStack_c = 0x10bf;
   local_e = 0xd907;
   puStack_6 = (undefined2 *)iVar1;
-  FUN_10bf_2250();
+  strncpy_word();
   *(undefined1 *)((int)&local_e + iVar1) = 0;
   puStack_6 = &local_e;
   iStack_8 = 0x7cd;

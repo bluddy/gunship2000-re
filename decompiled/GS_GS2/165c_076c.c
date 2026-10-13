@@ -16,7 +16,7 @@ void __cdecl16far FUN_165c_076c(int param_1)
     iStack_6 = 3;
   }
   iVar1 = *(int *)(iStack_6 * 2 + 0xde);
-  iVar2 = FUN_10bf_2234();
+  iVar2 = strlen();
   do {
     iVar2 = iVar2 + -1;
     if (iVar2 == 0) break;

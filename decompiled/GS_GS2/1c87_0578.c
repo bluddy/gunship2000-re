@@ -84,7 +84,7 @@ LAB_1c87_0660:
     iStack_e = -0x3109;
     iStack_c = (int)puStack_a;
     puStack_a = local_64;
-    FUN_10bf_2250();
+    strncpy_word();
     iVar3 = iStack_c;
     local_64[iStack_c] = 0;
     if (iVar3 != 0) {

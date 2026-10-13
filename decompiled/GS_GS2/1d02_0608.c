@@ -24,7 +24,7 @@ void __cdecl16far FUN_1d02_0608(int param_1,int param_2)
     puStack_a = local_12;
     uStack_c = 0x10bf;
     uStack_e = 0xd66f;
-    FUN_10bf_2250();
+    strncpy_word();
     local_12[iStack_14] = 0;
     puStack_6 = local_12;
     iStack_8 = param_1 + -1;

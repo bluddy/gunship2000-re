@@ -1,7 +1,7 @@
-/* GS.GS2 10bf:1bcc undefined FUN_10bf_1bcc(void) */
+/* GS.GS2 10bf:1bcc undefined serial_port_open(void) */
 /* WARNING: Removing unreachable block (ram,0x000128cc) */
 
-uint __cdecl16far FUN_10bf_1bcc(undefined2 param_1,uint param_2,char param_3,uint param_4)
+uint __cdecl16far serial_port_open(undefined2 param_1,uint param_2,char param_3,uint param_4)
 
 {
   code *pcVar1;

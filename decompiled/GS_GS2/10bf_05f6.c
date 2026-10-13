@@ -20,7 +20,7 @@ undefined2 __cdecl16far FUN_10bf_05f6(int param_1)
   iVar1 = FUN_10bf_1b32(0x10bf,*(undefined1 *)(param_1 + 7));
   if (-1 < iVar1) {
     if (iStack_6 == 0) goto LAB_10bf_06a4;
-    FUN_10bf_21d6(&local_10,0x68bc);
+    strcpy_word(&local_10,0x68bc);
     puStack_4 = local_e;
     if (local_10 == '\\') {
       puStack_4 = &uStack_f;

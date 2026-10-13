@@ -8,7 +8,7 @@ void __cdecl16far FUN_10bf_5204(undefined2 param_1,uint param_2)
   undefined2 unaff_DS;
   
   *(undefined1 *)0x6edf = 1;
-  FUN_10bf_523e();
+  buffer_adjust();
   *(undefined1 *)0x6edf = 0;
   if (unaff_SI < param_2) {
     *unaff_DI = in_CX | 0x40;

@@ -1,5 +1,5 @@
-/* GS.GS2 10bf:32d7 undefined FUN_10bf_32d7(void) */
-void __cdecl16near FUN_10bf_32d7(void)
+/* GS.GS2 10bf:32d7 undefined convert_to_screen_coords(void) */
+void __cdecl16near convert_to_screen_coords(void)
 
 {
   uint *puVar1;

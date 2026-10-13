@@ -22,7 +22,7 @@ void __cdecl16far FUN_1f61_06ac(undefined2 param_1,undefined2 param_2)
   local_12[7] = '\x10';
   local_12[4] = -0x24;
   local_12[5] = -4;
-  FUN_10bf_2250();
+  strncpy_word();
   pcStack_6 = local_12;
   pcStack_8 = (char *)0x10bf;
   pcStack_a = (char *)0xfcec;
@@ -32,7 +32,7 @@ void __cdecl16far FUN_1f61_06ac(undefined2 param_1,undefined2 param_2)
   pcStack_a = (char *)0x10bf;
   local_12[6] = -5;
   local_12[7] = -4;
-  FUN_10bf_21d6();
+  strcpy_word();
   if (*(int *)0x86c2 != 0 || *(int *)0x86c0 != 0) {
     pcStack_6 = (char *)0x8;
     pcStack_8 = (char *)0x20;
@@ -57,7 +57,7 @@ void __cdecl16far FUN_1f61_06ac(undefined2 param_1,undefined2 param_2)
         pcStack_6 = local_12;
         pcStack_8 = (char *)0x10bf;
         pcStack_a = (char *)0xfd51;
-        iVar2 = FUN_10bf_2234();
+        iVar2 = strlen();
         pcStack_6 = (char *)((iVar2 - iStack_14) + -1);
         pcStack_8 = local_12 + iStack_14 + 1;
         pcStack_a = (char *)0x8640;

@@ -55,7 +55,7 @@ FUN_10bf_52dc(undefined2 param_1,undefined2 param_2,undefined2 param_3,undefined
   *(byte *)0x7105 = *(byte *)0x7105 | 0x80;
 LAB_10bf_535d:
   *(uint *)0x70ea = uVar4;
-  iVar3 = FUN_10bf_52b4(0x70ea);
+  iVar3 = entity_data_check(0x70ea);
   if (iVar3 == 0) {
     cVar1 = '!';
     if ((*(char *)0x7115 != '\0') || (2 < *(uint *)0x70ea)) {

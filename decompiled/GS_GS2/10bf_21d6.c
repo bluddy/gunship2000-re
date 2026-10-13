@@ -1,5 +1,5 @@
-/* GS.GS2 10bf:21d6 undefined FUN_10bf_21d6(void) */
-void __cdecl16far FUN_10bf_21d6(char *param_1,char *param_2)
+/* GS.GS2 10bf:21d6 undefined strcpy_word(void) */
+void __cdecl16far strcpy_word(char *param_1,char *param_2)
 
 {
   char *pcVar1;

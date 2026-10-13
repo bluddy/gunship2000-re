@@ -20,7 +20,7 @@ void __cdecl16far FUN_23ed_0c0a(int param_1)
   puStack_6 = local_7c;
   puStack_8 = (undefined1 *)0x10bf;
   uStack_a = 0x4b0f;
-  FUN_10bf_21d6();
+  strcpy_word();
   if (param_1 < 2) {
     uStack_4 = 0x1d59;
     puStack_6 = local_7c;

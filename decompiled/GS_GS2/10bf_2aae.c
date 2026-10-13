@@ -1,5 +1,5 @@
-/* GS.GS2 10bf:2aae undefined FUN_10bf_2aae(void) */
-int __cdecl16far FUN_10bf_2aae(byte *param_1,byte *param_2)
+/* GS.GS2 10bf:2aae undefined strcmp_ci(void) */
+int __cdecl16far strcmp_ci(byte *param_1,byte *param_2)
 
 {
   byte *pbVar1;

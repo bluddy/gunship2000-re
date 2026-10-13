@@ -100,7 +100,7 @@ void __cdecl16far FUN_165c_0dd2(void)
     puStack_c = local_29;
     uStack_e = 0x2581;
     iStack_10 = 0x7555;
-    FUN_10bf_2250();
+    strncpy_word();
     puVar3 = (uint *)(iStack_10 * 0x20 + -0x5d80);
     puVar5 = &local_38;
     for (iVar4 = 0x10; iVar4 != 0; iVar4 = iVar4 + -1) {
@@ -117,7 +117,7 @@ void __cdecl16far FUN_165c_0dd2(void)
       puStack_c = (undefined1 *)(iStack_10 * 0x20 + -0x5cd1);
       uStack_e = 0x10bf;
       iStack_10 = 0x75a1;
-      FUN_10bf_2250();
+      strncpy_word();
     }
   }
   return;

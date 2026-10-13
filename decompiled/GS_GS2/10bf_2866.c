@@ -14,7 +14,7 @@ undefined2 * __cdecl16far thunk_FUN_10bf_27fe(undefined2 *param_1,int param_2)
   
   bVar8 = false;
   if (param_1 == (undefined2 *)0x0) {
-    param_1 = (undefined2 *)FUN_10bf_1ff3(param_2);
+    param_1 = (undefined2 *)thunk_memory_alloc(param_2);
   }
   else if (param_2 == 0) {
     FUN_10bf_1fd2(param_1);
@@ -25,7 +25,7 @@ undefined2 * __cdecl16far thunk_FUN_10bf_27fe(undefined2 *param_1,int param_2)
     uVar5 = 0x6830;
     FUN_10bf_286c(param_2);
     if (bVar8) {
-      puVar3 = (undefined2 *)FUN_10bf_1ff3(param_2,uVar5);
+      puVar3 = (undefined2 *)thunk_memory_alloc(param_2,uVar5);
       if (puVar3 == (undefined2 *)0x0) {
         FUN_10bf_286c();
         param_1 = (undefined2 *)0x0;

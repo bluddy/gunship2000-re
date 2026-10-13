@@ -18,7 +18,7 @@ void __cdecl16far FUN_10bf_5592(int param_1,undefined2 *param_2,undefined2 param
     return;
   }
   FUN_10bf_22b6(param_3);
-  FUN_10bf_4bb8();
+  entity_buffer_add();
   FUN_10bf_4d0b();
   return;
 }

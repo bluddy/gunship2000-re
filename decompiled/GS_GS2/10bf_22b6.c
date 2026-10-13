@@ -9,7 +9,7 @@ void __cdecl16far FUN_10bf_22b6(char *param_1)
   while ((*(byte *)(*param_1 + 0x6a97) & 8) != 0) {
     param_1 = param_1 + 1;
   }
-  uVar1 = FUN_10bf_2234(param_1,0,0);
+  uVar1 = strlen(param_1,0,0);
   iVar2 = FUN_10bf_522b(param_1,uVar1);
   *(undefined2 *)0x9e58 = *(undefined2 *)(iVar2 + 8);
   *(undefined2 *)0x9e5a = *(undefined2 *)(iVar2 + 10);

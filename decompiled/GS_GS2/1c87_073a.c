@@ -15,7 +15,7 @@ undefined1 * __cdecl16far FUN_1c87_073a(undefined1 *param_1,int param_2)
       *param_1 = 0;
     }
     else {
-      iVar2 = FUN_10bf_2234(param_1);
+      iVar2 = strlen(param_1);
       while (0 < iVar2) {
         iVar3 = FUN_1c87_04e8(param_1);
         if (iVar3 <= param_2 - iVar1) break;

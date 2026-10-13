@@ -10,7 +10,7 @@ void __cdecl16far FUN_165c_27d4(int param_1,int param_2)
   
   FUN_10bf_02c0();
   do {
-    iVar1 = FUN_10bf_2234(param_1);
+    iVar1 = strlen(param_1);
     if (iVar1 <= param_2) {
       return;
     }
@@ -28,8 +28,8 @@ void __cdecl16far FUN_165c_27d4(int param_1,int param_2)
       *pcStackY_c = *pcVar3;
       pcStackY_c = pcStackY_c + 1;
     }
-    iVar1 = FUN_10bf_2234(*(undefined2 *)(iVar1 * 2 + 0x222),pcVar2);
-    FUN_10bf_21d6(pcStackY_c,pcVar2 + iVar1);
+    iVar1 = strlen(*(undefined2 *)(iVar1 * 2 + 0x222),pcVar2);
+    strcpy_word(pcStackY_c,pcVar2 + iVar1);
 LAB_165c_286c:
     if (3 < (int)pcStackY_c) {
       *(undefined1 *)(param_2 + param_1) = 0;

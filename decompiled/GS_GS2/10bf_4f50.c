@@ -1,5 +1,5 @@
-/* GS.GS2 10bf:4f50 undefined FUN_10bf_4f50(void) */
-void __cdecl16far FUN_10bf_4f50(void)
+/* GS.GS2 10bf:4f50 undefined call_indirect(void) */
+void __cdecl16far call_indirect(void)
 
 {
   int in_BX;

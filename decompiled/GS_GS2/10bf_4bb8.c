@@ -1,5 +1,5 @@
-/* GS.GS2 10bf:4bb8 undefined FUN_10bf_4bb8(void) */
-void __cdecl16far FUN_10bf_4bb8(void)
+/* GS.GS2 10bf:4bb8 undefined entity_buffer_add(void) */
+void __cdecl16far entity_buffer_add(void)
 
 {
   int iVar1;

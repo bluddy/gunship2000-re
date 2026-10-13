@@ -54,7 +54,7 @@ undefined2 __cdecl16far FUN_24e6_0006(undefined2 param_1)
   local_c = (undefined2 ***)local_62;
   iStack_e = 0x10bf;
   uStack_10 = 0x4e87;
-  FUN_10bf_2250();
+  strncpy_word();
   uStack_5a = 0;
   pppuStack_a = (undefined2 ***)local_62;
   local_c = (undefined2 ***)0x10bf;

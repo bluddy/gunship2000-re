@@ -1,5 +1,5 @@
-/* GS.GS2 10bf:1ff3 undefined FUN_10bf_1ff3(void) */
-undefined2 __cdecl16far FUN_10bf_1ff3(uint param_1)
+/* GS.GS2 10bf:1ff3 undefined thunk_memory_alloc(void) */
+undefined2 __cdecl16far thunk_memory_alloc(uint param_1)
 
 {
   undefined2 uVar1;

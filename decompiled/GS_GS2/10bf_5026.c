@@ -18,13 +18,13 @@ undefined2 __cdecl16far FUN_10bf_5026(void)
     uVar4 = 0x12;
     if (*(char *)(iVar2 + -0xe) != '\a') {
       *(int *)0x6ea8 = iVar2 + -0xc;
-      FUN_10bf_32d7();
+      convert_to_screen_coords();
       goto LAB_10bf_5056;
     }
   }
   else if (*(char *)(iVar2 + -0xe) == '\a') {
     uVar4 = 0x12;
-    FUN_10bf_32d7();
+    convert_to_screen_coords();
   }
   *(int *)0x6ea8 = iVar2 + -0xc;
 LAB_10bf_5056:

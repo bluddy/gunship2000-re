@@ -29,7 +29,7 @@ void __cdecl16far FUN_10bf_236c(char *param_1,int param_2,int param_3)
     *(int *)(param_3 + 2) = *(int *)(param_3 + 2) + 1;
   }
   else {
-    FUN_10bf_21d6(param_1,param_1 + 1);
+    strcpy_word(param_1,param_1 + 1);
   }
   return;
 }

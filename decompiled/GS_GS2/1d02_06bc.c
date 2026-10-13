@@ -54,7 +54,7 @@ LAB_1d02_070e:
       iStack_8 = param_1 * 10 + -0x43f7;
       uStack_a = 0x10bf;
       uStack_c = 0xd7c3;
-      FUN_10bf_2250();
+      strncpy_word();
       puStack_4 = local_14;
       iStack_6 = param_2;
       iStack_8 = 0x10bf;
@@ -72,7 +72,7 @@ LAB_1d02_070e:
       iStack_6 = param_2;
       iStack_8 = 0x10bf;
       uStack_a = 0xd71d;
-      iVar3 = FUN_10bf_2aae();
+      iVar3 = strcmp_ci();
       if (iVar3 == 0) {
         iStack_18 = iStack_16;
         goto LAB_1d02_070e;

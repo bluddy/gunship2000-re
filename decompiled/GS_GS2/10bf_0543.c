@@ -9,7 +9,7 @@ void __stdcall16far FUN_10bf_0543(undefined2 param_1)
   undefined2 unaff_ES;
   undefined2 unaff_DS;
   
-  pcVar3 = (char *)FUN_10bf_0518(param_1);
+  pcVar3 = (char *)error_lookup(param_1);
   if (pcVar3 != (char *)0x0) {
     iVar4 = -1;
     do {

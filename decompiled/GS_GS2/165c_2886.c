@@ -189,7 +189,7 @@ void __cdecl16far FUN_165c_2886(int param_1,int param_2,int param_3,int param_4)
   uStack_a._0_2_ = (uint *)(iVar3 + -0x471c);
   uStack_e._2_2_ = 0x10bf;
   uStack_e._0_2_ = 0x91c1;
-  FUN_10bf_21d6();
+  strcpy_word();
   *(undefined1 *)(param_1 + -0x4a30) = (char)iVar4;
   *(undefined2 *)(iVar3 + -0x46fc) = *(undefined2 *)(iVar4 * 2 + 0x1b94);
   *(uint *)(iVar3 + -0x46f2) = local_16;

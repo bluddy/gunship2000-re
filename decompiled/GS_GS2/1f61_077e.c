@@ -33,7 +33,7 @@ undefined2 __cdecl16far FUN_1f61_077e(int param_1)
         uStack_12 = CONCAT11(uStack_12._1_1_,cVar1);
         if (cVar1 == '\0') break;
         if (cVar1 == '.') {
-          FUN_10bf_2234();
+          strlen();
           pcStack_e = (char *)0xfe53;
           FUN_10bf_2c0e();
           break;
@@ -74,7 +74,7 @@ undefined2 __cdecl16far FUN_1f61_077e(int param_1)
     iVar2 = FUN_10bf_2e38();
     if (iVar2 == 0) {
       pcStack_e = (char *)0xff65;
-      FUN_10bf_21d6();
+      strcpy_word();
       return 1;
     }
     return 0;
@@ -84,7 +84,7 @@ undefined2 __cdecl16far FUN_1f61_077e(int param_1)
   if (iVar2 == 0) {
     *(undefined2 *)0x8666 = 1;
     pcStack_e = (char *)0xff3d;
-    FUN_10bf_21d6();
+    strcpy_word();
     return 1;
   }
   return 0;

@@ -11,7 +11,7 @@ void __cdecl16far FUN_2627_0000(int param_1,int param_2)
   FUN_10bf_02c0();
   for (uStack_6 = 0; *(char *)(uStack_6 + param_2) == ' '; uStack_6 = uStack_6 + 1) {
   }
-  iVar1 = FUN_10bf_2234();
+  iVar1 = strlen();
   while ((iVar1 != 0 && (*(char *)(param_2 + iVar1 + -1) == ' '))) {
     iVar1 = iVar1 + -1;
   }

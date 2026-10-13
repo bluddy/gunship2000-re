@@ -1,5 +1,5 @@
-/* GS.GS2 10bf:0518 undefined FUN_10bf_0518(void) */
-int * __stdcall16far FUN_10bf_0518(int param_1)
+/* GS.GS2 10bf:0518 undefined error_lookup(void) */
+int * __stdcall16far error_lookup(int param_1)
 
 {
   int *piVar1;

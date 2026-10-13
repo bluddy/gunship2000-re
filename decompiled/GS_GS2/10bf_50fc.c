@@ -5,7 +5,7 @@ void __cdecl16far FUN_10bf_50fc(void)
   undefined2 unaff_DS;
   
   if (*(char *)(*(int *)0x6ea8 + -2) != '\a') {
-    FUN_10bf_32d7();
+    convert_to_screen_coords();
   }
   return;
 }

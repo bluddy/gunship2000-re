@@ -1,5 +1,5 @@
-/* GS.GS2 10bf:34d3 undefined FUN_10bf_34d3(void) */
-undefined4 FUN_10bf_34d3(void)
+/* GS.GS2 10bf:34d3 undefined float_denormal_adjust(void) */
+undefined4 float_denormal_adjust(void)
 
 {
   uint uVar1;
