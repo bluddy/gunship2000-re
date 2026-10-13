@@ -145,9 +145,10 @@ functions:
     description: ''
     name: FUN_10bf_049a
   10bf:0518:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_0518
+    certainty: high
+    description: Searches error table at 0x7288 for error code; returns pointer to
+      error string
+    name: error_lookup
   10bf:0543:
     certainty: unidentified
     description: ''
@@ -293,9 +294,10 @@ functions:
     description: ''
     name: FUN_10bf_1b52
   10bf:1bcc:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_1bcc
+    certainty: high
+    description: Opens serial/UART device via DOS INT 21h; handles buffer allocation
+      and device config
+    name: serial_port_open
   10bf:1be6:
     certainty: unidentified
     description: ''
@@ -329,8 +331,8 @@ functions:
     description: ''
     name: FUN_10bf_1fb2
   10bf:1fc6:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: Thunk wrapper for memory allocation thunk
     name: thunk_FUN_10bf_1ff3
   10bf:1fcc:
     certainty: unidentified
@@ -341,9 +343,9 @@ functions:
     description: ''
     name: FUN_10bf_1fd2
   10bf:1ff3:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_1ff3
+    certainty: high
+    description: Memory allocation thunk for overlay system; calls INT 21h AH=48h
+    name: thunk_memory_alloc
   10bf:201c:
     certainty: unidentified
     description: ''
@@ -365,21 +367,21 @@ functions:
     description: ''
     name: FUN_10bf_2196
   10bf:21d6:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_21d6
+    certainty: high
+    description: Word-aligned strcpy with byte tail handling; handles unaligned start
+    name: strcpy_word
   10bf:2208:
     certainty: unidentified
     description: ''
     name: FUN_10bf_2208
   10bf:2234:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_2234
+    certainty: high
+    description: Returns length of null-terminated string
+    name: strlen
   10bf:2250:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_2250
+    certainty: high
+    description: Word-aligned bounded string copy with zero-padding
+    name: strncpy_word
   10bf:2278:
     certainty: unidentified
     description: ''
@@ -461,9 +463,9 @@ functions:
     description: ''
     name: FUN_10bf_2a84
   10bf:2aae:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_2aae
+    certainty: high
+    description: Case-insensitive string comparison (ASCII)
+    name: strcmp_ci
   10bf:2af0:
     certainty: unidentified
     description: ''
@@ -489,9 +491,9 @@ functions:
     description: ''
     name: FUN_10bf_2c3a
   10bf:2c74:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_2c74
+    certainty: high
+    description: 32-bit signed integer to string conversion in arbitrary base (2-36)
+    name: itoa
   10bf:2cc8:
     certainty: unidentified
     description: ''
@@ -537,9 +539,9 @@ functions:
     description: ''
     name: FUN_10bf_2dee
   10bf:2e03:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_2e03
+    certainty: high
+    description: DOS INT 21h wrapper; stores AX result on carry clear, calls post-processor
+    name: dos_int21h_call
   10bf:2e26:
     certainty: unidentified
     description: ''
@@ -593,9 +595,9 @@ functions:
     description: ''
     name: FUN_10bf_3068
   10bf:3094:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_3094
+    certainty: high
+    description: 'In-place 32-bit fixed-point multiply: *ptr *= (low, high)'
+    name: fixed_point_mul_assign
   10bf:30b4:
     certainty: unidentified
     description: ''
@@ -625,21 +627,21 @@ functions:
     description: ''
     name: FUN_10bf_3218
   10bf:32d7:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_32d7
+    certainty: medium
+    description: Converts 32-bit fixed-point to screen coordinates; flag-based normalization
+    name: convert_to_screen_coords
   10bf:3366:
     certainty: unidentified
     description: ''
     name: FUN_10bf_3366
   10bf:34d3:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_34d3
+    certainty: medium
+    description: Handles floating-point denormal values in custom 32-bit format
+    name: float_denormal_adjust
   10bf:3508:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_3508
+    certainty: medium
+    description: Converts custom floating-point format to 32-bit fixed-point
+    name: float_to_fixed2
   10bf:388c:
     certainty: unidentified
     description: ''
@@ -733,9 +735,10 @@ functions:
     description: ''
     name: FUN_10bf_4697
   10bf:4bb8:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_4bb8
+    certainty: medium
+    description: Adds entity data to circular buffer at 0x6ea8; handles overflow via
+      error routine
+    name: entity_buffer_add
   10bf:4be4:
     certainty: unidentified
     description: ''
@@ -773,9 +776,10 @@ functions:
     description: ''
     name: FUN_10bf_4e3e
   10bf:4f50:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_4f50
+    certainty: medium
+    description: Indirect call through function pointer table at BX+0x7082; updates
+      linked list
+    name: call_indirect
   10bf:4f98:
     certainty: unidentified
     description: ''
@@ -793,9 +797,9 @@ functions:
     description: ''
     name: FUN_10bf_5026
   10bf:5035:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_5035
+    certainty: medium
+    description: Dispatches entity processing based on type; calls type-specific handlers
+    name: entity_dispatch
   10bf:503a:
     certainty: unidentified
     description: ''
@@ -825,17 +829,17 @@ functions:
     description: ''
     name: FUN_10bf_522b
   10bf:523e:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_523e
+    certainty: medium
+    description: Adjusts buffer pointers and metadata for entity system
+    name: buffer_adjust
   10bf:526e:
     certainty: unidentified
     description: ''
     name: FUN_10bf_526e
   10bf:52b4:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_52b4
+    certainty: low
+    description: Entity data validation stub; returns 0
+    name: entity_data_check
   10bf:52dc:
     certainty: unidentified
     description: ''
@@ -865,9 +869,9 @@ functions:
     description: ''
     name: FUN_10bf_5702
   10bf:5726:
-    certainty: unidentified
-    description: ''
-    name: FUN_10bf_5726
+    certainty: medium
+    description: Formats fixed-point number to string with decimal point and precision
+    name: format_number_string
   10bf:581e:
     certainty: unidentified
     description: ''
@@ -2357,128 +2361,128 @@ functions:
     description: ''
     name: FUN_2658_0008
   2658:0045:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0053:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:005a:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0061:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0068:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0076:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0092:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0099:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:00a7:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:00ca:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:00d1:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:00d8:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:00df:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:00fb:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0117:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0131:
     certainty: unidentified
     description: ''
     name: FUN_2658_0131
   2658:013a:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0141:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0148:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0156:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:015d:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0164:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:016b:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0172:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0179:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:01a3:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:01aa:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0301:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:0308:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:030f:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:032b:
-    certainty: unidentified
-    description: ''
+    certainty: high
+    description: External call thunk for overlay system (segment 0:0 sentinel)
     name: thunk_EXT_FUN_0000_0000
   2658:034c:
     certainty: unidentified

@@ -625,15 +625,18 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_049a.c
 - addr: 10bf:0518
-  name: FUN_10bf_0518
-  auto_name: FUN_10bf_0518
-  sig: undefined FUN_10bf_0518(void)
+  name: error_lookup
+  auto_name: error_lookup
+  sig: undefined error_lookup(void)
   return_type: undefined
   calling_convention: __stdcall16far
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_0518.c
+  certainty: high
+  description: Searches error table at 0x7288 for error code; returns pointer to error
+    string
 - addr: 10bf:0543
   name: FUN_10bf_0543
   auto_name: FUN_10bf_0543
@@ -995,15 +998,18 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_1b52.c
 - addr: 10bf:1bcc
-  name: FUN_10bf_1bcc
-  auto_name: FUN_10bf_1bcc
-  sig: undefined FUN_10bf_1bcc(void)
+  name: serial_port_open
+  auto_name: serial_port_open
+  sig: undefined serial_port_open(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_1bcc.c
+  certainty: high
+  description: Opens serial/UART device via DOS INT 21h; handles buffer allocation
+    and device config
 - addr: 10bf:1be6
   name: FUN_10bf_1be6
   auto_name: FUN_10bf_1be6
@@ -1092,8 +1098,10 @@ functions:
   calling_convention: __cdecl16far
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_1fc6.c
+  certainty: high
+  description: Thunk wrapper for memory allocation thunk
 - addr: 10bf:1fcc
   name: thunk_FUN_10bf_1fd2
   auto_name: thunk_FUN_10bf_1fd2
@@ -1115,15 +1123,17 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_1fd2.c
 - addr: 10bf:1ff3
-  name: FUN_10bf_1ff3
-  auto_name: FUN_10bf_1ff3
-  sig: undefined FUN_10bf_1ff3(void)
+  name: thunk_memory_alloc
+  auto_name: thunk_memory_alloc
+  sig: undefined thunk_memory_alloc(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_1ff3.c
+  certainty: high
+  description: Memory allocation thunk for overlay system; calls INT 21h AH=48h
 - addr: 10bf:201c
   name: FUN_10bf_201c
   auto_name: FUN_10bf_201c
@@ -1175,15 +1185,17 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_2196.c
 - addr: 10bf:21d6
-  name: FUN_10bf_21d6
-  auto_name: FUN_10bf_21d6
-  sig: undefined FUN_10bf_21d6(void)
+  name: strcpy_word
+  auto_name: strcpy_word
+  sig: undefined strcpy_word(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_21d6.c
+  certainty: high
+  description: Word-aligned strcpy with byte tail handling; handles unaligned start
 - addr: 10bf:2208
   name: FUN_10bf_2208
   auto_name: FUN_10bf_2208
@@ -1195,25 +1207,29 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_2208.c
 - addr: 10bf:2234
-  name: FUN_10bf_2234
-  auto_name: FUN_10bf_2234
-  sig: undefined FUN_10bf_2234(void)
+  name: strlen
+  auto_name: strlen
+  sig: undefined strlen(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_2234.c
+  certainty: high
+  description: Returns length of null-terminated string
 - addr: 10bf:2250
-  name: FUN_10bf_2250
-  auto_name: FUN_10bf_2250
-  sig: undefined FUN_10bf_2250(void)
+  name: strncpy_word
+  auto_name: strncpy_word
+  sig: undefined strncpy_word(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_2250.c
+  certainty: high
+  description: Word-aligned bounded string copy with zero-padding
 - addr: 10bf:2278
   name: FUN_10bf_2278
   auto_name: FUN_10bf_2278
@@ -1415,15 +1431,17 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_2a84.c
 - addr: 10bf:2aae
-  name: FUN_10bf_2aae
-  auto_name: FUN_10bf_2aae
-  sig: undefined FUN_10bf_2aae(void)
+  name: strcmp_ci
+  auto_name: strcmp_ci
+  sig: undefined strcmp_ci(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_2aae.c
+  certainty: high
+  description: Case-insensitive string comparison (ASCII)
 - addr: 10bf:2af0
   name: FUN_10bf_2af0
   auto_name: FUN_10bf_2af0
@@ -1485,15 +1503,17 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_2c3a.c
 - addr: 10bf:2c74
-  name: FUN_10bf_2c74
-  auto_name: FUN_10bf_2c74
-  sig: undefined FUN_10bf_2c74(void)
+  name: itoa
+  auto_name: itoa
+  sig: undefined itoa(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_2c74.c
+  certainty: high
+  description: 32-bit signed integer to string conversion in arbitrary base (2-36)
 - addr: 10bf:2cc8
   name: FUN_10bf_2cc8
   auto_name: FUN_10bf_2cc8
@@ -1605,15 +1625,17 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_2dee.c
 - addr: 10bf:2e03
-  name: FUN_10bf_2e03
-  auto_name: FUN_10bf_2e03
-  sig: undefined FUN_10bf_2e03(void)
+  name: dos_int21h_call
+  auto_name: dos_int21h_call
+  sig: undefined dos_int21h_call(void)
   return_type: undefined
   calling_convention: unknown
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_2e03.c
+  certainty: high
+  description: DOS INT 21h wrapper; stores AX result on carry clear, calls post-processor
 - addr: 10bf:2e26
   name: FUN_10bf_2e26
   auto_name: FUN_10bf_2e26
@@ -1745,15 +1767,17 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_3068.c
 - addr: 10bf:3094
-  name: FUN_10bf_3094
-  auto_name: FUN_10bf_3094
-  sig: undefined FUN_10bf_3094(void)
+  name: fixed_point_mul_assign
+  auto_name: fixed_point_mul_assign
+  sig: undefined fixed_point_mul_assign(void)
   return_type: undefined
   calling_convention: __stdcall16far
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_3094.c
+  certainty: high
+  description: 'In-place 32-bit fixed-point multiply: *ptr *= (low, high)'
 - addr: 10bf:30b4
   name: FUN_10bf_30b4
   auto_name: FUN_10bf_30b4
@@ -1825,15 +1849,17 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_3218.c
 - addr: 10bf:32d7
-  name: FUN_10bf_32d7
-  auto_name: FUN_10bf_32d7
-  sig: undefined FUN_10bf_32d7(void)
+  name: convert_to_screen_coords
+  auto_name: convert_to_screen_coords
+  sig: undefined convert_to_screen_coords(void)
   return_type: undefined
   calling_convention: __cdecl16near
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_32d7.c
+  certainty: medium
+  description: Converts 32-bit fixed-point to screen coordinates; flag-based normalization
 - addr: 10bf:3366
   name: FUN_10bf_3366
   auto_name: FUN_10bf_3366
@@ -1845,25 +1871,29 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_3366.c
 - addr: 10bf:34d3
-  name: FUN_10bf_34d3
-  auto_name: FUN_10bf_34d3
-  sig: undefined FUN_10bf_34d3(void)
+  name: float_denormal_adjust
+  auto_name: float_denormal_adjust
+  sig: undefined float_denormal_adjust(void)
   return_type: undefined
   calling_convention: unknown
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_34d3.c
+  certainty: medium
+  description: Handles floating-point denormal values in custom 32-bit format
 - addr: 10bf:3508
-  name: FUN_10bf_3508
-  auto_name: FUN_10bf_3508
-  sig: undefined FUN_10bf_3508(void)
+  name: float_to_fixed2
+  auto_name: float_to_fixed2
+  sig: undefined float_to_fixed2(void)
   return_type: undefined
   calling_convention: __cdecl16near
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_3508.c
+  certainty: medium
+  description: Converts custom floating-point format to 32-bit fixed-point
 - addr: 10bf:388c
   name: FUN_10bf_388c
   auto_name: FUN_10bf_388c
@@ -2095,15 +2125,18 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_4697.c
 - addr: 10bf:4bb8
-  name: FUN_10bf_4bb8
-  auto_name: FUN_10bf_4bb8
-  sig: undefined FUN_10bf_4bb8(void)
+  name: entity_buffer_add
+  auto_name: entity_buffer_add
+  sig: undefined entity_buffer_add(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_4bb8.c
+  certainty: medium
+  description: Adds entity data to circular buffer at 0x6ea8; handles overflow via
+    error routine
 - addr: 10bf:4be4
   name: thunk_FUN_10bf_51b6
   auto_name: thunk_FUN_10bf_51b6
@@ -2195,15 +2228,18 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_4e3e.c
 - addr: 10bf:4f50
-  name: FUN_10bf_4f50
-  auto_name: FUN_10bf_4f50
-  sig: undefined FUN_10bf_4f50(void)
+  name: call_indirect
+  auto_name: call_indirect
+  sig: undefined call_indirect(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_4f50.c
+  certainty: medium
+  description: Indirect call through function pointer table at BX+0x7082; updates
+    linked list
 - addr: 10bf:4f98
   name: FUN_10bf_4f98
   auto_name: FUN_10bf_4f98
@@ -2245,15 +2281,17 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_5026.c
 - addr: 10bf:5035
-  name: FUN_10bf_5035
-  auto_name: FUN_10bf_5035
-  sig: undefined FUN_10bf_5035(void)
+  name: entity_dispatch
+  auto_name: entity_dispatch
+  sig: undefined entity_dispatch(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_5035.c
+  certainty: medium
+  description: Dispatches entity processing based on type; calls type-specific handlers
 - addr: 10bf:503a
   name: FUN_10bf_503a
   auto_name: FUN_10bf_503a
@@ -2325,15 +2363,17 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_522b.c
 - addr: 10bf:523e
-  name: FUN_10bf_523e
-  auto_name: FUN_10bf_523e
-  sig: undefined FUN_10bf_523e(void)
+  name: buffer_adjust
+  auto_name: buffer_adjust
+  sig: undefined buffer_adjust(void)
   return_type: undefined
   calling_convention: __cdecl16near
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_523e.c
+  certainty: medium
+  description: Adjusts buffer pointers and metadata for entity system
 - addr: 10bf:526e
   name: FUN_10bf_526e
   auto_name: FUN_10bf_526e
@@ -2345,15 +2385,17 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_526e.c
 - addr: 10bf:52b4
-  name: FUN_10bf_52b4
-  auto_name: FUN_10bf_52b4
-  sig: undefined FUN_10bf_52b4(void)
+  name: entity_data_check
+  auto_name: entity_data_check
+  sig: undefined entity_data_check(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_52b4.c
+  certainty: low
+  description: Entity data validation stub; returns 0
 - addr: 10bf:52dc
   name: FUN_10bf_52dc
   auto_name: FUN_10bf_52dc
@@ -2425,15 +2467,17 @@ functions:
   status: unidentified
   c: decompiled/GS_GS2/10bf_5702.c
 - addr: 10bf:5726
-  name: FUN_10bf_5726
-  auto_name: FUN_10bf_5726
-  sig: undefined FUN_10bf_5726(void)
+  name: format_number_string
+  auto_name: format_number_string
+  sig: undefined format_number_string(void)
   return_type: undefined
   calling_convention: __cdecl16far
   is_thunk: false
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/10bf_5726.c
+  certainty: medium
+  description: Formats fixed-point number to string with decimal point and precision
 - addr: 10bf:581e
   name: FUN_10bf_581e
   auto_name: FUN_10bf_581e
@@ -6217,8 +6261,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0045.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0053
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6227,8 +6273,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0053.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:005a
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6237,8 +6285,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_005a.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0061
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6247,8 +6297,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0061.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0068
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6257,8 +6309,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0068.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0076
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6267,8 +6321,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0076.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0092
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6277,8 +6333,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0092.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0099
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6287,8 +6345,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0099.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:00a7
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6297,8 +6357,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_00a7.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:00ca
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6307,8 +6369,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_00ca.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:00d1
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6317,8 +6381,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_00d1.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:00d8
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6327,8 +6393,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_00d8.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:00df
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6337,8 +6405,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_00df.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:00fb
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6347,8 +6417,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_00fb.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0117
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6357,8 +6429,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0117.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0131
   name: FUN_2658_0131
   auto_name: FUN_2658_0131
@@ -6377,8 +6451,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_013a.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0141
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6387,8 +6463,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0141.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0148
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6397,8 +6475,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0148.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0156
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6407,8 +6487,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0156.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:015d
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6417,8 +6499,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_015d.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0164
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6427,8 +6511,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0164.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:016b
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6437,8 +6523,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_016b.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0172
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6447,8 +6535,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0172.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0179
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6457,8 +6547,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0179.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:01a3
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6467,8 +6559,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_01a3.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:01aa
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6477,8 +6571,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_01aa.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0301
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6487,8 +6583,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0301.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:0308
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6497,8 +6595,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_0308.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:030f
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6507,8 +6607,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_030f.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:032b
   name: thunk_EXT_FUN_0000_0000
   auto_name: thunk_EXT_FUN_0000_0000
@@ -6517,8 +6619,10 @@ functions:
   calling_convention: unknown
   is_thunk: true
   decompiled: true
-  status: unidentified
+  status: identified
   c: decompiled/GS_GS2/2658_032b.c
+  certainty: high
+  description: External call thunk for overlay system (segment 0:0 sentinel)
 - addr: 2658:034c
   name: FUN_2658_034c
   auto_name: FUN_2658_034c
