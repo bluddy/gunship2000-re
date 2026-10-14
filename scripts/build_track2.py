@@ -51,6 +51,18 @@ def compile_c_module(c_files: list, module_name: str, workdir: str) -> tuple[boo
     """Compile C files with MSC 6.0 under DOSBox-X, return (success, cod_path)."""
     msc_dir = os.path.join(os.getcwd(), MSC_ROOT)
     
+    # Clean MSC dir of all .C, .COD, .OBJ files from previous builds
+    print(f"DEBUG: Cleaning MSC dir {msc_dir}")
+    removed = 0
+    for fname in os.listdir(msc_dir):
+        if fname.upper().endswith(('.C', '.COD', '.OBJ')):
+            fpath = os.path.join(msc_dir, fname)
+            try:
+                os.remove(fpath)
+                print(f"DEBUG: Removed {fpath}")
+            except Exception as e:
+                print(f"DEBUG: Failed to remove {fpath}: {e}")
+    
     # Copy C files to MSC dir with 8.3 names
     c_83_list = []
     for c_file in c_files:
@@ -309,7 +321,13 @@ def main():
     
     c_files = [os.path.join(args.c_dir, f) for f in os.listdir(args.c_dir) if f.endswith(".c")]
     if args.routines:
-        c_files = [f for f in c_files if any(r in f for r in args.routines)]
+        target_files = set(r + ".c" for r in args.routines)
+        print(f"DEBUG: target_files = {target_files}")
+        print(f"DEBUG: c_dir = {args.c_dir}")
+        print(f"DEBUG: c_dir abs = {os.path.abspath(args.c_dir)}")
+        print(f"DEBUG: all files = {[os.path.basename(f) for f in c_files]}")
+        c_files = [f for f in c_files if os.path.basename(f) in target_files]
+        print(f"DEBUG: filtered files = {[os.path.basename(f) for f in c_files]}")
     
     if not c_files:
         print("No C files found")
